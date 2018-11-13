@@ -1,0 +1,283 @@
+# Conditions read from  CMS_CONDITIONS  via FrontierProd 
+DEBUG 2018-10-03 20:08:35,249: 	 Executing command: 'submit'
+DEBUG 2018-10-03 20:08:35,275: 	 Found CRAB cache file /afs/cern.ch/user/o/oiorio/.crab3
+DEBUG 2018-10-03 20:08:35,287: 	 Checking credentials
+DEBUG 2018-10-03 20:08:35,288: 	 Found proxy file /tmp/x509up_u31365
+DEBUG 2018-10-03 20:08:35,288: 	 Getting proxy life time left
+DEBUG 2018-10-03 20:08:36,401: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u31365 -timeleft
+ output : 42995
+
+ error: 
+ retcode : 0
+DEBUG 2018-10-03 20:08:37,642: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u31365 -actimeleft
+ output : 42994
+
+ error: 
+ retcode : 0
+DEBUG 2018-10-03 20:08:37,642: 	 Proxy valid for 11:56:35 hours
+DEBUG 2018-10-03 20:08:37,643: 	 Will use CRAB Analysis plugin (i.e. will run an analysis job type).
+DEBUG 2018-10-03 20:08:38,323: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio
+
+ error: 
+ retcode : 0
+DEBUG 2018-10-03 20:08:38,323: 	 Checking credentials
+DEBUG 2018-10-03 20:08:38,323: 	 Found proxy file /tmp/x509up_u31365
+DEBUG 2018-10-03 20:08:38,323: 	 Getting proxy life time left
+DEBUG 2018-10-03 20:08:39,441: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u31365 -timeleft
+ output : 42992
+
+ error: 
+ retcode : 0
+DEBUG 2018-10-03 20:08:40,555: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u31365 -actimeleft
+ output : 42991
+
+ error: 
+ retcode : 0
+DEBUG 2018-10-03 20:08:40,555: 	 Proxy valid for 11:56:32 hours
+DEBUG 2018-10-03 20:08:41,967: 	 Executing : 
+ command : env X509_USER_PROXY=/tmp/x509up_u31365 voms-proxy-info -fqan
+ output : /cms/Role=NULL/Capability=NULL
+/cms/itcms/Role=NULL/Capability=NULL
+
+ error: 
+ retcode : 0
+DEBUG 2018-10-03 20:08:42,362: 	 Registering user credentials for server /DC=ch/DC=cern/OU=computers/CN=vocms(052|031|0118|0105|0109).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(02|01).cern.ch
+DEBUG 2018-10-03 20:08:42,477: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio
+
+ error: 
+ retcode : 0
+DEBUG 2018-10-03 20:08:42,477: 	 Getting myproxy life time left for myproxy.cern.ch
+DEBUG 2018-10-03 20:08:42,477: 	 Calculating hash of /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio_cmsweb.cern.ch for credential name
+DEBUG 2018-10-03 20:08:42,789: 	 Executing : 
+ command : myproxy-info -l ae9637610ea27f91075d015fc1e15a7328a99708 -s myproxy.cern.ch
+ output : username: ae9637610ea27f91075d015fc1e15a7328a99708
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=vocms(052|031|0118|0105|0109).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(02|01).cern.ch
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=vocms(052|031|0118|0105|0109).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(02|01).cern.ch
+  timeleft: 519:31:15  (21.6 days)
+
+ error: 
+ retcode : 0
+DEBUG 2018-10-03 20:08:42,791: 	 Myproxy is valid: 1870275
+DEBUG 2018-10-03 20:08:42,791: 	 Command use: submit
+DEBUG 2018-10-03 20:08:42,791: 	 Options use: ['--config', <WMCore.Configuration.Configuration object at 0x7fccabbfa590>]
+DEBUG 2018-10-03 20:08:43,200: 	 CRABClient version: 3.3.1809
+DEBUG 2018-10-03 20:08:43,200: 	 Instance is prod
+DEBUG 2018-10-03 20:08:43,200: 	 Server base url is cmsweb.cern.ch
+DEBUG 2018-10-03 20:08:43,200: 	 Command url /crabserver/prod/workflow
+DEBUG 2018-10-03 20:08:43,200: 	 Started submission
+DEBUG 2018-10-03 20:08:43,200: 	 Working on /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/src/ttDM/treeDumper/test/crab_3Oct/crab_ST_tW_antitop_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8_crab_3Oct
+DEBUG 2018-10-03 20:08:43,647: 	 Loading required information from the environment
+DEBUG 2018-10-03 20:08:43,648: 	 Found CMSSW_8_0_20 for slc6_amd64_gcc530 with base /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20
+DEBUG 2018-10-03 20:08:43,648: 	 Loading required information from the environment
+DEBUG 2018-10-03 20:08:43,648: 	 Found CMSSW_8_0_20 for slc6_amd64_gcc530 with base /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20
+DEBUG 2018-10-03 20:08:43,674: 	 UNIQUE NAME: tarUUID cf00cce2-d0e4-4ffa-b01e-a6996c8d88d9 
+DEBUG 2018-10-03 20:08:43,675: 	 self.config: from WMCore.Configuration import Configuration
+config = Configuration()
+config.section_('General')
+config.General.workArea = 'crab_3Oct'
+config.General.requestName = 'ST_tW_antitop_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8_crab_3Oct'
+config.section_('JobType')
+config.JobType.psetName = 'topplusdmTrees_cfg.py'
+config.JobType.pluginName = 'Analysis'
+config.JobType.inputFiles = ['Spring16_25nsV10_MC_PtResolution_AK8PFchs.txt', 'Summer16_23Sep2016BCDV4_DATA_L1FastJet_AK4PFchs.txt', 'Summer16_23Sep2016BCDV4_DATA_L1FastJet_AK8PFchs.txt', 'Summer16_23Sep2016BCDV4_DATA_L1RC_AK4PFchs.txt', 'Summer16_23Sep2016BCDV4_DATA_L1RC_AK8PFchs.txt', 'Summer16_23Sep2016BCDV4_DATA_L2L3Residual_AK4PFchs.txt', 'Summer16_23Sep2016BCDV4_DATA_L2L3Residual_AK8PFchs.txt', 'Summer16_23Sep2016BCDV4_DATA_L2Relative_AK4PFchs.txt', 'Summer16_23Sep2016BCDV4_DATA_L2Relative_AK8PFchs.txt', 'Summer16_23Sep2016BCDV4_DATA_L2Residual_AK4PFchs.txt', 'Summer16_23Sep2016BCDV4_DATA_L3Absolute_AK4PFchs.txt', 'Summer16_23Sep2016BCDV4_DATA_L3Absolute_AK8PFchs.txt', 'Summer16_23Sep2016BCDV4_DATA_UncertaintySources_AK4PFchs.txt', 'Summer16_23Sep2016BCDV4_DATA_UncertaintySources_AK8PFchs.txt', 'Summer16_23Sep2016BCDV4_DATA_Uncertainty_AK4PFchs.txt', 'Summer16_23Sep2016BCDV4_DATA_Uncertainty_AK8PFchs.txt', 'Summer16_23Sep2016EFV4_DATA_L1FastJet_AK4PFchs.txt', 'Summer16_23Sep2016EFV4_DATA_L1FastJet_AK8PFchs.txt', 'Summer16_23Sep2016EFV4_DATA_L1RC_AK4PFchs.txt', 'Summer16_23Sep2016EFV4_DATA_L1RC_AK8PFchs.txt', 'Summer16_23Sep2016EFV4_DATA_L2L3Residual_AK4PFchs.txt', 'Summer16_23Sep2016EFV4_DATA_L2L3Residual_AK8PFchs.txt', 'Summer16_23Sep2016EFV4_DATA_L2Relative_AK4PFchs.txt', 'Summer16_23Sep2016EFV4_DATA_L2Relative_AK8PFchs.txt', 'Summer16_23Sep2016EFV4_DATA_L2Residual_AK4PFchs.txt', 'Summer16_23Sep2016EFV4_DATA_L3Absolute_AK4PFchs.txt', 'Summer16_23Sep2016EFV4_DATA_L3Absolute_AK8PFchs.txt', 'Summer16_23Sep2016EFV4_DATA_UncertaintySources_AK4PFchs.txt', 'Summer16_23Sep2016EFV4_DATA_UncertaintySources_AK8PFchs.txt', 'Summer16_23Sep2016EFV4_DATA_Uncertainty_AK4PFchs.txt', 'Summer16_23Sep2016EFV4_DATA_Uncertainty_AK8PFchs.txt', 'Summer16_23Sep2016GV4_DATA_L1FastJet_AK4PFchs.txt', 'Summer16_23Sep2016GV4_DATA_L1FastJet_AK8PFchs.txt', 'Summer16_23Sep2016GV4_DATA_L1RC_AK4PFchs.txt', 'Summer16_23Sep2016GV4_DATA_L1RC_AK8PFchs.txt', 'Summer16_23Sep2016GV4_DATA_L2L3Residual_AK4PFchs.txt', 'Summer16_23Sep2016GV4_DATA_L2L3Residual_AK8PFchs.txt', 'Summer16_23Sep2016GV4_DATA_L2Relative_AK4PFchs.txt', 'Summer16_23Sep2016GV4_DATA_L2Relative_AK8PFchs.txt', 'Summer16_23Sep2016GV4_DATA_L2Residual_AK4PFchs.txt', 'Summer16_23Sep2016GV4_DATA_L3Absolute_AK4PFchs.txt', 'Summer16_23Sep2016GV4_DATA_L3Absolute_AK8PFchs.txt', 'Summer16_23Sep2016GV4_DATA_UncertaintySources_AK4PFchs.txt', 'Summer16_23Sep2016GV4_DATA_UncertaintySources_AK8PFchs.txt', 'Summer16_23Sep2016GV4_DATA_Uncertainty_AK4PFchs.txt', 'Summer16_23Sep2016GV4_DATA_Uncertainty_AK8PFchs.txt', 'Summer16_23Sep2016HV4_DATA_L1FastJet_AK4PFchs.txt', 'Summer16_23Sep2016HV4_DATA_L1FastJet_AK8PFchs.txt', 'Summer16_23Sep2016HV4_DATA_L1RC_AK4PFchs.txt', 'Summer16_23Sep2016HV4_DATA_L1RC_AK8PFchs.txt', 'Summer16_23Sep2016HV4_DATA_L2L3Residual_AK4PFchs.txt', 'Summer16_23Sep2016HV4_DATA_L2L3Residual_AK8PFchs.txt', 'Summer16_23Sep2016HV4_DATA_L2Relative_AK4PFchs.txt', 'Summer16_23Sep2016HV4_DATA_L2Relative_AK8PFchs.txt', 'Summer16_23Sep2016HV4_DATA_L2Residual_AK4PFchs.txt', 'Summer16_23Sep2016HV4_DATA_L3Absolute_AK4PFchs.txt', 'Summer16_23Sep2016HV4_DATA_L3Absolute_AK8PFchs.txt', 'Summer16_23Sep2016HV4_DATA_UncertaintySources_AK4PFchs.txt', 'Summer16_23Sep2016HV4_DATA_UncertaintySources_AK8PFchs.txt', 'Summer16_23Sep2016HV4_DATA_Uncertainty_AK4PFchs.txt', 'Summer16_23Sep2016HV4_DATA_Uncertainty_AK8PFchs.txt', 'Summer16_23Sep2016V4_MC_L1FastJet_AK4PFchs.txt', 'Summer16_23Sep2016V4_MC_L1FastJet_AK8PFchs.txt', 'Summer16_23Sep2016V4_MC_L1RC_AK4PFchs.txt', 'Summer16_23Sep2016V4_MC_L1RC_AK8PFchs.txt', 'Summer16_23Sep2016V4_MC_L2L3Residual_AK4PFchs.txt', 'Summer16_23Sep2016V4_MC_L2L3Residual_AK8PFchs.txt', 'Summer16_23Sep2016V4_MC_L2Relative_AK4PFchs.txt', 'Summer16_23Sep2016V4_MC_L2Relative_AK8PFchs.txt', 'Summer16_23Sep2016V4_MC_L3Absolute_AK4PFchs.txt', 'Summer16_23Sep2016V4_MC_L3Absolute_AK8PFchs.txt', 'Summer16_23Sep2016V4_MC_Uncertainty_AK4PFchs.txt', 'Summer16_23Sep2016V4_MC_Uncertainty_AK8PFchs.txt']
+config.JobType.pyCfgParams = ['isData=False', 'changeJECs=True', 'channel=wprime']
+config.JobType.allowUndistributedCMSSW = True
+config.section_('Data')
+config.Data.inputDataset = '/ST_tW_antitop_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8/oiorio-RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1_B2GAnaFW_94X_V0_Sep_14-b20ae75985a288300defff97749d07bd/USER'
+config.Data.outputDatasetTag = 'ST_tW_antitop_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8_crab_3Oct'
+config.Data.publication = False
+config.Data.unitsPerJob = 5
+config.Data.ignoreLocality = True
+config.Data.inputDBS = 'phys03'
+config.Data.splitting = 'FileBased'
+config.Data.outLFNDirBase = '/store/user/oiorio/Tprime/trees/2018/Oct3/'
+config.section_('Site')
+config.Site.whitelist = ['T2_CH_CERN', 'T2_IT_*', 'T2_DE_*', 'T2_CH_*']
+config.Site.storageSite = 'T2_CH_CSCS'
+config.section_('User')
+config.section_('Debug')
+
+DEBUG 2018-10-03 20:08:43,675: 	 self.config.JobType.psetName: topplusdmTrees_cfg.py
+INFO 2018-10-03 20:08:43,675: 	 Importing CMSSW configuration topplusdmTrees_cfg.py
+DEBUG 2018-10-03 20:08:43,675: 	 Additional parameters for the CMSSW configuration are: ['isData=False', 'changeJECs=True', 'channel=wprime']
+INFO 2018-10-03 20:08:43,903: 	 Finished importing CMSSW configuration topplusdmTrees_cfg.py
+DEBUG 2018-10-03 20:08:43,903: 	 Writing CMSSW configuration to /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/src/ttDM/treeDumper/test/crab_3Oct/crab_ST_tW_antitop_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8_crab_3Oct/inputs/PSet.py
+DEBUG 2018-10-03 20:08:43,950: 	 The following EDM output files will be collected: []
+DEBUG 2018-10-03 20:08:43,950: 	 The following TFile output files will be collected: ['treesTTJets.root']
+DEBUG 2018-10-03 20:08:43,950: 	 The following user output files will be collected: []
+DEBUG 2018-10-03 20:08:43,951: 	 Loading required information from the environment
+DEBUG 2018-10-03 20:08:43,951: 	 Found CMSSW_8_0_20 for slc6_amd64_gcc530 with base /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20
+DEBUG 2018-10-03 20:08:43,951: 	 Making tarball in /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/src/ttDM/treeDumper/test/crab_3Oct/crab_ST_tW_antitop_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8_crab_3Oct/inputs/cf00cce2-d0e4-4ffa-b01e-a6996c8d88d9default.tgz
+DEBUG 2018-10-03 20:08:43,962: 	 Checking directory /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/lib
+DEBUG 2018-10-03 20:08:43,962: 	 Adding directory /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/lib to tarball
+DEBUG 2018-10-03 20:08:44,157: 	 Checking directory /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/biglib
+DEBUG 2018-10-03 20:08:44,157: 	 Adding directory /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/biglib to tarball
+DEBUG 2018-10-03 20:08:44,159: 	 Checking directory /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/module
+DEBUG 2018-10-03 20:08:44,161: 	 Adding data directory /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/src/Tprime/TprimeAnalysis/data to tarball
+DEBUG 2018-10-03 20:08:44,168: 	 Adding data directory /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/src/Tprime/TprimeAnalysis/interface to tarball
+DEBUG 2018-10-03 20:08:44,237: 	 Adding file Spring16_25nsV10_MC_PtResolution_AK8PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:44,242: 	 Adding file Summer16_23Sep2016BCDV4_DATA_L1FastJet_AK4PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:44,251: 	 Adding file Summer16_23Sep2016BCDV4_DATA_L1FastJet_AK8PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:44,253: 	 Adding file Summer16_23Sep2016BCDV4_DATA_L1RC_AK4PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:44,256: 	 Adding file Summer16_23Sep2016BCDV4_DATA_L1RC_AK8PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:44,258: 	 Adding file Summer16_23Sep2016BCDV4_DATA_L2L3Residual_AK4PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:44,260: 	 Adding file Summer16_23Sep2016BCDV4_DATA_L2L3Residual_AK8PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:44,260: 	 Adding file Summer16_23Sep2016BCDV4_DATA_L2Relative_AK4PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:44,382: 	 Adding file Summer16_23Sep2016BCDV4_DATA_L2Relative_AK8PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:44,501: 	 Adding file Summer16_23Sep2016BCDV4_DATA_L2Residual_AK4PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:44,502: 	 Adding file Summer16_23Sep2016BCDV4_DATA_L3Absolute_AK4PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:44,503: 	 Adding file Summer16_23Sep2016BCDV4_DATA_L3Absolute_AK8PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:44,503: 	 Adding file Summer16_23Sep2016BCDV4_DATA_UncertaintySources_AK4PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:44,850: 	 Adding file Summer16_23Sep2016BCDV4_DATA_UncertaintySources_AK8PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:45,194: 	 Adding file Summer16_23Sep2016BCDV4_DATA_Uncertainty_AK4PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:45,210: 	 Adding file Summer16_23Sep2016BCDV4_DATA_Uncertainty_AK8PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:45,226: 	 Adding file Summer16_23Sep2016EFV4_DATA_L1FastJet_AK4PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:45,229: 	 Adding file Summer16_23Sep2016EFV4_DATA_L1FastJet_AK8PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:45,231: 	 Adding file Summer16_23Sep2016EFV4_DATA_L1RC_AK4PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:45,234: 	 Adding file Summer16_23Sep2016EFV4_DATA_L1RC_AK8PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:45,236: 	 Adding file Summer16_23Sep2016EFV4_DATA_L2L3Residual_AK4PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:45,237: 	 Adding file Summer16_23Sep2016EFV4_DATA_L2L3Residual_AK8PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:45,237: 	 Adding file Summer16_23Sep2016EFV4_DATA_L2Relative_AK4PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:45,360: 	 Adding file Summer16_23Sep2016EFV4_DATA_L2Relative_AK8PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:45,481: 	 Adding file Summer16_23Sep2016EFV4_DATA_L2Residual_AK4PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:45,483: 	 Adding file Summer16_23Sep2016EFV4_DATA_L3Absolute_AK4PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:45,483: 	 Adding file Summer16_23Sep2016EFV4_DATA_L3Absolute_AK8PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:45,484: 	 Adding file Summer16_23Sep2016EFV4_DATA_UncertaintySources_AK4PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:45,821: 	 Adding file Summer16_23Sep2016EFV4_DATA_UncertaintySources_AK8PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:46,160: 	 Adding file Summer16_23Sep2016EFV4_DATA_Uncertainty_AK4PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:46,177: 	 Adding file Summer16_23Sep2016EFV4_DATA_Uncertainty_AK8PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:46,192: 	 Adding file Summer16_23Sep2016GV4_DATA_L1FastJet_AK4PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:46,194: 	 Adding file Summer16_23Sep2016GV4_DATA_L1FastJet_AK8PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:46,197: 	 Adding file Summer16_23Sep2016GV4_DATA_L1RC_AK4PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:46,199: 	 Adding file Summer16_23Sep2016GV4_DATA_L1RC_AK8PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:46,201: 	 Adding file Summer16_23Sep2016GV4_DATA_L2L3Residual_AK4PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:46,203: 	 Adding file Summer16_23Sep2016GV4_DATA_L2L3Residual_AK8PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:46,203: 	 Adding file Summer16_23Sep2016GV4_DATA_L2Relative_AK4PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:46,323: 	 Adding file Summer16_23Sep2016GV4_DATA_L2Relative_AK8PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:46,442: 	 Adding file Summer16_23Sep2016GV4_DATA_L2Residual_AK4PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:46,444: 	 Adding file Summer16_23Sep2016GV4_DATA_L3Absolute_AK4PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:46,444: 	 Adding file Summer16_23Sep2016GV4_DATA_L3Absolute_AK8PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:46,445: 	 Adding file Summer16_23Sep2016GV4_DATA_UncertaintySources_AK4PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:46,783: 	 Adding file Summer16_23Sep2016GV4_DATA_UncertaintySources_AK8PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:47,124: 	 Adding file Summer16_23Sep2016GV4_DATA_Uncertainty_AK4PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:47,140: 	 Adding file Summer16_23Sep2016GV4_DATA_Uncertainty_AK8PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:47,156: 	 Adding file Summer16_23Sep2016HV4_DATA_L1FastJet_AK4PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:47,158: 	 Adding file Summer16_23Sep2016HV4_DATA_L1FastJet_AK8PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:47,160: 	 Adding file Summer16_23Sep2016HV4_DATA_L1RC_AK4PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:47,163: 	 Adding file Summer16_23Sep2016HV4_DATA_L1RC_AK8PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:47,165: 	 Adding file Summer16_23Sep2016HV4_DATA_L2L3Residual_AK4PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:47,166: 	 Adding file Summer16_23Sep2016HV4_DATA_L2L3Residual_AK8PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:47,167: 	 Adding file Summer16_23Sep2016HV4_DATA_L2Relative_AK4PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:47,289: 	 Adding file Summer16_23Sep2016HV4_DATA_L2Relative_AK8PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:47,408: 	 Adding file Summer16_23Sep2016HV4_DATA_L2Residual_AK4PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:47,409: 	 Adding file Summer16_23Sep2016HV4_DATA_L3Absolute_AK4PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:47,410: 	 Adding file Summer16_23Sep2016HV4_DATA_L3Absolute_AK8PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:47,410: 	 Adding file Summer16_23Sep2016HV4_DATA_UncertaintySources_AK4PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:47,748: 	 Adding file Summer16_23Sep2016HV4_DATA_UncertaintySources_AK8PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:48,089: 	 Adding file Summer16_23Sep2016HV4_DATA_Uncertainty_AK4PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:48,106: 	 Adding file Summer16_23Sep2016HV4_DATA_Uncertainty_AK8PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:48,121: 	 Adding file Summer16_23Sep2016V4_MC_L1FastJet_AK4PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:48,125: 	 Adding file Summer16_23Sep2016V4_MC_L1FastJet_AK8PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:48,127: 	 Adding file Summer16_23Sep2016V4_MC_L1RC_AK4PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:48,130: 	 Adding file Summer16_23Sep2016V4_MC_L1RC_AK8PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:48,133: 	 Adding file Summer16_23Sep2016V4_MC_L2L3Residual_AK4PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:48,134: 	 Adding file Summer16_23Sep2016V4_MC_L2L3Residual_AK8PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:48,134: 	 Adding file Summer16_23Sep2016V4_MC_L2Relative_AK4PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:48,255: 	 Adding file Summer16_23Sep2016V4_MC_L2Relative_AK8PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:48,379: 	 Adding file Summer16_23Sep2016V4_MC_L3Absolute_AK4PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:48,380: 	 Adding file Summer16_23Sep2016V4_MC_L3Absolute_AK8PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:48,381: 	 Adding file Summer16_23Sep2016V4_MC_Uncertainty_AK4PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:48,392: 	 Adding file Summer16_23Sep2016V4_MC_Uncertainty_AK8PFchs.txt to tarball
+DEBUG 2018-10-03 20:08:48,500: 	 Uploading archive /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/src/ttDM/treeDumper/test/crab_3Oct/crab_ST_tW_antitop_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8_crab_3Oct/inputs/cf00cce2-d0e4-4ffa-b01e-a6996c8d88d9default.tgz (2.409180.1 MB) to the CRAB cache. Using URI https://cmsweb.cern.ch/crabcache
+DEBUG 2018-10-03 20:08:50,360: 	 Loading required information from the environment
+DEBUG 2018-10-03 20:08:50,360: 	 Found CMSSW_8_0_20 for slc6_amd64_gcc530 with base /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20
+DEBUG 2018-10-03 20:08:50,361: 	 Making tarball in /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/src/ttDM/treeDumper/test/crab_3Oct/crab_ST_tW_antitop_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8_crab_3Oct/inputs/debugFiles.tgz
+DEBUG 2018-10-03 20:08:50,367: 	 Uploading archive /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/src/ttDM/treeDumper/test/crab_3Oct/crab_ST_tW_antitop_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8_crab_3Oct/inputs/debugFiles.tgz (4 KB) to the CRAB cache. Using URI https://cmsweb.cern.ch/crabcache
+DEBUG 2018-10-03 20:08:50,758: 	 Result uploading input files: 06fc15c834f6cb8828d127b3ccabbd275999e259585e1c18d60db67d0e32eb0a.tar.gz 
+INFO 2018-10-03 20:08:50,758: 	 Sending the request to the server
+DEBUG 2018-10-03 20:08:50,758: 	 Submitting {'maxjobruntime': 1250, 'extrajdl': [], 'ignorelocality': 1, 'savelogsflag': 0, 'useparent': 0, 'asyncdest': 'T2_CH_CSCS', 'algoargs': 5, 'cachefilename': '06fc15c834f6cb8828d127b3ccabbd275999e259585e1c18d60db67d0e32eb0a.tar.gz', 'numcores': 1, 'addoutputfiles': [], 'generator': 'pythia', 'maxmemory': 2000, 'publishdbsurl': 'https://cmsweb.cern.ch/dbs/prod/phys03/DBSWriter', 'priority': 10, 'jobsw': 'CMSSW_8_0_20', 'edmoutfiles': [], 'userfiles': [], 'primarydataset': '', 'inputdata': '/ST_tW_antitop_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8/oiorio-RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1_B2GAnaFW_94X_V0_Sep_14-b20ae75985a288300defff97749d07bd/USER', 'lfn': '/store/user/oiorio/Tprime/trees/2018/Oct3/', 'dryrun': 0, 'workflow': 'crab_ST_tW_antitop_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8_crab_3Oct', 'sitewhitelist': ['T2_CH_CERN', 'T2_IT_*', 'T2_DE_*', 'T2_CH_*'], 'nonprodsw': 1, 'tfileoutfiles': ['treesTTJets.root'], 'oneEventMode': 0, 'debugfilename': 'eb55b95ed2021b495cd29ba0bc2508126bf06f1469a085bceed2e33ff3d6ac51.tar.gz', 'cacheurl': u'https://cmsweb.cern.ch/crabcache', 'saveoutput': 1, 'publication': 0, 'jobarch': 'slc6_amd64_gcc530', 'totalunits': 0, 'splitalgo': 'FileBased', 'ignoreglobalblacklist': 0, 'nonvaliddata': 0, 'dbsurl': 'https://cmsweb.cern.ch/dbs/prod/phys03/DBSReader', 'publishgroupname': 0, 'jobtype': 'Analysis', 'publishname2': 'ST_tW_antitop_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8_crab_3Oct'} 
+DEBUG 2018-10-03 20:08:50,759: 	 Encoded submit request: maxjobruntime=1250&ignorelocality=1&savelogsflag=0&useparent=0&asyncdest=T2_CH_CSCS&algoargs=5&cachefilename=06fc15c834f6cb8828d127b3ccabbd275999e259585e1c18d60db67d0e32eb0a.tar.gz&numcores=1&generator=pythia&maxmemory=2000&publishdbsurl=https%3A%2F%2Fcmsweb.cern.ch%2Fdbs%2Fprod%2Fphys03%2FDBSWriter&priority=10&jobsw=CMSSW_8_0_20&primarydataset=&inputdata=%2FST_tW_antitop_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8%2Foiorio-RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1_B2GAnaFW_94X_V0_Sep_14-b20ae75985a288300defff97749d07bd%2FUSER&lfn=%2Fstore%2Fuser%2Foiorio%2FTprime%2Ftrees%2F2018%2FOct3%2F&dryrun=0&workflow=crab_ST_tW_antitop_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8_crab_3Oct&nonprodsw=1&oneEventMode=0&debugfilename=eb55b95ed2021b495cd29ba0bc2508126bf06f1469a085bceed2e33ff3d6ac51.tar.gz&cacheurl=https%3A%2F%2Fcmsweb.cern.ch%2Fcrabcache&saveoutput=1&publication=0&jobarch=slc6_amd64_gcc530&totalunits=0&splitalgo=FileBased&ignoreglobalblacklist=0&nonvaliddata=0&dbsurl=https%3A%2F%2Fcmsweb.cern.ch%2Fdbs%2Fprod%2Fphys03%2FDBSReader&publishgroupname=0&jobtype=Analysis&publishname2=ST_tW_antitop_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8_crab_3Oct&sitewhitelist=T2_CH_CERN&sitewhitelist=T2_IT_%2A&sitewhitelist=T2_DE_%2A&sitewhitelist=T2_CH_%2A&tfileoutfiles=treesTTJets.root
+DEBUG 2018-10-03 20:08:51,336: 	 Result: {u'result': [{u'RequestName': u'181003_180851:oiorio_crab_ST_tW_antitop_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8_crab_3Oct'}]}
+INFO 2018-10-03 20:08:51,339: 	 Success: Your task has been delivered to the CRAB3 server.
+INFO 2018-10-03 20:08:51,339: 	 Task name: 181003_180851:oiorio_crab_ST_tW_antitop_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8_crab_3Oct
+INFO 2018-10-03 20:08:51,339: 	 Please use 'crab status' to check how the submission process proceeds.
+DEBUG 2018-10-03 20:08:51,340: 	 About to return
+DEBUG 2018-10-03 20:21:22,930: 	 Executing command: 'kill'
+DEBUG 2018-10-03 20:21:22,930: 	 Found CRAB cache file /afs/cern.ch/user/o/oiorio/.crab3
+DEBUG 2018-10-03 20:21:22,942: 	 Checking credentials
+DEBUG 2018-10-03 20:21:22,943: 	 Found proxy file /tmp/x509up_u31365
+DEBUG 2018-10-03 20:21:22,943: 	 Getting proxy life time left
+DEBUG 2018-10-03 20:21:24,377: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u31365 -timeleft
+ output : 42227
+
+ error: 
+ retcode : 0
+DEBUG 2018-10-03 20:21:25,705: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u31365 -actimeleft
+ output : 42226
+
+ error: 
+ retcode : 0
+DEBUG 2018-10-03 20:21:25,706: 	 Proxy valid for 11:43:47 hours
+DEBUG 2018-10-03 20:21:25,865: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio
+
+ error: 
+ retcode : 0
+DEBUG 2018-10-03 20:21:25,866: 	 Checking credentials
+DEBUG 2018-10-03 20:21:25,870: 	 Found proxy file /tmp/x509up_u31365
+DEBUG 2018-10-03 20:21:25,870: 	 Getting proxy life time left
+DEBUG 2018-10-03 20:21:27,411: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u31365 -timeleft
+ output : 42224
+
+ error: 
+ retcode : 0
+DEBUG 2018-10-03 20:21:28,931: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u31365 -actimeleft
+ output : 42223
+
+ error: 
+ retcode : 0
+DEBUG 2018-10-03 20:21:28,931: 	 Proxy valid for 11:43:44 hours
+DEBUG 2018-10-03 20:21:29,330: 	 Registering user credentials for server /DC=ch/DC=cern/OU=computers/CN=vocms(052|031|0118|0105|0109).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(02|01).cern.ch
+DEBUG 2018-10-03 20:21:29,452: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio
+
+ error: 
+ retcode : 0
+DEBUG 2018-10-03 20:21:29,452: 	 Getting myproxy life time left for myproxy.cern.ch
+DEBUG 2018-10-03 20:21:29,452: 	 Calculating hash of /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio_cmsweb.cern.ch for credential name
+DEBUG 2018-10-03 20:21:29,961: 	 Executing : 
+ command : myproxy-info -l ae9637610ea27f91075d015fc1e15a7328a99708 -s myproxy.cern.ch
+ output : username: ae9637610ea27f91075d015fc1e15a7328a99708
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=vocms(052|031|0118|0105|0109).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(02|01).cern.ch
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=vocms(052|031|0118|0105|0109).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(02|01).cern.ch
+  timeleft: 519:18:28  (21.6 days)
+
+ error: 
+ retcode : 0
+DEBUG 2018-10-03 20:21:29,963: 	 Myproxy is valid: 1869508
+DEBUG 2018-10-03 20:21:29,963: 	 Command use: kill
+DEBUG 2018-10-03 20:21:29,963: 	 Options use: ['crab_3Oct/crab_ST_tW_antitop_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8_crab_3Oct/']
+DEBUG 2018-10-03 20:21:30,394: 	 CRABClient version: 3.3.1809
+DEBUG 2018-10-03 20:21:30,394: 	 Instance is prod
+DEBUG 2018-10-03 20:21:30,394: 	 Server base url is cmsweb.cern.ch
+DEBUG 2018-10-03 20:21:30,394: 	 Command url /crabserver/prod/workflow
+DEBUG 2018-10-03 20:21:30,394: 	 Killing task 181003_180851:oiorio_crab_ST_tW_antitop_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8_crab_3Oct
+DEBUG 2018-10-03 20:21:30,775: 	 Result: {u'result': [{u'result': u'ok'}], u'desc': {u'columns': [u'tm_taskname', u'panda_jobset_id', u'tm_task_status', u'tm_task_command', u'tm_user_role', u'tm_user_group', u'tm_task_failure', u'tm_split_algo', u'tm_split_args', u'panda_resubmitted_jobs', u'tm_save_logs', u'tm_username', u'tm_user_dn', u'tm_arguments', u'tm_input_dataset', u'tm_dbs_url', u'tm_task_warnings', u'tm_publication', u'tm_user_webdir', u'tm_asourl', u'tm_asodb', u'tm_output_dataset', u'tm_collector', u'tm_schedd', u'tm_dry_run', u'clusterid', u'tm_start_time', u'tw_name']}}
+INFO 2018-10-03 20:21:30,776: 	 Kill request successfully sent
+INFO 2018-10-03 20:21:30,795: 	 Log file is /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/src/ttDM/treeDumper/test/crab_3Oct/crab_ST_tW_antitop_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8_crab_3Oct/crab.log

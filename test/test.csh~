@@ -1,0 +1,9 @@
+#nohup cmsRun topplusdmTrees_cfg.py maxEvts=-1 sample="file:/afs/cern.ch/user/o/oiorio/public/xCarmen/samples/TprimeBToTZRH800/B2GEDMNtuple_1.root" version="1" outputLabel="testbig_remote.root" > & localtest.log &
+#nohup cmsRun topplusdmTrees_cfg.py maxEvts=-1 sample="file:/afs/cern.ch/user/o/oiorio/public/xCarmen/samples/TprimeBToTZRH800/B2GEDMNtuple_1.root" version="1" outputLabel="/tmp/oiorio/trees/testbig_remote.root" > & localtest_big.log &
+nohup cmsRun topplusdmTrees_cfg.py maxEvts=-1 sample="file:/tmp/oiorio/B2GEDMNtuple_135.root" version="1" outputLabel="test_1.root" > & localtest_big_1.log &
+#nohup cmsRun topplusdmTrees_cfg.py maxEvts=-1 sample="file:/tmp/oiorio/samples/B2GEDMNtuple_2.root" version="1" outputLabel="/tmp/oiorio/trees/testbig_remote_2.root" > & localtest_big_2.log &
+#nohup cmsRun topplusdmTrees_cfg.py maxEvts=-1 sample="file:/tmp/oiorio/samples/B2GEDMNtuple_3.root" version="1" outputLabel="/tmp/oiorio/trees/testbig_remote_3.root" > & localtest_big_3.log &
+#nohup cmsRun topplusdmTrees_cfg.py maxEvts=-1 sample="file:/tmp/oiorio/samples/B2GEDMNtuple_4.root" version="1" outputLabel="/tmp/oiorio/trees/testbig_remote_4.root" > & localtest_big_4.log &
+#nohup cmsRun topplusdmTrees_cfg.py maxEvts=-1 sample="file:/tmp/oiorio/samples/B2GEDMNtuple_5.root" version="1" outputLabel="/tmp/oiorio/trees/testbig_remote_5.root" > & localtest_big_5.log &
+#nohup cmsRun topplusdmTrees_cfg.py maxEvts=-1 sample="file:/tmp/oiorio/samples/B2GEDMNtuple_6.root" version="1" outputLabel="/tmp/oiorio/trees/testbig_remote_6.root" > & localtest_big_6.log &
+#nohup cmsRun topplusdmTrees_cfg.py maxEvts=-1 sample="file:/tmp/oiorio/samples/B2GEDMNtuple_7.root" version="1" outputLabel="/tmp/oiorio/trees/testbig_remote_7.root" > & localtest_big_7.log &

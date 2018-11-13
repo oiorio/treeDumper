@@ -1,0 +1,29 @@
+CRAB project directory:		/afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/src/ttDM/treeDumper/test/crab_15Apr/crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test
+Task name:			180415_151724:oiorio_crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test
+Grid scheduler:			crab3@vocms0199.cern.ch
+Status on the CRAB server:	SUBMITTED
+Task URL to use for HELP:	https://cmsweb.cern.ch/crabserver/ui/task/180415_151724%3Aoiorio_crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test
+Dashboard monitoring URL:	http://dashb-cms-job.cern.ch/dashboard/templates/task-analysis/#user=oiorio&refresh=0&table=Jobs&p=1&records=25&activemenu=2&status=&site=&tid=180415_151724%3Aoiorio_crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test
+Status on the scheduler:	FAILED
+
+Jobs status:                    failed        100.0% (3/3)
+
+No publication information (publication has been disabled in the CRAB configuration file)
+
+Error Summary: (use crab status --verboseErrors for details about the errors)
+
+3 jobs failed with exit code 139
+
+Have a look at https://twiki.cern.ch/twiki/bin/viewauth/CMSPublic/JobExitCodes for a description of the exit codes.
+
+Warning: the max jobs memory is less than 70% of the task requested value (2000 MB), please consider to request a lower value (allowed through crab resubmit) and/or improve the jobs splitting (e.g. config.Data.splitting = 'Automatic') in a new task.
+
+Warning: the average jobs CPU efficiency is less than 70%, please consider to request a lower number of threads and/or improve the jobs splitting (e.g. config.Data.splitting = 'Automatic') in a new task.
+
+Summary:
+ * Memory: 27MB min, 531MB max, 187MB ave
+ * Runtime: 0:02:41 min, 0:12:24 max, 0:06:10 ave
+ * CPU eff: 55% min, 74% max, 69% ave
+ * Waste: 0:18:17 (50% of total)
+
+Log file is /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/src/ttDM/treeDumper/test/crab_15Apr/crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test/crab.log

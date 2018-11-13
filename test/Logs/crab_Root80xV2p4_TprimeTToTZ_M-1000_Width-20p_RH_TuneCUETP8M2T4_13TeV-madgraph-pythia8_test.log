@@ -1,0 +1,20 @@
+CRAB project directory:		/afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/src/ttDM/treeDumper/test/crab_29May/crab_Root80xV2p4_TprimeTToTZ_M-1000_Width-20p_RH_TuneCUETP8M2T4_13TeV-madgraph-pythia8_test
+Task name:			180528_222203:oiorio_crab_Root80xV2p4_TprimeTToTZ_M-1000_Width-20p_RH_TuneCUETP8M2T4_13TeV-madgraph-pythia8_test
+Grid scheduler:			crab3@vocms0122.cern.ch
+Status on the CRAB server:	SUBMITTED
+Task URL to use for HELP:	https://cmsweb.cern.ch/crabserver/ui/task/180528_222203%3Aoiorio_crab_Root80xV2p4_TprimeTToTZ_M-1000_Width-20p_RH_TuneCUETP8M2T4_13TeV-madgraph-pythia8_test
+Dashboard monitoring URL:	http://dashb-cms-job.cern.ch/dashboard/templates/task-analysis/#user=oiorio&refresh=0&table=Jobs&p=1&records=25&activemenu=2&status=&site=&tid=180528_222203%3Aoiorio_crab_Root80xV2p4_TprimeTToTZ_M-1000_Width-20p_RH_TuneCUETP8M2T4_13TeV-madgraph-pythia8_test
+Warning:			The following sites from the user site whitelist are blacklisted by the CRAB server: [u'T2_IT_Rome']. Since the CRAB server blacklist has precedence, these sites are not considered in the user whitelist.
+Status on the scheduler:	COMPLETED
+
+Jobs status:                    finished      100.0% (4/4)
+
+No publication information (publication has been disabled in the CRAB configuration file)
+
+Summary of run jobs:
+ * Memory: 1254MB min, 1407MB max, 1258MB ave
+ * Runtime: 2:05:07 min, 10:19:35 max, 4:56:14 ave
+ * CPU eff: 86% min, 90% max, 87% ave
+ * Waste: 0:00:41 (0% of total)
+
+Log file is /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/src/ttDM/treeDumper/test/crab_29May/crab_Root80xV2p4_TprimeTToTZ_M-1000_Width-20p_RH_TuneCUETP8M2T4_13TeV-madgraph-pythia8_test/crab.log

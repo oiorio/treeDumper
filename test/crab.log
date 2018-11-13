@@ -1,0 +1,89 @@
+DEBUG 2018-10-03 20:10:38,453: 	 Executing command: 'submit'
+DEBUG 2018-10-03 20:10:38,456: 	 Found CRAB cache file /afs/cern.ch/user/o/oiorio/.crab3
+DEBUG 2018-10-03 20:10:38,469: 	 Checking credentials
+DEBUG 2018-10-03 20:10:38,469: 	 Found proxy file /tmp/x509up_u31365
+DEBUG 2018-10-03 20:10:38,470: 	 Getting proxy life time left
+DEBUG 2018-10-03 20:10:39,482: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u31365 -timeleft
+ output : 42872
+
+ error: 
+ retcode : 0
+DEBUG 2018-10-03 20:10:39,963: 	 Executing command: 'submit'
+DEBUG 2018-10-03 20:10:39,967: 	 Found CRAB cache file /afs/cern.ch/user/o/oiorio/.crab3
+DEBUG 2018-10-03 20:10:39,981: 	 Checking credentials
+DEBUG 2018-10-03 20:10:39,981: 	 Found proxy file /tmp/x509up_u31365
+DEBUG 2018-10-03 20:10:39,981: 	 Getting proxy life time left
+DEBUG 2018-10-03 20:10:41,199: 	 Executing command: 'submit'
+DEBUG 2018-10-03 20:10:41,209: 	 Found CRAB cache file /afs/cern.ch/user/o/oiorio/.crab3
+DEBUG 2018-10-03 20:10:41,227: 	 Checking credentials
+DEBUG 2018-10-03 20:10:41,227: 	 Found proxy file /tmp/x509up_u31365
+DEBUG 2018-10-03 20:10:41,227: 	 Getting proxy life time left
+DEBUG 2018-10-03 20:12:15,088: 	 Executing command: 'kill'
+DEBUG 2018-10-03 20:12:15,099: 	 Found CRAB cache file /afs/cern.ch/user/o/oiorio/.crab3
+ERROR 2018-10-03 20:12:15,108: 	 Error: 'crab kill' command accepts at most 1 argument (a path to a CRAB project directory), 4 given.
+ERROR 2018-10-03 20:12:15,108: 	 Caught exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1809-comp/bin/crab", line 160, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1809-comp/bin/crab", line 146, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1809-comp/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 262, in __init__
+    self.validateOptions()
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1809-comp/lib/python2.7/site-packages/CRABClient/Commands/kill.py", line 55, in validateOptions
+    SubCommand.validateOptions(self)
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1809-comp/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 561, in validateOptions
+    raise ConfigurationException(msg)
+ConfigurationException: [91mError[0m: 'crab kill' command accepts at most 1 argument (a path to a CRAB project directory), 4 given.
+DEBUG 2018-10-03 20:12:27,762: 	 Executing command: 'kill'
+DEBUG 2018-10-03 20:12:27,762: 	 Found CRAB cache file /afs/cern.ch/user/o/oiorio/.crab3
+ERROR 2018-10-03 20:12:27,762: 	 Error: crab_QCD_HT1000to1500_TuneCP5_13TeV-madgraph-pythia8_crab_3Oct/ is not a valid CRAB project directory.
+ERROR 2018-10-03 20:12:27,762: 	 Caught exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1809-comp/bin/crab", line 160, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1809-comp/bin/crab", line 146, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1809-comp/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 262, in __init__
+    self.validateOptions()
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1809-comp/lib/python2.7/site-packages/CRABClient/Commands/kill.py", line 55, in validateOptions
+    SubCommand.validateOptions(self)
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1809-comp/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 575, in validateOptions
+    raise ConfigurationException(msg)
+ConfigurationException: [91mError[0m: crab_QCD_HT1000to1500_TuneCP5_13TeV-madgraph-pythia8_crab_3Oct/ is not a valid CRAB project directory.
+DEBUG 2018-10-03 20:29:25,542: 	 Executing command: 'kill'
+DEBUG 2018-10-03 20:29:25,542: 	 Found CRAB cache file /afs/cern.ch/user/o/oiorio/.crab3
+ERROR 2018-10-03 20:29:25,544: 	 Cannot find .requestcache file in CRAB project directory /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/src/ttDM/treeDumper/test/crab_3Oct/crab_WJetsToLNu_HT-200To400_TuneCP5_13TeV-madgraphMLM-pythia8_crab_3Oct
+ERROR 2018-10-03 20:29:25,545: 	 Caught exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1809-comp/bin/crab", line 160, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1809-comp/bin/crab", line 146, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1809-comp/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 262, in __init__
+    self.validateOptions()
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1809-comp/lib/python2.7/site-packages/CRABClient/Commands/kill.py", line 55, in validateOptions
+    SubCommand.validateOptions(self)
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1809-comp/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 580, in validateOptions
+    self.loadLocalCache()
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1809-comp/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 441, in loadLocalCache
+    raise ex
+CachefileNotFoundException: Cannot find .requestcache file in CRAB project directory /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/src/ttDM/treeDumper/test/crab_3Oct/crab_WJetsToLNu_HT-200To400_TuneCP5_13TeV-madgraphMLM-pythia8_crab_3Oct
+DEBUG 2018-10-03 20:30:53,019: 	 Executing command: 'kill'
+DEBUG 2018-10-03 20:30:53,019: 	 Found CRAB cache file /afs/cern.ch/user/o/oiorio/.crab3
+ERROR 2018-10-03 20:30:53,019: 	 Cannot find .requestcache file in CRAB project directory /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/src/ttDM/treeDumper/test/crab_3Oct/crab_WJetsToLNu_HT-200To400_TuneCP5_13TeV-madgraphMLM-pythia8_crab_3Oct
+ERROR 2018-10-03 20:30:53,019: 	 Caught exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1809-comp/bin/crab", line 160, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1809-comp/bin/crab", line 146, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1809-comp/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 262, in __init__
+    self.validateOptions()
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1809-comp/lib/python2.7/site-packages/CRABClient/Commands/kill.py", line 55, in validateOptions
+    SubCommand.validateOptions(self)
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1809-comp/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 580, in validateOptions
+    self.loadLocalCache()
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1809-comp/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 441, in loadLocalCache
+    raise ex
+CachefileNotFoundException: Cannot find .requestcache file in CRAB project directory /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/src/ttDM/treeDumper/test/crab_3Oct/crab_WJetsToLNu_HT-200To400_TuneCP5_13TeV-madgraphMLM-pythia8_crab_3Oct

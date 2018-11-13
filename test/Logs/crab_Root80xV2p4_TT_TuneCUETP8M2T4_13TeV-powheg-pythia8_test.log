@@ -1,0 +1,26 @@
+CRAB project directory:		/afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/src/ttDM/treeDumper/test/crab_15Apr/crab_Root80xV2p4_TT_TuneCUETP8M2T4_13TeV-powheg-pythia8_test
+Task name:			180415_185212:oiorio_crab_Root80xV2p4_TT_TuneCUETP8M2T4_13TeV-powheg-pythia8_test
+Grid scheduler:			crab3@vocms0119.cern.ch
+Status on the CRAB server:	SUBMITTED
+Task URL to use for HELP:	https://cmsweb.cern.ch/crabserver/ui/task/180415_185212%3Aoiorio_crab_Root80xV2p4_TT_TuneCUETP8M2T4_13TeV-powheg-pythia8_test
+Dashboard monitoring URL:	http://dashb-cms-job.cern.ch/dashboard/templates/task-analysis/#user=oiorio&refresh=0&table=Jobs&p=1&records=25&activemenu=2&status=&site=&tid=180415_185212%3Aoiorio_crab_Root80xV2p4_TT_TuneCUETP8M2T4_13TeV-powheg-pythia8_test
+Status on the scheduler:	SUBMITTED
+
+Jobs status:                    failed          2.0% (  4/197)
+				running        98.0% (193/197)
+
+No publication information (publication has been disabled in the CRAB configuration file)
+
+Error Summary: (use crab status --verboseErrors for details about the errors)
+
+  4 jobs failed with exit code 50660
+
+Have a look at https://twiki.cern.ch/twiki/bin/viewauth/CMSPublic/JobExitCodes for a description of the exit codes.
+
+Summary:
+ * Memory: 1547MB min, 3148MB max, 1566MB ave
+ * Runtime: 1:30:19 min, 3:50:41 max, 3:28:38 ave
+ * CPU eff: 75% min, 100% max, 93% ave
+ * Waste: 2:26:05 (0% of total)
+
+Log file is /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/src/ttDM/treeDumper/test/crab_15Apr/crab_Root80xV2p4_TT_TuneCUETP8M2T4_13TeV-powheg-pythia8_test/crab.log

@@ -1,0 +1,411 @@
+# Conditions read from  CMS_CONDITIONS  via FrontierProd 
+DEBUG 2018-04-15 20:14:21,991: 	 Executing command: 'submit'
+DEBUG 2018-04-15 20:14:22,029: 	 Found CRAB cache file /afs/cern.ch/user/o/oiorio/.crab3
+DEBUG 2018-04-15 20:14:22,084: 	 Checking credentials
+DEBUG 2018-04-15 20:14:22,086: 	 Found proxy file /tmp/x509up_u31365
+DEBUG 2018-04-15 20:14:22,086: 	 Getting proxy life time left
+DEBUG 2018-04-15 20:14:23,601: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u31365 -timeleft
+ output : 43056
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-15 20:14:25,019: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u31365 -actimeleft
+ output : 43054
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-15 20:14:25,019: 	 Proxy valid for 11:57:36 hours
+DEBUG 2018-04-15 20:14:25,021: 	 Will use CRAB Analysis plugin (i.e. will run an analysis job type).
+DEBUG 2018-04-15 20:14:25,427: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-15 20:14:25,428: 	 Checking credentials
+DEBUG 2018-04-15 20:14:25,428: 	 Found proxy file /tmp/x509up_u31365
+DEBUG 2018-04-15 20:14:25,428: 	 Getting proxy life time left
+DEBUG 2018-04-15 20:14:26,841: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u31365 -timeleft
+ output : 43053
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-15 20:14:28,173: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u31365 -actimeleft
+ output : 43050
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-15 20:14:28,173: 	 Proxy valid for 11:57:33 hours
+DEBUG 2018-04-15 20:14:29,492: 	 Executing : 
+ command : env X509_USER_PROXY=/tmp/x509up_u31365 voms-proxy-info -fqan
+ output : /cms/Role=NULL/Capability=NULL
+/cms/itcms/Role=NULL/Capability=NULL
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-15 20:14:30,237: 	 Registering user credentials for server /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108|0105|0109).cern.ch
+DEBUG 2018-04-15 20:14:30,357: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-15 20:14:30,357: 	 Getting myproxy life time left for myproxy.cern.ch
+DEBUG 2018-04-15 20:14:30,357: 	 Calculating hash of /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio_cmsweb.cern.ch for credential name
+DEBUG 2018-04-15 20:14:30,767: 	 Executing : 
+ command : myproxy-info -l ae9637610ea27f91075d015fc1e15a7328a99708 -s myproxy.cern.ch
+ output : username: ae9637610ea27f91075d015fc1e15a7328a99708
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108|0105|0109).cern.ch
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108|0105|0109).cern.ch
+  timeleft: 557:44:36  (23.2 days)
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-15 20:14:30,770: 	 Myproxy is valid: 2007876
+DEBUG 2018-04-15 20:14:30,770: 	 Command use: submit
+DEBUG 2018-04-15 20:14:30,770: 	 Options use: ['--config', <WMCore.Configuration.Configuration object at 0x7fcb439405d0>]
+DEBUG 2018-04-15 20:14:31,524: 	 CRABClient version: 3.3.1804
+DEBUG 2018-04-15 20:14:31,524: 	 Instance is prod
+DEBUG 2018-04-15 20:14:31,524: 	 Server base url is cmsweb.cern.ch
+DEBUG 2018-04-15 20:14:31,524: 	 Command url /crabserver/prod/workflow
+DEBUG 2018-04-15 20:14:31,525: 	 Started submission
+DEBUG 2018-04-15 20:14:31,525: 	 Working on /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/src/ttDM/treeDumper/test/crab_15Apr_testv2/crab_Root80xV2p4_DYJetsToQQ_HT180_13TeV-madgraphMLM-pythia8_test
+DEBUG 2018-04-15 20:14:32,792: 	 Loading required information from the environment
+DEBUG 2018-04-15 20:14:32,792: 	 Found CMSSW_8_0_20 for slc6_amd64_gcc530 with base /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20
+DEBUG 2018-04-15 20:14:32,792: 	 Loading required information from the environment
+DEBUG 2018-04-15 20:14:32,792: 	 Found CMSSW_8_0_20 for slc6_amd64_gcc530 with base /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20
+DEBUG 2018-04-15 20:14:32,854: 	 UNIQUE NAME: tarUUID 32de3260-15b4-444d-8d0b-b730d9e16145 
+DEBUG 2018-04-15 20:14:32,856: 	 self.config: from WMCore.Configuration import Configuration
+config = Configuration()
+config.section_('General')
+config.General.workArea = 'crab_15Apr_testv2'
+config.General.requestName = 'Root80xV2p4_DYJetsToQQ_HT180_13TeV-madgraphMLM-pythia8_test'
+config.section_('JobType')
+config.JobType.psetName = 'topplusdmTrees_cfg.py'
+config.JobType.pluginName = 'Analysis'
+config.JobType.inputFiles = ['Spring16_25nsV10_MC_PtResolution_AK8PFchs.txt', 'Summer16_23Sep2016BCDV4_DATA_L1FastJet_AK4PFchs.txt', 'Summer16_23Sep2016BCDV4_DATA_L1FastJet_AK8PFchs.txt', 'Summer16_23Sep2016BCDV4_DATA_L1RC_AK4PFchs.txt', 'Summer16_23Sep2016BCDV4_DATA_L1RC_AK8PFchs.txt', 'Summer16_23Sep2016BCDV4_DATA_L2L3Residual_AK4PFchs.txt', 'Summer16_23Sep2016BCDV4_DATA_L2L3Residual_AK8PFchs.txt', 'Summer16_23Sep2016BCDV4_DATA_L2Relative_AK4PFchs.txt', 'Summer16_23Sep2016BCDV4_DATA_L2Relative_AK8PFchs.txt', 'Summer16_23Sep2016BCDV4_DATA_L2Residual_AK4PFchs.txt', 'Summer16_23Sep2016BCDV4_DATA_L3Absolute_AK4PFchs.txt', 'Summer16_23Sep2016BCDV4_DATA_L3Absolute_AK8PFchs.txt', 'Summer16_23Sep2016BCDV4_DATA_UncertaintySources_AK4PFchs.txt', 'Summer16_23Sep2016BCDV4_DATA_UncertaintySources_AK8PFchs.txt', 'Summer16_23Sep2016BCDV4_DATA_Uncertainty_AK4PFchs.txt', 'Summer16_23Sep2016BCDV4_DATA_Uncertainty_AK8PFchs.txt', 'Summer16_23Sep2016EFV4_DATA_L1FastJet_AK4PFchs.txt', 'Summer16_23Sep2016EFV4_DATA_L1FastJet_AK8PFchs.txt', 'Summer16_23Sep2016EFV4_DATA_L1RC_AK4PFchs.txt', 'Summer16_23Sep2016EFV4_DATA_L1RC_AK8PFchs.txt', 'Summer16_23Sep2016EFV4_DATA_L2L3Residual_AK4PFchs.txt', 'Summer16_23Sep2016EFV4_DATA_L2L3Residual_AK8PFchs.txt', 'Summer16_23Sep2016EFV4_DATA_L2Relative_AK4PFchs.txt', 'Summer16_23Sep2016EFV4_DATA_L2Relative_AK8PFchs.txt', 'Summer16_23Sep2016EFV4_DATA_L2Residual_AK4PFchs.txt', 'Summer16_23Sep2016EFV4_DATA_L3Absolute_AK4PFchs.txt', 'Summer16_23Sep2016EFV4_DATA_L3Absolute_AK8PFchs.txt', 'Summer16_23Sep2016EFV4_DATA_UncertaintySources_AK4PFchs.txt', 'Summer16_23Sep2016EFV4_DATA_UncertaintySources_AK8PFchs.txt', 'Summer16_23Sep2016EFV4_DATA_Uncertainty_AK4PFchs.txt', 'Summer16_23Sep2016EFV4_DATA_Uncertainty_AK8PFchs.txt', 'Summer16_23Sep2016GV4_DATA_L1FastJet_AK4PFchs.txt', 'Summer16_23Sep2016GV4_DATA_L1FastJet_AK8PFchs.txt', 'Summer16_23Sep2016GV4_DATA_L1RC_AK4PFchs.txt', 'Summer16_23Sep2016GV4_DATA_L1RC_AK8PFchs.txt', 'Summer16_23Sep2016GV4_DATA_L2L3Residual_AK4PFchs.txt', 'Summer16_23Sep2016GV4_DATA_L2L3Residual_AK8PFchs.txt', 'Summer16_23Sep2016GV4_DATA_L2Relative_AK4PFchs.txt', 'Summer16_23Sep2016GV4_DATA_L2Relative_AK8PFchs.txt', 'Summer16_23Sep2016GV4_DATA_L2Residual_AK4PFchs.txt', 'Summer16_23Sep2016GV4_DATA_L3Absolute_AK4PFchs.txt', 'Summer16_23Sep2016GV4_DATA_L3Absolute_AK8PFchs.txt', 'Summer16_23Sep2016GV4_DATA_UncertaintySources_AK4PFchs.txt', 'Summer16_23Sep2016GV4_DATA_UncertaintySources_AK8PFchs.txt', 'Summer16_23Sep2016GV4_DATA_Uncertainty_AK4PFchs.txt', 'Summer16_23Sep2016GV4_DATA_Uncertainty_AK8PFchs.txt', 'Summer16_23Sep2016HV4_DATA_L1FastJet_AK4PFchs.txt', 'Summer16_23Sep2016HV4_DATA_L1FastJet_AK8PFchs.txt', 'Summer16_23Sep2016HV4_DATA_L1RC_AK4PFchs.txt', 'Summer16_23Sep2016HV4_DATA_L1RC_AK8PFchs.txt', 'Summer16_23Sep2016HV4_DATA_L2L3Residual_AK4PFchs.txt', 'Summer16_23Sep2016HV4_DATA_L2L3Residual_AK8PFchs.txt', 'Summer16_23Sep2016HV4_DATA_L2Relative_AK4PFchs.txt', 'Summer16_23Sep2016HV4_DATA_L2Relative_AK8PFchs.txt', 'Summer16_23Sep2016HV4_DATA_L2Residual_AK4PFchs.txt', 'Summer16_23Sep2016HV4_DATA_L3Absolute_AK4PFchs.txt', 'Summer16_23Sep2016HV4_DATA_L3Absolute_AK8PFchs.txt', 'Summer16_23Sep2016HV4_DATA_UncertaintySources_AK4PFchs.txt', 'Summer16_23Sep2016HV4_DATA_UncertaintySources_AK8PFchs.txt', 'Summer16_23Sep2016HV4_DATA_Uncertainty_AK4PFchs.txt', 'Summer16_23Sep2016HV4_DATA_Uncertainty_AK8PFchs.txt', 'Summer16_23Sep2016V4_MC_L1FastJet_AK4PFchs.txt', 'Summer16_23Sep2016V4_MC_L1FastJet_AK8PFchs.txt', 'Summer16_23Sep2016V4_MC_L1RC_AK4PFchs.txt', 'Summer16_23Sep2016V4_MC_L1RC_AK8PFchs.txt', 'Summer16_23Sep2016V4_MC_L2L3Residual_AK4PFchs.txt', 'Summer16_23Sep2016V4_MC_L2L3Residual_AK8PFchs.txt', 'Summer16_23Sep2016V4_MC_L2Relative_AK4PFchs.txt', 'Summer16_23Sep2016V4_MC_L2Relative_AK8PFchs.txt', 'Summer16_23Sep2016V4_MC_L3Absolute_AK4PFchs.txt', 'Summer16_23Sep2016V4_MC_L3Absolute_AK8PFchs.txt', 'Summer16_23Sep2016V4_MC_Uncertainty_AK4PFchs.txt', 'Summer16_23Sep2016V4_MC_Uncertainty_AK8PFchs.txt']
+config.JobType.pyCfgParams = ['isData=False', 'changeJECs=True']
+config.JobType.allowUndistributedCMSSW = True
+config.section_('Data')
+config.Data.inputDataset = '/DYJetsToQQ_HT180_13TeV-madgraphMLM-pythia8/grauco-RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1_B2GAnaFW_80X_V2P4-bfea8033ab2d179bbb8e0faf6e2dc0cf/USER'
+config.Data.outputDatasetTag = 'Root80xV2p4_DYJetsToQQ_HT180_13TeV-madgraphMLM-pythia8_15Mar17_test'
+config.Data.publication = False
+config.Data.unitsPerJob = 5
+config.Data.ignoreLocality = True
+config.Data.inputDBS = 'phys03'
+config.Data.splitting = 'FileBased'
+config.Data.outLFNDirBase = '/store/user/oiorio/ttDM/trees/2018/Apr15/test_v2/'
+config.section_('Site')
+config.Site.whitelist = ['T2_CH_CERN', 'T2_IT_*', 'T2_DE_*', 'T2_CH_*']
+config.Site.storageSite = 'T2_CH_CSCS'
+config.section_('User')
+config.section_('Debug')
+
+DEBUG 2018-04-15 20:14:32,856: 	 self.config.JobType.psetName: topplusdmTrees_cfg.py
+INFO 2018-04-15 20:14:32,856: 	 Importing CMSSW configuration topplusdmTrees_cfg.py
+DEBUG 2018-04-15 20:14:32,856: 	 Additional parameters for the CMSSW configuration are: ['isData=False', 'changeJECs=True']
+INFO 2018-04-15 20:14:33,349: 	 Finished importing CMSSW configuration topplusdmTrees_cfg.py
+DEBUG 2018-04-15 20:14:33,349: 	 Writing CMSSW configuration to /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/src/ttDM/treeDumper/test/crab_15Apr_testv2/crab_Root80xV2p4_DYJetsToQQ_HT180_13TeV-madgraphMLM-pythia8_test/inputs/PSet.py
+DEBUG 2018-04-15 20:14:33,520: 	 The following EDM output files will be collected: []
+DEBUG 2018-04-15 20:14:33,520: 	 The following TFile output files will be collected: ['treesTTJets.root']
+DEBUG 2018-04-15 20:14:33,520: 	 The following user output files will be collected: []
+DEBUG 2018-04-15 20:14:33,520: 	 Loading required information from the environment
+DEBUG 2018-04-15 20:14:33,520: 	 Found CMSSW_8_0_20 for slc6_amd64_gcc530 with base /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20
+DEBUG 2018-04-15 20:14:33,520: 	 Making tarball in /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/src/ttDM/treeDumper/test/crab_15Apr_testv2/crab_Root80xV2p4_DYJetsToQQ_HT180_13TeV-madgraphMLM-pythia8_test/inputs/32de3260-15b4-444d-8d0b-b730d9e16145default.tgz
+DEBUG 2018-04-15 20:14:33,625: 	 Checking directory /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/lib
+DEBUG 2018-04-15 20:14:33,625: 	 Adding directory /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/lib to tarball
+DEBUG 2018-04-15 20:14:33,865: 	 Checking directory /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/biglib
+DEBUG 2018-04-15 20:14:33,866: 	 Adding directory /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/biglib to tarball
+DEBUG 2018-04-15 20:14:33,869: 	 Checking directory /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/module
+DEBUG 2018-04-15 20:14:34,785: 	 Adding file Spring16_25nsV10_MC_PtResolution_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:34,789: 	 Adding file Summer16_23Sep2016BCDV4_DATA_L1FastJet_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:34,811: 	 Adding file Summer16_23Sep2016BCDV4_DATA_L1FastJet_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:34,820: 	 Adding file Summer16_23Sep2016BCDV4_DATA_L1RC_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:34,827: 	 Adding file Summer16_23Sep2016BCDV4_DATA_L1RC_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:34,836: 	 Adding file Summer16_23Sep2016BCDV4_DATA_L2L3Residual_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:34,846: 	 Adding file Summer16_23Sep2016BCDV4_DATA_L2L3Residual_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:34,849: 	 Adding file Summer16_23Sep2016BCDV4_DATA_L2Relative_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:35,079: 	 Adding file Summer16_23Sep2016BCDV4_DATA_L2Relative_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:35,308: 	 Adding file Summer16_23Sep2016BCDV4_DATA_L2Residual_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:35,312: 	 Adding file Summer16_23Sep2016BCDV4_DATA_L3Absolute_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:35,317: 	 Adding file Summer16_23Sep2016BCDV4_DATA_L3Absolute_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:35,321: 	 Adding file Summer16_23Sep2016BCDV4_DATA_UncertaintySources_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:35,880: 	 Adding file Summer16_23Sep2016BCDV4_DATA_UncertaintySources_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:36,405: 	 Adding file Summer16_23Sep2016BCDV4_DATA_Uncertainty_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:36,433: 	 Adding file Summer16_23Sep2016BCDV4_DATA_Uncertainty_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:36,465: 	 Adding file Summer16_23Sep2016EFV4_DATA_L1FastJet_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:36,548: 	 Adding file Summer16_23Sep2016EFV4_DATA_L1FastJet_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:36,557: 	 Adding file Summer16_23Sep2016EFV4_DATA_L1RC_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:36,565: 	 Adding file Summer16_23Sep2016EFV4_DATA_L1RC_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:36,571: 	 Adding file Summer16_23Sep2016EFV4_DATA_L2L3Residual_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:36,575: 	 Adding file Summer16_23Sep2016EFV4_DATA_L2L3Residual_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:36,578: 	 Adding file Summer16_23Sep2016EFV4_DATA_L2Relative_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:36,774: 	 Adding file Summer16_23Sep2016EFV4_DATA_L2Relative_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:36,996: 	 Adding file Summer16_23Sep2016EFV4_DATA_L2Residual_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:37,000: 	 Adding file Summer16_23Sep2016EFV4_DATA_L3Absolute_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:37,005: 	 Adding file Summer16_23Sep2016EFV4_DATA_L3Absolute_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:37,030: 	 Adding file Summer16_23Sep2016EFV4_DATA_UncertaintySources_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:37,615: 	 Adding file Summer16_23Sep2016EFV4_DATA_UncertaintySources_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:38,181: 	 Adding file Summer16_23Sep2016EFV4_DATA_Uncertainty_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:38,228: 	 Adding file Summer16_23Sep2016EFV4_DATA_Uncertainty_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:38,254: 	 Adding file Summer16_23Sep2016GV4_DATA_L1FastJet_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:38,278: 	 Adding file Summer16_23Sep2016GV4_DATA_L1FastJet_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:38,293: 	 Adding file Summer16_23Sep2016GV4_DATA_L1RC_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:38,305: 	 Adding file Summer16_23Sep2016GV4_DATA_L1RC_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:38,320: 	 Adding file Summer16_23Sep2016GV4_DATA_L2L3Residual_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:38,327: 	 Adding file Summer16_23Sep2016GV4_DATA_L2L3Residual_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:38,331: 	 Adding file Summer16_23Sep2016GV4_DATA_L2Relative_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:38,544: 	 Adding file Summer16_23Sep2016GV4_DATA_L2Relative_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:38,754: 	 Adding file Summer16_23Sep2016GV4_DATA_L2Residual_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:38,758: 	 Adding file Summer16_23Sep2016GV4_DATA_L3Absolute_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:38,760: 	 Adding file Summer16_23Sep2016GV4_DATA_L3Absolute_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:38,762: 	 Adding file Summer16_23Sep2016GV4_DATA_UncertaintySources_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:39,312: 	 Adding file Summer16_23Sep2016GV4_DATA_UncertaintySources_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:39,903: 	 Adding file Summer16_23Sep2016GV4_DATA_Uncertainty_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:39,932: 	 Adding file Summer16_23Sep2016GV4_DATA_Uncertainty_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:39,959: 	 Adding file Summer16_23Sep2016HV4_DATA_L1FastJet_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:39,995: 	 Adding file Summer16_23Sep2016HV4_DATA_L1FastJet_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:40,006: 	 Adding file Summer16_23Sep2016HV4_DATA_L1RC_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:40,012: 	 Adding file Summer16_23Sep2016HV4_DATA_L1RC_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:40,018: 	 Adding file Summer16_23Sep2016HV4_DATA_L2L3Residual_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:40,024: 	 Adding file Summer16_23Sep2016HV4_DATA_L2L3Residual_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:40,029: 	 Adding file Summer16_23Sep2016HV4_DATA_L2Relative_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:40,264: 	 Adding file Summer16_23Sep2016HV4_DATA_L2Relative_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:40,488: 	 Adding file Summer16_23Sep2016HV4_DATA_L2Residual_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:40,505: 	 Adding file Summer16_23Sep2016HV4_DATA_L3Absolute_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:40,508: 	 Adding file Summer16_23Sep2016HV4_DATA_L3Absolute_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:40,511: 	 Adding file Summer16_23Sep2016HV4_DATA_UncertaintySources_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:41,077: 	 Adding file Summer16_23Sep2016HV4_DATA_UncertaintySources_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:41,698: 	 Adding file Summer16_23Sep2016HV4_DATA_Uncertainty_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:41,757: 	 Adding file Summer16_23Sep2016HV4_DATA_Uncertainty_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:41,784: 	 Adding file Summer16_23Sep2016V4_MC_L1FastJet_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:41,789: 	 Adding file Summer16_23Sep2016V4_MC_L1FastJet_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:41,794: 	 Adding file Summer16_23Sep2016V4_MC_L1RC_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:41,814: 	 Adding file Summer16_23Sep2016V4_MC_L1RC_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:41,827: 	 Adding file Summer16_23Sep2016V4_MC_L2L3Residual_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:41,829: 	 Adding file Summer16_23Sep2016V4_MC_L2L3Residual_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:41,830: 	 Adding file Summer16_23Sep2016V4_MC_L2Relative_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:42,005: 	 Adding file Summer16_23Sep2016V4_MC_L2Relative_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:42,186: 	 Adding file Summer16_23Sep2016V4_MC_L3Absolute_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:42,187: 	 Adding file Summer16_23Sep2016V4_MC_L3Absolute_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:42,188: 	 Adding file Summer16_23Sep2016V4_MC_Uncertainty_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:42,225: 	 Adding file Summer16_23Sep2016V4_MC_Uncertainty_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 20:14:42,367: 	 Uploading archive /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/src/ttDM/treeDumper/test/crab_15Apr_testv2/crab_Root80xV2p4_DYJetsToQQ_HT180_13TeV-madgraphMLM-pythia8_test/inputs/32de3260-15b4-444d-8d0b-b730d9e16145default.tgz (2.368164.1 MB) to the CRAB cache. Using URI https://cmsweb.cern.ch/crabcache
+DEBUG 2018-04-15 20:14:44,969: 	 Loading required information from the environment
+DEBUG 2018-04-15 20:14:44,969: 	 Found CMSSW_8_0_20 for slc6_amd64_gcc530 with base /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20
+DEBUG 2018-04-15 20:14:44,969: 	 Making tarball in /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/src/ttDM/treeDumper/test/crab_15Apr_testv2/crab_Root80xV2p4_DYJetsToQQ_HT180_13TeV-madgraphMLM-pythia8_test/inputs/debugFiles.tgz
+DEBUG 2018-04-15 20:14:44,981: 	 Uploading archive /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/src/ttDM/treeDumper/test/crab_15Apr_testv2/crab_Root80xV2p4_DYJetsToQQ_HT180_13TeV-madgraphMLM-pythia8_test/inputs/debugFiles.tgz (4 KB) to the CRAB cache. Using URI https://cmsweb.cern.ch/crabcache
+DEBUG 2018-04-15 20:14:45,748: 	 Result uploading input files: 07287101d3ed4484e590ee1caf51e59800059bcaf32a0916f69e3663a4a4be84.tar.gz 
+INFO 2018-04-15 20:14:45,748: 	 Sending the request to the server
+DEBUG 2018-04-15 20:14:45,750: 	 Submitting {'maxjobruntime': 1250, 'extrajdl': [], 'ignorelocality': 1, 'savelogsflag': 0, 'useparent': 0, 'asyncdest': 'T2_CH_CSCS', 'algoargs': 5, 'cachefilename': '07287101d3ed4484e590ee1caf51e59800059bcaf32a0916f69e3663a4a4be84.tar.gz', 'numcores': 1, 'addoutputfiles': [], 'generator': 'pythia', 'maxmemory': 2000, 'publishdbsurl': 'https://cmsweb.cern.ch/dbs/prod/phys03/DBSWriter', 'priority': 10, 'jobsw': 'CMSSW_8_0_20', 'edmoutfiles': [], 'userfiles': [], 'primarydataset': '', 'inputdata': '/DYJetsToQQ_HT180_13TeV-madgraphMLM-pythia8/grauco-RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1_B2GAnaFW_80X_V2P4-bfea8033ab2d179bbb8e0faf6e2dc0cf/USER', 'lfn': '/store/user/oiorio/ttDM/trees/2018/Apr15/test_v2/', 'dryrun': 0, 'workflow': 'crab_Root80xV2p4_DYJetsToQQ_HT180_13TeV-madgraphMLM-pythia8_test', 'sitewhitelist': ['T2_CH_CERN', 'T2_IT_*', 'T2_DE_*', 'T2_CH_*'], 'nonprodsw': 1, 'tfileoutfiles': ['treesTTJets.root'], 'oneEventMode': 0, 'debugfilename': '7a1c96a0f50f91706f68f4783d28f50554b96cd7239c0f42004bb2618a1add05.tar.gz', 'cacheurl': u'https://cmsweb.cern.ch/crabcache', 'saveoutput': 1, 'publication': 0, 'jobarch': 'slc6_amd64_gcc530', 'totalunits': 0, 'splitalgo': 'FileBased', 'ignoreglobalblacklist': 0, 'nonvaliddata': 0, 'dbsurl': 'https://cmsweb.cern.ch/dbs/prod/phys03/DBSReader', 'publishgroupname': 0, 'jobtype': 'Analysis', 'publishname2': 'Root80xV2p4_DYJetsToQQ_HT180_13TeV-madgraphMLM-pythia8_15Mar17_test'} 
+DEBUG 2018-04-15 20:14:45,751: 	 Encoded submit request: maxjobruntime=1250&ignorelocality=1&savelogsflag=0&useparent=0&asyncdest=T2_CH_CSCS&algoargs=5&cachefilename=07287101d3ed4484e590ee1caf51e59800059bcaf32a0916f69e3663a4a4be84.tar.gz&numcores=1&generator=pythia&maxmemory=2000&publishdbsurl=https%3A%2F%2Fcmsweb.cern.ch%2Fdbs%2Fprod%2Fphys03%2FDBSWriter&priority=10&jobsw=CMSSW_8_0_20&primarydataset=&inputdata=%2FDYJetsToQQ_HT180_13TeV-madgraphMLM-pythia8%2Fgrauco-RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1_B2GAnaFW_80X_V2P4-bfea8033ab2d179bbb8e0faf6e2dc0cf%2FUSER&lfn=%2Fstore%2Fuser%2Foiorio%2FttDM%2Ftrees%2F2018%2FApr15%2Ftest_v2%2F&dryrun=0&workflow=crab_Root80xV2p4_DYJetsToQQ_HT180_13TeV-madgraphMLM-pythia8_test&nonprodsw=1&oneEventMode=0&debugfilename=7a1c96a0f50f91706f68f4783d28f50554b96cd7239c0f42004bb2618a1add05.tar.gz&cacheurl=https%3A%2F%2Fcmsweb.cern.ch%2Fcrabcache&saveoutput=1&publication=0&jobarch=slc6_amd64_gcc530&totalunits=0&splitalgo=FileBased&ignoreglobalblacklist=0&nonvaliddata=0&dbsurl=https%3A%2F%2Fcmsweb.cern.ch%2Fdbs%2Fprod%2Fphys03%2FDBSReader&publishgroupname=0&jobtype=Analysis&publishname2=Root80xV2p4_DYJetsToQQ_HT180_13TeV-madgraphMLM-pythia8_15Mar17_test&sitewhitelist=T2_CH_CERN&sitewhitelist=T2_IT_%2A&sitewhitelist=T2_DE_%2A&sitewhitelist=T2_CH_%2A&tfileoutfiles=treesTTJets.root
+DEBUG 2018-04-15 20:14:46,700: 	 Result: {u'result': [{u'RequestName': u'180415_181446:oiorio_crab_Root80xV2p4_DYJetsToQQ_HT180_13TeV-madgraphMLM-pythia8_test'}]}
+INFO 2018-04-15 20:14:46,707: 	 Success: Your task has been delivered to the CRAB3 server.
+INFO 2018-04-15 20:14:46,708: 	 Task name: 180415_181446:oiorio_crab_Root80xV2p4_DYJetsToQQ_HT180_13TeV-madgraphMLM-pythia8_test
+INFO 2018-04-15 20:14:46,708: 	 Please use 'crab status' to check how the submission process proceeds.
+DEBUG 2018-04-15 20:14:46,708: 	 About to return
+DEBUG 2018-04-16 00:50:35,257: 	 Executing command: 'status'
+DEBUG 2018-04-16 00:50:35,258: 	 Found CRAB cache file /afs/cern.ch/user/o/oiorio/.crab3
+DEBUG 2018-04-16 00:50:35,361: 	 Checking credentials
+DEBUG 2018-04-16 00:50:35,364: 	 Found proxy file /tmp/x509up_u31365
+DEBUG 2018-04-16 00:50:35,365: 	 Getting proxy life time left
+DEBUG 2018-04-16 00:50:36,172: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u31365 -timeleft
+ output : 43158
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-16 00:50:36,784: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u31365 -actimeleft
+ output : 43158
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-16 00:50:36,784: 	 Proxy valid for 11:59:18 hours
+DEBUG 2018-04-16 00:50:37,005: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-16 00:50:37,005: 	 Checking credentials
+DEBUG 2018-04-16 00:50:37,006: 	 Found proxy file /tmp/x509up_u31365
+DEBUG 2018-04-16 00:50:37,006: 	 Getting proxy life time left
+DEBUG 2018-04-16 00:50:37,615: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u31365 -timeleft
+ output : 43157
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-16 00:50:38,219: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u31365 -actimeleft
+ output : 43156
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-16 00:50:38,220: 	 Proxy valid for 11:59:17 hours
+DEBUG 2018-04-16 00:50:38,664: 	 Registering user credentials for server /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108|0105|0109).cern.ch
+DEBUG 2018-04-16 00:50:38,774: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-16 00:50:38,775: 	 Getting myproxy life time left for myproxy.cern.ch
+DEBUG 2018-04-16 00:50:38,775: 	 Calculating hash of /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio_cmsweb.cern.ch for credential name
+DEBUG 2018-04-16 00:50:39,080: 	 Executing : 
+ command : myproxy-info -l ae9637610ea27f91075d015fc1e15a7328a99708 -s myproxy.cern.ch
+ output : username: ae9637610ea27f91075d015fc1e15a7328a99708
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108|0105|0109).cern.ch
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108|0105|0109).cern.ch
+  timeleft: 553:08:27  (23.0 days)
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-16 00:50:39,083: 	 Myproxy is valid: 1991307
+DEBUG 2018-04-16 00:50:39,083: 	 Command use: status
+DEBUG 2018-04-16 00:50:39,083: 	 Options use: ['crab_15Apr_testv2/crab_Root80xV2p4_DYJetsToQQ_HT180_13TeV-madgraphMLM-pythia8_test/']
+DEBUG 2018-04-16 00:50:39,440: 	 CRABClient version: 3.3.1804
+DEBUG 2018-04-16 00:50:39,441: 	 Instance is prod
+DEBUG 2018-04-16 00:50:39,441: 	 Server base url is cmsweb.cern.ch
+DEBUG 2018-04-16 00:50:39,441: 	 Command url /crabserver/prod/workflow
+DEBUG 2018-04-16 00:50:39,797: 	 Got information from server oracle database: {u'result': [u'180415_181446:oiorio_crab_Root80xV2p4_DYJetsToQQ_HT180_13TeV-madgraphMLM-pythia8_test', u'None', u'None', u'SUBMITTED', u'SUBMIT', u'2018-04-15 18:14:46.609590', u'None', u'2018-04-15 18:15:50.780902', u'None', u'CMSSW_8_0_20', u'slc6_amd64_gcc530', u'/DYJetsToQQ_HT180_13TeV-madgraphMLM-pythia8/grauco-RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1_B2GAnaFW_80X_V2P4-bfea8033ab2d179bbb8e0faf6e2dc0cf/USER', u'F', u'0', u"['T2_CH_CERN_HLT', 'T2_DE_DESY', 'T2_CH_CSCS', 'T2_IT_Bari', 'T2_IT_Legnaro', 'T2_IT_Rome', 'T2_DE_RWTH', 'T2_CH_CERN_AI', 'T2_CH_CERN', 'T2_CH_CSCS_HPC', 'T2_IT_Pisa']", u'[]', u'FileBased', u"{'splitOnRun': False, 'halt_job_on_file_boundaries': False, 'files_per_job': 5, 'runs': [], 'lumis': []}", u'07287101d3ed4484e590ee1caf51e59800059bcaf32a0916f69e3663a4a4be84.tar.gz', u'https://cmsweb.cern.ch/crabcache', u'oiorio', u'/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio', u'cms', u'None', u'None', u'Root80xV2p4_DYJetsToQQ_HT180_13TeV-madgraphMLM-pythia8_15Mar17_test-00000000000000000000000000000000', u'F', u'T2_CH_CSCS', u'https://cmsweb.cern.ch/dbs/prod/phys03/DBSReader', u'https://cmsweb.cern.ch/dbs/prod/phys03/DBSWriter', u'F', u'[]', u"['treesTTJets.root']", u'[]', u'Analysis', u'pythia', u'None', u'{}', u'[]', u'F', u'vocms052', u'[]', u'1250', u'1', u'2000', u'10', u'None', u'[]', u'http://vocms0120.cern.ch/mon/cms113/180415_181446:oiorio_crab_Root80xV2p4_DYJetsToQQ_HT180_13TeV-madgraphMLM-pythia8_test', u'None', u'[]', u'[]', u'https://cmsweb.cern.ch/crabserver/prod', u'cmsgwms-collector-global.cern.ch:9620,cmssrv221.fnal.gov:9620', u'crab3@vocms0120.cern.ch', u'F', u'[]', u'T', u'/store/user/oiorio/ttDM/trees/2018/Apr15/test_v2/', u'T', u'None', u'F', u'None', u'DYJetsToQQ_HT180_13TeV-madgraphMLM-pythia8', u'None', u'7a1c96a0f50f91706f68f4783d28f50554b96cd7239c0f42004bb2618a1add05.tar.gz', u'20047710', u'filetransfers', u'F', u'137.138.76.165', u'0.0'], u'desc': {u'columns': [u'tm_taskname', u'tm_activity', u'panda_jobset_id', u'tm_task_status', u'tm_task_command', u'tm_start_time', u'tm_start_injection', u'tm_end_injection', u'tm_task_failure', u'tm_job_sw', u'tm_job_arch', u'tm_input_dataset', u'tm_nonvalid_input_dataset', u'tm_use_parent', u'tm_site_whitelist', u'tm_site_blacklist', u'tm_split_algo', u'tm_split_args', u'tm_user_sandbox', u'tm_cache_url', u'tm_username', u'tm_user_dn', u'tm_user_vo', u'tm_user_role', u'tm_user_group', u'tm_publish_name', u'tm_publish_groupname', u'tm_asyncdest', u'tm_dbs_url', u'tm_publish_dbs_url', u'tm_publication', u'tm_outfiles', u'tm_tfile_outfiles', u'tm_edm_outfiles', u'tm_job_type', u'tm_generator', u'tm_events_per_lumi', u'tm_arguments', u'panda_resubmitted_jobs', u'tm_save_logs', u'tw_name', u'tm_user_infiles', u'tm_maxjobruntime', u'tm_numcores', u'tm_maxmemory', u'tm_priority', u'tm_output_dataset', u'tm_task_warnings', u'tm_user_webdir', u'tm_scriptexe', u'tm_scriptargs', u'tm_extrajdl', u'tm_asourl', u'tm_collector', u'tm_schedd', u'tm_dry_run', u'tm_user_files', u'tm_transfer_outputs', u'tm_output_lfn', u'tm_ignore_locality', u'tm_fail_limit', u'tm_one_event_mode', u'tm_secondary_input_dataset', u'tm_primary_dataset', u'tm_last_publication', u'tm_debug_files', u'clusterid', u'tm_asodb', u'tm_ignore_global_blacklist', u'tm_submitter_ip_addr', u'tm_totalunits']}}
+INFO 2018-04-16 00:50:39,797: 	 CRAB project directory:		/afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/src/ttDM/treeDumper/test/crab_15Apr_testv2/crab_Root80xV2p4_DYJetsToQQ_HT180_13TeV-madgraphMLM-pythia8_test
+INFO 2018-04-16 00:50:39,798: 	 Task name:			180415_181446:oiorio_crab_Root80xV2p4_DYJetsToQQ_HT180_13TeV-madgraphMLM-pythia8_test
+INFO 2018-04-16 00:50:39,798: 	 Grid scheduler:			crab3@vocms0120.cern.ch
+INFO 2018-04-16 00:50:39,798: 	 Status on the CRAB server:	SUBMITTED
+INFO 2018-04-16 00:50:39,798: 	 Task URL to use for HELP:	https://cmsweb.cern.ch/crabserver/ui/task/180415_181446%3Aoiorio_crab_Root80xV2p4_DYJetsToQQ_HT180_13TeV-madgraphMLM-pythia8_test
+INFO 2018-04-16 00:50:39,798: 	 Dashboard monitoring URL:	http://dashb-cms-job.cern.ch/dashboard/templates/task-analysis/#user=oiorio&refresh=0&table=Jobs&p=1&records=25&activemenu=2&status=&site=&tid=180415_181446%3Aoiorio_crab_Root80xV2p4_DYJetsToQQ_HT180_13TeV-madgraphMLM-pythia8_test
+DEBUG 2018-04-16 00:50:39,798: 	 The CRAB server submitted your task to the Grid scheduler (cluster ID: 20047710)
+DEBUG 2018-04-16 00:50:39,798: 	 Webdir is located at http://vocms0120.cern.ch/mon/cms113/180415_181446:oiorio_crab_Root80xV2p4_DYJetsToQQ_HT180_13TeV-madgraphMLM-pythia8_test
+DEBUG 2018-04-16 00:50:40,184: 	 Proxied webdir is located at https://cmsweb.cern.ch/scheddmon/0120/cms113/180415_181446:oiorio_crab_Root80xV2p4_DYJetsToQQ_HT180_13TeV-madgraphMLM-pythia8_test
+DEBUG 2018-04-16 00:50:40,184: 	 Retrieving 'status_cache' file from https://cmsweb.cern.ch/scheddmon/0120/cms113/180415_181446:oiorio_crab_Root80xV2p4_DYJetsToQQ_HT180_13TeV-madgraphMLM-pythia8_test/status_cache
+DEBUG 2018-04-16 00:50:40,505: 	 Got information from status cache file: {'24': {'Retries': 0, 'WallDurations': [8.0, 12028.0], 'StartTimes': [1523816333.0], 'SubmitTimes': [1523816165.0], 'JobIds': ['20047766.0'], 'EndTimes': [], 'Restarts': 0, 'RecordedSite': True, 'State': 'running', 'ResidentSetSize': [1288736], 'TotalUserCpuTimeHistory': [10360.0], 'SiteHistory': ['Unknown', 'T2_CH_CERN'], 'TotalSysCpuTimeHistory': [137.0]}, '25': {'Retries': 0, 'WallDurations': [8.0, 15619.0], 'StartTimes': [1523816341.0], 'SubmitTimes': [1523816165.0], 'JobIds': ['20047768.0'], 'EndTimes': [], 'Restarts': 0, 'RecordedSite': True, 'State': 'running', 'ResidentSetSize': [1195260], 'TotalUserCpuTimeHistory': [15059.0], 'SiteHistory': ['Unknown', 'T2_IT_Pisa'], 'TotalSysCpuTimeHistory': [197.0]}, '26': {'Retries': 0, 'WallDurations': [8.0, 13226.0], 'StartTimes': [1523816340.0], 'SubmitTimes': [1523816165.0], 'JobIds': ['20047767.0'], 'EndTimes': [], 'Restarts': 0, 'RecordedSite': True, 'State': 'running', 'ResidentSetSize': [1097332], 'TotalUserCpuTimeHistory': [12769.0], 'SiteHistory': ['Unknown', 'T2_IT_Pisa'], 'TotalSysCpuTimeHistory': [208.0]}, '27': {'Retries': 0, 'WallDurations': [8.0, 12630.0], 'StartTimes': [1523816341.0], 'SubmitTimes': [1523816166.0], 'JobIds': ['20047770.0'], 'EndTimes': [], 'Restarts': 0, 'RecordedSite': True, 'State': 'running', 'ResidentSetSize': [1178484], 'TotalUserCpuTimeHistory': [12139.0], 'SiteHistory': ['Unknown', 'T2_IT_Pisa'], 'TotalSysCpuTimeHistory': [140.0]}, '20': {'Retries': 0, 'WallDurations': [10.0, 14741.0], 'StartTimes': [1523816331.0], 'SubmitTimes': [1523816164.0], 'JobIds': ['20047763.0'], 'EndTimes': [], 'Restarts': 0, 'RecordedSite': True, 'State': 'running', 'ResidentSetSize': [1193840], 'TotalUserCpuTimeHistory': [13621.0], 'SiteHistory': ['Unknown', 'T2_CH_CERN'], 'TotalSysCpuTimeHistory': [263.0]}, '21': {'Retries': 0, 'WallDurations': [8.0, 15973.0], 'StartTimes': [1523816422.0], 'SubmitTimes': [1523816166.0], 'JobIds': ['20047773.0'], 'EndTimes': [1523832395.0], 'Restarts': 0, 'RecordedSite': True, 'State': 'transferring', 'ResidentSetSize': [1192664], 'TotalUserCpuTimeHistory': [15262], 'SiteHistory': ['Unknown', 'T2_IT_Pisa'], 'TotalSysCpuTimeHistory': [164]}, '22': {'Retries': 0, 'WallDurations': [10.0, 15938.0], 'StartTimes': [1523816331.0], 'SubmitTimes': [1523816164.0], 'JobIds': ['20047764.0'], 'EndTimes': [], 'Restarts': 0, 'RecordedSite': True, 'State': 'running', 'ResidentSetSize': [1266812], 'TotalUserCpuTimeHistory': [14717.0], 'SiteHistory': ['Unknown', 'T2_CH_CERN'], 'TotalSysCpuTimeHistory': [203.0]}, '23': {'Retries': 0, 'WallDurations': [8.0, 13235.0], 'StartTimes': [1523816332.0], 'SubmitTimes': [1523816165.0], 'JobIds': ['20047765.0'], 'EndTimes': [], 'Restarts': 0, 'RecordedSite': True, 'State': 'running', 'ResidentSetSize': [1176060], 'TotalUserCpuTimeHistory': [10873.0], 'SiteHistory': ['Unknown', 'T2_CH_CERN'], 'TotalSysCpuTimeHistory': [143.0]}, '28': {'Retries': 0, 'WallDurations': [8.0, 15943.0], 'StartTimes': [1523816341.0], 'SubmitTimes': [1523816165.0], 'JobIds': ['20047769.0'], 'EndTimes': [], 'Restarts': 0, 'RecordedSite': True, 'State': 'running', 'ResidentSetSize': [1245780], 'TotalUserCpuTimeHistory': [14747.0], 'SiteHistory': ['Unknown', 'T2_IT_Legnaro'], 'TotalSysCpuTimeHistory': [179.0]}, '29': {'Retries': 0, 'WallDurations': [9.0, 14616.0], 'StartTimes': [1523816339.0], 'SubmitTimes': [1523816166.0], 'JobIds': ['20047771.0'], 'EndTimes': [1523830955.0], 'Restarts': 0, 'RecordedSite': True, 'State': 'transferring', 'ResidentSetSize': [1218824], 'TotalUserCpuTimeHistory': [13687], 'SiteHistory': ['Unknown', 'T2_IT_Legnaro'], 'TotalSysCpuTimeHistory': [177]}, '1': {'Retries': 0, 'WallDurations': [10.0, 14908.0], 'StartTimes': [1523816419.0], 'SubmitTimes': [1523816162.0], 'JobIds': ['20047745.0'], 'EndTimes': [1523831327.0], 'Restarts': 0, 'RecordedSite': True, 'State': 'transferring', 'ResidentSetSize': [1134836], 'TotalUserCpuTimeHistory': [13726], 'SiteHistory': ['Unknown', 'T2_IT_Legnaro'], 'TotalSysCpuTimeHistory': [156]}, '3': {'Retries': 0, 'WallDurations': [0, 15080.0], 'StartTimes': [1523816524.0], 'SubmitTimes': [1523816162.0], 'JobIds': ['20047747.0'], 'EndTimes': [1523831604.0], 'Restarts': 0, 'RecordedSite': True, 'State': 'transferring', 'ResidentSetSize': [1218064], 'TotalUserCpuTimeHistory': [13974], 'SiteHistory': ['Unknown', 'T2_IT_Legnaro'], 'TotalSysCpuTimeHistory': [146]}, '2': {'Retries': 0, 'WallDurations': [9.0, 11117.0], 'StartTimes': [1523816419.0], 'SubmitTimes': [1523816162.0], 'JobIds': ['20047746.0'], 'EndTimes': [], 'Restarts': 0, 'RecordedSite': True, 'State': 'running', 'ResidentSetSize': [1136408], 'TotalUserCpuTimeHistory': [10694.0], 'SiteHistory': ['Unknown', 'T2_IT_Pisa'], 'TotalSysCpuTimeHistory': [155.0]}, '5': {'Retries': 0, 'WallDurations': [8.0, 15930.0], 'StartTimes': [1523816420.0], 'SubmitTimes': [1523816162.0], 'JobIds': ['20047744.0'], 'EndTimes': [], 'Restarts': 0, 'RecordedSite': True, 'State': 'running', 'ResidentSetSize': [1062656], 'TotalUserCpuTimeHistory': [12598.0], 'SiteHistory': ['Unknown', 'T2_IT_Pisa'], 'TotalSysCpuTimeHistory': [148.0]}, '4': {'Retries': 0, 'WallDurations': [0, 15630.0], 'StartTimes': [1523816524.0], 'SubmitTimes': [1523816162.0], 'JobIds': ['20047748.0'], 'EndTimes': [], 'Restarts': 0, 'RecordedSite': True, 'State': 'running', 'ResidentSetSize': [1111272], 'TotalUserCpuTimeHistory': [13970.0], 'SiteHistory': ['Unknown', 'T2_IT_Pisa'], 'TotalSysCpuTimeHistory': [156.0]}, '7': {'Retries': 0, 'WallDurations': [8.0, 10525.0], 'StartTimes': [1523816282.0], 'SubmitTimes': [1523816162.0], 'JobIds': ['20047749.0'], 'EndTimes': [], 'Restarts': 0, 'RecordedSite': True, 'State': 'running', 'ResidentSetSize': [1086524], 'TotalUserCpuTimeHistory': [9895.0], 'SiteHistory': ['Unknown', 'T2_IT_Legnaro'], 'TotalSysCpuTimeHistory': [109.0]}, '6': {'Retries': 0, 'WallDurations': [8.0, 15939.0], 'StartTimes': [1523816330.0], 'SubmitTimes': [1523816162.0], 'JobIds': ['20047750.0'], 'EndTimes': [], 'Restarts': 0, 'RecordedSite': True, 'State': 'running', 'ResidentSetSize': [1171420], 'TotalUserCpuTimeHistory': [13987.0], 'SiteHistory': ['Unknown', 'T2_CH_CERN'], 'TotalSysCpuTimeHistory': [173.0]}, '9': {'Retries': 0, 'WallDurations': [9.0, 15640.0], 'StartTimes': [1523816329.0], 'SubmitTimes': [1523816163.0], 'JobIds': ['20047752.0'], 'EndTimes': [], 'Restarts': 0, 'RecordedSite': True, 'State': 'running', 'ResidentSetSize': [1173412], 'TotalUserCpuTimeHistory': [15187.0], 'SiteHistory': ['Unknown', 'T2_CH_CERN'], 'TotalSysCpuTimeHistory': [195.0]}, '8': {'Retries': 0, 'WallDurations': [9.0, 14437.0], 'StartTimes': [1523816329.0], 'SubmitTimes': [1523816163.0], 'JobIds': ['20047751.0'], 'EndTimes': [], 'Restarts': 0, 'RecordedSite': True, 'State': 'running', 'ResidentSetSize': [1173304], 'TotalUserCpuTimeHistory': [11797.0], 'SiteHistory': ['Unknown', 'T2_CH_CERN'], 'TotalSysCpuTimeHistory': [165.0]}, '11': {'Retries': 0, 'WallDurations': [8.0, 12326.0], 'StartTimes': [1523816331.0], 'SubmitTimes': [1523816163.0], 'JobIds': ['20047754.0'], 'EndTimes': [], 'Restarts': 0, 'RecordedSite': True, 'State': 'running', 'ResidentSetSize': [1165520], 'TotalUserCpuTimeHistory': [10588.0], 'SiteHistory': ['Unknown', 'T2_CH_CERN'], 'TotalSysCpuTimeHistory': [142.0]}, '10': {'Retries': 0, 'WallDurations': [9.0, 15340.0], 'StartTimes': [1523816332.0], 'SubmitTimes': [1523816163.0], 'JobIds': ['20047753.0'], 'TotalUserCpuTimeHistory': [12728.0], 'EndTimes': [], 'Restarts': 0, 'RecordedSite': True, 'State': 'failed', 'ResidentSetSize': [2145768], 'Error': [50660, 'Job killed by HTCondor due to excessive memory use (RSS=2250 MB). Will not retry it.', {}], 'SiteHistory': ['Unknown', 'T2_CH_CERN'], 'TotalSysCpuTimeHistory': [166.0]}, '13': {'Retries': 0, 'WallDurations': [9.0, 9934.0], 'StartTimes': [1523816331.0], 'SubmitTimes': [1523816163.0], 'JobIds': ['20047755.0'], 'EndTimes': [], 'Restarts': 0, 'RecordedSite': True, 'State': 'running', 'ResidentSetSize': [1196724], 'TotalUserCpuTimeHistory': [8003.0], 'SiteHistory': ['Unknown', 'T2_CH_CERN'], 'TotalSysCpuTimeHistory': [105.0]}, '12': {'Retries': 0, 'WallDurations': [8.0, 14434.0], 'StartTimes': [1523816331.0], 'SubmitTimes': [1523816163.0], 'JobIds': ['20047756.0'], 'EndTimes': [], 'Restarts': 0, 'RecordedSite': True, 'State': 'running', 'ResidentSetSize': [1145816], 'TotalUserCpuTimeHistory': [11219.0], 'SiteHistory': ['Unknown', 'T2_CH_CERN'], 'TotalSysCpuTimeHistory': [155.0]}, '15': {'Retries': 0, 'WallDurations': [8.0, 15935.0], 'StartTimes': [1523816333.0], 'SubmitTimes': [1523816164.0], 'JobIds': ['20047760.0'], 'EndTimes': [], 'Restarts': 0, 'RecordedSite': True, 'State': 'running', 'ResidentSetSize': [1262648], 'TotalUserCpuTimeHistory': [13701.0], 'SiteHistory': ['Unknown', 'T2_CH_CERN'], 'TotalSysCpuTimeHistory': [181.0]}, '14': {'Retries': 0, 'WallDurations': [10.0, 14737.0], 'StartTimes': [1523816331.0], 'SubmitTimes': [1523816164.0], 'JobIds': ['20047762.0'], 'EndTimes': [], 'Restarts': 0, 'RecordedSite': True, 'State': 'running', 'ResidentSetSize': [1204312], 'TotalUserCpuTimeHistory': [13630.0], 'SiteHistory': ['Unknown', 'T2_CH_CERN'], 'TotalSysCpuTimeHistory': [189.0]}, '17': {'Retries': 0, 'WallDurations': [9.0, 14433.0], 'StartTimes': [1523816331.0], 'SubmitTimes': [1523816163.0], 'JobIds': ['20047759.0'], 'EndTimes': [], 'Restarts': 0, 'RecordedSite': True, 'State': 'running', 'ResidentSetSize': [1224872], 'TotalUserCpuTimeHistory': [13229.0], 'SiteHistory': ['Unknown', 'T2_CH_CERN'], 'TotalSysCpuTimeHistory': [180.0]}, '16': {'Retries': 0, 'WallDurations': [8.0, 12939.0], 'StartTimes': [1523816331.0], 'SubmitTimes': [1523816164.0], 'JobIds': ['20047761.0'], 'EndTimes': [], 'Restarts': 0, 'RecordedSite': True, 'State': 'running', 'ResidentSetSize': [1259420], 'TotalUserCpuTimeHistory': [12344.0], 'SiteHistory': ['Unknown', 'T2_CH_CERN'], 'TotalSysCpuTimeHistory': [152.0]}, '19': {'Retries': 0, 'WallDurations': [8.0, 12027.0], 'StartTimes': [1523816329.0], 'SubmitTimes': [1523816163.0], 'JobIds': ['20047758.0'], 'EndTimes': [], 'Restarts': 0, 'RecordedSite': True, 'State': 'running', 'ResidentSetSize': [1168300], 'TotalUserCpuTimeHistory': [10306.0], 'SiteHistory': ['Unknown', 'T2_CH_CERN'], 'TotalSysCpuTimeHistory': [148.0]}, '18': {'Retries': 0, 'WallDurations': [9.0, 13542.0], 'StartTimes': [1523816330.0], 'SubmitTimes': [1523816163.0], 'JobIds': ['20047757.0'], 'EndTimes': [], 'Restarts': 0, 'RecordedSite': True, 'State': 'running', 'ResidentSetSize': [1122620], 'TotalUserCpuTimeHistory': [11023.0], 'SiteHistory': ['Unknown', 'T2_CH_CERN'], 'TotalSysCpuTimeHistory': [142.0]}, '30': {'Retries': 0, 'WallDurations': [8.0, 13015.0], 'StartTimes': [1523816341.0], 'SubmitTimes': [1523816166.0], 'JobIds': ['20047772.0'], 'EndTimes': [1523829356.0], 'Restarts': 0, 'RecordedSite': True, 'State': 'finished', 'ResidentSetSize': [1135344], 'TotalUserCpuTimeHistory': [12528], 'SiteHistory': ['Unknown', 'T2_IT_Pisa'], 'TotalSysCpuTimeHistory': [162]}}
+INFO 2018-04-16 00:50:40,505: 	 Status on the scheduler:	SUBMITTED
+INFO 2018-04-16 00:50:40,505: 	 
+Jobs status:                    failed          3.3% ( 1/30)
+INFO 2018-04-16 00:50:40,505: 	 				finished        3.3% ( 1/30)
+INFO 2018-04-16 00:50:40,506: 	 				running        80.0% (24/30)
+INFO 2018-04-16 00:50:40,506: 	 				transferring   13.3% ( 4/30)
+INFO 2018-04-16 00:50:40,506: 	 
+No publication information (publication has been disabled in the CRAB configuration file)
+INFO 2018-04-16 00:50:40,506: 	 
+Error Summary: (use crab status --verboseErrors for details about the errors)
+
+ 1 jobs failed with exit code 50660
+
+Have a look at https://twiki.cern.ch/twiki/bin/viewauth/CMSPublic/JobExitCodes for a description of the exit codes.
+INFO 2018-04-16 00:50:40,507: 	 
+Summary:
+ * Memory: 1108MB min, 2095MB max, 1183MB ave
+ * Runtime: 2:45:34 min, 4:26:13 max, 3:54:20 ave
+ * CPU eff: 79% min, 98% max, 91% ave
+ * Waste: 0:04:00 (0% of total)
+
+INFO 2018-04-16 00:50:40,616: 	 Log file is /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/src/ttDM/treeDumper/test/crab_15Apr_testv2/crab_Root80xV2p4_DYJetsToQQ_HT180_13TeV-madgraphMLM-pythia8_test/crab.log
+DEBUG 2018-04-16 11:02:47,205: 	 Executing command: 'status'
+DEBUG 2018-04-16 11:02:47,221: 	 Found CRAB cache file /afs/cern.ch/user/o/oiorio/.crab3
+DEBUG 2018-04-16 11:02:47,304: 	 Checking credentials
+DEBUG 2018-04-16 11:02:47,306: 	 Found proxy file /tmp/x509up_u31365
+DEBUG 2018-04-16 11:02:47,306: 	 Getting proxy life time left
+DEBUG 2018-04-16 11:02:49,416: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u31365 -timeleft
+ output : 43177
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-16 11:02:51,035: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u31365 -actimeleft
+ output : 43175
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-16 11:02:51,035: 	 Proxy valid for 11:59:37 hours
+DEBUG 2018-04-16 11:02:51,256: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-16 11:02:51,256: 	 Checking credentials
+DEBUG 2018-04-16 11:02:51,257: 	 Found proxy file /tmp/x509up_u31365
+DEBUG 2018-04-16 11:02:51,257: 	 Getting proxy life time left
+DEBUG 2018-04-16 11:02:52,679: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u31365 -timeleft
+ output : 43174
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-16 11:02:54,097: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u31365 -actimeleft
+ output : 43172
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-16 11:02:54,098: 	 Proxy valid for 11:59:34 hours
+DEBUG 2018-04-16 11:02:55,082: 	 Registering user credentials for server /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108|0105|0109).cern.ch
+DEBUG 2018-04-16 11:02:55,198: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-16 11:02:55,199: 	 Getting myproxy life time left for myproxy.cern.ch
+DEBUG 2018-04-16 11:02:55,199: 	 Calculating hash of /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio_cmsweb.cern.ch for credential name
+DEBUG 2018-04-16 11:02:55,505: 	 Executing : 
+ command : myproxy-info -l ae9637610ea27f91075d015fc1e15a7328a99708 -s myproxy.cern.ch
+ output : username: ae9637610ea27f91075d015fc1e15a7328a99708
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108|0105|0109).cern.ch
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108|0105|0109).cern.ch
+  timeleft: 542:56:11  (22.6 days)
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-16 11:02:55,508: 	 Myproxy is valid: 1954571
+DEBUG 2018-04-16 11:02:55,508: 	 Command use: status
+DEBUG 2018-04-16 11:02:55,508: 	 Options use: ['crab_15Apr_testv2/crab_Root80xV2p4_DYJetsToQQ_HT180_13TeV-madgraphMLM-pythia8_test/']
+DEBUG 2018-04-16 11:02:56,404: 	 CRABClient version: 3.3.1804
+DEBUG 2018-04-16 11:02:56,404: 	 Instance is prod
+DEBUG 2018-04-16 11:02:56,404: 	 Server base url is cmsweb.cern.ch
+DEBUG 2018-04-16 11:02:56,405: 	 Command url /crabserver/prod/workflow
+DEBUG 2018-04-16 11:02:57,227: 	 Got information from server oracle database: {u'result': [u'180415_181446:oiorio_crab_Root80xV2p4_DYJetsToQQ_HT180_13TeV-madgraphMLM-pythia8_test', u'None', u'None', u'SUBMITTED', u'SUBMIT', u'2018-04-15 18:14:46.609590', u'None', u'2018-04-15 18:15:50.780902', u'None', u'CMSSW_8_0_20', u'slc6_amd64_gcc530', u'/DYJetsToQQ_HT180_13TeV-madgraphMLM-pythia8/grauco-RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1_B2GAnaFW_80X_V2P4-bfea8033ab2d179bbb8e0faf6e2dc0cf/USER', u'F', u'0', u"['T2_CH_CERN_HLT', 'T2_DE_DESY', 'T2_CH_CSCS', 'T2_IT_Bari', 'T2_IT_Legnaro', 'T2_IT_Rome', 'T2_DE_RWTH', 'T2_CH_CERN_AI', 'T2_CH_CERN', 'T2_CH_CSCS_HPC', 'T2_IT_Pisa']", u'[]', u'FileBased', u"{'splitOnRun': False, 'halt_job_on_file_boundaries': False, 'files_per_job': 5, 'runs': [], 'lumis': []}", u'07287101d3ed4484e590ee1caf51e59800059bcaf32a0916f69e3663a4a4be84.tar.gz', u'https://cmsweb.cern.ch/crabcache', u'oiorio', u'/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio', u'cms', u'None', u'None', u'Root80xV2p4_DYJetsToQQ_HT180_13TeV-madgraphMLM-pythia8_15Mar17_test-00000000000000000000000000000000', u'F', u'T2_CH_CSCS', u'https://cmsweb.cern.ch/dbs/prod/phys03/DBSReader', u'https://cmsweb.cern.ch/dbs/prod/phys03/DBSWriter', u'F', u'[]', u"['treesTTJets.root']", u'[]', u'Analysis', u'pythia', u'None', u'{}', u'[]', u'F', u'vocms052', u'[]', u'1250', u'1', u'2000', u'10', u'None', u'[]', u'http://vocms0120.cern.ch/mon/cms113/180415_181446:oiorio_crab_Root80xV2p4_DYJetsToQQ_HT180_13TeV-madgraphMLM-pythia8_test', u'None', u'[]', u'[]', u'https://cmsweb.cern.ch/crabserver/prod', u'cmsgwms-collector-global.cern.ch:9620,cmssrv221.fnal.gov:9620', u'crab3@vocms0120.cern.ch', u'F', u'[]', u'T', u'/store/user/oiorio/ttDM/trees/2018/Apr15/test_v2/', u'T', u'None', u'F', u'None', u'DYJetsToQQ_HT180_13TeV-madgraphMLM-pythia8', u'None', u'7a1c96a0f50f91706f68f4783d28f50554b96cd7239c0f42004bb2618a1add05.tar.gz', u'20047710', u'filetransfers', u'F', u'137.138.76.165', u'0.0'], u'desc': {u'columns': [u'tm_taskname', u'tm_activity', u'panda_jobset_id', u'tm_task_status', u'tm_task_command', u'tm_start_time', u'tm_start_injection', u'tm_end_injection', u'tm_task_failure', u'tm_job_sw', u'tm_job_arch', u'tm_input_dataset', u'tm_nonvalid_input_dataset', u'tm_use_parent', u'tm_site_whitelist', u'tm_site_blacklist', u'tm_split_algo', u'tm_split_args', u'tm_user_sandbox', u'tm_cache_url', u'tm_username', u'tm_user_dn', u'tm_user_vo', u'tm_user_role', u'tm_user_group', u'tm_publish_name', u'tm_publish_groupname', u'tm_asyncdest', u'tm_dbs_url', u'tm_publish_dbs_url', u'tm_publication', u'tm_outfiles', u'tm_tfile_outfiles', u'tm_edm_outfiles', u'tm_job_type', u'tm_generator', u'tm_events_per_lumi', u'tm_arguments', u'panda_resubmitted_jobs', u'tm_save_logs', u'tw_name', u'tm_user_infiles', u'tm_maxjobruntime', u'tm_numcores', u'tm_maxmemory', u'tm_priority', u'tm_output_dataset', u'tm_task_warnings', u'tm_user_webdir', u'tm_scriptexe', u'tm_scriptargs', u'tm_extrajdl', u'tm_asourl', u'tm_collector', u'tm_schedd', u'tm_dry_run', u'tm_user_files', u'tm_transfer_outputs', u'tm_output_lfn', u'tm_ignore_locality', u'tm_fail_limit', u'tm_one_event_mode', u'tm_secondary_input_dataset', u'tm_primary_dataset', u'tm_last_publication', u'tm_debug_files', u'clusterid', u'tm_asodb', u'tm_ignore_global_blacklist', u'tm_submitter_ip_addr', u'tm_totalunits']}}
+INFO 2018-04-16 11:02:57,228: 	 CRAB project directory:		/afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/src/ttDM/treeDumper/test/crab_15Apr_testv2/crab_Root80xV2p4_DYJetsToQQ_HT180_13TeV-madgraphMLM-pythia8_test
+INFO 2018-04-16 11:02:57,229: 	 Task name:			180415_181446:oiorio_crab_Root80xV2p4_DYJetsToQQ_HT180_13TeV-madgraphMLM-pythia8_test
+INFO 2018-04-16 11:02:57,229: 	 Grid scheduler:			crab3@vocms0120.cern.ch
+INFO 2018-04-16 11:02:57,229: 	 Status on the CRAB server:	SUBMITTED
+INFO 2018-04-16 11:02:57,229: 	 Task URL to use for HELP:	https://cmsweb.cern.ch/crabserver/ui/task/180415_181446%3Aoiorio_crab_Root80xV2p4_DYJetsToQQ_HT180_13TeV-madgraphMLM-pythia8_test
+INFO 2018-04-16 11:02:57,229: 	 Dashboard monitoring URL:	http://dashb-cms-job.cern.ch/dashboard/templates/task-analysis/#user=oiorio&refresh=0&table=Jobs&p=1&records=25&activemenu=2&status=&site=&tid=180415_181446%3Aoiorio_crab_Root80xV2p4_DYJetsToQQ_HT180_13TeV-madgraphMLM-pythia8_test
+DEBUG 2018-04-16 11:02:57,230: 	 The CRAB server submitted your task to the Grid scheduler (cluster ID: 20047710)
+DEBUG 2018-04-16 11:02:57,230: 	 Webdir is located at http://vocms0120.cern.ch/mon/cms113/180415_181446:oiorio_crab_Root80xV2p4_DYJetsToQQ_HT180_13TeV-madgraphMLM-pythia8_test
+DEBUG 2018-04-16 11:02:58,045: 	 Proxied webdir is located at https://cmsweb.cern.ch/scheddmon/0120/cms113/180415_181446:oiorio_crab_Root80xV2p4_DYJetsToQQ_HT180_13TeV-madgraphMLM-pythia8_test
+DEBUG 2018-04-16 11:02:58,045: 	 Retrieving 'status_cache' file from https://cmsweb.cern.ch/scheddmon/0120/cms113/180415_181446:oiorio_crab_Root80xV2p4_DYJetsToQQ_HT180_13TeV-madgraphMLM-pythia8_test/status_cache
+DEBUG 2018-04-16 11:02:58,878: 	 Got information from status cache file: {'24': {'Retries': 0, 'WallDurations': [8.0, 21769.0], 'StartTimes': [1523816333.0], 'SubmitTimes': [1523816165.0], 'JobIds': ['20047766.0'], 'EndTimes': [1523838102.0], 'Restarts': 0, 'RecordedSite': True, 'State': 'finished', 'ResidentSetSize': [1314016], 'TotalUserCpuTimeHistory': [18682], 'SiteHistory': ['Unknown', 'T2_CH_CERN'], 'TotalSysCpuTimeHistory': [251]}, '25': {'Retries': 0, 'WallDurations': [8.0, 23550.0], 'StartTimes': [1523816341.0], 'SubmitTimes': [1523816165.0], 'JobIds': ['20047768.0'], 'EndTimes': [1523839891.0], 'Restarts': 0, 'RecordedSite': True, 'State': 'finished', 'ResidentSetSize': [1195260], 'TotalUserCpuTimeHistory': [22682], 'SiteHistory': ['Unknown', 'T2_IT_Pisa'], 'TotalSysCpuTimeHistory': [294]}, '26': {'Retries': 0, 'WallDurations': [8.0, 33184.0], 'StartTimes': [1523816340.0], 'SubmitTimes': [1523816165.0], 'JobIds': ['20047767.0'], 'EndTimes': [1523849524.0], 'Restarts': 0, 'RecordedSite': True, 'State': 'finished', 'ResidentSetSize': [1202804], 'TotalUserCpuTimeHistory': [31875], 'SiteHistory': ['Unknown', 'T2_IT_Pisa'], 'TotalSysCpuTimeHistory': [610]}, '27': {'Retries': 0, 'WallDurations': [8.0, 21063.0], 'StartTimes': [1523816341.0], 'SubmitTimes': [1523816166.0], 'JobIds': ['20047770.0'], 'EndTimes': [1523837404.0], 'Restarts': 0, 'RecordedSite': True, 'State': 'finished', 'ResidentSetSize': [1184524], 'TotalUserCpuTimeHistory': [20235], 'SiteHistory': ['Unknown', 'T2_IT_Pisa'], 'TotalSysCpuTimeHistory': [233]}, '20': {'Retries': 0, 'WallDurations': [10.0, 23012.0], 'StartTimes': [1523816331.0], 'SubmitTimes': [1523816164.0], 'JobIds': ['20047763.0'], 'EndTimes': [1523839343.0], 'Restarts': 0, 'RecordedSite': True, 'State': 'finished', 'ResidentSetSize': [1194272], 'TotalUserCpuTimeHistory': [21132], 'SiteHistory': ['Unknown', 'T2_CH_CERN'], 'TotalSysCpuTimeHistory': [410]}, '21': {'Retries': 0, 'WallDurations': [8.0, 15973.0], 'StartTimes': [1523816422.0], 'SubmitTimes': [1523816166.0], 'JobIds': ['20047773.0'], 'EndTimes': [1523832395.0], 'Restarts': 0, 'RecordedSite': True, 'State': 'finished', 'ResidentSetSize': [1192664], 'TotalUserCpuTimeHistory': [15262], 'SiteHistory': ['Unknown', 'T2_IT_Pisa'], 'TotalSysCpuTimeHistory': [164]}, '22': {'Retries': 0, 'WallDurations': [10.0, 20749.0], 'StartTimes': [1523816331.0], 'SubmitTimes': [1523816164.0], 'JobIds': ['20047764.0'], 'EndTimes': [1523837080.0], 'Restarts': 0, 'RecordedSite': True, 'State': 'finished', 'ResidentSetSize': [1288172], 'TotalUserCpuTimeHistory': [19104], 'SiteHistory': ['Unknown', 'T2_CH_CERN'], 'TotalSysCpuTimeHistory': [264]}, '23': {'Retries': 0, 'WallDurations': [8.0, 21659.0], 'StartTimes': [1523816332.0], 'SubmitTimes': [1523816165.0], 'JobIds': ['20047765.0'], 'TotalUserCpuTimeHistory': [17986.0], 'EndTimes': [], 'Restarts': 0, 'RecordedSite': True, 'State': 'failed', 'ResidentSetSize': [2335880], 'Error': [50660, 'Job killed by HTCondor due to excessive memory use (RSS=2500 MB). Will not retry it.', {}], 'SiteHistory': ['Unknown', 'T2_CH_CERN'], 'TotalSysCpuTimeHistory': [234.0]}, '28': {'Retries': 0, 'WallDurations': [8.0, 19795.0], 'StartTimes': [1523816341.0], 'SubmitTimes': [1523816165.0], 'JobIds': ['20047769.0'], 'EndTimes': [1523836136.0], 'Restarts': 0, 'RecordedSite': True, 'State': 'finished', 'ResidentSetSize': [1259724], 'TotalUserCpuTimeHistory': [18248], 'SiteHistory': ['Unknown', 'T2_IT_Legnaro'], 'TotalSysCpuTimeHistory': [222]}, '29': {'Retries': 0, 'WallDurations': [9.0, 14616.0], 'StartTimes': [1523816339.0], 'SubmitTimes': [1523816166.0], 'JobIds': ['20047771.0'], 'EndTimes': [1523830955.0], 'Restarts': 0, 'RecordedSite': True, 'State': 'finished', 'ResidentSetSize': [1218824], 'TotalUserCpuTimeHistory': [13687], 'SiteHistory': ['Unknown', 'T2_IT_Legnaro'], 'TotalSysCpuTimeHistory': [177]}, '1': {'Retries': 0, 'WallDurations': [10.0, 14908.0], 'StartTimes': [1523816419.0], 'SubmitTimes': [1523816162.0], 'JobIds': ['20047745.0'], 'EndTimes': [1523831327.0], 'Restarts': 0, 'RecordedSite': True, 'State': 'finished', 'ResidentSetSize': [1134836], 'TotalUserCpuTimeHistory': [13726], 'SiteHistory': ['Unknown', 'T2_IT_Legnaro'], 'TotalSysCpuTimeHistory': [156]}, '3': {'Retries': 0, 'WallDurations': [0, 15080.0], 'StartTimes': [1523816524.0], 'SubmitTimes': [1523816162.0], 'JobIds': ['20047747.0'], 'EndTimes': [1523831604.0], 'Restarts': 0, 'RecordedSite': True, 'State': 'finished', 'ResidentSetSize': [1218064], 'TotalUserCpuTimeHistory': [13974], 'SiteHistory': ['Unknown', 'T2_IT_Legnaro'], 'TotalSysCpuTimeHistory': [146]}, '2': {'Retries': 0, 'WallDurations': [9.0, 19127.0], 'StartTimes': [1523816419.0], 'SubmitTimes': [1523816162.0], 'JobIds': ['20047746.0'], 'EndTimes': [1523835546.0], 'Restarts': 0, 'RecordedSite': True, 'State': 'finished', 'ResidentSetSize': [1136408], 'TotalUserCpuTimeHistory': [18388], 'SiteHistory': ['Unknown', 'T2_IT_Pisa'], 'TotalSysCpuTimeHistory': [258]}, '5': {'Retries': 0, 'WallDurations': [8.0, 34994.0], 'StartTimes': [1523816420.0], 'SubmitTimes': [1523816162.0], 'JobIds': ['20047744.0'], 'EndTimes': [1523851414.0], 'Restarts': 0, 'RecordedSite': True, 'State': 'finished', 'ResidentSetSize': [1072344], 'TotalUserCpuTimeHistory': [28511], 'SiteHistory': ['Unknown', 'T2_IT_Pisa'], 'TotalSysCpuTimeHistory': [334]}, '4': {'Retries': 0, 'WallDurations': [0, 24458.0], 'StartTimes': [1523816524.0], 'SubmitTimes': [1523816162.0], 'JobIds': ['20047748.0'], 'EndTimes': [1523840982.0], 'Restarts': 0, 'RecordedSite': True, 'State': 'finished', 'ResidentSetSize': [1123420], 'TotalUserCpuTimeHistory': [21851], 'SiteHistory': ['Unknown', 'T2_IT_Pisa'], 'TotalSysCpuTimeHistory': [248]}, '7': {'Retries': 0, 'WallDurations': [8.0, 17956.0], 'StartTimes': [1523816282.0], 'SubmitTimes': [1523816162.0], 'JobIds': ['20047749.0'], 'EndTimes': [1523834238.0], 'Restarts': 0, 'RecordedSite': True, 'State': 'finished', 'ResidentSetSize': [1086524], 'TotalUserCpuTimeHistory': [16854], 'SiteHistory': ['Unknown', 'T2_IT_Legnaro'], 'TotalSysCpuTimeHistory': [188]}, '6': {'Retries': 0, 'WallDurations': [8.0, 23902.0], 'StartTimes': [1523816330.0], 'SubmitTimes': [1523816162.0], 'JobIds': ['20047750.0'], 'EndTimes': [1523840232.0], 'Restarts': 0, 'RecordedSite': True, 'State': 'finished', 'ResidentSetSize': [1171420], 'TotalUserCpuTimeHistory': [20911], 'SiteHistory': ['Unknown', 'T2_CH_CERN'], 'TotalSysCpuTimeHistory': [261]}, '9': {'Retries': 0, 'WallDurations': [9.0, 19309.0], 'StartTimes': [1523816329.0], 'SubmitTimes': [1523816163.0], 'JobIds': ['20047752.0'], 'EndTimes': [1523835638.0], 'Restarts': 0, 'RecordedSite': True, 'State': 'finished', 'ResidentSetSize': [1173412], 'TotalUserCpuTimeHistory': [18665], 'SiteHistory': ['Unknown', 'T2_CH_CERN'], 'TotalSysCpuTimeHistory': [242]}, '8': {'Retries': 0, 'WallDurations': [9.0, 27463.0], 'StartTimes': [1523816329.0], 'SubmitTimes': [1523816163.0], 'JobIds': ['20047751.0'], 'EndTimes': [1523843792.0], 'Restarts': 0, 'RecordedSite': True, 'State': 'finished', 'ResidentSetSize': [1173304], 'TotalUserCpuTimeHistory': [22864], 'SiteHistory': ['Unknown', 'T2_CH_CERN'], 'TotalSysCpuTimeHistory': [328]}, '11': {'Retries': 0, 'WallDurations': [8.0, 24455.0], 'StartTimes': [1523816331.0], 'SubmitTimes': [1523816163.0], 'JobIds': ['20047754.0'], 'EndTimes': [1523840786.0], 'Restarts': 0, 'RecordedSite': True, 'State': 'finished', 'ResidentSetSize': [1165520], 'TotalUserCpuTimeHistory': [20528], 'SiteHistory': ['Unknown', 'T2_CH_CERN'], 'TotalSysCpuTimeHistory': [282]}, '10': {'Retries': 0, 'WallDurations': [9.0, 15340.0], 'StartTimes': [1523816332.0], 'SubmitTimes': [1523816163.0], 'JobIds': ['20047753.0'], 'EndTimes': [], 'Restarts': 0, 'RecordedSite': True, 'State': 'failed', 'ResidentSetSize': [2145768], 'Error': [50660, 'Job killed by HTCondor due to excessive memory use (RSS=2250 MB). Will not retry it.', {}], 'TotalUserCpuTimeHistory': [12728.0], 'SiteHistory': ['Unknown', 'T2_CH_CERN'], 'TotalSysCpuTimeHistory': [166.0]}, '13': {'Retries': 0, 'WallDurations': [9.0, 28262.0], 'StartTimes': [1523816331.0], 'SubmitTimes': [1523816163.0], 'JobIds': ['20047755.0'], 'EndTimes': [], 'Restarts': 0, 'RecordedSite': True, 'State': 'failed', 'ResidentSetSize': [2381852], 'TotalUserCpuTimeHistory': [22247.0], 'SiteHistory': ['Unknown', 'T2_CH_CERN'], 'TotalSysCpuTimeHistory': [299.0]}, '12': {'Retries': 0, 'WallDurations': [8.0, 25166.0], 'StartTimes': [1523816331.0], 'SubmitTimes': [1523816163.0], 'JobIds': ['20047756.0'], 'EndTimes': [1523841497.0], 'Restarts': 0, 'RecordedSite': True, 'State': 'finished', 'ResidentSetSize': [1241212], 'TotalUserCpuTimeHistory': [19990], 'SiteHistory': ['Unknown', 'T2_CH_CERN'], 'TotalSysCpuTimeHistory': [277]}, '15': {'Retries': 0, 'WallDurations': [8.0, 23004.0], 'StartTimes': [1523816333.0], 'SubmitTimes': [1523816164.0], 'JobIds': ['20047760.0'], 'EndTimes': [1523839337.0], 'Restarts': 0, 'RecordedSite': True, 'State': 'finished', 'ResidentSetSize': [1327264], 'TotalUserCpuTimeHistory': [19679], 'SiteHistory': ['Unknown', 'T2_CH_CERN'], 'TotalSysCpuTimeHistory': [265]}, '14': {'Retries': 0, 'WallDurations': [10.0, 23253.0], 'StartTimes': [1523816331.0], 'SubmitTimes': [1523816164.0], 'JobIds': ['20047762.0'], 'EndTimes': [1523839584.0], 'Restarts': 0, 'RecordedSite': True, 'State': 'finished', 'ResidentSetSize': [1232380], 'TotalUserCpuTimeHistory': [21463], 'SiteHistory': ['Unknown', 'T2_CH_CERN'], 'TotalSysCpuTimeHistory': [299]}, '17': {'Retries': 0, 'WallDurations': [9.0, 25975.0], 'StartTimes': [1523816331.0], 'SubmitTimes': [1523816163.0], 'JobIds': ['20047759.0'], 'EndTimes': [1523842306.0], 'Restarts': 0, 'RecordedSite': True, 'State': 'finished', 'ResidentSetSize': [1224872], 'TotalUserCpuTimeHistory': [23679], 'SiteHistory': ['Unknown', 'T2_CH_CERN'], 'TotalSysCpuTimeHistory': [328]}, '16': {'Retries': 0, 'WallDurations': [8.0, 22230.0], 'StartTimes': [1523816331.0], 'SubmitTimes': [1523816164.0], 'JobIds': ['20047761.0'], 'EndTimes': [1523838561.0], 'Restarts': 0, 'RecordedSite': True, 'State': 'finished', 'ResidentSetSize': [1259420], 'TotalUserCpuTimeHistory': [21080], 'SiteHistory': ['Unknown', 'T2_CH_CERN'], 'TotalSysCpuTimeHistory': [264]}, '19': {'Retries': 0, 'WallDurations': [8.0, 19240.0], 'StartTimes': [1523816329.0], 'SubmitTimes': [1523816163.0], 'JobIds': ['20047758.0'], 'TotalUserCpuTimeHistory': [16514.0], 'EndTimes': [], 'Restarts': 0, 'RecordedSite': True, 'State': 'failed', 'ResidentSetSize': [2279704], 'Error': [50660, 'Job killed by HTCondor due to excessive memory use (RSS=2500 MB). Will not retry it.', {}], 'SiteHistory': ['Unknown', 'T2_CH_CERN'], 'TotalSysCpuTimeHistory': [236.0]}, '18': {'Retries': 0, 'WallDurations': [9.0, 21804.0], 'StartTimes': [1523816330.0], 'SubmitTimes': [1523816163.0], 'JobIds': ['20047757.0'], 'EndTimes': [1523838134.0], 'Restarts': 0, 'RecordedSite': True, 'State': 'finished', 'ResidentSetSize': [1160728], 'TotalUserCpuTimeHistory': [17718], 'SiteHistory': ['Unknown', 'T2_CH_CERN'], 'TotalSysCpuTimeHistory': [227]}, '30': {'Retries': 0, 'WallDurations': [8.0, 13015.0], 'StartTimes': [1523816341.0], 'SubmitTimes': [1523816166.0], 'JobIds': ['20047772.0'], 'EndTimes': [1523829356.0], 'Restarts': 0, 'RecordedSite': True, 'State': 'finished', 'ResidentSetSize': [1135344], 'TotalUserCpuTimeHistory': [12528], 'SiteHistory': ['Unknown', 'T2_IT_Pisa'], 'TotalSysCpuTimeHistory': [162]}}
+INFO 2018-04-16 11:02:58,878: 	 Status on the scheduler:	FAILED
+INFO 2018-04-16 11:02:58,885: 	 
+Jobs status:                    failed         13.3% ( 4/30)
+INFO 2018-04-16 11:02:58,885: 	 				finished       86.7% (26/30)
+INFO 2018-04-16 11:02:58,886: 	 
+No publication information (publication has been disabled in the CRAB configuration file)
+INFO 2018-04-16 11:02:58,886: 	 
+Error Summary: (use crab status --verboseErrors for details about the errors)
+
+ 3 jobs failed with exit code 50660
+
+Could not find exit code details for 1 jobs.
+
+Have a look at https://twiki.cern.ch/twiki/bin/viewauth/CMSPublic/JobExitCodes for a description of the exit codes.
+INFO 2018-04-16 11:02:58,890: 	 
+Summary:
+ * Memory: 1108MB min, 2326MB max, 1310MB ave
+ * Runtime: 3:36:55 min, 9:43:14 max, 6:03:30 ave
+ * CPU eff: 80% min, 98% max, 90% ave
+ * Waste: 0:04:00 (0% of total)
+
+INFO 2018-04-16 11:02:58,984: 	 Log file is /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/src/ttDM/treeDumper/test/crab_15Apr_testv2/crab_Root80xV2p4_DYJetsToQQ_HT180_13TeV-madgraphMLM-pythia8_test/crab.log

@@ -1,0 +1,5 @@
+Sending resubmit request to the server.
+Resubmit request sent to the server.
+Please use 'crab status' to check how the resubmission process proceeds.
+Notice it may take a couple of minutes for the resubmission to get fully processed.
+Log file is /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/src/ttDM/treeDumper/test/crab_4Oct/crab_WJetsToLNu_HT-200To400_TuneCP5_13TeV-madgraphMLM-pythia8_crab_4Oct/crab.log

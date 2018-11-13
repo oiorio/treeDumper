@@ -1,0 +1,30 @@
+CRAB project directory:		/afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/src/ttDM/treeDumper/test/crab_4Oct/crab_QCD_HT1000to1500_TuneCP5_13TeV-madgraph-pythia8_crab_4Oct
+Task name:			181003_183349:oiorio_crab_QCD_HT1000to1500_TuneCP5_13TeV-madgraph-pythia8_crab_4Oct
+Grid scheduler - Task Worker:	crab3@vocms0119.cern.ch - crab-prod-tw01
+Status on the CRAB server:	SUBMITTED
+Task URL to use for HELP:	https://cmsweb.cern.ch/crabserver/ui/task/181003_183349%3Aoiorio_crab_QCD_HT1000to1500_TuneCP5_13TeV-madgraph-pythia8_crab_4Oct
+Dashboard monitoring URL:	http://dashb-cms-job.cern.ch/dashboard/templates/task-analysis/#user=oiorio&refresh=0&table=Jobs&p=1&records=25&activemenu=2&status=&site=&tid=181003_183349%3Aoiorio_crab_QCD_HT1000to1500_TuneCP5_13TeV-madgraph-pythia8_crab_4Oct
+Warning:			The following sites from the user site whitelist are blacklisted by the CRAB server: [u'T2_CH_CERN_HLT', u'T2_IT_Rome']. Since the CRAB server blacklist has precedence, these sites are not considered in the user whitelist.
+Status on the scheduler:	FAILED
+
+Jobs status:                    failed        		 100.0% (58/58)
+
+No publication information (publication has been disabled in the CRAB configuration file)
+
+Error Summary: (use crab status --verboseErrors for details about the errors)
+
+58 jobs failed with exit code 8027
+
+Have a look at https://twiki.cern.ch/twiki/bin/viewauth/CMSPublic/JobExitCodes for a description of the exit codes.
+
+Warning: the max jobs runtime is less than 30% of the task requested value (1250 min), please consider to request a lower value (allowed through crab resubmit) and/or improve the jobs splitting (e.g. config.Data.splitting = 'Automatic') in a new task.
+
+Warning: the average jobs CPU efficiency is less than 50%, please consider to improve the jobs splitting (e.g. config.Data.splitting = 'Automatic') in a new task
+
+Summary of run jobs:
+ * Memory: 2MB min, 29MB max, 10MB ave
+ * Runtime: 0:01:01 min, 0:05:00 max, 0:04:20 ave
+ * CPU eff: 0% min, 20% max, 4% ave
+ * Waste: 0:58:10 (19% of total)
+
+Log file is /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/src/ttDM/treeDumper/test/crab_4Oct/crab_QCD_HT1000to1500_TuneCP5_13TeV-madgraph-pythia8_crab_4Oct/crab.log

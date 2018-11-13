@@ -1,0 +1,763 @@
+# Conditions read from  CMS_CONDITIONS  via FrontierProd 
+DEBUG 2018-04-15 17:17:13,214: 	 Executing command: 'submit'
+DEBUG 2018-04-15 17:17:13,219: 	 Found CRAB cache file /afs/cern.ch/user/o/oiorio/.crab3
+DEBUG 2018-04-15 17:17:13,227: 	 Checking credentials
+DEBUG 2018-04-15 17:17:13,227: 	 Found proxy file /tmp/x509up_u31365
+DEBUG 2018-04-15 17:17:13,227: 	 Getting proxy life time left
+DEBUG 2018-04-15 17:17:13,832: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u31365 -timeleft
+ output : 42940
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-15 17:17:14,438: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u31365 -actimeleft
+ output : 42939
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-15 17:17:14,438: 	 Proxy valid for 11:55:40 hours
+DEBUG 2018-04-15 17:17:14,439: 	 Will use CRAB Analysis plugin (i.e. will run an analysis job type).
+DEBUG 2018-04-15 17:17:14,639: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-15 17:17:14,639: 	 Checking credentials
+DEBUG 2018-04-15 17:17:14,639: 	 Found proxy file /tmp/x509up_u31365
+DEBUG 2018-04-15 17:17:14,639: 	 Getting proxy life time left
+DEBUG 2018-04-15 17:17:15,243: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u31365 -timeleft
+ output : 42938
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-15 17:17:15,849: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u31365 -actimeleft
+ output : 42938
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-15 17:17:15,849: 	 Proxy valid for 11:55:38 hours
+DEBUG 2018-04-15 17:17:16,654: 	 Executing : 
+ command : env X509_USER_PROXY=/tmp/x509up_u31365 voms-proxy-info -fqan
+ output : /cms/Role=NULL/Capability=NULL
+/cms/itcms/Role=NULL/Capability=NULL
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-15 17:17:17,007: 	 Registering user credentials for server /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108|0105|0109).cern.ch
+DEBUG 2018-04-15 17:17:17,115: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-15 17:17:17,116: 	 Getting myproxy life time left for myproxy.cern.ch
+DEBUG 2018-04-15 17:17:17,116: 	 Calculating hash of /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio_cmsweb.cern.ch for credential name
+DEBUG 2018-04-15 17:17:17,320: 	 Executing : 
+ command : myproxy-info -l ae9637610ea27f91075d015fc1e15a7328a99708 -s myproxy.cern.ch
+ output : username: ae9637610ea27f91075d015fc1e15a7328a99708
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108|0105|0109).cern.ch
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108|0105|0109).cern.ch
+  timeleft: 560:41:49  (23.4 days)
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-15 17:17:17,321: 	 Myproxy is valid: 2018509
+DEBUG 2018-04-15 17:17:17,321: 	 Command use: submit
+DEBUG 2018-04-15 17:17:17,321: 	 Options use: ['--config', <WMCore.Configuration.Configuration object at 0x7f6bcc5c05d0>]
+DEBUG 2018-04-15 17:17:17,741: 	 CRABClient version: 3.3.1804
+DEBUG 2018-04-15 17:17:17,741: 	 Instance is prod
+DEBUG 2018-04-15 17:17:17,741: 	 Server base url is cmsweb.cern.ch
+DEBUG 2018-04-15 17:17:17,741: 	 Command url /crabserver/prod/workflow
+DEBUG 2018-04-15 17:17:17,741: 	 Started submission
+DEBUG 2018-04-15 17:17:17,741: 	 Working on /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/src/ttDM/treeDumper/test/crab_15Apr/crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test
+DEBUG 2018-04-15 17:17:18,147: 	 Loading required information from the environment
+DEBUG 2018-04-15 17:17:18,147: 	 Found CMSSW_8_0_20 for slc6_amd64_gcc530 with base /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20
+DEBUG 2018-04-15 17:17:18,147: 	 Loading required information from the environment
+DEBUG 2018-04-15 17:17:18,147: 	 Found CMSSW_8_0_20 for slc6_amd64_gcc530 with base /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20
+DEBUG 2018-04-15 17:17:18,166: 	 UNIQUE NAME: tarUUID 830198c4-5740-43a3-ad17-5a01dd430627 
+DEBUG 2018-04-15 17:17:18,167: 	 self.config: from WMCore.Configuration import Configuration
+config = Configuration()
+config.section_('General')
+config.General.workArea = 'crab_15Apr'
+config.General.requestName = 'Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test'
+config.section_('JobType')
+config.JobType.psetName = 'topplusdmTrees_cfg.py'
+config.JobType.pluginName = 'Analysis'
+config.JobType.inputFiles = ['Spring16_25nsV10_MC_PtResolution_AK8PFchs.txt', 'Summer16_23Sep2016BCDV4_DATA_L1FastJet_AK4PFchs.txt', 'Summer16_23Sep2016BCDV4_DATA_L1FastJet_AK8PFchs.txt', 'Summer16_23Sep2016BCDV4_DATA_L1RC_AK4PFchs.txt', 'Summer16_23Sep2016BCDV4_DATA_L1RC_AK8PFchs.txt', 'Summer16_23Sep2016BCDV4_DATA_L2L3Residual_AK4PFchs.txt', 'Summer16_23Sep2016BCDV4_DATA_L2L3Residual_AK8PFchs.txt', 'Summer16_23Sep2016BCDV4_DATA_L2Relative_AK4PFchs.txt', 'Summer16_23Sep2016BCDV4_DATA_L2Relative_AK8PFchs.txt', 'Summer16_23Sep2016BCDV4_DATA_L2Residual_AK4PFchs.txt', 'Summer16_23Sep2016BCDV4_DATA_L3Absolute_AK4PFchs.txt', 'Summer16_23Sep2016BCDV4_DATA_L3Absolute_AK8PFchs.txt', 'Summer16_23Sep2016BCDV4_DATA_UncertaintySources_AK4PFchs.txt', 'Summer16_23Sep2016BCDV4_DATA_UncertaintySources_AK8PFchs.txt', 'Summer16_23Sep2016BCDV4_DATA_Uncertainty_AK4PFchs.txt', 'Summer16_23Sep2016BCDV4_DATA_Uncertainty_AK8PFchs.txt', 'Summer16_23Sep2016EFV4_DATA_L1FastJet_AK4PFchs.txt', 'Summer16_23Sep2016EFV4_DATA_L1FastJet_AK8PFchs.txt', 'Summer16_23Sep2016EFV4_DATA_L1RC_AK4PFchs.txt', 'Summer16_23Sep2016EFV4_DATA_L1RC_AK8PFchs.txt', 'Summer16_23Sep2016EFV4_DATA_L2L3Residual_AK4PFchs.txt', 'Summer16_23Sep2016EFV4_DATA_L2L3Residual_AK8PFchs.txt', 'Summer16_23Sep2016EFV4_DATA_L2Relative_AK4PFchs.txt', 'Summer16_23Sep2016EFV4_DATA_L2Relative_AK8PFchs.txt', 'Summer16_23Sep2016EFV4_DATA_L2Residual_AK4PFchs.txt', 'Summer16_23Sep2016EFV4_DATA_L3Absolute_AK4PFchs.txt', 'Summer16_23Sep2016EFV4_DATA_L3Absolute_AK8PFchs.txt', 'Summer16_23Sep2016EFV4_DATA_UncertaintySources_AK4PFchs.txt', 'Summer16_23Sep2016EFV4_DATA_UncertaintySources_AK8PFchs.txt', 'Summer16_23Sep2016EFV4_DATA_Uncertainty_AK4PFchs.txt', 'Summer16_23Sep2016EFV4_DATA_Uncertainty_AK8PFchs.txt', 'Summer16_23Sep2016GV4_DATA_L1FastJet_AK4PFchs.txt', 'Summer16_23Sep2016GV4_DATA_L1FastJet_AK8PFchs.txt', 'Summer16_23Sep2016GV4_DATA_L1RC_AK4PFchs.txt', 'Summer16_23Sep2016GV4_DATA_L1RC_AK8PFchs.txt', 'Summer16_23Sep2016GV4_DATA_L2L3Residual_AK4PFchs.txt', 'Summer16_23Sep2016GV4_DATA_L2L3Residual_AK8PFchs.txt', 'Summer16_23Sep2016GV4_DATA_L2Relative_AK4PFchs.txt', 'Summer16_23Sep2016GV4_DATA_L2Relative_AK8PFchs.txt', 'Summer16_23Sep2016GV4_DATA_L2Residual_AK4PFchs.txt', 'Summer16_23Sep2016GV4_DATA_L3Absolute_AK4PFchs.txt', 'Summer16_23Sep2016GV4_DATA_L3Absolute_AK8PFchs.txt', 'Summer16_23Sep2016GV4_DATA_UncertaintySources_AK4PFchs.txt', 'Summer16_23Sep2016GV4_DATA_UncertaintySources_AK8PFchs.txt', 'Summer16_23Sep2016GV4_DATA_Uncertainty_AK4PFchs.txt', 'Summer16_23Sep2016GV4_DATA_Uncertainty_AK8PFchs.txt', 'Summer16_23Sep2016HV4_DATA_L1FastJet_AK4PFchs.txt', 'Summer16_23Sep2016HV4_DATA_L1FastJet_AK8PFchs.txt', 'Summer16_23Sep2016HV4_DATA_L1RC_AK4PFchs.txt', 'Summer16_23Sep2016HV4_DATA_L1RC_AK8PFchs.txt', 'Summer16_23Sep2016HV4_DATA_L2L3Residual_AK4PFchs.txt', 'Summer16_23Sep2016HV4_DATA_L2L3Residual_AK8PFchs.txt', 'Summer16_23Sep2016HV4_DATA_L2Relative_AK4PFchs.txt', 'Summer16_23Sep2016HV4_DATA_L2Relative_AK8PFchs.txt', 'Summer16_23Sep2016HV4_DATA_L2Residual_AK4PFchs.txt', 'Summer16_23Sep2016HV4_DATA_L3Absolute_AK4PFchs.txt', 'Summer16_23Sep2016HV4_DATA_L3Absolute_AK8PFchs.txt', 'Summer16_23Sep2016HV4_DATA_UncertaintySources_AK4PFchs.txt', 'Summer16_23Sep2016HV4_DATA_UncertaintySources_AK8PFchs.txt', 'Summer16_23Sep2016HV4_DATA_Uncertainty_AK4PFchs.txt', 'Summer16_23Sep2016HV4_DATA_Uncertainty_AK8PFchs.txt', 'Summer16_23Sep2016V4_MC_L1FastJet_AK4PFchs.txt', 'Summer16_23Sep2016V4_MC_L1FastJet_AK8PFchs.txt', 'Summer16_23Sep2016V4_MC_L1RC_AK4PFchs.txt', 'Summer16_23Sep2016V4_MC_L1RC_AK8PFchs.txt', 'Summer16_23Sep2016V4_MC_L2L3Residual_AK4PFchs.txt', 'Summer16_23Sep2016V4_MC_L2L3Residual_AK8PFchs.txt', 'Summer16_23Sep2016V4_MC_L2Relative_AK4PFchs.txt', 'Summer16_23Sep2016V4_MC_L2Relative_AK8PFchs.txt', 'Summer16_23Sep2016V4_MC_L3Absolute_AK4PFchs.txt', 'Summer16_23Sep2016V4_MC_L3Absolute_AK8PFchs.txt', 'Summer16_23Sep2016V4_MC_Uncertainty_AK4PFchs.txt', 'Summer16_23Sep2016V4_MC_Uncertainty_AK8PFchs.txt']
+config.JobType.pyCfgParams = ['isData=False', 'changeJECs=True']
+config.JobType.allowUndistributedCMSSW = True
+config.section_('Data')
+config.Data.inputDataset = '/ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph/grauco-RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1_B2GAnaFW_80X_V2P4-bfea8033ab2d179bbb8e0faf6e2dc0cf/USER'
+config.Data.outputDatasetTag = 'Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_15Mar17_test'
+config.Data.publication = False
+config.Data.unitsPerJob = 5
+config.Data.ignoreLocality = True
+config.Data.inputDBS = 'phys03'
+config.Data.splitting = 'FileBased'
+config.Data.outLFNDirBase = '/store/user/oiorio/ttDM/trees/2018/Apr15/'
+config.section_('Site')
+config.Site.whitelist = ['T2_CH_CERN', 'T2_IT_*', 'T2_DE_*', 'T2_CH_*']
+config.Site.storageSite = 'T2_CH_CSCS'
+config.section_('User')
+config.section_('Debug')
+
+DEBUG 2018-04-15 17:17:18,167: 	 self.config.JobType.psetName: topplusdmTrees_cfg.py
+INFO 2018-04-15 17:17:18,167: 	 Importing CMSSW configuration topplusdmTrees_cfg.py
+DEBUG 2018-04-15 17:17:18,167: 	 Additional parameters for the CMSSW configuration are: ['isData=False', 'changeJECs=True']
+INFO 2018-04-15 17:17:18,324: 	 Finished importing CMSSW configuration topplusdmTrees_cfg.py
+DEBUG 2018-04-15 17:17:18,324: 	 Writing CMSSW configuration to /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/src/ttDM/treeDumper/test/crab_15Apr/crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test/inputs/PSet.py
+DEBUG 2018-04-15 17:17:18,378: 	 The following EDM output files will be collected: []
+DEBUG 2018-04-15 17:17:18,378: 	 The following TFile output files will be collected: ['treesTTJets.root']
+DEBUG 2018-04-15 17:17:18,378: 	 The following user output files will be collected: []
+DEBUG 2018-04-15 17:17:18,378: 	 Loading required information from the environment
+DEBUG 2018-04-15 17:17:18,378: 	 Found CMSSW_8_0_20 for slc6_amd64_gcc530 with base /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20
+DEBUG 2018-04-15 17:17:18,378: 	 Making tarball in /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/src/ttDM/treeDumper/test/crab_15Apr/crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test/inputs/830198c4-5740-43a3-ad17-5a01dd430627default.tgz
+DEBUG 2018-04-15 17:17:18,384: 	 Checking directory /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/lib
+DEBUG 2018-04-15 17:17:18,385: 	 Adding directory /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/lib to tarball
+DEBUG 2018-04-15 17:17:18,562: 	 Checking directory /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/biglib
+DEBUG 2018-04-15 17:17:18,562: 	 Adding directory /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/biglib to tarball
+DEBUG 2018-04-15 17:17:18,563: 	 Checking directory /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/module
+DEBUG 2018-04-15 17:17:18,581: 	 Adding file Spring16_25nsV10_MC_PtResolution_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:18,583: 	 Adding file Summer16_23Sep2016BCDV4_DATA_L1FastJet_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:18,586: 	 Adding file Summer16_23Sep2016BCDV4_DATA_L1FastJet_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:18,588: 	 Adding file Summer16_23Sep2016BCDV4_DATA_L1RC_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:18,590: 	 Adding file Summer16_23Sep2016BCDV4_DATA_L1RC_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:18,593: 	 Adding file Summer16_23Sep2016BCDV4_DATA_L2L3Residual_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:18,594: 	 Adding file Summer16_23Sep2016BCDV4_DATA_L2L3Residual_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:18,595: 	 Adding file Summer16_23Sep2016BCDV4_DATA_L2Relative_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:18,714: 	 Adding file Summer16_23Sep2016BCDV4_DATA_L2Relative_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:18,832: 	 Adding file Summer16_23Sep2016BCDV4_DATA_L2Residual_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:18,834: 	 Adding file Summer16_23Sep2016BCDV4_DATA_L3Absolute_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:18,834: 	 Adding file Summer16_23Sep2016BCDV4_DATA_L3Absolute_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:18,835: 	 Adding file Summer16_23Sep2016BCDV4_DATA_UncertaintySources_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:19,182: 	 Adding file Summer16_23Sep2016BCDV4_DATA_UncertaintySources_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:19,518: 	 Adding file Summer16_23Sep2016BCDV4_DATA_Uncertainty_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:19,536: 	 Adding file Summer16_23Sep2016BCDV4_DATA_Uncertainty_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:19,550: 	 Adding file Summer16_23Sep2016EFV4_DATA_L1FastJet_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:19,553: 	 Adding file Summer16_23Sep2016EFV4_DATA_L1FastJet_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:19,555: 	 Adding file Summer16_23Sep2016EFV4_DATA_L1RC_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:19,558: 	 Adding file Summer16_23Sep2016EFV4_DATA_L1RC_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:19,560: 	 Adding file Summer16_23Sep2016EFV4_DATA_L2L3Residual_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:19,561: 	 Adding file Summer16_23Sep2016EFV4_DATA_L2L3Residual_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:19,561: 	 Adding file Summer16_23Sep2016EFV4_DATA_L2Relative_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:19,676: 	 Adding file Summer16_23Sep2016EFV4_DATA_L2Relative_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:19,790: 	 Adding file Summer16_23Sep2016EFV4_DATA_L2Residual_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:19,792: 	 Adding file Summer16_23Sep2016EFV4_DATA_L3Absolute_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:19,792: 	 Adding file Summer16_23Sep2016EFV4_DATA_L3Absolute_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:19,793: 	 Adding file Summer16_23Sep2016EFV4_DATA_UncertaintySources_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:20,121: 	 Adding file Summer16_23Sep2016EFV4_DATA_UncertaintySources_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:20,448: 	 Adding file Summer16_23Sep2016EFV4_DATA_Uncertainty_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:20,464: 	 Adding file Summer16_23Sep2016EFV4_DATA_Uncertainty_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:20,478: 	 Adding file Summer16_23Sep2016GV4_DATA_L1FastJet_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:20,482: 	 Adding file Summer16_23Sep2016GV4_DATA_L1FastJet_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:20,485: 	 Adding file Summer16_23Sep2016GV4_DATA_L1RC_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:20,488: 	 Adding file Summer16_23Sep2016GV4_DATA_L1RC_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:20,490: 	 Adding file Summer16_23Sep2016GV4_DATA_L2L3Residual_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:20,491: 	 Adding file Summer16_23Sep2016GV4_DATA_L2L3Residual_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:20,492: 	 Adding file Summer16_23Sep2016GV4_DATA_L2Relative_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:20,613: 	 Adding file Summer16_23Sep2016GV4_DATA_L2Relative_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:20,735: 	 Adding file Summer16_23Sep2016GV4_DATA_L2Residual_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:20,737: 	 Adding file Summer16_23Sep2016GV4_DATA_L3Absolute_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:20,737: 	 Adding file Summer16_23Sep2016GV4_DATA_L3Absolute_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:20,738: 	 Adding file Summer16_23Sep2016GV4_DATA_UncertaintySources_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:21,085: 	 Adding file Summer16_23Sep2016GV4_DATA_UncertaintySources_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:21,419: 	 Adding file Summer16_23Sep2016GV4_DATA_Uncertainty_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:21,436: 	 Adding file Summer16_23Sep2016GV4_DATA_Uncertainty_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:21,452: 	 Adding file Summer16_23Sep2016HV4_DATA_L1FastJet_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:21,455: 	 Adding file Summer16_23Sep2016HV4_DATA_L1FastJet_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:21,457: 	 Adding file Summer16_23Sep2016HV4_DATA_L1RC_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:21,460: 	 Adding file Summer16_23Sep2016HV4_DATA_L1RC_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:21,462: 	 Adding file Summer16_23Sep2016HV4_DATA_L2L3Residual_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:21,463: 	 Adding file Summer16_23Sep2016HV4_DATA_L2L3Residual_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:21,463: 	 Adding file Summer16_23Sep2016HV4_DATA_L2Relative_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:21,579: 	 Adding file Summer16_23Sep2016HV4_DATA_L2Relative_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:21,694: 	 Adding file Summer16_23Sep2016HV4_DATA_L2Residual_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:21,695: 	 Adding file Summer16_23Sep2016HV4_DATA_L3Absolute_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:21,696: 	 Adding file Summer16_23Sep2016HV4_DATA_L3Absolute_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:21,696: 	 Adding file Summer16_23Sep2016HV4_DATA_UncertaintySources_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:22,044: 	 Adding file Summer16_23Sep2016HV4_DATA_UncertaintySources_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:22,387: 	 Adding file Summer16_23Sep2016HV4_DATA_Uncertainty_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:22,408: 	 Adding file Summer16_23Sep2016HV4_DATA_Uncertainty_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:22,426: 	 Adding file Summer16_23Sep2016V4_MC_L1FastJet_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:22,429: 	 Adding file Summer16_23Sep2016V4_MC_L1FastJet_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:22,431: 	 Adding file Summer16_23Sep2016V4_MC_L1RC_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:22,435: 	 Adding file Summer16_23Sep2016V4_MC_L1RC_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:22,437: 	 Adding file Summer16_23Sep2016V4_MC_L2L3Residual_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:22,437: 	 Adding file Summer16_23Sep2016V4_MC_L2L3Residual_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:22,438: 	 Adding file Summer16_23Sep2016V4_MC_L2Relative_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:22,558: 	 Adding file Summer16_23Sep2016V4_MC_L2Relative_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:22,681: 	 Adding file Summer16_23Sep2016V4_MC_L3Absolute_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:22,682: 	 Adding file Summer16_23Sep2016V4_MC_L3Absolute_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:22,683: 	 Adding file Summer16_23Sep2016V4_MC_Uncertainty_AK4PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:22,693: 	 Adding file Summer16_23Sep2016V4_MC_Uncertainty_AK8PFchs.txt to tarball
+DEBUG 2018-04-15 17:17:22,750: 	 Uploading archive /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/src/ttDM/treeDumper/test/crab_15Apr/crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test/inputs/830198c4-5740-43a3-ad17-5a01dd430627default.tgz (2.367188.1 MB) to the CRAB cache. Using URI https://cmsweb.cern.ch/crabcache
+DEBUG 2018-04-15 17:17:24,219: 	 Loading required information from the environment
+DEBUG 2018-04-15 17:17:24,219: 	 Found CMSSW_8_0_20 for slc6_amd64_gcc530 with base /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20
+DEBUG 2018-04-15 17:17:24,219: 	 Making tarball in /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/src/ttDM/treeDumper/test/crab_15Apr/crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test/inputs/debugFiles.tgz
+DEBUG 2018-04-15 17:17:24,223: 	 Uploading archive /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/src/ttDM/treeDumper/test/crab_15Apr/crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test/inputs/debugFiles.tgz (4 KB) to the CRAB cache. Using URI https://cmsweb.cern.ch/crabcache
+DEBUG 2018-04-15 17:17:24,549: 	 Result uploading input files: 2a669b7f71c6add9af9da13081843b33069a8be484d6a0c9330881ce37156d15.tar.gz 
+INFO 2018-04-15 17:17:24,550: 	 Sending the request to the server
+DEBUG 2018-04-15 17:17:24,550: 	 Submitting {'maxjobruntime': 1250, 'extrajdl': [], 'ignorelocality': 1, 'savelogsflag': 0, 'useparent': 0, 'asyncdest': 'T2_CH_CSCS', 'algoargs': 5, 'cachefilename': '2a669b7f71c6add9af9da13081843b33069a8be484d6a0c9330881ce37156d15.tar.gz', 'numcores': 1, 'addoutputfiles': [], 'generator': 'pythia', 'maxmemory': 2000, 'publishdbsurl': 'https://cmsweb.cern.ch/dbs/prod/phys03/DBSWriter', 'priority': 10, 'jobsw': 'CMSSW_8_0_20', 'edmoutfiles': [], 'userfiles': [], 'primarydataset': '', 'inputdata': '/ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph/grauco-RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1_B2GAnaFW_80X_V2P4-bfea8033ab2d179bbb8e0faf6e2dc0cf/USER', 'lfn': '/store/user/oiorio/ttDM/trees/2018/Apr15/', 'dryrun': 0, 'workflow': 'crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test', 'sitewhitelist': ['T2_CH_CERN', 'T2_IT_*', 'T2_DE_*', 'T2_CH_*'], 'nonprodsw': 1, 'tfileoutfiles': ['treesTTJets.root'], 'oneEventMode': 0, 'debugfilename': '657b6d063e390aeec2593914e69cd64cd752634d2a9e66bd34553cd873e8b826.tar.gz', 'cacheurl': u'https://cmsweb.cern.ch/crabcache', 'saveoutput': 1, 'publication': 0, 'jobarch': 'slc6_amd64_gcc530', 'totalunits': 0, 'splitalgo': 'FileBased', 'ignoreglobalblacklist': 0, 'nonvaliddata': 0, 'dbsurl': 'https://cmsweb.cern.ch/dbs/prod/phys03/DBSReader', 'publishgroupname': 0, 'jobtype': 'Analysis', 'publishname2': 'Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_15Mar17_test'} 
+DEBUG 2018-04-15 17:17:24,550: 	 Encoded submit request: maxjobruntime=1250&ignorelocality=1&savelogsflag=0&useparent=0&asyncdest=T2_CH_CSCS&algoargs=5&cachefilename=2a669b7f71c6add9af9da13081843b33069a8be484d6a0c9330881ce37156d15.tar.gz&numcores=1&generator=pythia&maxmemory=2000&publishdbsurl=https%3A%2F%2Fcmsweb.cern.ch%2Fdbs%2Fprod%2Fphys03%2FDBSWriter&priority=10&jobsw=CMSSW_8_0_20&primarydataset=&inputdata=%2FZJetsToNuNu_HT-2500ToInf_13TeV-madgraph%2Fgrauco-RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1_B2GAnaFW_80X_V2P4-bfea8033ab2d179bbb8e0faf6e2dc0cf%2FUSER&lfn=%2Fstore%2Fuser%2Foiorio%2FttDM%2Ftrees%2F2018%2FApr15%2F&dryrun=0&workflow=crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test&nonprodsw=1&oneEventMode=0&debugfilename=657b6d063e390aeec2593914e69cd64cd752634d2a9e66bd34553cd873e8b826.tar.gz&cacheurl=https%3A%2F%2Fcmsweb.cern.ch%2Fcrabcache&saveoutput=1&publication=0&jobarch=slc6_amd64_gcc530&totalunits=0&splitalgo=FileBased&ignoreglobalblacklist=0&nonvaliddata=0&dbsurl=https%3A%2F%2Fcmsweb.cern.ch%2Fdbs%2Fprod%2Fphys03%2FDBSReader&publishgroupname=0&jobtype=Analysis&publishname2=Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_15Mar17_test&sitewhitelist=T2_CH_CERN&sitewhitelist=T2_IT_%2A&sitewhitelist=T2_DE_%2A&sitewhitelist=T2_CH_%2A&tfileoutfiles=treesTTJets.root
+DEBUG 2018-04-15 17:17:24,980: 	 Result: {u'result': [{u'RequestName': u'180415_151724:oiorio_crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test'}]}
+INFO 2018-04-15 17:17:24,983: 	 Success: Your task has been delivered to the CRAB3 server.
+INFO 2018-04-15 17:17:24,983: 	 Task name: 180415_151724:oiorio_crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test
+INFO 2018-04-15 17:17:24,983: 	 Please use 'crab status' to check how the submission process proceeds.
+DEBUG 2018-04-15 17:17:24,983: 	 About to return
+DEBUG 2018-04-15 17:41:40,417: 	 Executing command: 'status'
+DEBUG 2018-04-15 17:41:40,417: 	 Found CRAB cache file /afs/cern.ch/user/o/oiorio/.crab3
+DEBUG 2018-04-15 17:41:40,424: 	 Checking credentials
+DEBUG 2018-04-15 17:41:40,425: 	 Found proxy file /tmp/x509up_u31365
+DEBUG 2018-04-15 17:41:40,425: 	 Getting proxy life time left
+DEBUG 2018-04-15 17:41:41,035: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u31365 -timeleft
+ output : 41473
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-15 17:41:41,642: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u31365 -actimeleft
+ output : 41472
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-15 17:41:41,642: 	 Proxy valid for 11:31:13 hours
+DEBUG 2018-04-15 17:41:41,819: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-15 17:41:41,819: 	 Checking credentials
+DEBUG 2018-04-15 17:41:41,819: 	 Found proxy file /tmp/x509up_u31365
+DEBUG 2018-04-15 17:41:41,820: 	 Getting proxy life time left
+DEBUG 2018-04-15 17:41:42,525: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u31365 -timeleft
+ output : 41471
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-15 17:41:43,132: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u31365 -actimeleft
+ output : 41470
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-15 17:41:43,132: 	 Proxy valid for 11:31:11 hours
+DEBUG 2018-04-15 17:41:43,565: 	 Registering user credentials for server /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108|0105|0109).cern.ch
+DEBUG 2018-04-15 17:41:43,677: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-15 17:41:43,677: 	 Getting myproxy life time left for myproxy.cern.ch
+DEBUG 2018-04-15 17:41:43,677: 	 Calculating hash of /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio_cmsweb.cern.ch for credential name
+DEBUG 2018-04-15 17:41:43,781: 	 Executing : 
+ command : myproxy-info -l ae9637610ea27f91075d015fc1e15a7328a99708 -s myproxy.cern.ch
+ output : username: ae9637610ea27f91075d015fc1e15a7328a99708
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108|0105|0109).cern.ch
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108|0105|0109).cern.ch
+  timeleft: 560:17:23  (23.3 days)
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-15 17:41:43,782: 	 Myproxy is valid: 2017043
+DEBUG 2018-04-15 17:41:43,782: 	 Command use: status
+DEBUG 2018-04-15 17:41:43,782: 	 Options use: ['crab_15Apr//crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test']
+DEBUG 2018-04-15 17:41:44,140: 	 CRABClient version: 3.3.1804
+DEBUG 2018-04-15 17:41:44,140: 	 Instance is prod
+DEBUG 2018-04-15 17:41:44,140: 	 Server base url is cmsweb.cern.ch
+DEBUG 2018-04-15 17:41:44,140: 	 Command url /crabserver/prod/workflow
+DEBUG 2018-04-15 17:41:44,505: 	 Got information from server oracle database: {u'result': [u'180415_151724:oiorio_crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test', u'None', u'None', u'SUBMITTED', u'SUBMIT', u'2018-04-15 15:17:24.962552', u'None', u'2018-04-15 15:18:20.566333', u'None', u'CMSSW_8_0_20', u'slc6_amd64_gcc530', u'/ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph/grauco-RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1_B2GAnaFW_80X_V2P4-bfea8033ab2d179bbb8e0faf6e2dc0cf/USER', u'F', u'0', u"['T2_CH_CERN_HLT', 'T2_DE_DESY', 'T2_CH_CSCS', 'T2_IT_Bari', 'T2_IT_Legnaro', 'T2_IT_Rome', 'T2_DE_RWTH', 'T2_CH_CERN_AI', 'T2_CH_CERN', 'T2_CH_CSCS_HPC', 'T2_IT_Pisa']", u'[]', u'FileBased', u"{'splitOnRun': False, 'halt_job_on_file_boundaries': False, 'files_per_job': 5, 'runs': [], 'lumis': []}", u'2a669b7f71c6add9af9da13081843b33069a8be484d6a0c9330881ce37156d15.tar.gz', u'https://cmsweb.cern.ch/crabcache', u'oiorio', u'/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio', u'cms', u'None', u'None', u'Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_15Mar17_test-00000000000000000000000000000000', u'F', u'T2_CH_CSCS', u'https://cmsweb.cern.ch/dbs/prod/phys03/DBSReader', u'https://cmsweb.cern.ch/dbs/prod/phys03/DBSWriter', u'F', u'[]', u"['treesTTJets.root']", u'[]', u'Analysis', u'pythia', u'None', u'{}', u'[]', u'F', u'vocms052', u'[]', u'1250', u'1', u'2000', u'10', u'None', u'[]', u'http://vocms0199.cern.ch/mon/cms113/180415_151724:oiorio_crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test', u'None', u'[]', u'[]', u'https://cmsweb.cern.ch/crabserver/prod', u'cmsgwms-collector-global.cern.ch:9620,cmssrv221.fnal.gov:9620', u'crab3@vocms0199.cern.ch', u'F', u'[]', u'T', u'/store/user/oiorio/ttDM/trees/2018/Apr15/', u'T', u'None', u'F', u'None', u'ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph', u'None', u'657b6d063e390aeec2593914e69cd64cd752634d2a9e66bd34553cd873e8b826.tar.gz', u'19850909', u'filetransfers', u'F', u'137.138.32.24', u'0.0'], u'desc': {u'columns': [u'tm_taskname', u'tm_activity', u'panda_jobset_id', u'tm_task_status', u'tm_task_command', u'tm_start_time', u'tm_start_injection', u'tm_end_injection', u'tm_task_failure', u'tm_job_sw', u'tm_job_arch', u'tm_input_dataset', u'tm_nonvalid_input_dataset', u'tm_use_parent', u'tm_site_whitelist', u'tm_site_blacklist', u'tm_split_algo', u'tm_split_args', u'tm_user_sandbox', u'tm_cache_url', u'tm_username', u'tm_user_dn', u'tm_user_vo', u'tm_user_role', u'tm_user_group', u'tm_publish_name', u'tm_publish_groupname', u'tm_asyncdest', u'tm_dbs_url', u'tm_publish_dbs_url', u'tm_publication', u'tm_outfiles', u'tm_tfile_outfiles', u'tm_edm_outfiles', u'tm_job_type', u'tm_generator', u'tm_events_per_lumi', u'tm_arguments', u'panda_resubmitted_jobs', u'tm_save_logs', u'tw_name', u'tm_user_infiles', u'tm_maxjobruntime', u'tm_numcores', u'tm_maxmemory', u'tm_priority', u'tm_output_dataset', u'tm_task_warnings', u'tm_user_webdir', u'tm_scriptexe', u'tm_scriptargs', u'tm_extrajdl', u'tm_asourl', u'tm_collector', u'tm_schedd', u'tm_dry_run', u'tm_user_files', u'tm_transfer_outputs', u'tm_output_lfn', u'tm_ignore_locality', u'tm_fail_limit', u'tm_one_event_mode', u'tm_secondary_input_dataset', u'tm_primary_dataset', u'tm_last_publication', u'tm_debug_files', u'clusterid', u'tm_asodb', u'tm_ignore_global_blacklist', u'tm_submitter_ip_addr', u'tm_totalunits']}}
+INFO 2018-04-15 17:41:44,505: 	 CRAB project directory:		/afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/src/ttDM/treeDumper/test/crab_15Apr/crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test
+INFO 2018-04-15 17:41:44,505: 	 Task name:			180415_151724:oiorio_crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test
+INFO 2018-04-15 17:41:44,505: 	 Grid scheduler:			crab3@vocms0199.cern.ch
+INFO 2018-04-15 17:41:44,505: 	 Status on the CRAB server:	SUBMITTED
+INFO 2018-04-15 17:41:44,505: 	 Task URL to use for HELP:	https://cmsweb.cern.ch/crabserver/ui/task/180415_151724%3Aoiorio_crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test
+INFO 2018-04-15 17:41:44,505: 	 Dashboard monitoring URL:	http://dashb-cms-job.cern.ch/dashboard/templates/task-analysis/#user=oiorio&refresh=0&table=Jobs&p=1&records=25&activemenu=2&status=&site=&tid=180415_151724%3Aoiorio_crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test
+DEBUG 2018-04-15 17:41:44,506: 	 The CRAB server submitted your task to the Grid scheduler (cluster ID: 19850909)
+DEBUG 2018-04-15 17:41:44,506: 	 Webdir is located at http://vocms0199.cern.ch/mon/cms113/180415_151724:oiorio_crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test
+DEBUG 2018-04-15 17:41:44,840: 	 Proxied webdir is located at https://cmsweb.cern.ch/scheddmon/0199/cms113/180415_151724:oiorio_crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test
+DEBUG 2018-04-15 17:41:44,841: 	 Retrieving 'status_cache' file from https://cmsweb.cern.ch/scheddmon/0199/cms113/180415_151724:oiorio_crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test/status_cache
+DEBUG 2018-04-15 17:41:45,175: 	 Got information from status cache file: {'1': {'Retries': 0, 'WallDurations': [9.0, 425.0], 'StartTimes': [1523805667.0], 'SubmitTimes': [1523805512.0], 'JobIds': ['19850912.0'], 'TotalUserCpuTimeHistory': [352], 'EndTimes': [1523806092.0], 'Restarts': 0, 'RecordedSite': True, 'State': 'failed', 'ResidentSetSize': [454020], 'Error': [139, 'CmsRunFailure', {}], 'SiteHistory': ['Unknown', 'T2_IT_Legnaro'], 'TotalSysCpuTimeHistory': [5]}, '3': {'Retries': 0, 'WallDurations': [9.0, 251.0], 'StartTimes': [1523805681.0], 'SubmitTimes': [1523805512.0], 'JobIds': ['19850911.0'], 'TotalUserCpuTimeHistory': [181], 'EndTimes': [1523805932.0], 'Restarts': 0, 'RecordedSite': True, 'State': 'failed', 'ResidentSetSize': [21504], 'Error': [139, 'CmsRunFailure', {}], 'SiteHistory': ['Unknown', 'T2_IT_Legnaro'], 'TotalSysCpuTimeHistory': [3]}, '2': {'Retries': 0, 'WallDurations': [186.0, 191.94939708709717], 'StartTimes': [1523805686.0], 'SubmitTimes': [1523805513.0], 'JobIds': ['19850913.0'], 'EndTimes': [1523805872.0], 'Restarts': 0, 'RecordedSite': True, 'State': 'failed', 'ResidentSetSize': [15348], 'TotalUserCpuTimeHistory': [135], 'SiteHistory': ['Unknown', 'T2_IT_Legnaro'], 'TotalSysCpuTimeHistory': [2]}}
+INFO 2018-04-15 17:41:45,175: 	 Status on the scheduler:	FAILED
+INFO 2018-04-15 17:41:45,175: 	 
+Jobs status:                    failed        100.0% (3/3)
+INFO 2018-04-15 17:41:45,175: 	 
+No publication information (publication has been disabled in the CRAB configuration file)
+INFO 2018-04-15 17:41:45,175: 	 
+Error Summary: (use crab status --verboseErrors for details about the errors)
+
+2 jobs failed with exit code 139
+
+Could not find exit code details for 1 jobs.
+
+Have a look at https://twiki.cern.ch/twiki/bin/viewauth/CMSPublic/JobExitCodes for a description of the exit codes.
+INFO 2018-04-15 17:41:45,175: 	 
+Warning: the max jobs memory is less than 70% of the task requested value (2000 MB), please consider to request a lower value (allowed through crab resubmit) and/or improve the jobs splitting (e.g. config.Data.splitting = 'Automatic') in a new task.
+INFO 2018-04-15 17:41:45,175: 	 
+Summary:
+ * Memory: 14MB min, 443MB max, 160MB ave
+ * Runtime: 0:03:11 min, 0:07:05 max, 0:04:49 ave
+ * CPU eff: 71% min, 84% max, 78% ave
+ * Waste: 0:03:24 (19% of total)
+
+INFO 2018-04-15 17:41:45,187: 	 Log file is /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/src/ttDM/treeDumper/test/crab_15Apr/crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test/crab.log
+DEBUG 2018-04-15 17:41:45,713: 	 Executing command: 'resubmit'
+DEBUG 2018-04-15 17:41:45,714: 	 Found CRAB cache file /afs/cern.ch/user/o/oiorio/.crab3
+DEBUG 2018-04-15 17:41:45,720: 	 Checking credentials
+DEBUG 2018-04-15 17:41:45,720: 	 Found proxy file /tmp/x509up_u31365
+DEBUG 2018-04-15 17:41:45,720: 	 Getting proxy life time left
+DEBUG 2018-04-15 17:41:46,324: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u31365 -timeleft
+ output : 41467
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-15 17:41:47,130: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u31365 -actimeleft
+ output : 41466
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-15 17:41:47,131: 	 Proxy valid for 11:31:07 hours
+DEBUG 2018-04-15 17:41:47,242: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-15 17:41:47,243: 	 Checking credentials
+DEBUG 2018-04-15 17:41:47,243: 	 Found proxy file /tmp/x509up_u31365
+DEBUG 2018-04-15 17:41:47,243: 	 Getting proxy life time left
+DEBUG 2018-04-15 17:41:47,848: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u31365 -timeleft
+ output : 41466
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-15 17:41:48,454: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u31365 -actimeleft
+ output : 41465
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-15 17:41:48,455: 	 Proxy valid for 11:31:06 hours
+DEBUG 2018-04-15 17:41:48,809: 	 Registering user credentials for server /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108|0105|0109).cern.ch
+DEBUG 2018-04-15 17:41:48,918: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-15 17:41:48,919: 	 Getting myproxy life time left for myproxy.cern.ch
+DEBUG 2018-04-15 17:41:48,919: 	 Calculating hash of /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio_cmsweb.cern.ch for credential name
+DEBUG 2018-04-15 17:41:49,122: 	 Executing : 
+ command : myproxy-info -l ae9637610ea27f91075d015fc1e15a7328a99708 -s myproxy.cern.ch
+ output : username: ae9637610ea27f91075d015fc1e15a7328a99708
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108|0105|0109).cern.ch
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108|0105|0109).cern.ch
+  timeleft: 560:17:17  (23.3 days)
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-15 17:41:49,123: 	 Myproxy is valid: 2017037
+DEBUG 2018-04-15 17:41:49,124: 	 Command use: resubmit
+DEBUG 2018-04-15 17:41:49,124: 	 Options use: ['crab_15Apr//crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test']
+DEBUG 2018-04-15 17:41:49,484: 	 CRABClient version: 3.3.1804
+DEBUG 2018-04-15 17:41:49,487: 	 Instance is prod
+DEBUG 2018-04-15 17:41:49,487: 	 Server base url is cmsweb.cern.ch
+DEBUG 2018-04-15 17:41:49,487: 	 Command url /crabserver/prod/workflow
+DEBUG 2018-04-15 17:41:49,487: 	 Executing command: 'status'
+DEBUG 2018-04-15 17:41:49,487: 	 Found CRAB cache file /afs/cern.ch/user/o/oiorio/.crab3
+DEBUG 2018-04-15 17:41:49,495: 	 Checking credentials
+DEBUG 2018-04-15 17:41:49,495: 	 Found proxy file /tmp/x509up_u31365
+DEBUG 2018-04-15 17:41:49,495: 	 Getting proxy life time left
+DEBUG 2018-04-15 17:41:50,099: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u31365 -timeleft
+ output : 41463
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-15 17:41:50,704: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u31365 -actimeleft
+ output : 41463
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-15 17:41:50,705: 	 Proxy valid for 11:31:03 hours
+DEBUG 2018-04-15 17:41:50,900: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-15 17:41:50,900: 	 Checking credentials
+DEBUG 2018-04-15 17:41:50,901: 	 Found proxy file /tmp/x509up_u31365
+DEBUG 2018-04-15 17:41:50,901: 	 Getting proxy life time left
+DEBUG 2018-04-15 17:41:51,710: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u31365 -timeleft
+ output : 41462
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-15 17:41:52,426: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u31365 -actimeleft
+ output : 41461
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-15 17:41:52,426: 	 Proxy valid for 11:31:02 hours
+DEBUG 2018-04-15 17:41:52,782: 	 Registering user credentials for server /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108|0105|0109).cern.ch
+DEBUG 2018-04-15 17:41:52,892: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-15 17:41:52,892: 	 Getting myproxy life time left for myproxy.cern.ch
+DEBUG 2018-04-15 17:41:52,892: 	 Calculating hash of /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio_cmsweb.cern.ch for credential name
+DEBUG 2018-04-15 17:41:53,097: 	 Executing : 
+ command : myproxy-info -l ae9637610ea27f91075d015fc1e15a7328a99708 -s myproxy.cern.ch
+ output : username: ae9637610ea27f91075d015fc1e15a7328a99708
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108|0105|0109).cern.ch
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108|0105|0109).cern.ch
+  timeleft: 560:17:14  (23.3 days)
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-15 17:41:53,097: 	 Myproxy is valid: 2017034
+DEBUG 2018-04-15 17:41:53,097: 	 Command use: status
+DEBUG 2018-04-15 17:41:53,097: 	 Options use: []
+DEBUG 2018-04-15 17:41:53,440: 	 CRABClient version: 3.3.1804
+DEBUG 2018-04-15 17:41:53,440: 	 Instance is prod
+DEBUG 2018-04-15 17:41:53,440: 	 Server base url is cmsweb.cern.ch
+DEBUG 2018-04-15 17:41:53,440: 	 Command url /crabserver/prod/workflow
+DEBUG 2018-04-15 17:41:53,787: 	 Got information from server oracle database: {u'result': [u'180415_151724:oiorio_crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test', u'None', u'None', u'SUBMITTED', u'SUBMIT', u'2018-04-15 15:17:24.962552', u'None', u'2018-04-15 15:18:20.566333', u'None', u'CMSSW_8_0_20', u'slc6_amd64_gcc530', u'/ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph/grauco-RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1_B2GAnaFW_80X_V2P4-bfea8033ab2d179bbb8e0faf6e2dc0cf/USER', u'F', u'0', u"['T2_CH_CERN_HLT', 'T2_DE_DESY', 'T2_CH_CSCS', 'T2_IT_Bari', 'T2_IT_Legnaro', 'T2_IT_Rome', 'T2_DE_RWTH', 'T2_CH_CERN_AI', 'T2_CH_CERN', 'T2_CH_CSCS_HPC', 'T2_IT_Pisa']", u'[]', u'FileBased', u"{'splitOnRun': False, 'halt_job_on_file_boundaries': False, 'files_per_job': 5, 'runs': [], 'lumis': []}", u'2a669b7f71c6add9af9da13081843b33069a8be484d6a0c9330881ce37156d15.tar.gz', u'https://cmsweb.cern.ch/crabcache', u'oiorio', u'/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio', u'cms', u'None', u'None', u'Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_15Mar17_test-00000000000000000000000000000000', u'F', u'T2_CH_CSCS', u'https://cmsweb.cern.ch/dbs/prod/phys03/DBSReader', u'https://cmsweb.cern.ch/dbs/prod/phys03/DBSWriter', u'F', u'[]', u"['treesTTJets.root']", u'[]', u'Analysis', u'pythia', u'None', u'{}', u'[]', u'F', u'vocms052', u'[]', u'1250', u'1', u'2000', u'10', u'None', u'[]', u'http://vocms0199.cern.ch/mon/cms113/180415_151724:oiorio_crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test', u'None', u'[]', u'[]', u'https://cmsweb.cern.ch/crabserver/prod', u'cmsgwms-collector-global.cern.ch:9620,cmssrv221.fnal.gov:9620', u'crab3@vocms0199.cern.ch', u'F', u'[]', u'T', u'/store/user/oiorio/ttDM/trees/2018/Apr15/', u'T', u'None', u'F', u'None', u'ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph', u'None', u'657b6d063e390aeec2593914e69cd64cd752634d2a9e66bd34553cd873e8b826.tar.gz', u'19850909', u'filetransfers', u'F', u'137.138.32.24', u'0.0'], u'desc': {u'columns': [u'tm_taskname', u'tm_activity', u'panda_jobset_id', u'tm_task_status', u'tm_task_command', u'tm_start_time', u'tm_start_injection', u'tm_end_injection', u'tm_task_failure', u'tm_job_sw', u'tm_job_arch', u'tm_input_dataset', u'tm_nonvalid_input_dataset', u'tm_use_parent', u'tm_site_whitelist', u'tm_site_blacklist', u'tm_split_algo', u'tm_split_args', u'tm_user_sandbox', u'tm_cache_url', u'tm_username', u'tm_user_dn', u'tm_user_vo', u'tm_user_role', u'tm_user_group', u'tm_publish_name', u'tm_publish_groupname', u'tm_asyncdest', u'tm_dbs_url', u'tm_publish_dbs_url', u'tm_publication', u'tm_outfiles', u'tm_tfile_outfiles', u'tm_edm_outfiles', u'tm_job_type', u'tm_generator', u'tm_events_per_lumi', u'tm_arguments', u'panda_resubmitted_jobs', u'tm_save_logs', u'tw_name', u'tm_user_infiles', u'tm_maxjobruntime', u'tm_numcores', u'tm_maxmemory', u'tm_priority', u'tm_output_dataset', u'tm_task_warnings', u'tm_user_webdir', u'tm_scriptexe', u'tm_scriptargs', u'tm_extrajdl', u'tm_asourl', u'tm_collector', u'tm_schedd', u'tm_dry_run', u'tm_user_files', u'tm_transfer_outputs', u'tm_output_lfn', u'tm_ignore_locality', u'tm_fail_limit', u'tm_one_event_mode', u'tm_secondary_input_dataset', u'tm_primary_dataset', u'tm_last_publication', u'tm_debug_files', u'clusterid', u'tm_asodb', u'tm_ignore_global_blacklist', u'tm_submitter_ip_addr', u'tm_totalunits']}}
+INFO 2018-04-15 17:41:53,787: 	 CRAB project directory:		/afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/src/ttDM/treeDumper/test/crab_15Apr/crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test
+INFO 2018-04-15 17:41:53,788: 	 Task name:			180415_151724:oiorio_crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test
+INFO 2018-04-15 17:41:53,788: 	 Grid scheduler:			crab3@vocms0199.cern.ch
+INFO 2018-04-15 17:41:53,788: 	 Status on the CRAB server:	SUBMITTED
+INFO 2018-04-15 17:41:53,788: 	 Task URL to use for HELP:	https://cmsweb.cern.ch/crabserver/ui/task/180415_151724%3Aoiorio_crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test
+INFO 2018-04-15 17:41:53,788: 	 Dashboard monitoring URL:	http://dashb-cms-job.cern.ch/dashboard/templates/task-analysis/#user=oiorio&refresh=0&table=Jobs&p=1&records=25&activemenu=2&status=&site=&tid=180415_151724%3Aoiorio_crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test
+DEBUG 2018-04-15 17:41:53,788: 	 The CRAB server submitted your task to the Grid scheduler (cluster ID: 19850909)
+DEBUG 2018-04-15 17:41:53,788: 	 Webdir is located at http://vocms0199.cern.ch/mon/cms113/180415_151724:oiorio_crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test
+DEBUG 2018-04-15 17:41:54,131: 	 Proxied webdir is located at https://cmsweb.cern.ch/scheddmon/0199/cms113/180415_151724:oiorio_crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test
+DEBUG 2018-04-15 17:41:54,131: 	 Retrieving 'status_cache' file from https://cmsweb.cern.ch/scheddmon/0199/cms113/180415_151724:oiorio_crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test/status_cache
+DEBUG 2018-04-15 17:41:54,496: 	 Got information from status cache file: {'1': {'Retries': 0, 'WallDurations': [9.0, 425.0], 'StartTimes': [1523805667.0], 'SubmitTimes': [1523805512.0], 'JobIds': ['19850912.0'], 'TotalUserCpuTimeHistory': [352], 'EndTimes': [1523806092.0], 'Restarts': 0, 'RecordedSite': True, 'State': 'failed', 'ResidentSetSize': [454020], 'Error': [139, 'CmsRunFailure', {}], 'SiteHistory': ['Unknown', 'T2_IT_Legnaro'], 'TotalSysCpuTimeHistory': [5]}, '3': {'Retries': 0, 'WallDurations': [9.0, 251.0], 'StartTimes': [1523805681.0], 'SubmitTimes': [1523805512.0], 'JobIds': ['19850911.0'], 'TotalUserCpuTimeHistory': [181], 'EndTimes': [1523805932.0], 'Restarts': 0, 'RecordedSite': True, 'State': 'failed', 'ResidentSetSize': [21504], 'Error': [139, 'CmsRunFailure', {}], 'SiteHistory': ['Unknown', 'T2_IT_Legnaro'], 'TotalSysCpuTimeHistory': [3]}, '2': {'Retries': 0, 'WallDurations': [186.0, 191.94939708709717], 'StartTimes': [1523805686.0], 'SubmitTimes': [1523805513.0], 'JobIds': ['19850913.0'], 'EndTimes': [1523805872.0], 'Restarts': 0, 'RecordedSite': True, 'State': 'failed', 'ResidentSetSize': [15348], 'TotalUserCpuTimeHistory': [135], 'SiteHistory': ['Unknown', 'T2_IT_Legnaro'], 'TotalSysCpuTimeHistory': [2]}}
+INFO 2018-04-15 17:41:54,496: 	 Status on the scheduler:	FAILED
+INFO 2018-04-15 17:41:54,496: 	 
+Jobs status:                    failed        100.0% (3/3)
+INFO 2018-04-15 17:41:54,496: 	 
+No publication information (publication has been disabled in the CRAB configuration file)
+INFO 2018-04-15 17:41:54,496: 	 
+Error Summary: (use crab status --verboseErrors for details about the errors)
+
+2 jobs failed with exit code 139
+
+Could not find exit code details for 1 jobs.
+
+Have a look at https://twiki.cern.ch/twiki/bin/viewauth/CMSPublic/JobExitCodes for a description of the exit codes.
+INFO 2018-04-15 17:41:54,496: 	 
+Warning: the max jobs memory is less than 70% of the task requested value (2000 MB), please consider to request a lower value (allowed through crab resubmit) and/or improve the jobs splitting (e.g. config.Data.splitting = 'Automatic') in a new task.
+INFO 2018-04-15 17:41:54,496: 	 
+Summary:
+ * Memory: 14MB min, 443MB max, 160MB ave
+ * Runtime: 0:03:11 min, 0:07:05 max, 0:04:49 ave
+ * CPU eff: 71% min, 84% max, 78% ave
+ * Waste: 0:03:24 (19% of total)
+
+DEBUG 2018-04-15 17:41:54,503: 	 Requesting resubmission of failed jobs in task 180415_151724:oiorio_crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test
+INFO 2018-04-15 17:41:54,503: 	 Sending resubmit request to the server.
+DEBUG 2018-04-15 17:41:54,504: 	 Submitting {'publication': 0, 'jobids': ['1', '3', '2'], 'subresource': 'resubmit2', 'workflow': u'180415_151724:oiorio_crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test'} 
+DEBUG 2018-04-15 17:41:54,504: 	 Encoded resubmit request: publication=0&subresource=resubmit2&workflow=180415_151724%3Aoiorio_crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test&jobids=1&jobids=3&jobids=2
+DEBUG 2018-04-15 17:41:54,874: 	 Result: {u'result': [{u'result': u'ok'}], u'desc': {u'columns': [u'tm_site_blacklist', u'tm_site_whitelist', u'tm_maxjobruntime', u'tm_maxmemory', u'tm_numcores', u'tm_priority']}}
+INFO 2018-04-15 17:41:54,874: 	 Resubmit request sent to the server.
+INFO 2018-04-15 17:41:54,874: 	 Please use 'crab status' to check how the resubmission process proceeds.
+Notice it may take a couple of minutes for the resubmission to get fully processed.
+INFO 2018-04-15 17:41:54,877: 	 Log file is /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/src/ttDM/treeDumper/test/crab_15Apr/crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test/crab.log
+DEBUG 2018-04-16 00:52:54,772: 	 Executing command: 'status'
+DEBUG 2018-04-16 00:52:54,772: 	 Found CRAB cache file /afs/cern.ch/user/o/oiorio/.crab3
+DEBUG 2018-04-16 00:52:54,785: 	 Checking credentials
+DEBUG 2018-04-16 00:52:54,785: 	 Found proxy file /tmp/x509up_u31365
+DEBUG 2018-04-16 00:52:54,786: 	 Getting proxy life time left
+DEBUG 2018-04-16 00:52:55,392: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u31365 -timeleft
+ output : 43019
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-16 00:52:55,997: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u31365 -actimeleft
+ output : 43019
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-16 00:52:55,997: 	 Proxy valid for 11:56:59 hours
+DEBUG 2018-04-16 00:52:56,231: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-16 00:52:56,232: 	 Checking credentials
+DEBUG 2018-04-16 00:52:56,232: 	 Found proxy file /tmp/x509up_u31365
+DEBUG 2018-04-16 00:52:56,232: 	 Getting proxy life time left
+DEBUG 2018-04-16 00:52:56,843: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u31365 -timeleft
+ output : 43018
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-16 00:52:57,449: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u31365 -actimeleft
+ output : 43017
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-16 00:52:57,449: 	 Proxy valid for 11:56:58 hours
+DEBUG 2018-04-16 00:52:57,781: 	 Registering user credentials for server /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108|0105|0109).cern.ch
+DEBUG 2018-04-16 00:52:57,893: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-16 00:52:57,893: 	 Getting myproxy life time left for myproxy.cern.ch
+DEBUG 2018-04-16 00:52:57,893: 	 Calculating hash of /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio_cmsweb.cern.ch for credential name
+DEBUG 2018-04-16 00:52:57,999: 	 Executing : 
+ command : myproxy-info -l ae9637610ea27f91075d015fc1e15a7328a99708 -s myproxy.cern.ch
+ output : username: ae9637610ea27f91075d015fc1e15a7328a99708
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108|0105|0109).cern.ch
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108|0105|0109).cern.ch
+  timeleft: 553:06:09  (23.0 days)
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-16 00:52:58,000: 	 Myproxy is valid: 1991169
+DEBUG 2018-04-16 00:52:58,000: 	 Command use: status
+DEBUG 2018-04-16 00:52:58,000: 	 Options use: ['crab_15Apr/crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test']
+DEBUG 2018-04-16 00:52:58,352: 	 CRABClient version: 3.3.1804
+DEBUG 2018-04-16 00:52:58,352: 	 Instance is prod
+DEBUG 2018-04-16 00:52:58,352: 	 Server base url is cmsweb.cern.ch
+DEBUG 2018-04-16 00:52:58,352: 	 Command url /crabserver/prod/workflow
+DEBUG 2018-04-16 00:52:58,745: 	 Got information from server oracle database: {u'result': [u'180415_151724:oiorio_crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test', u'None', u'None', u'SUBMITTED', u'None', u'2018-04-15 15:17:24.962552', u'None', u'2018-04-15 15:18:20.566333', u'None', u'CMSSW_8_0_20', u'slc6_amd64_gcc530', u'/ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph/grauco-RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1_B2GAnaFW_80X_V2P4-bfea8033ab2d179bbb8e0faf6e2dc0cf/USER', u'F', u'0', u"['T2_CH_CERN_HLT', 'T2_DE_DESY', 'T2_CH_CSCS', 'T2_IT_Bari', 'T2_IT_Legnaro', 'T2_IT_Rome', 'T2_DE_RWTH', 'T2_CH_CERN_AI', 'T2_CH_CERN', 'T2_CH_CSCS_HPC', 'T2_IT_Pisa']", u'[]', u'FileBased', u"{'splitOnRun': False, 'halt_job_on_file_boundaries': False, 'files_per_job': 5, 'runs': [], 'lumis': []}", u'2a669b7f71c6add9af9da13081843b33069a8be484d6a0c9330881ce37156d15.tar.gz', u'https://cmsweb.cern.ch/crabcache', u'oiorio', u'/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio', u'cms', u'None', u'None', u'Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_15Mar17_test-00000000000000000000000000000000', u'F', u'T2_CH_CSCS', u'https://cmsweb.cern.ch/dbs/prod/phys03/DBSReader', u'https://cmsweb.cern.ch/dbs/prod/phys03/DBSWriter', u'F', u'[]', u"['treesTTJets.root']", u'[]', u'Analysis', u'pythia', u'None', u"{'maxjobruntime': 1250, 'priority': 10, 'site_blacklist': [], 'resubmit_jobids': ['1', '3', '2'], 'numcores': 1, 'site_whitelist': ['T2_CH_CERN_HLT', 'T2_DE_DESY', 'T2_CH_CSCS', 'T2_IT_Bari', 'T2_IT_Legnaro', 'T2_IT_Rome', 'T2_DE_RWTH', 'T2_CH_CERN_AI', 'T2_CH_CERN', 'T2_CH_CSCS_HPC', 'T2_IT_Pisa'], 'maxmemory': 2000, 'resubmit_publication': 0}", u'[]', u'F', u'vocms052', u'[]', u'1250', u'1', u'2000', u'10', u'None', u'[]', u'http://vocms0199.cern.ch/mon/cms113/180415_151724:oiorio_crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test', u'None', u'[]', u'[]', u'https://cmsweb.cern.ch/crabserver/prod', u'cmsgwms-collector-global.cern.ch:9620,cmssrv221.fnal.gov:9620', u'crab3@vocms0199.cern.ch', u'F', u'[]', u'T', u'/store/user/oiorio/ttDM/trees/2018/Apr15/', u'T', u'None', u'F', u'None', u'ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph', u'None', u'657b6d063e390aeec2593914e69cd64cd752634d2a9e66bd34553cd873e8b826.tar.gz', u'19850909', u'filetransfers', u'F', u'137.138.32.24', u'0.0'], u'desc': {u'columns': [u'tm_taskname', u'tm_activity', u'panda_jobset_id', u'tm_task_status', u'tm_task_command', u'tm_start_time', u'tm_start_injection', u'tm_end_injection', u'tm_task_failure', u'tm_job_sw', u'tm_job_arch', u'tm_input_dataset', u'tm_nonvalid_input_dataset', u'tm_use_parent', u'tm_site_whitelist', u'tm_site_blacklist', u'tm_split_algo', u'tm_split_args', u'tm_user_sandbox', u'tm_cache_url', u'tm_username', u'tm_user_dn', u'tm_user_vo', u'tm_user_role', u'tm_user_group', u'tm_publish_name', u'tm_publish_groupname', u'tm_asyncdest', u'tm_dbs_url', u'tm_publish_dbs_url', u'tm_publication', u'tm_outfiles', u'tm_tfile_outfiles', u'tm_edm_outfiles', u'tm_job_type', u'tm_generator', u'tm_events_per_lumi', u'tm_arguments', u'panda_resubmitted_jobs', u'tm_save_logs', u'tw_name', u'tm_user_infiles', u'tm_maxjobruntime', u'tm_numcores', u'tm_maxmemory', u'tm_priority', u'tm_output_dataset', u'tm_task_warnings', u'tm_user_webdir', u'tm_scriptexe', u'tm_scriptargs', u'tm_extrajdl', u'tm_asourl', u'tm_collector', u'tm_schedd', u'tm_dry_run', u'tm_user_files', u'tm_transfer_outputs', u'tm_output_lfn', u'tm_ignore_locality', u'tm_fail_limit', u'tm_one_event_mode', u'tm_secondary_input_dataset', u'tm_primary_dataset', u'tm_last_publication', u'tm_debug_files', u'clusterid', u'tm_asodb', u'tm_ignore_global_blacklist', u'tm_submitter_ip_addr', u'tm_totalunits']}}
+INFO 2018-04-16 00:52:58,745: 	 CRAB project directory:		/afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/src/ttDM/treeDumper/test/crab_15Apr/crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test
+INFO 2018-04-16 00:52:58,745: 	 Task name:			180415_151724:oiorio_crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test
+INFO 2018-04-16 00:52:58,745: 	 Grid scheduler:			crab3@vocms0199.cern.ch
+INFO 2018-04-16 00:52:58,746: 	 Status on the CRAB server:	SUBMITTED
+INFO 2018-04-16 00:52:58,746: 	 Task URL to use for HELP:	https://cmsweb.cern.ch/crabserver/ui/task/180415_151724%3Aoiorio_crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test
+INFO 2018-04-16 00:52:58,746: 	 Dashboard monitoring URL:	http://dashb-cms-job.cern.ch/dashboard/templates/task-analysis/#user=oiorio&refresh=0&table=Jobs&p=1&records=25&activemenu=2&status=&site=&tid=180415_151724%3Aoiorio_crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test
+DEBUG 2018-04-16 00:52:58,746: 	 The CRAB server submitted your task to the Grid scheduler (cluster ID: 19850909)
+DEBUG 2018-04-16 00:52:58,746: 	 Webdir is located at http://vocms0199.cern.ch/mon/cms113/180415_151724:oiorio_crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test
+DEBUG 2018-04-16 00:52:59,174: 	 Proxied webdir is located at https://cmsweb.cern.ch/scheddmon/0199/cms113/180415_151724:oiorio_crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test
+DEBUG 2018-04-16 00:52:59,174: 	 Retrieving 'status_cache' file from https://cmsweb.cern.ch/scheddmon/0199/cms113/180415_151724:oiorio_crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test/status_cache
+DEBUG 2018-04-16 00:52:59,470: 	 Got information from status cache file: {'1': {'Retries': 1, 'WallDurations': [9.0, 425.0, 9.0, 744.0], 'StartTimes': [1523805667.0, 1523807265.0], 'SubmitTimes': [1523805512.0, 1523806965.0], 'JobIds': ['19850912.0', '19851225.0'], 'TotalUserCpuTimeHistory': [352, 546], 'EndTimes': [1523806092.0, 1523808009.0], 'Restarts': 0, 'RecordedSite': True, 'State': 'failed', 'ResidentSetSize': [454020, 543784], 'Error': [139, 'CmsRunFailure', {}], 'SiteHistory': ['Unknown', 'T2_IT_Legnaro', 'Unknown', 'T2_IT_Pisa'], 'TotalSysCpuTimeHistory': [5, 8]}, '3': {'Retries': 1, 'WallDurations': [9.0, 251.0, 8.0, 161.0], 'StartTimes': [1523805681.0, 1523807266.0], 'SubmitTimes': [1523805512.0, 1523806966.0], 'JobIds': ['19850911.0', '19851227.0'], 'TotalUserCpuTimeHistory': [181, 97], 'EndTimes': [1523805932.0, 1523807427.0], 'Restarts': 0, 'RecordedSite': True, 'State': 'failed', 'ResidentSetSize': [21504, 3588], 'Error': [139, 'CmsRunFailure', {}], 'SiteHistory': ['Unknown', 'T2_IT_Legnaro', 'Unknown', 'T2_IT_Pisa'], 'TotalSysCpuTimeHistory': [3, 4]}, '2': {'Retries': 1, 'WallDurations': [186.0, 191.94939708709717, 9.0, 205.0], 'StartTimes': [1523805686.0, 1523807266.0], 'SubmitTimes': [1523805513.0, 1523806965.0], 'JobIds': ['19850913.0', '19851226.0'], 'EndTimes': [1523805872.0, 1523807471.0], 'Restarts': 0, 'RecordedSite': True, 'State': 'failed', 'ResidentSetSize': [15348, 27820], 'Error': [139, 'CmsRunFailure', {}], 'TotalUserCpuTimeHistory': [135, 110], 'SiteHistory': ['Unknown', 'T2_IT_Legnaro', 'Unknown', 'T2_IT_Pisa'], 'TotalSysCpuTimeHistory': [2, 3]}}
+INFO 2018-04-16 00:52:59,470: 	 Status on the scheduler:	FAILED
+INFO 2018-04-16 00:52:59,470: 	 
+Jobs status:                    failed        100.0% (3/3)
+INFO 2018-04-16 00:52:59,471: 	 
+No publication information (publication has been disabled in the CRAB configuration file)
+INFO 2018-04-16 00:52:59,471: 	 
+Error Summary: (use crab status --verboseErrors for details about the errors)
+
+3 jobs failed with exit code 139
+
+Have a look at https://twiki.cern.ch/twiki/bin/viewauth/CMSPublic/JobExitCodes for a description of the exit codes.
+INFO 2018-04-16 00:52:59,471: 	 
+Warning: the max jobs memory is less than 70% of the task requested value (2000 MB), please consider to request a lower value (allowed through crab resubmit) and/or improve the jobs splitting (e.g. config.Data.splitting = 'Automatic') in a new task.
+INFO 2018-04-16 00:52:59,471: 	 
+Warning: the average jobs CPU efficiency is less than 70%, please consider to request a lower number of threads and/or improve the jobs splitting (e.g. config.Data.splitting = 'Automatic') in a new task.
+INFO 2018-04-16 00:52:59,471: 	 
+Summary:
+ * Memory: 27MB min, 531MB max, 187MB ave
+ * Runtime: 0:02:41 min, 0:12:24 max, 0:06:10 ave
+ * CPU eff: 55% min, 74% max, 69% ave
+ * Waste: 0:18:17 (50% of total)
+
+INFO 2018-04-16 00:52:59,481: 	 Log file is /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/src/ttDM/treeDumper/test/crab_15Apr/crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test/crab.log
+DEBUG 2018-04-16 00:52:59,924: 	 Executing command: 'resubmit'
+DEBUG 2018-04-16 00:52:59,924: 	 Found CRAB cache file /afs/cern.ch/user/o/oiorio/.crab3
+DEBUG 2018-04-16 00:52:59,931: 	 Checking credentials
+DEBUG 2018-04-16 00:52:59,931: 	 Found proxy file /tmp/x509up_u31365
+DEBUG 2018-04-16 00:52:59,932: 	 Getting proxy life time left
+DEBUG 2018-04-16 00:53:00,435: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u31365 -timeleft
+ output : 43014
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-16 00:53:00,940: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u31365 -actimeleft
+ output : 43014
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-16 00:53:00,940: 	 Proxy valid for 11:56:54 hours
+DEBUG 2018-04-16 00:53:01,053: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-16 00:53:01,053: 	 Checking credentials
+DEBUG 2018-04-16 00:53:01,053: 	 Found proxy file /tmp/x509up_u31365
+DEBUG 2018-04-16 00:53:01,053: 	 Getting proxy life time left
+DEBUG 2018-04-16 00:53:01,560: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u31365 -timeleft
+ output : 43013
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-16 00:53:02,170: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u31365 -actimeleft
+ output : 43012
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-16 00:53:02,171: 	 Proxy valid for 11:56:53 hours
+DEBUG 2018-04-16 00:53:02,526: 	 Registering user credentials for server /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108|0105|0109).cern.ch
+DEBUG 2018-04-16 00:53:02,637: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-16 00:53:02,638: 	 Getting myproxy life time left for myproxy.cern.ch
+DEBUG 2018-04-16 00:53:02,638: 	 Calculating hash of /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio_cmsweb.cern.ch for credential name
+DEBUG 2018-04-16 00:53:02,842: 	 Executing : 
+ command : myproxy-info -l ae9637610ea27f91075d015fc1e15a7328a99708 -s myproxy.cern.ch
+ output : username: ae9637610ea27f91075d015fc1e15a7328a99708
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108|0105|0109).cern.ch
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108|0105|0109).cern.ch
+  timeleft: 553:06:04  (23.0 days)
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-16 00:53:02,843: 	 Myproxy is valid: 1991164
+DEBUG 2018-04-16 00:53:02,843: 	 Command use: resubmit
+DEBUG 2018-04-16 00:53:02,843: 	 Options use: ['crab_15Apr/crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test']
+DEBUG 2018-04-16 00:53:03,205: 	 CRABClient version: 3.3.1804
+DEBUG 2018-04-16 00:53:03,205: 	 Instance is prod
+DEBUG 2018-04-16 00:53:03,205: 	 Server base url is cmsweb.cern.ch
+DEBUG 2018-04-16 00:53:03,205: 	 Command url /crabserver/prod/workflow
+DEBUG 2018-04-16 00:53:03,205: 	 Executing command: 'status'
+DEBUG 2018-04-16 00:53:03,205: 	 Found CRAB cache file /afs/cern.ch/user/o/oiorio/.crab3
+DEBUG 2018-04-16 00:53:03,218: 	 Checking credentials
+DEBUG 2018-04-16 00:53:03,218: 	 Found proxy file /tmp/x509up_u31365
+DEBUG 2018-04-16 00:53:03,218: 	 Getting proxy life time left
+DEBUG 2018-04-16 00:53:03,827: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u31365 -timeleft
+ output : 43011
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-16 00:53:04,333: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u31365 -actimeleft
+ output : 43010
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-16 00:53:04,333: 	 Proxy valid for 11:56:51 hours
+DEBUG 2018-04-16 00:53:04,502: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-16 00:53:04,502: 	 Checking credentials
+DEBUG 2018-04-16 00:53:04,502: 	 Found proxy file /tmp/x509up_u31365
+DEBUG 2018-04-16 00:53:04,502: 	 Getting proxy life time left
+DEBUG 2018-04-16 00:53:05,114: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u31365 -timeleft
+ output : 43009
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-16 00:53:05,722: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u31365 -actimeleft
+ output : 43009
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-16 00:53:05,723: 	 Proxy valid for 11:56:49 hours
+DEBUG 2018-04-16 00:53:06,108: 	 Registering user credentials for server /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108|0105|0109).cern.ch
+DEBUG 2018-04-16 00:53:06,222: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-16 00:53:06,223: 	 Getting myproxy life time left for myproxy.cern.ch
+DEBUG 2018-04-16 00:53:06,223: 	 Calculating hash of /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio_cmsweb.cern.ch for credential name
+DEBUG 2018-04-16 00:53:06,431: 	 Executing : 
+ command : myproxy-info -l ae9637610ea27f91075d015fc1e15a7328a99708 -s myproxy.cern.ch
+ output : username: ae9637610ea27f91075d015fc1e15a7328a99708
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108|0105|0109).cern.ch
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108|0105|0109).cern.ch
+  timeleft: 553:06:00  (23.0 days)
+
+ error: 
+ retcode : 0
+DEBUG 2018-04-16 00:53:06,432: 	 Myproxy is valid: 1991160
+DEBUG 2018-04-16 00:53:06,432: 	 Command use: status
+DEBUG 2018-04-16 00:53:06,432: 	 Options use: []
+DEBUG 2018-04-16 00:53:06,772: 	 CRABClient version: 3.3.1804
+DEBUG 2018-04-16 00:53:06,772: 	 Instance is prod
+DEBUG 2018-04-16 00:53:06,772: 	 Server base url is cmsweb.cern.ch
+DEBUG 2018-04-16 00:53:06,772: 	 Command url /crabserver/prod/workflow
+DEBUG 2018-04-16 00:53:07,138: 	 Got information from server oracle database: {u'result': [u'180415_151724:oiorio_crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test', u'None', u'None', u'SUBMITTED', u'None', u'2018-04-15 15:17:24.962552', u'None', u'2018-04-15 15:18:20.566333', u'None', u'CMSSW_8_0_20', u'slc6_amd64_gcc530', u'/ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph/grauco-RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1_B2GAnaFW_80X_V2P4-bfea8033ab2d179bbb8e0faf6e2dc0cf/USER', u'F', u'0', u"['T2_CH_CERN_HLT', 'T2_DE_DESY', 'T2_CH_CSCS', 'T2_IT_Bari', 'T2_IT_Legnaro', 'T2_IT_Rome', 'T2_DE_RWTH', 'T2_CH_CERN_AI', 'T2_CH_CERN', 'T2_CH_CSCS_HPC', 'T2_IT_Pisa']", u'[]', u'FileBased', u"{'splitOnRun': False, 'halt_job_on_file_boundaries': False, 'files_per_job': 5, 'runs': [], 'lumis': []}", u'2a669b7f71c6add9af9da13081843b33069a8be484d6a0c9330881ce37156d15.tar.gz', u'https://cmsweb.cern.ch/crabcache', u'oiorio', u'/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=oiorio/CN=676855/CN=Alberto Orso Maria Iorio', u'cms', u'None', u'None', u'Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_15Mar17_test-00000000000000000000000000000000', u'F', u'T2_CH_CSCS', u'https://cmsweb.cern.ch/dbs/prod/phys03/DBSReader', u'https://cmsweb.cern.ch/dbs/prod/phys03/DBSWriter', u'F', u'[]', u"['treesTTJets.root']", u'[]', u'Analysis', u'pythia', u'None', u"{'maxjobruntime': 1250, 'priority': 10, 'site_blacklist': [], 'resubmit_jobids': ['1', '3', '2'], 'numcores': 1, 'site_whitelist': ['T2_CH_CERN_HLT', 'T2_DE_DESY', 'T2_CH_CSCS', 'T2_IT_Bari', 'T2_IT_Legnaro', 'T2_IT_Rome', 'T2_DE_RWTH', 'T2_CH_CERN_AI', 'T2_CH_CERN', 'T2_CH_CSCS_HPC', 'T2_IT_Pisa'], 'maxmemory': 2000, 'resubmit_publication': 0}", u'[]', u'F', u'vocms052', u'[]', u'1250', u'1', u'2000', u'10', u'None', u'[]', u'http://vocms0199.cern.ch/mon/cms113/180415_151724:oiorio_crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test', u'None', u'[]', u'[]', u'https://cmsweb.cern.ch/crabserver/prod', u'cmsgwms-collector-global.cern.ch:9620,cmssrv221.fnal.gov:9620', u'crab3@vocms0199.cern.ch', u'F', u'[]', u'T', u'/store/user/oiorio/ttDM/trees/2018/Apr15/', u'T', u'None', u'F', u'None', u'ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph', u'None', u'657b6d063e390aeec2593914e69cd64cd752634d2a9e66bd34553cd873e8b826.tar.gz', u'19850909', u'filetransfers', u'F', u'137.138.32.24', u'0.0'], u'desc': {u'columns': [u'tm_taskname', u'tm_activity', u'panda_jobset_id', u'tm_task_status', u'tm_task_command', u'tm_start_time', u'tm_start_injection', u'tm_end_injection', u'tm_task_failure', u'tm_job_sw', u'tm_job_arch', u'tm_input_dataset', u'tm_nonvalid_input_dataset', u'tm_use_parent', u'tm_site_whitelist', u'tm_site_blacklist', u'tm_split_algo', u'tm_split_args', u'tm_user_sandbox', u'tm_cache_url', u'tm_username', u'tm_user_dn', u'tm_user_vo', u'tm_user_role', u'tm_user_group', u'tm_publish_name', u'tm_publish_groupname', u'tm_asyncdest', u'tm_dbs_url', u'tm_publish_dbs_url', u'tm_publication', u'tm_outfiles', u'tm_tfile_outfiles', u'tm_edm_outfiles', u'tm_job_type', u'tm_generator', u'tm_events_per_lumi', u'tm_arguments', u'panda_resubmitted_jobs', u'tm_save_logs', u'tw_name', u'tm_user_infiles', u'tm_maxjobruntime', u'tm_numcores', u'tm_maxmemory', u'tm_priority', u'tm_output_dataset', u'tm_task_warnings', u'tm_user_webdir', u'tm_scriptexe', u'tm_scriptargs', u'tm_extrajdl', u'tm_asourl', u'tm_collector', u'tm_schedd', u'tm_dry_run', u'tm_user_files', u'tm_transfer_outputs', u'tm_output_lfn', u'tm_ignore_locality', u'tm_fail_limit', u'tm_one_event_mode', u'tm_secondary_input_dataset', u'tm_primary_dataset', u'tm_last_publication', u'tm_debug_files', u'clusterid', u'tm_asodb', u'tm_ignore_global_blacklist', u'tm_submitter_ip_addr', u'tm_totalunits']}}
+INFO 2018-04-16 00:53:07,139: 	 CRAB project directory:		/afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/src/ttDM/treeDumper/test/crab_15Apr/crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test
+INFO 2018-04-16 00:53:07,139: 	 Task name:			180415_151724:oiorio_crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test
+INFO 2018-04-16 00:53:07,139: 	 Grid scheduler:			crab3@vocms0199.cern.ch
+INFO 2018-04-16 00:53:07,139: 	 Status on the CRAB server:	SUBMITTED
+INFO 2018-04-16 00:53:07,139: 	 Task URL to use for HELP:	https://cmsweb.cern.ch/crabserver/ui/task/180415_151724%3Aoiorio_crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test
+INFO 2018-04-16 00:53:07,139: 	 Dashboard monitoring URL:	http://dashb-cms-job.cern.ch/dashboard/templates/task-analysis/#user=oiorio&refresh=0&table=Jobs&p=1&records=25&activemenu=2&status=&site=&tid=180415_151724%3Aoiorio_crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test
+DEBUG 2018-04-16 00:53:07,139: 	 The CRAB server submitted your task to the Grid scheduler (cluster ID: 19850909)
+DEBUG 2018-04-16 00:53:07,139: 	 Webdir is located at http://vocms0199.cern.ch/mon/cms113/180415_151724:oiorio_crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test
+DEBUG 2018-04-16 00:53:07,547: 	 Proxied webdir is located at https://cmsweb.cern.ch/scheddmon/0199/cms113/180415_151724:oiorio_crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test
+DEBUG 2018-04-16 00:53:07,548: 	 Retrieving 'status_cache' file from https://cmsweb.cern.ch/scheddmon/0199/cms113/180415_151724:oiorio_crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test/status_cache
+DEBUG 2018-04-16 00:53:07,882: 	 Got information from status cache file: {'1': {'Retries': 1, 'WallDurations': [9.0, 425.0, 9.0, 744.0], 'StartTimes': [1523805667.0, 1523807265.0], 'SubmitTimes': [1523805512.0, 1523806965.0], 'JobIds': ['19850912.0', '19851225.0'], 'TotalUserCpuTimeHistory': [352, 546], 'EndTimes': [1523806092.0, 1523808009.0], 'Restarts': 0, 'RecordedSite': True, 'State': 'failed', 'ResidentSetSize': [454020, 543784], 'Error': [139, 'CmsRunFailure', {}], 'SiteHistory': ['Unknown', 'T2_IT_Legnaro', 'Unknown', 'T2_IT_Pisa'], 'TotalSysCpuTimeHistory': [5, 8]}, '3': {'Retries': 1, 'WallDurations': [9.0, 251.0, 8.0, 161.0], 'StartTimes': [1523805681.0, 1523807266.0], 'SubmitTimes': [1523805512.0, 1523806966.0], 'JobIds': ['19850911.0', '19851227.0'], 'TotalUserCpuTimeHistory': [181, 97], 'EndTimes': [1523805932.0, 1523807427.0], 'Restarts': 0, 'RecordedSite': True, 'State': 'failed', 'ResidentSetSize': [21504, 3588], 'Error': [139, 'CmsRunFailure', {}], 'SiteHistory': ['Unknown', 'T2_IT_Legnaro', 'Unknown', 'T2_IT_Pisa'], 'TotalSysCpuTimeHistory': [3, 4]}, '2': {'Retries': 1, 'WallDurations': [186.0, 191.94939708709717, 9.0, 205.0], 'StartTimes': [1523805686.0, 1523807266.0], 'SubmitTimes': [1523805513.0, 1523806965.0], 'JobIds': ['19850913.0', '19851226.0'], 'EndTimes': [1523805872.0, 1523807471.0], 'Restarts': 0, 'RecordedSite': True, 'State': 'failed', 'ResidentSetSize': [15348, 27820], 'Error': [139, 'CmsRunFailure', {}], 'TotalUserCpuTimeHistory': [135, 110], 'SiteHistory': ['Unknown', 'T2_IT_Legnaro', 'Unknown', 'T2_IT_Pisa'], 'TotalSysCpuTimeHistory': [2, 3]}}
+INFO 2018-04-16 00:53:07,882: 	 Status on the scheduler:	FAILED
+INFO 2018-04-16 00:53:07,882: 	 
+Jobs status:                    failed        100.0% (3/3)
+INFO 2018-04-16 00:53:07,883: 	 
+No publication information (publication has been disabled in the CRAB configuration file)
+INFO 2018-04-16 00:53:07,883: 	 
+Error Summary: (use crab status --verboseErrors for details about the errors)
+
+3 jobs failed with exit code 139
+
+Have a look at https://twiki.cern.ch/twiki/bin/viewauth/CMSPublic/JobExitCodes for a description of the exit codes.
+INFO 2018-04-16 00:53:07,883: 	 
+Warning: the max jobs memory is less than 70% of the task requested value (2000 MB), please consider to request a lower value (allowed through crab resubmit) and/or improve the jobs splitting (e.g. config.Data.splitting = 'Automatic') in a new task.
+INFO 2018-04-16 00:53:07,883: 	 
+Warning: the average jobs CPU efficiency is less than 70%, please consider to request a lower number of threads and/or improve the jobs splitting (e.g. config.Data.splitting = 'Automatic') in a new task.
+INFO 2018-04-16 00:53:07,883: 	 
+Summary:
+ * Memory: 27MB min, 531MB max, 187MB ave
+ * Runtime: 0:02:41 min, 0:12:24 max, 0:06:10 ave
+ * CPU eff: 55% min, 74% max, 69% ave
+ * Waste: 0:18:17 (50% of total)
+
+DEBUG 2018-04-16 00:53:07,894: 	 Requesting resubmission of failed jobs in task 180415_151724:oiorio_crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test
+INFO 2018-04-16 00:53:07,894: 	 Sending resubmit request to the server.
+DEBUG 2018-04-16 00:53:07,894: 	 Submitting {'publication': 0, 'jobids': ['1', '3', '2'], 'subresource': 'resubmit2', 'workflow': u'180415_151724:oiorio_crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test'} 
+DEBUG 2018-04-16 00:53:07,894: 	 Encoded resubmit request: publication=0&subresource=resubmit2&workflow=180415_151724%3Aoiorio_crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test&jobids=1&jobids=3&jobids=2
+DEBUG 2018-04-16 00:53:08,236: 	 Result: {u'result': [{u'result': u'ok'}], u'desc': {u'columns': [u'tm_site_blacklist', u'tm_site_whitelist', u'tm_maxjobruntime', u'tm_maxmemory', u'tm_numcores', u'tm_priority']}}
+INFO 2018-04-16 00:53:08,237: 	 Resubmit request sent to the server.
+INFO 2018-04-16 00:53:08,237: 	 Please use 'crab status' to check how the resubmission process proceeds.
+Notice it may take a couple of minutes for the resubmission to get fully processed.
+INFO 2018-04-16 00:53:08,245: 	 Log file is /afs/cern.ch/work/o/oiorio/testdevel/CMSSW_8_0_20/src/ttDM/treeDumper/test/crab_15Apr/crab_Root80xV2p4_ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph_test/crab.log
