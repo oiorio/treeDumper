@@ -2,7 +2,7 @@
 """
 This is a small script that submits a config over many datasets
 """
-import os
+import os, commands
 from optparse import OptionParser
 
 def getOptions() :
@@ -21,10 +21,18 @@ def getOptions() :
     parser.add_option("-f", "--datasets", dest="datasets",
         help=("File listing datasets to run over"),
         metavar="FILE")
+    parser.add_option( "--jecVersion", dest="jecVersion",
+        default="Fall17",
+        help=("wildcard for the jecs to use"),
+        metavar="JECV")
     parser.add_option( "--isData", dest="isData",
-        default=False, action="store_true",
-        help=("Is it data?"),
-        )
+                       default=False, action="store_true",
+                       help=("Is it data?") )
+                      
+    parser.add_option("-n", "--dryrun", dest="dryrun",
+        help=("Dry run"),
+        metavar="DRYRUN")
+
     (options, args) = parser.parse_args()
 
 
@@ -61,7 +69,28 @@ def main():
     #config.JobType.inputFiles = ['Fall15_25nsV2_DATA.db', 'Fall15_25nsV2_MC.db']
     #config.JobType.inputFiles = ["Fall15_25nsV2_MC_L1FastJet_AK4PFchs.txt", "Fall15_25nsV2_MC_L1RC_AK4PFchs.txt","Fall15_25nsV2_MC_L2Relative_AK4PFchs.txt", "Fall15_25nsV2_MC_L3Absolute_AK4PFchs.txt","Fall15_25nsV2_MC_L2L3Residual_AK4PFchs.txt", "Fall15_25nsV2_DATA_L1FastJet_AK4PFchs.txt","Fall15_25nsV2_DATA_L1RC_AK4PFchs.txt","Fall15_25nsV2_DATA_L2Relative_AK4PFchs.txt","Fall15_25nsV2_DATA_L3Absolute_AK4PFchs.txt",  "Fall15_25nsV2_DATA_L2L3Residual_AK4PFchs.txt"]
     
-    config.JobType.inputFiles = [
+    #Input part:
+
+    
+    wildcard= options.jecVersion+"*txt"
+    lscmd = "ls JECs/"+wildcard 
+    outs=commands.getstatusoutput(lscmd)
+    print "status: ", outs[0]," result: ",outs[1]
+    inputs=[]
+    for l in outs[1].split("\n"):
+        inputs.append(l)
+
+    inputs.append('Spring16_25nsV10_MC_PtResolution_AK8PFchs.txt')
+    inputs.append('CSVv2_Moriond17_B_H.csv')
+    inputs.append('CSVv2_ichep.csv')
+    inputs.append('cMVAv2_Moriond17_B_H.csv')
+    inputs.append('cMVAv2_ichep.csv')
+    inputs.append('btagging_cmva.root')
+
+    
+    config.JobType.inputFiles = inputs
+    print "inputs are", config.JobType.inputFiles
+    oldinputs = [
         'Spring16_25nsV10_MC_PtResolution_AK8PFchs.txt',
         'Summer16_23Sep2016BCDV4_DATA_L1FastJet_AK4PFchs.txt',
         'Summer16_23Sep2016BCDV4_DATA_L1FastJet_AK8PFchs.txt',
@@ -243,9 +272,11 @@ def main():
 #print config
         try :
             from multiprocessing import Process
-            p = Process(target=submit, args=(config,))
-            p.start()
-            p.join()
+            print options.dryrun
+            if options.dryrun == None:
+                p = Process(target=submit, args=(config,))
+                p.start()
+                p.join()
             #submit(config)
         except :
             print 'Not submitted.'
