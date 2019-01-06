@@ -22,7 +22,7 @@ def getOptions() :
         help=("File listing datasets to run over"),
         metavar="FILE")
     parser.add_option( "--jecVersion", dest="jecVersion",
-        default="Fall17",
+        default="",
         help=("wildcard for the jecs to use"),
         metavar="JECV")
     parser.add_option( "--isData", dest="isData",
