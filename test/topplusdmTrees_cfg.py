@@ -20,28 +20,6 @@ options.register('maxEvts',
                  opts.VarParsing.varType.int,
                  'Number of events to process')
 
-SingleElTriggers = []
-SingleMuTriggers = []
-hadronTriggers = []
-HadronPFHT800Triggers = []
-HadronPFHT900Triggers = []
-HadronPFJet450Triggers = []
-
-chan = "MET_Prompt"
-
-chan = "TTbarDMJets_scalar_Mchi-50_Mphi-50"
-
-chan = "DY"
-chan = "WJ"
-filedir= "/tmp/oiorio/"
-cmd = "ls "+filedir+"/"+chan+"/"
-
-status,ls_la = commands.getstatusoutput( cmd )
-listFiles = ls_la.split(os.linesep)
-files = []
-#files = ["file:re-MiniAOD_17Jul/"+l for l in listFiles]
-#files = ["file:"+filedir+"MET_Prompt/"+l for l in listFiles]
-files = ["file:"+filedir+"/"+chan+"/"+l for l in listFiles]
 options.register('sample',
                  #'/store/user/decosa/B2GAnaFW_80X_v2p4/BprimeBToHB_M-900_TuneCUETP8M1_13TeV-madgraph-pythia8/RunIISummer16MiniAODv2/BprimeBToHB_M-900_TuneCUETP8M1_13TeV-madgraph-pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1_B2GAnaFW_80X_v2p4/170213_085503/0000/B2GEDMNtuple_2.root',
                  #'/store/group/phys_b2g/B2GAnaFW_80X_V2p4/QCD_HT1000to1500_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv2/QCD_HT1000to1500_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1_B2GAnaFW_80X_V2p4/170104_182124/0000/B2GEDMNtuple_104.root',
@@ -52,19 +30,23 @@ options.register('sample',
                  #'/store/group/phys_b2g/B2GAnaFW_80X_V2p4/WJetsToLNu_HT-100To200_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv2/WJetsToLNu_HT-100To200_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6_ext2-v1_B2GAnaFW_80X_V2p4/170124_202648/0000/B2GEDMNtuple_1.root',
 
 #Recent files:
-               #  '/store/user/decosa/EPS17/B2GAnaFW_80X_V3p1/TT_TuneCUETP8M2T4_13TeV-powheg-pythia8/RunIISummer16MiniAODv2/TT_TuneCUETP8M2T4_13TeV-powheg-pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1_B2GAnaFW_80X_V3p1/170510_103545/0000/B2GEDMNtuple_1.root',
-                 'file:B2GEDMNtuple_1.root',#l'ho preso dal mio TT
+                 #2016 signal t'
+                    # "/TprimeBToTZ_M-1400_LH_TuneCP5_13TeV-madgraph-pythia8/oiorio-RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1_B2GAnaFW_94X_V0_Sep_14-b20ae75985a288300defff97749d07bd/USER"
+                    # '/store/user/decosa/EPS17/B2GAnaFW_80X_V3p1/TT_TuneCUETP8M2T4_13TeV-powheg-pythia8/RunIISummer16MiniAODv2/TT_TuneCUETP8M2T4_13TeV-powheg-pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1_B2GAnaFW_80X_V3p1/170510_103545/0000/B2GEDMNtuple_1.root',
+                 #2017 ntuples
+                 "/store/user/oiorio/ttDM/samples/2018/Sep/14Sep/B2GAnaFW_94X_V0_Sep_14/TprimeBToTZ_M-1400_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2/TprimeBToTZ_M-1400_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1_B2GAnaFW_94X_V0_Sep_14/181003_184239/0000/B2GEDMNtuple_9.root",
+                 #'file:B2GEDMNtuple_1.root',#l'ho preso dal mio TT
                  #'file:/eos/user/o/oiorio/samples/synch/mc_jecv4/B2GSynchMC.root',
                  opts.VarParsing.multiplicity.singleton,
                  opts.VarParsing.varType.string,
                  'Sample to analyze')
 
 options.register('version',
-                 #'53',
-                 '71',
+                 #'94X','94X_2016','80X','10X'
+                 '94X',
                  opts.VarParsing.multiplicity.singleton,
                  opts.VarParsing.varType.string,
-                 'ntuple version (53 or 71)')
+                 'ntuple version (94X, 80X, 10X)')
 
 options.register('outputLabel',
                  'treesTTJets.root',
@@ -121,82 +103,82 @@ options.register('channel',
                  'channel for weight evaluation'
                  )
 
+
+
 options.parseArguments()
+print "version is: ", options.version, " is it data? ", options.isData
+
+version = options.version #version: alias for commodity
 
 if(options.isData):options.LHE = False
 
 if(not options.isData): options.applyRes = False
 
-l = ["singleTrigger"+str(s) for s in xrange(15)]
-l = l + ["trigger2"+str(s) for s in xrange(15)]
+#Trigger and filters setup:
 
-SingleElTriggers = ["HLT_Ele27_eta2p1_WP75_Gsf"]
-SingleElTriggers = SingleElTriggers + ["HLT_Ele27_eta2p1_WP75_Gsf_v"+str(s) for s in xrange(15)]
+if(version=="80X" or version=="94X" or version == "94X_2016"):
+    l = ["singleTrigger"+str(s) for s in xrange(15)]
+    l = l + ["trigger2"+str(s) for s in xrange(15)]
 
-PhotonTriggers = ["HLT_AK8PFJet360_TrimMass30"]
-PhotonTriggers = PhotonTriggers + ["HLT_AK8PFJet360_TrimMass30_v"+str(s) for s in xrange(15)]
+    SingleElTriggers = ["HLT_Ele27_eta2p1_WP75_Gsf"]
+    SingleElTriggers = SingleElTriggers + ["HLT_Ele27_eta2p1_WP75_Gsf_v"+str(s) for s in xrange(15)]
+    
+    SingleElControlTriggers = ["HLT_Ele27_eta2p1_WP75_Gsf"]
+    SingleElControlTriggers = SingleElControlTriggers + ["HLT_Ele27_eta2p1_WP75_Gsf_v"+str(s) for s in xrange(15)]
 
-SingleMuTriggers = ["HLT_Mu50","HLT_TkMu50"]
-SingleMuTriggers = SingleMuTriggers + ["HLT_Mu50_v"+str(s) for s in xrange(15)]
-SingleMuTriggers = SingleMuTriggers + ["HLT_TkMu50_v"+str(s) for s in xrange(15)]
+    SingleElHighPtTriggers =  ["HLT_Ele27_eta2p1_WP75_Gsf"]
+    SingleElHighPtTriggers = SingleElHighPtTriggers + ["HLT_Ele27_eta2p1_WP75_Gsf_v"+str(s) for s in xrange(15)]
 
-HadronPFHT900Triggers = ["HLT_PFHT900"]
-HadronPFHT900Triggers = HadronPFHT900Triggers + ["HLT_PFHT900_v"+str(s) for s in xrange(15)]
+    SingleMuTriggers = ["HLT_IsoMu22_v"+str(s) for s in range(1,5)]
+    SingleMuTriggers = SingleMuTriggers + ["HLT_IsoMu24_v"+str(s) for s in range(1,5)]
+    SingleMuTriggers = SingleMuTriggers + ["HLT_IsoTkMu24_v"+str(s) for s in range(1,5)]
+    
+    SingleMuHighPtTriggers = ["HLT_Mu50","HLT_TkMu50"]
+    SingleMuHighPtTriggers = SingleMuTriggers + ["HLT_Mu50_v"+str(s) for s in xrange(15)]
+    SingleMuHighPtTriggers = SingleMuTriggers + ["HLT_TkMu50_v"+str(s) for s in xrange(15)]
 
-HadronPFHT800Triggers = ["HLT_PFHT800"]
-HadronPFHT800Triggers =HadronPFHT800Triggers + ["HLT_PFHT800_v"+str(s) for s in xrange(15)]
+    SingleMuControlTriggers = ["HLT_Mu50","HLT_TkMu50"]
+    SingleMuControlTriggers = SingleMuControlTriggers + ["HLT_Mu50_v"+str(s) for s in xrange(15)]
+    
 
-HadronPFJet450Triggers = ["HLT_PFJet450"]
-HadronPFJet450Triggers =HadronPFJet450Triggers + ["HLT_PFJet450_v"+str(s) for s in xrange(15)]
-#HadronPFJet450Triggers =HadronPFJet450Triggers + ["HLT_PFJet450_v"+str(s) for s in xrange(15)]
-
-#hadronTriggers = ["HLT_PFMETNoMu90_PFMHTNoMu90_IDTight_v7","HLT_PFMETNoMu120_PFMHTNoMu120_IDTight_v7", "HLT_PFMETNoMu90_JetIdCleaned_PFMHTNoMu90_IDTight_v3", "HLT_PFMETNoMu120_JetIdCleaned_PFMHTNoMu120_IDTight_v2", "HLT_PFMETNoMu90_PFMHTNoMu90_IDTight_v2", "HLT_PFMETNoMu100_PFMHTNoMu100_IDTight_v2", "HLT_PFMETNoMu100_PFMHTNoMu100_IDTight_v2", "HLT_PFMETNoMu120_PFMHTNoMu120_IDTight_v2",  "HLT_PFMETNoMu120_NoiseCleaned_PFMHTNoMu120_IDTight","HLT_PFMETNoMu120_JetIdCleaned_PFMHTNoMu120_IDTight","HLT_PFMETNoMu90_NoiseCleaned_PFMHTNoMu90_IDTight","HLT_PFMETNoMu90_JetIdCleaned_PFMHTNoMu90_IDTight", "HLT_PFMETNoMu90_PFMHTNoMu90_IDTight", "HLT_PFMETNoMu100_PFMHTNoMu100_IDTight_v7", "HLT_PFMETNoMu110_PFMHTNoMu110_IDTight_v7", "HLT_PFMETNoMu120_PFMHTNoMu120_IDTight_v7"]
-hadronTriggers = ["HLT_PFMETNoMu120_PFMHTNoMu120_IDTight", "HLT_PFMETNoMu110_PFMHTNoMu110_IDTight"]
-
-#hadronTriggers = hadronTriggers + ["HLT_PFMET90_PFMHT190_IDTight_v"+str(s) for s in xrange(15)]
-#hadronTriggers = hadronTriggers + ["HLT_PFMET100_PFMHT100_IDTight_v"+str(s) for s in xrange(15)]
-hadronTriggers = hadronTriggers + ["HLT_PFMETNoMu110_PFMHTNoMu110_IDTight_v"+str(s) for s in xrange(15)]
-hadronTriggers = hadronTriggers + ["HLT_PFMETNoMu120_PFMHTNoMu120_IDTight_v"+str(s) for s in xrange(15)]       
-#hadronTriggers = hadronTriggers + ["HLT_PFMET120_NoiseCleaned_PFMHT120_IDTight_v"+str(s) for s in xrange(15)]
-#hadronTriggers = hadronTriggers + ["HLT_PFMET120_JetIdCleaned_PFMHT120_IDTight_v"+str(s) for s in xrange(15)]
-#hadronTriggers = hadronTriggers + ["HLT_PFMET90_NoiseCleaned_PFMHT90_IDTight_v"+str(s) for s in xrange(15)]
-#hadronTriggers = hadronTriggers + ["HLT_PFMET90_JetIdCleaned_PFMHT90_IDTight_v"+str(s) for s in xrange(15)]
-
-if(options.isData):
-
-    SingleElTriggers = ["HLT_Ele27_eta2p1_WPLoose_Gsf", "HLT_Ele23_WPLoose_Gsf"]
-    SingleElTriggers = SingleElTriggers + ["HLT_Ele27_eta2p1_WPLoose_Gsf_v"+str(s) for s in xrange(15)]
-    SingleElTriggers = SingleElTriggers + ["HLT_Ele23_WPLoose_Gsf_v"+str(s) for s in xrange(15)]
-
-    SingleMuTriggers = ["HLT_Mu50","HLT_TkMu50"]
-    SingleMuTriggers = SingleMuTriggers + ["HLT_Mu50_v"+str(s) for s in xrange(15)]
-    SingleMuTriggers = SingleMuTriggers + ["HLT_TkMu50_v"+str(s) for s in xrange(15)]
-
+    PhotonTriggers = [""]
+    
     HadronPFHT900Triggers = ["HLT_PFHT900"]
     HadronPFHT900Triggers = HadronPFHT900Triggers + ["HLT_PFHT900_v"+str(s) for s in xrange(15)]
-    
+
     HadronPFHT800Triggers = ["HLT_PFHT800"]
     HadronPFHT800Triggers =HadronPFHT800Triggers + ["HLT_PFHT800_v"+str(s) for s in xrange(15)]
-    
+
     HadronPFJet450Triggers = ["HLT_PFJet450"]
     HadronPFJet450Triggers =HadronPFJet450Triggers + ["HLT_PFJet450_v"+str(s) for s in xrange(15)]
-    #HadronPFJet450Triggers =HadronPFJet450Triggers + ["HLT_PFJet450_v"+str(s) for s in xrange(15)]
+    metTriggers = ["HLT_PFMETNoMu120_PFMHTNoMu120_IDTight", "HLT_PFMETNoMu110_PFMHTNoMu110_IDTight"] #metTriggers = metTriggers + ["HLT_PFMET90_PFMHT190_IDTight_v"+str(s) for s in xrange(15)] 
+    #metTriggers = metTriggers + ["HLT_PFMET100_PFMHT100_IDTight_v"+str(s) for s in xrange(15)]
+    metTriggers = metTriggers + ["HLT_PFMETNoMu110_PFMHTNoMu110_IDTight_v"+str(s) for s in xrange(15)]
+    metTriggers = metTriggers + ["HLT_PFMETNoMu120_PFMHTNoMu120_IDTight_v"+str(s) for s in xrange(15)]       
 
-    #hadronTriggers = ["HLT_PFMET90_PFMHT90_IDTight_v1", "HLT_PFMET100_PFMHT100_IDTight_v1", "HLT_PFMET100_PFMHT100_IDTight_v1", "HLT_PFMET120_PFMHT120_IDTight_v1", "HLT_PFMET120_NoiseCleaned_PFMHT120_IDTight","HLT_PFMET120_JetIdCleaned_PFMHT120_IDTight","HLT_PFMET90_JetIdCleaned_PFMHT90_IDTight","HLT_PFMET90_NoiseCleaned_PFMHT90_IDTight","HLT_PFMET90_NoiseCleaned_PFMHT90_NoID", "HLT_PFMET90_PFMHT90_IDTight", "HLT_PFMET90_PFMHT90_IDTight", "HLT_PFMET100_PFMHT100_IDTight_v7", "HLT_PFMET110_PFMHT110_IDTight_v7", "HLT_PFMET120_PFMHT120_IDTight_v7", "HLT_PFMET90_PFMHT90_IDTight_v2", "HLT_PFMET100_PFMHT100_IDTight_v2", "HLT_PFMET110_PFMHT110_IDTight_v2", "HLT_PFMET120_PFMHT120_IDTight_v2", "HLT_AK8PFJet200_v1", "HLT_AK8PFJet260_v1"]
+    if(options.isData):
 
-    #hadronTriggers = hadronTriggers+ ["HLT_PFMET120_NoiseCleaned_PFMHT120_IDTight_v"+str(s) for s in xrange(15)]
-    #hadronTriggers = hadronTriggers+ ["HLT_PFMET120_JetIdCleaned_PFMHT120_IDTight_v"+str(s) for s in xrange(15)]
-    #hadronTriggers = hadronTriggers+ ["HLT_PFMET90_JetIdCleaned_PFMHT90_IDTight_v"+str(s) for s in xrange(15)]
-    #hadronTriggers = hadronTriggers+ ["HLT_PFMET90_NoiseCleaned_PFMHT90_IDTight_v"+str(s) for s in xrange(15)]
-    #hadronTriggers = hadronTriggers+ ["HLT_PFMET90_NoiseCleaned_PFMHT90_NoID_v"+str(s) for s in xrange(15)]
-    #hadronTriggers = hadronTriggers+ ["HLT_PFMET90_PFMHT90_IDTight_v"+str(s) for s in xrange(15)]
+        SingleElTriggers = ["HLT_Ele27_eta2p1_WPLoose_Gsf", "HLT_Ele23_WPLoose_Gsf"]
+        SingleElTriggers = SingleElTriggers + ["HLT_Ele27_eta2p1_WPLoose_Gsf_v"+str(s) for s in xrange(15)]
+        SingleElTriggers = SingleElTriggers + ["HLT_Ele23_WPLoose_Gsf_v"+str(s) for s in xrange(15)]
 
-    hadronTriggers = ["HLT_PFMETNoMu120_PFMHTNoMu120_IDTight", "HLT_PFMETNoMu110_PFMHTNoMu110_IDTight"]
+        SingleMuTriggers = ["HLT_Mu50","HLT_TkMu50"]
+        SingleMuTriggers = SingleMuTriggers + ["HLT_Mu50_v"+str(s) for s in xrange(15)]
+        SingleMuTriggers = SingleMuTriggers + ["HLT_TkMu50_v"+str(s) for s in xrange(15)]
+        
+        HadronPFHT900Triggers = ["HLT_PFHT900"]
+        HadronPFHT900Triggers = HadronPFHT900Triggers + ["HLT_PFHT900_v"+str(s) for s in xrange(15)]
+    
+        HadronPFHT800Triggers = ["HLT_PFHT800"]
+        HadronPFHT800Triggers =HadronPFHT800Triggers + ["HLT_PFHT800_v"+str(s) for s in xrange(15)]
+    
+        HadronPFJet450Triggers = ["HLT_PFJet450"]
+        HadronPFJet450Triggers =HadronPFJet450Triggers + ["HLT_PFJet450_v"+str(s) for s in xrange(15)]
 
-    #hadronTriggers = hadronTriggers + ["HLT_PFMET90_PFMHT190_IDTight_v"+str(s) for s in xrange(15)]
-    #hadronTriggers = hadronTriggers + ["HLT_PFMET100_PFMHT100_IDTight_v"+str(s) for s in xrange(15)]
-    hadronTriggers = hadronTriggers + ["HLT_PFMETNoMu110_PFMHTNoMu110_IDTight_v"+str(s) for s in xrange(15)]
-    hadronTriggers = hadronTriggers + ["HLT_PFMETNoMu120_PFMHTNoMu120_IDTight_v"+str(s) for s in xrange(15)]
+        metTriggers = ["HLT_PFMETNoMu120_PFMHTNoMu120_IDTight", "HLT_PFMETNoMu110_PFMHTNoMu110_IDTight"]
+
+        metTriggers = metTriggers + ["HLT_PFMETNoMu110_PFMHTNoMu110_IDTight_v"+str(s) for s in xrange(15)]
+        metTriggers = metTriggers + ["HLT_PFMETNoMu120_PFMHTNoMu120_IDTight_v"+str(s) for s in xrange(15)]
 
 process = cms.Process("ttDManalysisTrees")
 
@@ -242,14 +224,16 @@ process.GlobalTag.pfnPrefix = cms.untracked.string('frontier://FrontierProd/')
 
 process.TFileService = cms.Service("TFileService", fileName = cms.string(options.outputLabel))
 
-process.load("ttDM.treeDumper.topplusdmedmRootTreeMaker_cff")
+process.load("TreeFWK.treeDumper.topplusdmedmRootTreeMaker_cff")
 
 process.DMTreesDumper.channelInfo.SingleElTriggers=cms.vstring(SingleElTriggers)
 process.DMTreesDumper.channelInfo.SingleMuTriggers=cms.vstring(SingleMuTriggers)
-process.DMTreesDumper.channelInfo.hadronicTriggers=cms.vstring(hadronTriggers)
-process.DMTreesDumper.channelInfo.HadronPFHT800Triggers=cms.vstring(HadronPFHT800Triggers)
-process.DMTreesDumper.channelInfo.HadronPFHT900Triggers=cms.vstring(HadronPFHT900Triggers)
-process.DMTreesDumper.channelInfo.HadronPFJet450Triggers=cms.vstring(HadronPFJet450Triggers)
+process.DMTreesDumper.channelInfo.MetTriggers=cms.vstring(metTriggers)
+process.DMTreesDumper.channelInfo.MetControlTriggers=cms.vstring(metTriggers)
+process.DMTreesDumper.channelInfo.HHTTriggers=cms.vstring(HadronPFHT800Triggers)
+process.DMTreesDumper.channelInfo.HHTControlTriggers=cms.vstring(HadronPFHT900Triggers)
+process.DMTreesDumper.channelInfo.SingleJetTriggers=cms.vstring(HadronPFJet450Triggers)
+process.DMTreesDumper.channelInfo.SingleJetControlTriggers=cms.vstring(HadronPFJet450Triggers)
 
 if options.addPartonInfo:
 #    testMC = False
@@ -268,7 +252,83 @@ process.DMTreesDumper.EraLabel = cms.untracked.string(options.EraLabel)
 process.DMTreesDumper.channelInfo.useLHE = cms.untracked.bool(True)
 process.DMTreesDumper.channelInfo.useLHEWeights = cms.untracked.bool(True)
 
-   
+
+#if addAK8CHS:
+#    DMTreesDumper.physicsObjects.append(jet8CHS)
+#    DMTreesDumper.physicsObjects.append(subjetCHS)
+#if addAK8PUPPI:
+#    DMTreesDumper.physicsObjects.append(jet8Puppi)
+#    DMTreesDumper.physicsObjects.append(subjetPuppi)
+
+
+#Setup categories and systematics:
+#SingleTop:
+
+catMuST = ["Tight","TightAntiIso","Loose"]
+catElST = ["Tight","TightAntiIso","Veto","Antiveto"]
+catJetST = ["Tight"]
+catMetST = ["CorrT1"]
+
+scanMuST = ["Iso04_0p06_LE","Iso04_0p15_LE","Iso04_0p06_GE","Iso04_0p15_GE"]
+scanEl = []
+scanJet = ["CorrPt_20","CorrPt_40"]
+sysMu = [""]
+sysEl = [""]
+sysJet = ["JESUp","JESDown","JERUp","JERDown"]
+
+#Setup JECs and Jet collections:
+
+sj = "subjetsAK8CHS"
+sjpref = "subjetAK8CHS"
+sjpup = "subjetsAK8Puppi"
+sjpuppref = "subjetAK8Puppi"
+jetak8label = cms.string("jetsAK8CHS")
+subjetak8label = cms.string("subjetsAK8CHS")
+jetak8puplabel = cms.string("jetsAK8Puppi")
+subjetak8puplabel = cms.string("subjetsAK8Puppi")
+
+
+addAK8CHS=True
+addAK8Puppi=True
+
+if(version=='80X'):
+    process.DMTreesDumper.prefixLabelData = cms.untracked.string("Summer16_23Sep2016V4")
+    process.DMTreesDumper.prefixLabelMC = cms.untracked.string("Summer16_23Sep2016V4")
+    process.DMTreesDumper.postfixLabelData = cms.untracked.string("V4_DATA")
+    process.DMTreesDumper.postfixLabelMC = cms.untracked.string("_MC")
+    process.DMTreesDumper.jetType = cms.untracked.string("AK4PFchs")
+    process.DMTreesDumper.jetType8 = cms.untracked.string("AK8PFchs")
+    process.DMTreesDumper.boostedTopsLabel = jetak8label
+    process.DMTreesDumper.boostedTopsSubjetsLabel = subjetak8label    
+
+if(version=='94X'):
+    process.DMTreesDumper.prefixLabelData = cms.untracked.string("JECs/Fall17_17Nov2017")
+    process.DMTreesDumper.prefixLabelMC = cms.untracked.string("JECs/Fall17_17Nov2017")
+    process.DMTreesDumper.postfixLabelData = cms.untracked.string("V32_DATA")
+    process.DMTreesDumper.postfixLabelMC = cms.untracked.string("_V32_MC")
+    process.DMTreesDumper.jetType = cms.untracked.string("AK4PFchs")
+    process.DMTreesDumper.jetType8 = cms.untracked.string("AK8PFPuppi")
+    process.DMTreesDumper.boostedTopsLabel = jetak8puplabel
+    process.DMTreesDumper.boostedTopsSubjetsLabel = subjetak8puplabel    
+
+if(version=='94X_2016'):
+    process.DMTreesDumper.prefixLabelData = cms.untracked.string("JECs/Summer16_07Aug2017")
+    process.DMTreesDumper.prefixLabelMC = cms.untracked.string("JECs/Summer16_23Sep2016V4")
+    process.DMTreesDumper.postfixLabelData = cms.untracked.string("V4_DATA")
+    process.DMTreesDumper.postfixLabelMC = cms.untracked.string("_MC")
+    process.DMTreesDumper.jetType = cms.untracked.string("AK4PFchs")
+    process.DMTreesDumper.jetType8 = cms.untracked.string("AK8PFPuppi")
+
+
+if(addAK8CHS):
+   process.DMTreesDumper.physicsObjects.append(process.jet8CHS)
+   process.DMTreesDumper.physicsObjects.append(process.subjetCHS)
+
+if(addAK8Puppi):
+   process.DMTreesDumper.physicsObjects.append(process.jet8Puppi)
+   process.DMTreesDumper.physicsObjects.append(process.subjetPuppi)
+
+
 if options.channel == "ttbar":
     process.DMTreesDumper.getPartonTop  = cms.untracked.bool(True)
     process.DMTreesDumper.channelInfo.getParticleWZ  = cms.untracked.bool(True) 

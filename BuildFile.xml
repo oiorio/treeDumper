@@ -26,6 +26,8 @@
 <!-- <use   name="Utilities/Timing"/> -->
 <use   name="JetMETCorrections/Modules"/>
 <use   name="CondFormats/HLTObjects"/>
+<use   name="CondFormats/BTauObjects"/>
+<use   name="CondTools/BTau"/>
 <use   name="root"/>
 <use   name="rootmva"/>
 <use   name="DataFormats/CSCRecHit"/>
