@@ -41,10 +41,10 @@ catMet = ["CorrT1"]
 scanMu = []
 scanEl = []
 scanJet = []
-#scanJet = ["CorrPt_20"]
+#scanJet = ["CorrPt_30"]
 
-sysMu = [""]
-sysEl = [""]
+sysMu = []
+sysEl = []
 #sysJet = [""]
 sysJet = ["JESUp","JESDown","JERUp","JERDown"]
 #sysJet = ["JESUp","JESDown"]
@@ -65,7 +65,7 @@ sysJet = ["JESUp","JESDown","JERUp","JERDown"]
 
 #Setup categories and systematics:
 #SingleTop:
-bool SingleTopSetup=False
+SingleTopSetup=False
 if SingleTopSetup:
     catMu = ["Tight","TightAntiIso","Loose"]
     catEl = ["Tight","TightAntiIso","Veto","Antiveto"]
@@ -243,6 +243,7 @@ DMTreesDumper.physicsObjects.append(
             cms.InputTag("muons","muIsSoftMuon"),
             cms.InputTag("muons","muIsMediumMuon"),
             cms.InputTag("muons","muIsTightMuon"),
+            cms.InputTag("muons","muIsHighPtMuon"),
             cms.InputTag("muons","muDB"),
             cms.InputTag("muons","muDBerr"),
             cms.InputTag("muons","muDz"),
@@ -277,7 +278,7 @@ DMTreesDumper.physicsObjects.append(
         categories = cms.vstring(catMu),
         systCats = cms.vstring(sysMu),
         #        categories = cms.vstring("Tight","Loose"),
-        toSave = cms.vstring("muE","muPt","muEta","muPhi","muIso04","muCharge","muIsMediumMuon","muIsTightMuon","muIsLooseMuon","allExtra"),
+        toSave = cms.vstring("muE","muPt","muEta","muPhi","muIso04","muCharge","muIsMediumMuon","muIsTightMuon","muIsLooseMuon","muIsHighPtMuon","allExtra"),
         )
     )
 
