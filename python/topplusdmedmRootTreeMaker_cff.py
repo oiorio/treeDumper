@@ -142,7 +142,7 @@ DMTreesDumper = cms.EDAnalyzer(
             toSave = cms.vstring(),
             )
         ),
-    
+    version = cms.untracked.string("2017_94X"),
     doPreselection = cms.untracked.bool(doPreselectionCuts), 
   
     ak8jetvSubjetIndex0 = cms.InputTag( "jetsAK8", "jetAK8vSubjetIndex0"),
@@ -409,6 +409,9 @@ DMTreesDumper.physicsObjects.append(
             cms.InputTag(j,jpref+"Phi"),
             cms.InputTag(j,jpref+"CSVv2"),
             cms.InputTag(j,jpref+"CMVAv2"),
+            cms.InputTag(j,jpref+"DeepCSV"),
+            cms.InputTag(j,jpref+"DeepCSVProbb"),
+            cms.InputTag(j,jpref+"DeepCSVBvsAll"),
             cms.InputTag(j,jpref+"Charge"),
             cms.InputTag(j,jpref+"ElectronEnergy"),
             cms.InputTag(j,jpref+"GenJetCharge"),
@@ -448,7 +451,7 @@ DMTreesDumper.physicsObjects.append(
         scanCuts = cms.vstring(scanJet),
         systCats = cms.vstring(sysJet),
         #categories = cms.vstring("Tight"),
-        toSave = cms.vstring(jpref+"E",jpref+"Pt",jpref+"Eta",jpref+"Phi",jpref+"GenJetE", jpref+"GenJetPhi", jpref+"GenJetPt",jpref+"GenJetEta",jpref+"CSVv2",jpref+"PartonFlavour","allExtra"),
+        toSave = cms.vstring(jpref+"E",jpref+"Pt",jpref+"Eta",jpref+"Phi",jpref+"GenJetE", jpref+"GenJetPhi", jpref+"GenJetPt",jpref+"GenJetEta",jpref+"CSVv2",jpref+"DeepCSV",jpref+"PartonFlavour","allExtra"),
         )
     )
 
@@ -515,6 +518,7 @@ subjetCHS= cms.PSet(
             cms.InputTag(sj,sjpref+"Phi"),
             cms.InputTag(sj,sjpref+"PartonFlavour"),
             cms.InputTag(sj,sjpref+"CSVv2"),
+            cms.InputTag(sj,sjpref+"DeepCSV"),
             ),                         
         variablesI = cms.VInputTag(),
         singleD = cms.VInputTag(),
@@ -586,6 +590,7 @@ subjetPuppi=cms.PSet(
             cms.InputTag(sjpup,sjpuppref+"Phi"),
             cms.InputTag(sjpup,sjpuppref+"PartonFlavour"),
             cms.InputTag(sjpup,sjpuppref+"CSVv2"),
+            cms.InputTag(sjpup,sjpuppref+"DeepCSV"),
             ),                         
         variablesI = cms.VInputTag(),
         singleD = cms.VInputTag(),

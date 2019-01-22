@@ -256,6 +256,9 @@ private:
   bool getParticleWZ, getWZFlavour;
   bool addSingleTriggers;
   
+  // Data version
+  string version;
+
   //Do resolved top measurement:
   int max_bjets_for_top;
   int max_genparticles;
@@ -347,8 +350,10 @@ private:
   //BTag part
   BTagCalibration *calib;
   BTagCalibration *calib_cmvav2;
+  BTagCalibration *calib_deepcsv;
   BTagCalibrationReader *readerCSVLoose,*readerCSVLooseUDSG, *readerCSVMedium, *readerCSVTight, *readerCSVReshape;
   BTagCalibrationReader *readerCMVALoose,*readerCMVALooseUDSG, *readerCMVAMedium, *readerCMVATight, *readerCMVAReshape;
+  BTagCalibrationReader *readerDeepCSVLoose,*readerDeepCSVLooseUDSG, *readerDeepCSVMedium, *readerDeepCSVTight, *readerDeepCSVReshape;
 
   string filename_cmva;
   TFile* file_cmva;
@@ -410,12 +415,6 @@ private:
     jsfscsvm_subj_mistag_up, 
     jsfscsvm_subj_mistag_down;
   
-  vector<BTagWeight::JetInfo> jsfscsvl_subj, 
-    jsfscsvl_subj_b_tag_up, 
-    jsfscsvl_subj_b_tag_down, 
-    jsfscsvl_subj_mistag_up, 
-    jsfscsvl_subj_mistag_down;
-
   BTagWeight b_csvt_0_tags= BTagWeight(0,0),
     b_csvt_1_tag= BTagWeight(1,1),
     b_csvt_1_2_tags= BTagWeight(1,4),
@@ -505,7 +504,7 @@ private:
   double TagScaleFactorSubjet(string algo, int flavor, string syst,double pt, double eta=0.);
   double getMCTagEfficiencyFunc(float flavor, float btag, float pt, float eta, string algo,string syst, bool norm=false, bool spline=false);
   double getMCTagEfficiencyFuncInt(float flavor, float ptCorr, float eta, string algo, string syst);
-  float getWPAlgo(string algo, string wp);
+  float getWPAlgo(string algo, string wp, string version);
 
 
   //
@@ -541,6 +540,8 @@ DMAnalysisTreeMaker::DMAnalysisTreeMaker(const edm::ParameterSet& iConfig){
   crossSection = channelInfo.getParameter<double>("crossSection");
   originalEvents = channelInfo.getParameter<double>("originalEvents");
 
+  version = iConfig.getUntrackedParameter<string>("version","2016_80X");
+
   doPreselection = iConfig.getUntrackedParameter<bool>("doPreselection",true);
   doPU = iConfig.getUntrackedParameter<bool>("doPU",true);
 
@@ -556,15 +557,14 @@ DMAnalysisTreeMaker::DMAnalysisTreeMaker(const edm::ParameterSet& iConfig){
 
   getWZFlavour = channelInfo.getUntrackedParameter<bool>("getWZFlavour",false);
   //cout << " -----------> getWZFlavour: " << getWZFlavour << endl;
-  
-
+    
   edm::InputTag genprod_ = iConfig.getParameter<edm::InputTag>( "genprod" );
   t_genprod_ = consumes<GenEventInfoProduct>( genprod_ );
   
   useTriggers = iConfig.getUntrackedParameter<bool>("useTriggers",true);
   cutOnTriggers = iConfig.getUntrackedParameter<bool>("cutOnTriggers",true);
-
-  //B reshaping
+  
+  // reshaping
   doTopBToLightQuarkReweight = iConfig.getUntrackedParameter<bool>("doTopBToQReweight",false);
   doTopDecayReshaping = channelInfo.getUntrackedParameter<bool>("doTopDecayReshaping",false);
   addBTagReshaping = channelInfo.getUntrackedParameter<bool>("addBTagReshaping",false);
@@ -996,7 +996,10 @@ DMAnalysisTreeMaker::DMAnalysisTreeMaker(const edm::ParameterSet& iConfig){
   
   jecCorr = new FactorizedJetCorrector(jecPars);
   jecCorr_L1 = new FactorizedJetCorrector(jecParsL1_vect);
-  jecUnc  = new JetCorrectionUncertainty(*(new JetCorrectorParameters(("Summer16_23Sep2016"+EraLabel+"V4_DATA_UncertaintySources_AK4PFchs.txt").c_str() , "Total")));
+  cout << " jecUnc label "<<(prefixLabelMC+postfixLabelMC+"_UncertaintySources_"+jetType+".txt") << endl;
+  jecUnc  = new JetCorrectionUncertainty(*(new JetCorrectorParameters((prefixLabelMC+postfixLabelMC+"_UncertaintySources_"+jetType+".txt").c_str() , "Total")));
+
+  //  jecUnc  = new JetCorrectionUncertainty(*(new JetCorrectorParameters(("Summer16_23Sep2016"+EraLabel+"V4_DATA_UncertaintySources_AK4PFchs.txt").c_str() , "Total")));
 
   //corrections on AK8
   //  string PtResol = "Spring16_25nsV10_MC_PtResolution_AK8PFchs.txt";
@@ -1056,7 +1059,8 @@ DMAnalysisTreeMaker::DMAnalysisTreeMaker(const edm::ParameterSet& iConfig){
   jecCorr8 = new FactorizedJetCorrector(jecPars8);
   jecCorr_L18 = new FactorizedJetCorrector(jecParsL1_vect8);
   jecCorr_NoL18 = new FactorizedJetCorrector(jecParsNoL1_vect8);
-  jecUnc8  = new JetCorrectionUncertainty(*(new JetCorrectorParameters(("Summer16_23Sep2016"+EraLabel+"V4_DATA_UncertaintySources_AK8PFchs.txt").c_str() , "Total")));
+  jecUnc8  = new JetCorrectionUncertainty(*(new JetCorrectorParameters((prefixLabelMC+postfixLabelMC+"_UncertaintySources_"+jetType8+".txt").c_str() , "Total")));
+  //  jecUnc8  = new JetCorrectionUncertainty(*(new JetCorrectorParameters(("Summer16_23Sep2016"+EraLabel+"V4_DATA_UncertaintySources_AK8PFchs.txt").c_str() , "Total")));
 
   //Btag part
 filename_cmva="btagging_cmva.root";
@@ -1123,6 +1127,32 @@ filename_cmva="btagging_cmva.root";
   readerCMVAReshape->load(*calib_cmvav2, BTagEntry::FLAV_C,   "iterativefit");
   readerCMVAReshape->load(*calib_cmvav2, BTagEntry::FLAV_UDSG,   "iterativefit");
 
+  //DeepCSV tagger.csv
+  
+  calib_deepcsv = new BTagCalibration("DeepCSV", "DeepCSV_94XSF_V3_B_F.csv");
+  if(version=="2017_94X")new BTagCalibration("DeepCSV", "DeepCSV_94XSF_V3_B_F.csv");
+  
+  readerDeepCSVLoose = new BTagCalibrationReader(BTagEntry::OP_LOOSE, "central", {"up", "down"});      
+  readerDeepCSVLoose->load(*calib_deepcsv, BTagEntry::FLAV_B,   "comb");
+  readerDeepCSVLoose->load(*calib_deepcsv, BTagEntry::FLAV_C,   "comb");
+  readerDeepCSVLoose->load(*calib_deepcsv, BTagEntry::FLAV_UDSG,   "incl");
+
+  readerDeepCSVMedium = new BTagCalibrationReader(BTagEntry::OP_MEDIUM, "central", {"up", "down"});      
+  readerDeepCSVMedium->load(*calib_deepcsv, BTagEntry::FLAV_B,   "comb");
+  readerDeepCSVMedium->load(*calib_deepcsv, BTagEntry::FLAV_C,   "comb");
+  readerDeepCSVMedium->load(*calib_deepcsv, BTagEntry::FLAV_UDSG,   "incl");
+
+  readerDeepCSVTight = new BTagCalibrationReader(BTagEntry::OP_TIGHT, "central", {"up", "down"});      
+  readerDeepCSVTight->load(*calib_deepcsv, BTagEntry::FLAV_B,   "comb");
+  readerDeepCSVTight->load(*calib_deepcsv, BTagEntry::FLAV_C,   "comb");
+  readerDeepCSVTight->load(*calib_deepcsv, BTagEntry::FLAV_UDSG,   "incl");
+
+  readerDeepCSVReshape = new BTagCalibrationReader(BTagEntry::OP_RESHAPING, "central", {"up_jes", "down_jes","up_hfstats1","down_hfstats1","up_hfstats2","down_hfstats2","up_lf","down_lf","up_cferr1",
+	"down_cferr1","up_lfstats1","down_lfstats1","up_hf","down_hf"});
+  readerDeepCSVReshape->load(*calib_deepcsv, BTagEntry::FLAV_B,   "iterativefit");
+  readerDeepCSVReshape->load(*calib_deepcsv, BTagEntry::FLAV_C,   "iterativefit");
+  readerDeepCSVReshape->load(*calib_deepcsv, BTagEntry::FLAV_UDSG,   "iterativefit");
+
   // reader.load(...)     // for FLAV_C
   // reader.load(...)     // for FLAV_UDSG
   resb = new TH1D ("resb","resb",100,-1,1);
@@ -1150,7 +1180,7 @@ void DMAnalysisTreeMaker::beginRun(const edm::Run& iRun, const edm::EventSetup& 
     iRun.getByLabel(metNames_, metNames);
     for(size_t bt = 0; bt < triggerNamesR->size();++bt){
       std::string tname = triggerNamesR->at(bt);
-      //cout << "trigger test tname "<< tname <<endl; 
+      cout << "trigger test tname "<< tname <<endl; 
     }
 }
 
@@ -1700,7 +1730,7 @@ void DMAnalysisTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetu
     
     int nb=0,nc=0,nudsg=0;
 
-    int ncsvl_tags=0,ncsvt_tags=0,ncsvm_tags=0;
+    //    int ncsvl_tags=0,ncsvt_tags=0,ncsvm_tags=0;
     int ncsvl_subj_tags=0,ncsvm_subj_tags=0;
     getEventTriggers();
 
@@ -1737,17 +1767,7 @@ void DMAnalysisTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetu
     jsfscsvl_mistag_up.clear();
     jsfscsvl_mistag_down.clear();
 
-    jsfscsvm_subj.clear(); 
-    jsfscsvm_subj_b_tag_up.clear(); 
-    jsfscsvm_subj_b_tag_down.clear(); 
-    jsfscsvm_subj_mistag_up.clear(); 
-    jsfscsvm_subj_mistag_down.clear();
     
-    jsfscsvl_subj.clear(); 
-    jsfscsvl_subj_b_tag_up.clear(); 
-    jsfscsvl_subj_b_tag_down.clear(); 
-    jsfscsvl_subj_mistag_up.clear();
-    jsfscsvl_subj_mistag_down.clear();
     //    cout << " debug 0 "<< " begin "<< endl;
 
     //---------------- Soureek Adding PU Info ------------------------------
@@ -1758,8 +1778,8 @@ void DMAnalysisTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetu
     //}
     
     int lepidx=0;
-    int bjetidx=0;
-
+    //int bjetidx=0;
+    
     initCategoriesSize(jets_label);
     initCategoriesSize(mu_label);
     initCategoriesSize(ele_label);
@@ -2287,7 +2307,8 @@ void DMAnalysisTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetu
           
       float csv = vfloats_values[makeName(jets_label,pref,"CSVv2")][j];
       float cmva = vfloats_values[makeName(jets_label,pref,"CMVAv2")][j];
-      
+      float dcsv = vfloats_values[makeName(jets_label,pref,"DeepCSV")][j];
+
       float partonFlavour = vfloats_values[makeName(jets_label,pref,"PartonFlavour")][j];
       float hadronFlavour = vfloats_values[makeName(jets_label,pref,"HadronFlavour")][j];
       int flavor = int(hadronFlavour);
@@ -2310,13 +2331,17 @@ void DMAnalysisTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetu
       vfloats_values[jets_label+"_CorrPhi"][j]=phi;
 
       //cout << " test j " << j <<endl;
-      bool isCSVT = csv  > getWPAlgo("CSV","T");//0.9535;
-      bool isCSVM = csv  > getWPAlgo("CSV","M");//0.8484;
-      bool isCSVL = csv  > getWPAlgo("CSV","L");//0.5426;
+      bool isCSVT = csv  > getWPAlgo("CSV","T",version);//0.9535;
+      bool isCSVM = csv  > getWPAlgo("CSV","M",version);//0.8484;
+      bool isCSVL = csv  > getWPAlgo("CSV","L",version);//0.5426;
       
-      bool isCMVAT = cmva  > getWPAlgo("CMVA","T");//0.9432;
-      bool isCMVAM = cmva  > getWPAlgo("CMVA","M");//0.4432;
-      bool isCMVAL = cmva  > getWPAlgo("CMVA","L");//-0.5884;
+      bool isCMVAT = cmva  > getWPAlgo("CMVA","T",version);//0.9432;
+      bool isCMVAM = cmva  > getWPAlgo("CMVA","M",version);//0.4432;
+      bool isCMVAL = cmva  > getWPAlgo("CMVA","L",version);//-0.5884;
+
+      bool isDeepCSVT = dcsv  > getWPAlgo("DeepCSV","T",version);//0.9432;
+      bool isDeepCSVM = dcsv  > getWPAlgo("DeepCSV","M",version);//0.4432;
+      bool isDeepCSVL = dcsv  > getWPAlgo("DeepCSV","L",version);//-0.5884;
 
       vfloats_values[jets_label+"_IsCSVT"][j]=isCSVT;
       vfloats_values[jets_label+"_IsCSVM"][j]=isCSVM;
@@ -2325,6 +2350,10 @@ void DMAnalysisTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetu
       vfloats_values[jets_label+"_IsCMVAT"][j]=isCMVAT;
       vfloats_values[jets_label+"_IsCMVAM"][j]=isCMVAM;
       vfloats_values[jets_label+"_IsCMVAL"][j]=isCMVAL;
+
+      vfloats_values[jets_label+"_IsDeepCSVT"][j]=isDeepCSVT;
+      vfloats_values[jets_label+"_IsDeepCSVM"][j]=isDeepCSVM;
+      vfloats_values[jets_label+"_IsDeepCSVL"][j]=isDeepCSVL;
       
       float flavForShaping = hadronFlavour;
       if(doTopDecayReshaping ){
@@ -2514,59 +2543,6 @@ void DMAnalysisTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetu
 	  if(fabs(eta) < 4.7) fillScanSystsCuts(jets_label,"Tight",j);
 	}	    
       
-      /*
-      if(isCSVM && passesCut &&  passesID && passesDR && fabs(eta) < 2.4) { 
-	float_values["Event_nCSVMJets"]+=1.0;
-	ncsvm_tags +=1;
-	TLorentzVector bjet;
-	bjet.SetPtEtaPhiE(ptCorr, eta, phi, energyCorr);
-	bjets.push_back(bjet);
-	++bjetidx;
-      
-      }
-      if(isCSVL && passesCut &&  passesID && passesDR && abs(eta) < 2.4) float_values["Event_nCSVLJets"]+=1;
-      
-      bool passesBaseCut = ( ptCorr > jetbaseval && fabs(eta) < 4.7);
-      //      cout <<" in cat loop "<<endl;
-      if(passesID && passesDR) if(obj_scanCuts[jets_label].size()>=1) {
-	  if(passesBaseCut) fillScanCuts(jets_label,"Tight",j);
-	  if(fabs(eta) < 4.7) fillScanSystsCuts(jets_label,"Tight",j);
-
-	}
-      */
-
-
-      //      bool passesbasecuts
-      /*      for (size_t ji = 0; ji < (size_t)jetScanCuts.size(); ++ji){
-	stringstream j_n;
-	double jetval = jetScanCuts.at(ji);
-	j_n << "Cut" <<jetval;
-	bool passesCut = ( ptCorr > jetval && fabs(eta) < 4.);
-
-	if(!passesID || !passesCut || !passesDR) continue;
-	if(ji==0){
-	  vfloats_values[jets_label+"_IsTight"][j]=1.0;
-	  TLorentzVector jet;
-	  jet.SetPtEtaPhiE(ptCorr, eta, phi, energyCorr);
-	  jets.push_back(jet);
-
-	  if(!isCSVM)     jetsnob.push_back(jet);
-
-	}
-	
-	if(passesCut &&  passesID && passesDR){	
-	  //	  sizes[jets_label+"Tight"];
-
-	    nTightJets+=1;
-	    if(isInVector(obj_cats[jets_label],"Tight")){
-	      fillCategory(jets_label,"Tight",j,sizes[jets_label+"Tight"]);
-	    }
-	    fillSysts(jets_label,"Tight",j,"CorrPt","40_GE");
-
-	    }*/
-
-      //cout << " mark 8.22 "<<endl; 
-      
     }
     //  cout << " mark 8.22 "<<endl; 
     fillSysts(met_label,"CorrT1",0,"","");
@@ -2574,15 +2550,24 @@ void DMAnalysisTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetu
     if(isInVector(obj_cats[jets_label],"Tight")){
       sizes[jets_label+"Tight"]=(int)nTightJets;
       setEventBTagSF(jets_label,"Tight","CSV");
-      setEventBTagSF(jets_label,"Tight","CMVA");
-      
+      if(version=="2016_80X"){
+	setEventBTagSF(jets_label,"Tight","CMVA");
+      }
+      if(version=="2017_94X" || version=="2016_94X"){
+	setEventBTagSF(jets_label,"Tight","DeepCSV");
+      }
       for(size_t jc = 0; jc < obj_scanCuts[jets_label].size();++jc){
 	string scanCut=obj_scanCuts[jets_label].at(jc);
 	
 	//	if(false)
 	setEventBTagSF(jets_label,"Tight_"+scanCut,"CSV");
-	setEventBTagSF(jets_label,"Tight_"+scanCut,"CMVA");
+	if(version=="2016_80X"){
+	  setEventBTagSF(jets_label,"Tight_"+scanCut,"CMVA");
 	}
+	if(version=="2017_94X" || version=="2016_94X"){
+	  setEventBTagSF(jets_label,"Tight","DeepCSV");
+	}
+      }
     }
 
  
@@ -2771,39 +2756,7 @@ void DMAnalysisTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetu
       if(subjcsv>0.8484 && fabs(eta) < 2.4) {
 	ncsvm_subj_tags +=1;
       }
-      
-      double csvleff_subj = MCTagEfficiencySubjet("csvl",flavorSubjet,pt, eta);
-      double sfcsvl_subj = TagScaleFactorSubjet("csvl", flavorSubjet, "noSyst", pt);
-      
-      double csvmeff_subj = MCTagEfficiencySubjet("csvm",flavorSubjet,pt, eta);
-      double sfcsvm_subj = TagScaleFactorSubjet("csvm", flavorSubjet, "noSyst", pt);
-
-      double sfcsvl_mistag_up_subj = TagScaleFactorSubjet("csvl", flavorSubjet, "mistag_up", pt);
-      double sfcsvm_mistag_up_subj = TagScaleFactorSubjet("csvm", flavorSubjet, "mistag_up", pt);
-
-      double sfcsvl_mistag_down_subj = TagScaleFactorSubjet("csvl", flavorSubjet, "mistag_down", pt);
-      double sfcsvm_mistag_down_subj = TagScaleFactorSubjet("csvm", flavorSubjet, "mistag_down", pt);
-
-      double sfcsvl_b_tag_down_subj = TagScaleFactorSubjet("csvl", flavorSubjet, "b_tag_down", pt);
-      double sfcsvm_b_tag_down_subj = TagScaleFactorSubjet("csvm", flavorSubjet, "b_tag_down", pt);
-      
-      double sfcsvl_b_tag_up_subj = TagScaleFactorSubjet("csvl", flavorSubjet, "b_tag_up", pt);
-      double sfcsvm_b_tag_up_subj = TagScaleFactorSubjet("csvm", flavorSubjet, "b_tag_up", pt);     
-
-      jsfscsvl_subj.push_back(BTagWeight::JetInfo(csvleff_subj, sfcsvl_subj));
-      jsfscsvm_subj.push_back(BTagWeight::JetInfo(csvmeff_subj, sfcsvm_subj));
-      jsfscsvl_subj_mistag_up.push_back(BTagWeight::JetInfo(csvleff_subj, sfcsvl_mistag_up_subj));
-      jsfscsvm_subj_mistag_up.push_back(BTagWeight::JetInfo(csvmeff_subj, sfcsvm_mistag_up_subj));
-      
-      jsfscsvl_subj_b_tag_up.push_back(BTagWeight::JetInfo(csvleff_subj, sfcsvl_b_tag_up_subj));
-      jsfscsvm_subj_b_tag_up.push_back(BTagWeight::JetInfo(csvmeff_subj, sfcsvm_b_tag_up_subj));
-      
-      jsfscsvl_subj_mistag_down.push_back(BTagWeight::JetInfo(csvleff_subj, sfcsvl_mistag_down_subj));
-      jsfscsvm_subj_mistag_down.push_back(BTagWeight::JetInfo(csvmeff_subj, sfcsvm_mistag_down_subj));
-      
-      jsfscsvl_subj_b_tag_down.push_back(BTagWeight::JetInfo(csvleff_subj, sfcsvl_b_tag_down_subj));
-      jsfscsvm_subj_b_tag_down.push_back(BTagWeight::JetInfo(csvmeff_subj, sfcsvm_b_tag_down_subj));
-           
+            
       
       for(int t = 0;t < min(max_instances[boosted_tops_label],sizes[boosted_tops_label]) ;++t){
 	  
@@ -2963,20 +2916,50 @@ void DMAnalysisTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetu
       int indexv1 = vfloats_values[makeName(boosted_tops_label,pref,"vSubjetIndex1")][t];
 
       int nCSVsubj = 0;
-      if( vfloats_values[makeName(boosted_tops_subjets_label,pref,"CSVv2")][indexv0] > 0.8484) ++nCSVsubj;
-      if( vfloats_values[makeName(boosted_tops_subjets_label,pref,"CSVv2")][indexv1] > 0.8484) ++nCSVsubj;
+      int nDeepCSVsubj = 0;
+      
+      //      cout << " this version "<< this->version<<endl;
+      float looseWPDeepCSV = getWPAlgo("DeepCSV","L",this->version);
+      float looseWPCSV = getWPAlgo("CSV","L",this->version);
+      float midWPDeepCSV = getWPAlgo("DeepCSV","M",this->version);
+      float midWPCSV = getWPAlgo("CSV","M",this->version);
+      //      float tightWPDeepCSV = getWPAlgo("DeepCSV","T",this->version);
+      //float tightWPCSV = getWPAlgo("CSV","T",this->version);
+      
+
+      if( vfloats_values[makeName(boosted_tops_subjets_label,pref,"CSVv2")][indexv0] > midWPCSV) ++nCSVsubj;
+      if( vfloats_values[makeName(boosted_tops_subjets_label,pref,"CSVv2")][indexv1] > midWPCSV) ++nCSVsubj;
+
+      if( vfloats_values[makeName(boosted_tops_subjets_label,pref,"DeepCSV")][indexv0] > midWPDeepCSV ) ++nDeepCSVsubj;
+      if( vfloats_values[makeName(boosted_tops_subjets_label,pref,"DeepCSV")][indexv1] > midWPDeepCSV ) ++nDeepCSVsubj;
 
       int nCSVsubj_tm = 0;
-
-      if( vfloats_values[makeName(boosted_tops_subjets_label,pref,"CSVv2")][indexv0] > 0.5426 && vfloats_values[makeName(boosted_tops_subjets_label,pref,"CSVv2")][indexv0]<0.8484) ++nCSVsubj_tm;
-      if( vfloats_values[makeName(boosted_tops_subjets_label,pref,"CSVv2")][indexv1] > 0.5426 && vfloats_values[makeName(boosted_tops_subjets_label,pref,"CSVv2")][indexv1] < 0.8484) ++nCSVsubj_tm;
-
-      int nCSVsubj_t = 0;
-      if(vfloats_values[makeName(boosted_tops_subjets_label,pref,"CSVv2")][indexv0]<0.5426) ++nCSVsubj_t;
-      if(vfloats_values[makeName(boosted_tops_subjets_label,pref,"CSVv2")][indexv1]< 0.5426) ++nCSVsubj_t;
+      int nDeepCSVsubj_tm = 0;
       
+      if( vfloats_values[makeName(boosted_tops_subjets_label,pref,"CSVv2")][indexv0] > looseWPCSV && vfloats_values[makeName(boosted_tops_subjets_label,pref,"CSVv2")][indexv0] < midWPCSV) ++nCSVsubj_tm;
+      if( vfloats_values[makeName(boosted_tops_subjets_label,pref,"CSVv2")][indexv1] > looseWPCSV && vfloats_values[makeName(boosted_tops_subjets_label,pref,"CSVv2")][indexv1] < midWPCSV) ++nCSVsubj_tm;
+
+      if( vfloats_values[makeName(boosted_tops_subjets_label,pref,"DeepCSV")][indexv0] > looseWPDeepCSV && vfloats_values[makeName(boosted_tops_subjets_label,pref,"DeepCSV")][indexv0] < midWPDeepCSV) ++nCSVsubj_tm;
+      if( vfloats_values[makeName(boosted_tops_subjets_label,pref,"DeepCSV")][indexv1] > looseWPDeepCSV && vfloats_values[makeName(boosted_tops_subjets_label,pref,"DeepCSV")][indexv1] < midWPDeepCSV) ++nCSVsubj_tm;
+
+      int nCSVsubj_l = 0;
+      int nDeepCSVsubj_l = 0;
+      if(vfloats_values[makeName(boosted_tops_subjets_label,pref,"CSVv2")][indexv0]> looseWPCSV) ++nCSVsubj_l;
+      if(vfloats_values[makeName(boosted_tops_subjets_label,pref,"CSVv2")][indexv1]> looseWPCSV) ++nCSVsubj_l;
+
+      if(vfloats_values[makeName(boosted_tops_subjets_label,pref,"DeepCSV")][indexv0]> looseWPDeepCSV) ++nDeepCSVsubj_l;
+      if(vfloats_values[makeName(boosted_tops_subjets_label,pref,"DeepCSV")][indexv1]> looseWPDeepCSV) ++nDeepCSVsubj_l;
+      
+      //      cout << " loose wp "<< looseWPDeepCSV<< " intex1deepcsv "<< vfloats_values[makeName(boosted_tops_subjets_label,pref,"DeepCSV")][indexv0] << " index 2 deepcsv "<< vfloats_values[makeName(boosted_tops_subjets_label,pref,"DeepCSV")][indexv1] << endl;
+
       vfloats_values[makeName(boosted_tops_label,pref,"nCSVsubj")][t]=(float)nCSVsubj;
       vfloats_values[makeName(boosted_tops_label,pref,"nCSVsubj_tm")][t]=(float)nCSVsubj_tm;
+      vfloats_values[makeName(boosted_tops_label,pref,"nCSVsubj_l")][t]=(float)nCSVsubj_l;
+
+      vfloats_values[makeName(boosted_tops_label,pref,"nDeepCSVsubj")][t]=(float)nDeepCSVsubj;
+      vfloats_values[makeName(boosted_tops_label,pref,"nDeepCSVsubj_tm")][t]=(float)nDeepCSVsubj_tm;
+      vfloats_values[makeName(boosted_tops_label,pref,"nDeepCSVsubj_l")][t]=(float)nDeepCSVsubj_l;
+      
       
       bool doGenMatching= true;
       int nMatched = 0,nQuarks=0,nBquarks=0,nQuarksTop=0,nBquarksTop=0,nBquarksH=0,nBquarksZ=0;
@@ -2990,15 +2973,16 @@ void DMAnalysisTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetu
 	    math::PtEtaPhiELorentzVector p4gen(gpt,geta,gphi,ge); 
 	    double deltarg = deltaR(p4gen,p4Top);
 	    float flavor=vfloats_values["genParticles_flavor"][g];   
-	   
-	    if(abs(flavor)==5 && vfloats_values["genParticles_isFromTopChain"][g] )nBquarksTop++;
-	    if(abs(flavor)==5 && vfloats_values["genParticles_isFromZChain"][g] )nBquarksZ++;
-	    if(abs(flavor)==5 && vfloats_values["genParticles_isFromHChain"][g] )nBquarksH++;
-
-	    if(abs(flavor)<5 && abs(flavor)>0 ) nQuarks++;
-	    if(abs(flavor)<5 && abs(flavor)>0 && vfloats_values["genParticles_isFromTopChain"][g]) nQuarksTop++;
 
 	    if (deltarg < 1.2){
+	   
+	      if(abs(flavor)==5 && vfloats_values["genParticles_isFromTopChain"][g] )nBquarksTop++;
+	      if(abs(flavor)==5 && vfloats_values["genParticles_isFromZChain"][g] )nBquarksZ++;
+	      if(abs(flavor)==5 && vfloats_values["genParticles_isFromHChain"][g] )nBquarksH++;
+	      
+	      if(abs(flavor)<5 && abs(flavor)>0 ) nQuarks++;
+	      if(abs(flavor)<5 && abs(flavor)>0 && vfloats_values["genParticles_isFromTopChain"][g]) nQuarksTop++;
+	      
 	      if(nMatched==0)vfloats_values[makeName(boosted_tops_label,pref,"genMatch1Idx")][t]=(float)g;
 	      if(nMatched==1)vfloats_values[makeName(boosted_tops_label,pref,"genMatch2Idx")][t]=(float)g;
 	      if(nMatched==2)vfloats_values[makeName(boosted_tops_label,pref,"genMatch3Idx")][t]=(float)g;
@@ -3016,11 +3000,11 @@ void DMAnalysisTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetu
 	  vfloats_values[makeName(boosted_tops_label,pref,"nBquarksH")][t]=nBquarksH;
 	  vfloats_values[makeName(boosted_tops_label,pref,"nBquarksZ")][t]=nBquarksZ;
 	  if(vfloats_values["genParticles_isFromTopChain"][g]){
-	    if(nQuarksTop==2 && nBquarksTop==1)	  vfloats_values[makeName(boosted_tops_label,pref,"isMatchTop")][t]=1.;
-	    else if(nQuarksTop==2 && nBquarksTop==0)	  vfloats_values[makeName(boosted_tops_label,pref,"isMatchW")][t]=1.;
-	    else vfloats_values[makeName(boosted_tops_label,pref,"isResolved")][t]=1.;
+	    if(nQuarksTop==2 && nBquarksTop==1)	  vfloats_values[makeName(boosted_tops_label,pref,"isMergedTop")][t]=1.;
+	    else if(nQuarksTop + nBquarksTop==2)	  vfloats_values[makeName(boosted_tops_label,pref,"isSemiresolvedTop")][t]=1.;
+	    else vfloats_values[makeName(boosted_tops_label,pref,"isResolvedTop")][t]=1.;
 	  }
-	  /*Addvariii.push_back("isMatchTop");
+	  /*Addvariii.push_back("isMergedTop");
 	  addvar.push_back("isMatchW");
 	  addvar.push_back("isMatchQ");
 	  addvar.push_back("nGenMatchs");
@@ -3354,6 +3338,10 @@ vector<string> DMAnalysisTreeMaker::additionalVariables(string object){
      addvar.push_back("IsCMVAT");
      addvar.push_back("IsCMVAM");
      addvar.push_back("IsCMVAL");
+    
+    addvar.push_back("IsDeepCSVT");
+    addvar.push_back("IsDeepCSVM");
+    addvar.push_back("IsDeepCSVL");
 
     addvar.push_back("PassesID");
     addvar.push_back("PassesDR");
@@ -3436,6 +3424,10 @@ vector<string> DMAnalysisTreeMaker::additionalVariables(string object){
     addvar.push_back("CSVv2");
     addvar.push_back("nCSVsubj");
     addvar.push_back("nCSVsubj_tm");
+    addvar.push_back("nCSVsubj_l");
+    addvar.push_back("nDeepCSVsubj");
+    addvar.push_back("nDeepCSVsubj_tm");
+    addvar.push_back("nDeepCSVsubj_l");
     addvar.push_back("tau3OVERtau2");
     addvar.push_back("tau2OVERtau1");
     for(size_t sccut = 0; sccut< obj_systCats[jets_label].size() ;++sccut){
@@ -3452,7 +3444,9 @@ vector<string> DMAnalysisTreeMaker::additionalVariables(string object){
     addvar.push_back("nBquarksH");
     addvar.push_back("nBquarksZ");
     addvar.push_back("nMatched");
-    addvar.push_back("isMatchTop");
+    addvar.push_back("isMergedTop");
+    addvar.push_back("isSemiresolveddTop");
+    addvar.push_back("isResolvedTop");
     addvar.push_back("isMatchH");
     addvar.push_back("isMatchZ");
     addvar.push_back("isMatchW");
@@ -3748,6 +3742,7 @@ vector<string> DMAnalysisTreeMaker::additionalVariables(string object){
       addvar.push_back("passesBadChargedCandidateFilter");
       addvar.push_back("passesBadPFMuonFilter");
     }
+    addSingleTriggers=false;
     if(useTriggers){
       for (size_t lt = 0; lt < SingleElTriggers.size(); ++lt)  {
 	string trig = SingleElTriggers.at(lt);
@@ -4111,17 +4106,6 @@ bool DMAnalysisTreeMaker::getMETFilters(){
 bool DMAnalysisTreeMaker::getEventTriggers(){
   bool eleOR=false, muOR=false, eleCOR=false, muCOR=false, muHPtOR=false, eleHPtOR=false, phOR=false; 
   bool HHTOR=false, HHTCOR=false, SingleJetOR=false, SingleJetCOR=false, SingleJetSOR=false, SingleJetSCOR=false, MetOR=false, MetCOR=false;
-  for(size_t lt =0; lt< SingleElTriggers.size();++lt){
-    string lname = SingleElTriggers.at(lt);
-    for(size_t bt = 0; bt < triggerNamesR->size();++bt){
-      std::string tname = triggerNamesR->at(bt);
-      if(tname.find(lname)!=std::string::npos){
-	eleOR = muOR || (triggerBits->at(bt)>0);
-	float_values["Event_passes"+lname]=triggerBits->at(bt);
-	float_values["Event_prescale"+lname]=triggerPrescales->at(bt);
-      }
-    }
-  }
 
   for(size_t bt = 0; bt < triggerNamesR->size();++bt){
     std::string tname = triggerNamesR->at(bt);
@@ -4151,7 +4135,7 @@ bool DMAnalysisTreeMaker::getEventTriggers(){
       //      std::cout << " tname is " << tname << " passes "<< triggerBits->at(bt)<< std::endl;
       if(tname.find(lname)!=std::string::npos){
 	//	cout << " matches "<<endl;
-	muOR = muOR || (triggerBits->at(bt)>0);
+	eleOR = eleOR || (triggerBits->at(bt)>0);
 	float_values["Event_passes"+lname]=triggerBits->at(bt);
 	float_values["Event_prescale"+lname]=triggerPrescales->at(bt);
       }
@@ -4655,8 +4639,8 @@ double DMAnalysisTreeMaker::getMCTagEfficiencyFuncInt(float flavor, float ptCorr
   double integral=0.;
   if (algo == "CSV"){
     integral =0.0;
-    double btagmin=getWPAlgo(algo,"MIN"),btagmax=getWPAlgo(algo,"MAX");
-    double thrloose=getWPAlgo(algo,"L"),thrmedium=getWPAlgo(algo,"M"),thrtight=getWPAlgo(algo,"T");
+    double btagmin=getWPAlgo(algo,"MIN",this->version),btagmax=getWPAlgo(algo,"MAX",this->version);
+    double thrloose=getWPAlgo(algo,"L",this->version),thrmedium=getWPAlgo(algo,"M",this->version),thrtight=getWPAlgo(algo,"T",this->version);
     integral+= (thrloose-btagmin)*(1+MCTagEfficiency(algo+"L",flavor, ptCorr,eta))/2.;
     integral+= (thrmedium-thrloose)*(MCTagEfficiency(algo+"M",flavor, ptCorr,eta)+MCTagEfficiency(algo+"L",flavor, ptCorr,eta))/2.;
     integral+= (thrtight-thrmedium)*(MCTagEfficiency(algo+"T",flavor, ptCorr,eta)+MCTagEfficiency(algo+"M",flavor, ptCorr,eta))/2.;
@@ -4675,6 +4659,9 @@ double DMAnalysisTreeMaker::MCTagEfficiency(string algo, int flavor, double pt, 
     if(algo=="CMVAT") return cmvaeffbt->getEff(fabs(eta),pt);
     if(algo=="CMVAM") return cmvaeffbm->getEff(fabs(eta),pt);
     if(algo=="CMVAL") return cmvaeffbl->getEff(fabs(eta),pt);
+    if(algo=="DeepCSVT") return 0.51;
+    if(algo=="DeepCSVM") return 0.71;
+    if(algo=="DeepCSVL") return 0.86;
 
   }
 
@@ -4685,6 +4672,10 @@ double DMAnalysisTreeMaker::MCTagEfficiency(string algo, int flavor, double pt, 
     if(algo=="CMVAT") return cmvaeffct->getEff(fabs(eta),pt);
     if(algo=="CMVAM") return cmvaeffcm->getEff(fabs(eta),pt);
     if(algo=="CMVAL") return cmvaeffcl->getEff(fabs(eta),pt);
+    if(algo=="DeepCSVT") return 0.015;
+    if(algo=="DeepCSVM") return 0.08;
+    if(algo=="DeepCSVL") return 0.28;
+
   }
 
   if (abs(flavor) !=4 && abs(flavor) !=5){
@@ -4694,6 +4685,9 @@ double DMAnalysisTreeMaker::MCTagEfficiency(string algo, int flavor, double pt, 
     if(algo=="CMVAT") return 0.003; //cmvaeffot->getEff(fabs(eta),pt);
     if(algo=="CMVAM") return 0.02;//cmvaeffom->getEff(fabs(eta),pt);
     if(algo=="CMVAL") return 0.13; //cmvaeffol->getEff(fabs(eta),pt);
+    if(algo=="DeepCSVT") return 0.003;
+    if(algo=="DeepCSVM") return 0.02;
+    if(algo=="DeepCSVL") return 0.13;
   }
   return 1.0;
 }
@@ -4707,6 +4701,9 @@ double DMAnalysisTreeMaker::MCTagEfficiencySubjet(string algo, int flavor, doubl
     if(algo=="CMVAT") return cmvaeffbt->getEff(fabs(eta),pt);
     if(algo=="CMVAM") return cmvaeffbm->getEff(fabs(eta),pt);
     if(algo=="CMVAL") return cmvaeffbl->getEff(fabs(eta),pt);
+    if(algo=="DeepCSVT") return 0.51;
+    if(algo=="DeepCSVM") return 0.71;
+    if(algo=="DeepCSVL") return 0.86;
 
   }
 
@@ -4717,6 +4714,9 @@ double DMAnalysisTreeMaker::MCTagEfficiencySubjet(string algo, int flavor, doubl
     if(algo=="CMVAT") return cmvaeffct->getEff(fabs(eta),pt);
     if(algo=="CMVAM") return cmvaeffcm->getEff(fabs(eta),pt);
     if(algo=="CMVAL") return cmvaeffcl->getEff(fabs(eta),pt);
+    if(algo=="DeepCSVT") return 0.015;
+    if(algo=="DeepCSVM") return 0.08;
+    if(algo=="DeepCSVL") return 0.28;
   }
 
   if (abs(flavor) !=4 && abs(flavor) !=5){
@@ -4726,6 +4726,9 @@ double DMAnalysisTreeMaker::MCTagEfficiencySubjet(string algo, int flavor, doubl
     if(algo=="CMVAT") return 0.003; //cmvaeffot->getEff(fabs(eta),pt);
     if(algo=="CMVAM") return 0.02;//cmvaeffom->getEff(fabs(eta),pt);
     if(algo=="CMVAL") return 0.13; //cmvaeffol->getEff(fabs(eta),pt);
+    if(algo=="DeepCSVT") return 0.003;
+    if(algo=="DeepCSVM") return 0.02;
+    if(algo=="DeepCSVL") return 0.13;
   }
   return 1.0;
 }
@@ -4869,6 +4872,74 @@ if(algo == "CMVAL"){
     if(syst ==  "b_tag_down") {
       if(abs(flavor)==5){return readerCMVATight->eval_auto_bounds("down",BTagEntry::FLAV_B, eta, pt);      }
       if(abs(flavor)==4){return readerCMVATight->eval_auto_bounds("down",BTagEntry::FLAV_C, eta, pt);      }
+      if(abs(flavor)!=5 && abs(flavor)!=4){return 1.0*TagScaleFactor(algo,flavor,"noSyst",pt);      }    }
+  }
+
+if(algo == "DeepCSVL"){
+    if(syst ==  "noSyst") {
+      if(abs(flavor)==5){return readerDeepCSVLoose->eval_auto_bounds("central",BTagEntry::FLAV_B, eta, pt);    }
+      if(abs(flavor)==4){return readerDeepCSVLoose->eval_auto_bounds("central",BTagEntry::FLAV_C, eta, pt);    }
+      if(abs(flavor)!=5 && abs(flavor)!=4){ return readerDeepCSVLoose->eval_auto_bounds("central",BTagEntry::FLAV_UDSG, eta, pt);    }    }
+    if(syst ==  "mistag_up") {
+      if(abs(flavor)==5){	return 1.00*TagScaleFactor(algo,flavor,"noSyst",pt);      }
+      if(abs(flavor)==4){	return 1.00*TagScaleFactor(algo,flavor,"noSyst",pt);      }
+      if(abs(flavor)!=5 && abs(flavor)!=4){	return readerDeepCSVLoose->eval_auto_bounds("up",BTagEntry::FLAV_UDSG, eta, pt);      }    }
+    if(syst ==  "mistag_down") {
+      if(abs(flavor)==5){	return 1.00*TagScaleFactor(algo,flavor,"noSyst",pt);      }
+      if(abs(flavor)==4){	return 1.00*TagScaleFactor(algo,flavor,"noSyst",pt);      }
+      if(abs(flavor)!=5 && abs(flavor)!=4){	return readerDeepCSVLoose->eval_auto_bounds("down",BTagEntry::FLAV_UDSG, eta, pt);      }    }
+    if(syst ==  "b_tag_up") {
+      if(abs(flavor)==5){return readerDeepCSVLoose->eval_auto_bounds("up",BTagEntry::FLAV_B, eta, pt);      }
+      if(abs(flavor)==4){return readerDeepCSVLoose->eval_auto_bounds("up",BTagEntry::FLAV_C, eta, pt);      }
+      if(abs(flavor)!=5 && abs(flavor)!=4){return 1.0*TagScaleFactor(algo,flavor,"noSyst",pt);      }    }
+    if(syst ==  "b_tag_down") {
+      if(abs(flavor)==5){return readerDeepCSVLoose->eval_auto_bounds("down",BTagEntry::FLAV_B, eta, pt);      }
+      if(abs(flavor)==4){return readerDeepCSVLoose->eval_auto_bounds("down",BTagEntry::FLAV_C, eta, pt);      }
+      if(abs(flavor)!=5 && abs(flavor)!=4){return 1.0*TagScaleFactor(algo,flavor,"noSyst",pt);      }    }
+  }
+  if(algo == "DeepCSVM"){
+    if(syst ==  "noSyst") {
+      if(abs(flavor)==5){return readerDeepCSVMedium->eval_auto_bounds("central",BTagEntry::FLAV_B, eta, pt);      }
+      if(abs(flavor)==4){return readerDeepCSVMedium->eval_auto_bounds("central",BTagEntry::FLAV_C, eta, pt);      }
+      if(abs(flavor)!=5 && abs(flavor)!=4){return readerDeepCSVMedium->eval_auto_bounds("central",BTagEntry::FLAV_UDSG, eta, pt);      }
+    }
+    if(syst ==  "mistag_up") {
+      if(abs(flavor)==5){return 1.00*TagScaleFactor(algo,flavor,"noSyst",pt);      }
+      if(abs(flavor)==4){return 1.00*TagScaleFactor(algo,flavor,"noSyst",pt);      }
+      if(abs(flavor)!=5 && abs(flavor)!=4){return readerDeepCSVMedium->eval_auto_bounds("up",BTagEntry::FLAV_UDSG, eta, pt);      }    }
+    if(syst ==  "mistag_down") {
+      if(abs(flavor)==5){return 1.00*TagScaleFactor(algo,flavor,"noSyst",pt);      }
+      if(abs(flavor)==4){return 1.00*TagScaleFactor(algo,flavor,"noSyst",pt);      }
+      if(abs(flavor)!=5 && abs(flavor)!=4){return readerDeepCSVMedium->eval_auto_bounds("down",BTagEntry::FLAV_UDSG, eta, pt);      }   }
+    if(syst ==  "b_tag_up") {
+      if(abs(flavor)==5){return readerDeepCSVMedium->eval_auto_bounds("up",BTagEntry::FLAV_B, eta, pt);      }
+      if(abs(flavor)==4){return readerDeepCSVMedium->eval_auto_bounds("up",BTagEntry::FLAV_C, eta, pt);      }
+      if(abs(flavor)!=5 && abs(flavor)!=4){return 1.0*TagScaleFactor(algo,flavor,"noSyst",pt);      }     }
+    if(syst ==  "b_tag_down") {
+      if(abs(flavor)==5){return readerDeepCSVMedium->eval_auto_bounds("down",BTagEntry::FLAV_B, eta, pt);      }
+      if(abs(flavor)==4){return readerDeepCSVMedium->eval_auto_bounds("down",BTagEntry::FLAV_C, eta, pt);      }
+      if(abs(flavor)!=5 && abs(flavor)!=4){return 1.0*TagScaleFactor(algo,flavor,"noSyst",pt);      }    }  
+  }
+  if(algo == "DeepCSVT"){
+    if(syst ==  "noSyst") {
+      if(abs(flavor)==5){return readerDeepCSVTight->eval_auto_bounds("central",BTagEntry::FLAV_B, eta, pt);      }
+      if(abs(flavor)==4){return readerDeepCSVTight->eval_auto_bounds("central",BTagEntry::FLAV_C, eta, pt);      }
+      if(abs(flavor)!=5 && abs(flavor)!=4){return readerDeepCSVTight->eval_auto_bounds("central",BTagEntry::FLAV_UDSG, eta, pt);      }    }
+    if(syst ==  "mistag_up") {
+      if(abs(flavor)==5){return 1.00*TagScaleFactor(algo,flavor,"noSyst",pt);      }
+      if(abs(flavor)==4){return 1.00*TagScaleFactor(algo,flavor,"noSyst",pt);      }
+      if(abs(flavor)!=5 && abs(flavor)!=4){return readerDeepCSVTight->eval_auto_bounds("up",BTagEntry::FLAV_UDSG, eta, pt);      }    }
+    if(syst ==  "mistag_down") {
+      if(abs(flavor)==5){return 1.00*TagScaleFactor(algo,flavor,"noSyst",pt);      }
+      if(abs(flavor)==4){return 1.00*TagScaleFactor(algo,flavor,"noSyst",pt);      }
+      if(abs(flavor)!=5 && abs(flavor)!=4){return readerDeepCSVTight->eval_auto_bounds("down",BTagEntry::FLAV_UDSG, eta, pt);      }    }
+    if(syst ==  "b_tag_up") {
+      if(abs(flavor)==5){return readerDeepCSVTight->eval_auto_bounds("up",BTagEntry::FLAV_B, eta, pt);      }
+      if(abs(flavor)==4){return readerDeepCSVTight->eval_auto_bounds("up",BTagEntry::FLAV_C, eta, pt);      }
+      if(abs(flavor)!=5 && abs(flavor)!=4){return 1.0*TagScaleFactor(algo,flavor,"noSyst",pt);      }    }
+    if(syst ==  "b_tag_down") {
+      if(abs(flavor)==5){return readerDeepCSVTight->eval_auto_bounds("down",BTagEntry::FLAV_B, eta, pt);      }
+      if(abs(flavor)==4){return readerDeepCSVTight->eval_auto_bounds("down",BTagEntry::FLAV_C, eta, pt);      }
       if(abs(flavor)!=5 && abs(flavor)!=4){return 1.0*TagScaleFactor(algo,flavor,"noSyst",pt);      }    }
   }
   return 1.0;
@@ -5254,8 +5325,8 @@ double DMAnalysisTreeMaker::getMCTagEfficiencyFunc(float flavor, float btag, flo
   bool doSpline = spline;
   double scale=1.0;
   if (algo == "CSV"|| algo=="CMVA"){
-    double btagmin=getWPAlgo(algo,"MIN"),btagmax=getWPAlgo(algo,"MAX");
-    double thrloose=getWPAlgo(algo,"L"),thrmedium=getWPAlgo(algo,"M"),thrtight=getWPAlgo(algo,"T");
+    double btagmin=getWPAlgo(algo,"MIN",this->version),btagmax=getWPAlgo(algo,"MAX",this->version);
+    double thrloose=getWPAlgo(algo,"L",this->version),thrmedium=getWPAlgo(algo,"M",this->version),thrtight=getWPAlgo(algo,"T",this->version);
     if(btag<thrtight)doSpline=false;
     if( doSpline){
       Double_t xs[5] = {btagmin,thrloose,thrmedium,thrtight,btagmax};
@@ -5302,8 +5373,8 @@ double DMAnalysisTreeMaker::getMCTagEfficiencyFunc(float flavor, float btag, flo
 //Helper to get a/b of the working point:
 double DMAnalysisTreeMaker::getMCTagEfficiencyFuncParam(float flavor, float ptCorr, float eta, string algo,string syst, string param, string region){
   if (algo == "CSV"|| algo=="CMVA"){
-    double btagmin=getWPAlgo(algo,"MIN"),btagmax=getWPAlgo(algo,"MAX");
-    double thrloose=getWPAlgo(algo,"L"),thrmedium=getWPAlgo(algo,"M"),thrtight=getWPAlgo(algo,"T");
+    double btagmin=getWPAlgo(algo,"MIN",this->version),btagmax=getWPAlgo(algo,"MAX",this->version);
+    double thrloose=getWPAlgo(algo,"L",this->version),thrmedium=getWPAlgo(algo,"M",this->version),thrtight=getWPAlgo(algo,"T",this->version);
     if (param=="a"){
       if ( region == "0L") return (1. + (btagmin)*(1-MCTagEfficiency(algo+"L",flavor, ptCorr,eta))/(thrloose-btagmin));
       if ( region == "LM") return (MCTagEfficiency(algo+"L",flavor, ptCorr,eta) + (thrloose)*(MCTagEfficiency(algo+"L",flavor, ptCorr,eta)-MCTagEfficiency(algo+"M",flavor, ptCorr,eta))/(thrmedium-thrloose));
@@ -5382,7 +5453,7 @@ float DMAnalysisTreeMaker::getReshapedBTagValue(float flavor, float btag, float 
 
 
 
-float DMAnalysisTreeMaker::getWPAlgo(string algo, string wp){
+float DMAnalysisTreeMaker::getWPAlgo(string algo, string wp, string version){
   if(algo=="CSV"){
     if(wp=="MIN")return 0.0;
     if(wp=="L")return 0.5426;
@@ -5397,6 +5468,26 @@ float DMAnalysisTreeMaker::getWPAlgo(string algo, string wp){
     if(wp=="T")return 0.9432;
     if(wp=="MAX")return 0.999999;
   }
+  if(version=="2017_94X"){
+    if(algo=="DeepCSV"){
+      if(wp=="MIN")return -2.;
+      if(wp=="L")return 0.1522;
+      if(wp=="M")return 0.4941;
+      if(wp=="T")return 0.8001;
+      if(wp=="MAX")return 0.999999;
+    }
+  }    
+  if(version=="2016_94X"){
+    if(algo=="DeepCSV"){
+      if(wp=="MIN")return -2.;
+      if(wp=="L")return 0.2217;
+      if(wp=="M")return 0.6321;
+      if(wp=="T")return 0.8953;
+      if(wp=="MAX")return 0.999999;
+    }
+  }    
+
+
   return -1.0;
 }
 
@@ -5404,8 +5495,8 @@ float DMAnalysisTreeMaker::getEffRatioFunc(float flavor,float btag,float pt,floa
 
   float localvalue=-1;
   if(algo=="CSV" || algo == "CMVA"){
-    double btagmin=getWPAlgo(algo,"MIN"),btagmax=getWPAlgo(algo,"MAX");
-    double thrloose=getWPAlgo(algo,"L"),thrmedium=getWPAlgo(algo,"M"),thrtight=getWPAlgo(algo,"T");
+    double btagmin=getWPAlgo(algo,"MIN",this->version),btagmax=getWPAlgo(algo,"MAX",this->version);
+    double thrloose=getWPAlgo(algo,"L",this->version),thrmedium=getWPAlgo(algo,"M",this->version),thrtight=getWPAlgo(algo,"T",this->version);
     //    cout << " btagmin "<<btagmin<<" btag "<< btag <<endl;
     
     //    localvalue= getMCTagEfficiencyFunc(1,btag,pt, eta, algo,syst,false,false)/getMCTagEfficiencyFunc(flavor,btag,pt,eta,algo,syst,false,false);//Get the MC efficiency ratio

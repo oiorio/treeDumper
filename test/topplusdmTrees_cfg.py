@@ -31,10 +31,11 @@ options.register('sample',
 
 #Recent files:
                  #2016 signal t'
-                    # "/TprimeBToTZ_M-1400_LH_TuneCP5_13TeV-madgraph-pythia8/oiorio-RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1_B2GAnaFW_94X_V0_Sep_14-b20ae75985a288300defff97749d07bd/USER"
-                    # '/store/user/decosa/EPS17/B2GAnaFW_80X_V3p1/TT_TuneCUETP8M2T4_13TeV-powheg-pythia8/RunIISummer16MiniAODv2/TT_TuneCUETP8M2T4_13TeV-powheg-pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1_B2GAnaFW_80X_V3p1/170510_103545/0000/B2GEDMNtuple_1.root',
+                 #"/TprimeBToTZ_M-1400_LH_TuneCP5_13TeV-madgraph-pythia8/oiorio-RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1_B2GAnaFW_94X_V0_Sep_14-b20ae75985a288300defff97749d07bd/USER"
+                 #'/store/user/decosa/EPS17/B2GAnaFW_80X_V3p1/TT_TuneCUETP8M2T4_13TeV-powheg-pythia8/RunIISummer16MiniAODv2/TT_TuneCUETP8M2T4_13TeV-powheg-pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1_B2GAnaFW_80X_V3p1/170510_103545/0000/B2GEDMNtuple_1.root',
                  #2017 ntuples
-                 "/store/user/oiorio/ttDM/samples/2018/Sep/14Sep/B2GAnaFW_94X_V0_Sep_14/TprimeBToTZ_M-1400_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2/TprimeBToTZ_M-1400_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1_B2GAnaFW_94X_V0_Sep_14/181003_184239/0000/B2GEDMNtuple_9.root",
+                 #"/store/user/oiorio/ttDM/samples/2018/Sep/14Sep/B2GAnaFW_94X_V0_Sep_14/TprimeBToTZ_M-1400_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2/TprimeBToTZ_M-1400_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1_B2GAnaFW_94X_V0_Sep_14/181003_184239/0000/B2GEDMNtuple_9.root",
+                 "/store/user/lvigilan/Tprime/samples/94X_18Jan19/TprimeBToTZ_M-1400_Width-30p_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2/TprimeBToTZ_M-1400_Width-30p_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1_94X_18Jan19/190118_170039/0000/B2GEDMNtuple_1.root",
                  #'file:B2GEDMNtuple_1.root',#l'ho preso dal mio TT
                  #'file:/eos/user/o/oiorio/samples/synch/mc_jecv4/B2GSynchMC.root',
                  opts.VarParsing.multiplicity.singleton,
@@ -55,7 +56,7 @@ options.register('outputLabel',
                  'Output label')
 
 options.register('EraLabel',
-                 'BCD',
+                 'B',
                  opts.VarParsing.multiplicity.singleton,
                  opts.VarParsing.varType.string,
                  'Data Era Label')
@@ -123,19 +124,29 @@ if(version=="80X" or version=="94X" or version == "94X_2016"):
     SingleElTriggers = ["HLT_Ele27_eta2p1_WP75_Gsf"]
     SingleElTriggers = SingleElTriggers + ["HLT_Ele27_eta2p1_WP75_Gsf_v"+str(s) for s in xrange(15)]
     
-    SingleElControlTriggers = ["HLT_Ele27_eta2p1_WP75_Gsf"]
-    SingleElControlTriggers = SingleElControlTriggers + ["HLT_Ele27_eta2p1_WP75_Gsf_v"+str(s) for s in xrange(15)]
+    SingleElControlTriggers = ["HLT_Ele23_WPLoose_Gsf"]##
+    SingleElControlTriggers = SingleElControlTriggers + ["HLT_Ele23_WPLoose_Gsf_v"+str(s) for s in xrange(15)]
 
-    SingleElHighPtTriggers =  ["HLT_Ele27_eta2p1_WP75_Gsf"]
-    SingleElHighPtTriggers = SingleElHighPtTriggers + ["HLT_Ele27_eta2p1_WP75_Gsf_v"+str(s) for s in xrange(15)]
+    SingleElHighPtTriggers =  ["HLT_Ele115_CaloIdVT_GsfTrkIdT"]
+    SingleElHighPtTriggers = SingleElHighPtTriggers + ["HLT_Ele115_CaloIdVT_GsfTrkIdT_v"+str(s) for s in xrange(15)]
+
+    if (version=="94X"):
+        SingleElControlTriggers = ["HLT_Ele20_WPLoose_Gsf"]
+        SingleElControlTriggers = SingleElControlTriggers + ["HLT_Ele20_WPLoose_Gsf_v"+str(s) for s in xrange(15)]
+   
+        SingleElTriggers = ["HLT_Ele27_WPTight_Gsf"]
+        SingleElTriggers = SingleElTriggers + ["HLT_Ele27_WPTight_Gsf_v"+str(s) for s in xrange(15)]
+
+        SingleElHighPtTriggers =  ["HLT_Ele115_CaloIdVT_GsfTrkIdT"]###
+        SingleElHighPtTriggers = SingleElHighPtTriggers + ["HLT_Ele115_CaloIdVT_GsfTrkIdT_v"+str(s) for s in xrange(15)]
 
     SingleMuTriggers = ["HLT_IsoMu22_v"+str(s) for s in range(1,5)]
     SingleMuTriggers = SingleMuTriggers + ["HLT_IsoMu24_v"+str(s) for s in range(1,5)]
     SingleMuTriggers = SingleMuTriggers + ["HLT_IsoTkMu24_v"+str(s) for s in range(1,5)]
     
     SingleMuHighPtTriggers = ["HLT_Mu50","HLT_TkMu50"]
-    SingleMuHighPtTriggers = SingleMuTriggers + ["HLT_Mu50_v"+str(s) for s in xrange(15)]
-    SingleMuHighPtTriggers = SingleMuTriggers + ["HLT_TkMu50_v"+str(s) for s in xrange(15)]
+    SingleMuHighPtTriggers = SingleMuHighPtTriggers + ["HLT_Mu50_v"+str(s) for s in xrange(15)]
+    SingleMuHighPtTriggers = SingleMuHighPtTriggers + ["HLT_TkMu50_v"+str(s) for s in xrange(15)]
 
     SingleMuControlTriggers = ["HLT_Mu50","HLT_TkMu50"]
     SingleMuControlTriggers = SingleMuControlTriggers + ["HLT_Mu50_v"+str(s) for s in xrange(15)]
@@ -158,13 +169,32 @@ if(version=="80X" or version=="94X" or version == "94X_2016"):
 
     if(options.isData):
 
-        SingleElTriggers = ["HLT_Ele27_eta2p1_WPLoose_Gsf", "HLT_Ele23_WPLoose_Gsf"]
+        SingleElTriggers = ["HLT_Ele27_eta2p1_WPLoose_Gsf"]
         SingleElTriggers = SingleElTriggers + ["HLT_Ele27_eta2p1_WPLoose_Gsf_v"+str(s) for s in xrange(15)]
-        SingleElTriggers = SingleElTriggers + ["HLT_Ele23_WPLoose_Gsf_v"+str(s) for s in xrange(15)]
 
+        SingleElControlTriggers = ["HLT_Ele23_WPLoose_Gsf"]
+        SingleElControlTriggers = SingleElControlTriggers + ["HLT_Ele23_WPLoose_Gsf_v"+str(s) for s in xrange(15)]
+                                    
+        SingleElHighPtTriggers =  ["HLT_Ele115_CaloIdVT_GsfTrkIdT"]
+        SingleElHighPtTriggers = SingleElHighPtTriggers + ["HLT_Ele115_CaloIdVT_GsfTrkIdT_v"+str(s) for s in xrange(15)]
+
+        if (version=="94X"):
+            SingleElTriggers = ["HLT_Ele27_WPTight_Gsf"]
+            SingleElTriggers = SingleElTriggers + ["HLT_Ele27_WPTight_Gsf_v"+str(s) for s in xrange(15)]
+            
+            SingleElControlTriggers = ["HLT_Ele20_WPLoose_Gsf"]
+            SingleElControlTriggers = SingleElControlTriggers + ["HLT_Ele20_WPLoose_Gsf_v"+str(s) for s in xrange(15)]
+                        
+            SingleElHighPtTriggers =  ["HLT_Ele115_CaloIdVT_GsfTrkIdT"]
+            SingleElHighPtTriggers = SingleElHighPtTriggers + ["HLT_Ele115_CaloIdVT_GsfTrkIdT_v"+str(s) for s in xrange(15)]
+        
         SingleMuTriggers = ["HLT_Mu50","HLT_TkMu50"]
         SingleMuTriggers = SingleMuTriggers + ["HLT_Mu50_v"+str(s) for s in xrange(15)]
         SingleMuTriggers = SingleMuTriggers + ["HLT_TkMu50_v"+str(s) for s in xrange(15)]
+
+        SingleMuHighPtTriggers = ["HLT_Mu50","HLT_TkMu50"]
+        SingleMuHighPtTriggers = SingleMuHighPtTriggers + ["HLT_Mu50_v"+str(s) for s in xrange(15)]
+        SingleMuHighPtTriggers = SingleMuHighPtTriggers + ["HLT_TkMu50_v"+str(s) for s in xrange(15)]
         
         HadronPFHT900Triggers = ["HLT_PFHT900"]
         HadronPFHT900Triggers = HadronPFHT900Triggers + ["HLT_PFHT900_v"+str(s) for s in xrange(15)]
@@ -272,8 +302,8 @@ catMetST = ["CorrT1"]
 scanMuST = ["Iso04_0p06_LE","Iso04_0p15_LE","Iso04_0p06_GE","Iso04_0p15_GE"]
 scanEl = []
 scanJet = ["CorrPt_20","CorrPt_40"]
-sysMu = [""]
-sysEl = [""]
+sysMu = []
+sysEl = []
 sysJet = ["JESUp","JESDown","JERUp","JERDown"]
 
 #Setup JECs and Jet collections:
@@ -292,6 +322,7 @@ addAK8CHS=True
 addAK8Puppi=True
 
 if(version=='80X'):
+    process.DMTreesDumper.era = cms.untracked.string("2016_80X")
     process.DMTreesDumper.prefixLabelData = cms.untracked.string("Summer16_23Sep2016V4")
     process.DMTreesDumper.prefixLabelMC = cms.untracked.string("Summer16_23Sep2016V4")
     process.DMTreesDumper.postfixLabelData = cms.untracked.string("V4_DATA")
@@ -302,9 +333,10 @@ if(version=='80X'):
     process.DMTreesDumper.boostedTopsSubjetsLabel = subjetak8label    
 
 if(version=='94X'):
+    process.DMTreesDumper.era = cms.untracked.string("2017_94X")
     process.DMTreesDumper.prefixLabelData = cms.untracked.string("JECs/Fall17_17Nov2017")
     process.DMTreesDumper.prefixLabelMC = cms.untracked.string("JECs/Fall17_17Nov2017")
-    process.DMTreesDumper.postfixLabelData = cms.untracked.string("V32_DATA")
+    process.DMTreesDumper.postfixLabelData = cms.untracked.string("_V32_DATA")
     process.DMTreesDumper.postfixLabelMC = cms.untracked.string("_V32_MC")
     process.DMTreesDumper.jetType = cms.untracked.string("AK4PFchs")
     process.DMTreesDumper.jetType8 = cms.untracked.string("AK8PFPuppi")
@@ -312,6 +344,7 @@ if(version=='94X'):
     process.DMTreesDumper.boostedTopsSubjetsLabel = subjetak8puplabel    
 
 if(version=='94X_2016'):
+    process.DMTreesDumper.era = cms.untracked.string("2016_94X")
     process.DMTreesDumper.prefixLabelData = cms.untracked.string("JECs/Summer16_07Aug2017")
     process.DMTreesDumper.prefixLabelMC = cms.untracked.string("JECs/Summer16_23Sep2016V4")
     process.DMTreesDumper.postfixLabelData = cms.untracked.string("V4_DATA")

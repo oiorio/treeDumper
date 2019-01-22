@@ -81,6 +81,7 @@ def main():
         inputs.append(l)
 
     inputs.append('Spring16_25nsV10_MC_PtResolution_AK8PFchs.txt')
+    inputs.append('DeepCSV_94XSF_V3_B_F.csv')
     inputs.append('CSVv2_Moriond17_B_H.csv')
     inputs.append('CSVv2_ichep.csv')
     inputs.append('cMVAv2_Moriond17_B_H.csv')
