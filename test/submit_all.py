@@ -64,7 +64,7 @@ def main():
     config.JobType.psetName = options.config
     config.JobType.allowUndistributedCMSSW = True
 #    config.JobType.pyCfgParams = ['isData=' + str(options.isData), 'changeJECs=True', 'channel=wzjets']
-    config.JobType.pyCfgParams = ['isData=' + str(options.isData), 'changeJECs=True','channel=wprime']
+    config.JobType.pyCfgParams = ['isData=' + str(options.isData), 'changeJECs=True','mode=crab']
 
     #config.JobType.inputFiles = ['Fall15_25nsV2_DATA.db', 'Fall15_25nsV2_MC.db']
     #config.JobType.inputFiles = ["Fall15_25nsV2_MC_L1FastJet_AK4PFchs.txt", "Fall15_25nsV2_MC_L1RC_AK4PFchs.txt","Fall15_25nsV2_MC_L2Relative_AK4PFchs.txt", "Fall15_25nsV2_MC_L3Absolute_AK4PFchs.txt","Fall15_25nsV2_MC_L2L3Residual_AK4PFchs.txt", "Fall15_25nsV2_DATA_L1FastJet_AK4PFchs.txt","Fall15_25nsV2_DATA_L1RC_AK4PFchs.txt","Fall15_25nsV2_DATA_L2Relative_AK4PFchs.txt","Fall15_25nsV2_DATA_L3Absolute_AK4PFchs.txt",  "Fall15_25nsV2_DATA_L2L3Residual_AK4PFchs.txt"]

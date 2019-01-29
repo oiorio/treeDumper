@@ -3759,34 +3759,108 @@ vector<string> DMAnalysisTreeMaker::additionalVariables(string object){
 	}
       }
       for (size_t lt = 0; lt < SingleElControlTriggers.size(); ++lt)  {
-	string trig = SingleElTriggers.at(lt);
+	string trig = SingleElControlTriggers.at(lt);
 	if(addSingleTriggers){
 	  addvar.push_back("passes"+trig);
 	  addvar.push_back("prescale"+trig);
 	}
       }
       for (size_t lt = 0; lt < SingleMuControlTriggers.size(); ++lt)  {
-	string trig = SingleMuTriggers.at(lt);
+	string trig = SingleMuControlTriggers.at(lt);
 	if(addSingleTriggers){
 	addvar.push_back("passes"+trig);
 	addvar.push_back("prescale"+trig);
 	}
       }
       for (size_t lt = 0; lt < SingleElHighPtTriggers.size(); ++lt)  {
-	string trig = SingleElTriggers.at(lt);
+	string trig = SingleElHighPtTriggers.at(lt);
 	if(addSingleTriggers){
 	  addvar.push_back("passes"+trig);
 	  addvar.push_back("prescale"+trig);
 	}
       }
       for (size_t lt = 0; lt < SingleMuHighPtTriggers.size(); ++lt)  {
-	string trig = SingleMuTriggers.at(lt);
+	string trig = SingleMuHighPtTriggers.at(lt);
 	if(addSingleTriggers){
 	addvar.push_back("passes"+trig);
 	addvar.push_back("prescale"+trig);
 	}
       }
       
+
+      for (size_t lt = 0; lt < PhotonTriggers.size(); ++lt)  {
+	string trig = PhotonTriggers.at(lt);
+	if(addSingleTriggers){
+	  addvar.push_back("passes"+trig);
+	  addvar.push_back("prescale"+trig);
+	}
+      }
+
+      for (size_t lt = 0; lt < MetTriggers.size(); ++lt)  {
+	string trig = MetTriggers.at(lt);
+	if(addSingleTriggers){
+	  addvar.push_back("passes"+trig);
+	  addvar.push_back("prescale"+trig);
+	}
+      }
+
+      for (size_t lt = 0; lt < MetControlTriggers.size(); ++lt)  {
+	string trig = MetControlTriggers.at(lt);
+	if(addSingleTriggers){
+	  addvar.push_back("passes"+trig);
+	  addvar.push_back("prescale"+trig);
+	}
+      }
+
+      for (size_t lt = 0; lt < HadronicHTTriggers.size(); ++lt)  {
+	string trig = HadronicHTTriggers.at(lt);
+	if(addSingleTriggers){
+	  addvar.push_back("passes"+trig);
+	  addvar.push_back("prescale"+trig);
+	}
+      }
+
+      for (size_t lt = 0; lt < HadronicHTControlTriggers.size(); ++lt)  {
+	string trig = HadronicHTControlTriggers.at(lt);
+	if(addSingleTriggers){
+	  addvar.push_back("passes"+trig);
+	  addvar.push_back("prescale"+trig);
+	}
+      }
+
+      for (size_t lt = 0; lt < SingleJetTriggers.size(); ++lt)  {
+	string trig = SingleJetTriggers.at(lt);
+	if(addSingleTriggers){
+	  addvar.push_back("passes"+trig);
+	  addvar.push_back("prescale"+trig);
+	}
+      }
+
+      for (size_t lt = 0; lt < SingleJetControlTriggers.size(); ++lt)  {
+	string trig = SingleJetControlTriggers.at(lt);
+	if(addSingleTriggers){
+	  addvar.push_back("passes"+trig);
+	  addvar.push_back("prescale"+trig);
+	}
+      }
+
+      for (size_t lt = 0; lt < SingleJetSubstructureTriggers.size(); ++lt)  {
+	string trig = SingleJetSubstructureTriggers.at(lt);
+	if(addSingleTriggers){
+	  addvar.push_back("passes"+trig);
+	  addvar.push_back("prescale"+trig);
+	}
+      }
+
+      for (size_t lt = 0; lt < SingleJetSubstructureControlTriggers.size(); ++lt)  {
+	string trig = SingleJetSubstructureControlTriggers.at(lt);
+	if(addSingleTriggers){
+	  addvar.push_back("passes"+trig);
+	  addvar.push_back("prescale"+trig);
+	}
+      }
+
+
       addvar.push_back("passesSingleElTriggers");
       addvar.push_back("passesSingleMuTriggers");
 

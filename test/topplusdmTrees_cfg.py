@@ -91,11 +91,18 @@ options.register('LHE',
                  opts.VarParsing.varType.bool,
                  'Keep LHEProducts')
 
+options.register('mode',
+                 'local',
+                 opts.VarParsing.multiplicity.singleton,
+                 opts.VarParsing.varType.string,
+                 'Execution mode: local or crab')
+
 options.register('lhesource',
                  'externalLHEProducer',
                  opts.VarParsing.multiplicity.singleton,
                  opts.VarParsing.varType.string,
                  'LHEProducts source')
+
 
 options.register('channel',
                  "",
@@ -258,12 +265,18 @@ process.load("TreeFWK.treeDumper.topplusdmedmRootTreeMaker_cff")
 
 process.DMTreesDumper.channelInfo.SingleElTriggers=cms.vstring(SingleElTriggers)
 process.DMTreesDumper.channelInfo.SingleMuTriggers=cms.vstring(SingleMuTriggers)
+process.DMTreesDumper.channelInfo.SingleElControlTriggers=cms.vstring(SingleElControlTriggers)
+process.DMTreesDumper.channelInfo.SingleMuControlTriggers=cms.vstring(SingleMuControlTriggers)
+process.DMTreesDumper.channelInfo.SingleElHighPtTriggers=cms.vstring(SingleElHighPtTriggers)
+process.DMTreesDumper.channelInfo.SingleMuHighPtTriggers=cms.vstring(SingleMuHighPtTriggers)
 process.DMTreesDumper.channelInfo.MetTriggers=cms.vstring(metTriggers)
 process.DMTreesDumper.channelInfo.MetControlTriggers=cms.vstring(metTriggers)
-process.DMTreesDumper.channelInfo.HHTTriggers=cms.vstring(HadronPFHT800Triggers)
-process.DMTreesDumper.channelInfo.HHTControlTriggers=cms.vstring(HadronPFHT900Triggers)
+process.DMTreesDumper.channelInfo.HadronicHHTTriggers=cms.vstring(HadronPFHT800Triggers)
+process.DMTreesDumper.channelInfo.HadronicHHTControlTriggers=cms.vstring(HadronPFHT900Triggers)
 process.DMTreesDumper.channelInfo.SingleJetTriggers=cms.vstring(HadronPFJet450Triggers)
 process.DMTreesDumper.channelInfo.SingleJetControlTriggers=cms.vstring(HadronPFJet450Triggers)
+process.DMTreesDumper.channelInfo.SingleJetSubstructureTriggers=cms.vstring(HadronPFJet450Triggers)
+process.DMTreesDumper.channelInfo.SingleJetSubstructureControlTriggers=cms.vstring(HadronPFJet450Triggers)
 
 if options.addPartonInfo:
 #    testMC = False
@@ -321,6 +334,10 @@ subjetak8puplabel = cms.string("subjetsAK8Puppi")
 addAK8CHS=True
 addAK8Puppi=True
 
+jecFolder="JECs/"
+if(options.mode=="crab"):
+    jecFolder="./"
+
 if(version=='80X'):
     process.DMTreesDumper.era = cms.untracked.string("2016_80X")
     process.DMTreesDumper.prefixLabelData = cms.untracked.string("Summer16_23Sep2016V4")
@@ -334,8 +351,8 @@ if(version=='80X'):
 
 if(version=='94X'):
     process.DMTreesDumper.era = cms.untracked.string("2017_94X")
-    process.DMTreesDumper.prefixLabelData = cms.untracked.string("JECs/Fall17_17Nov2017")
-    process.DMTreesDumper.prefixLabelMC = cms.untracked.string("JECs/Fall17_17Nov2017")
+    process.DMTreesDumper.prefixLabelData = cms.untracked.string(jecFolder+"/Fall17_17Nov2017")
+    process.DMTreesDumper.prefixLabelMC = cms.untracked.string(jecFolder+"/Fall17_17Nov2017")
     process.DMTreesDumper.postfixLabelData = cms.untracked.string("_V32_DATA")
     process.DMTreesDumper.postfixLabelMC = cms.untracked.string("_V32_MC")
     process.DMTreesDumper.jetType = cms.untracked.string("AK4PFchs")
@@ -345,8 +362,8 @@ if(version=='94X'):
 
 if(version=='94X_2016'):
     process.DMTreesDumper.era = cms.untracked.string("2016_94X")
-    process.DMTreesDumper.prefixLabelData = cms.untracked.string("JECs/Summer16_07Aug2017")
-    process.DMTreesDumper.prefixLabelMC = cms.untracked.string("JECs/Summer16_23Sep2016V4")
+    process.DMTreesDumper.prefixLabelData = cms.untracked.string(jecFolder+"/Summer16_07Aug2017")
+    process.DMTreesDumper.prefixLabelMC = cms.untracked.string(jecFolder+"/Summer16_23Sep2016V4")
     process.DMTreesDumper.postfixLabelData = cms.untracked.string("V4_DATA")
     process.DMTreesDumper.postfixLabelMC = cms.untracked.string("_MC")
     process.DMTreesDumper.jetType = cms.untracked.string("AK4PFchs")
@@ -379,6 +396,11 @@ if not options.isData:
     process.DMTreesDumper.getPartonW  = cms.untracked.bool(True)
     process.DMTreesDumper.channelInfo.useLHE = cms.untracked.bool(True) 
     process.DMTreesDumper.channelInfo.useLHEWeights = cms.untracked.bool(True)
+    process.DMTreesDumper.channelInfo.getPartonW=cms.untracked.bool(True)
+    process.DMTreesDumper.channelInfo.getPartonTop=cms.untracked.bool(True)
+    process.DMTreesDumper.channelInfo.doWReweighting=cms.untracked.bool(True)
+    process.DMTreesDumper.channelInfo.doTopReweighting=cms.untracked.bool(True)
+
 
 if options.channel == "wprime":
     process.DMTreesDumper.lhes =cms.InputTag("source")
