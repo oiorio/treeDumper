@@ -258,8 +258,20 @@ def main():
             eraLabel = 'G'
         elif ('2016H' in job.rstrip()) :                                                                                                    
             eraLabel = 'H'
+        elif ('2017B' in job.rstrip()) :   
+            eraLabel = 'B'
+        elif ('2017C' in job.rstrip()) :                                                                                                       
+            eraLabel = 'C'
+        elif ('2017D' in job.rstrip()) :
+            eraLabel = 'DE'
+        elif ('2017E' in job.rstrip()) :
+            eraLabel = 'DE'
+        elif ('2017F' in job.rstrip()) :                                                                                                    
+            eraLabel = 'F'
         else:
             eraLabel = 'BCD'
+
+
         #        print "-------> ERA: ", eraLabel
 
 
