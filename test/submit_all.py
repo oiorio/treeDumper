@@ -3,7 +3,11 @@
 This is a small script that submits a config over many datasets
 """
 import os, commands
+import glob
 from optparse import OptionParser
+
+def make_list(option, opt, value, parser):
+    setattr(parser.values, option.dest, value.split(','))
 
 def getOptions() :
     """
@@ -25,6 +29,13 @@ def getOptions() :
         default="",
         help=("wildcard for the jecs to use"),
         metavar="JECV")
+    parser.add_option("-p", "--pyCfgParams",
+        type='string',
+        action='callback',
+        callback=make_list,
+        dest='pyCfgParams', 
+        help=("input parameters for config file"),
+        metavar="PARAMS")
     parser.add_option( "--isData", dest="isData",
                        default=False, action="store_true",
                        help=("Is it data?") )
@@ -64,8 +75,14 @@ def main():
     config.JobType.psetName = options.config
     config.JobType.allowUndistributedCMSSW = True
 #    config.JobType.pyCfgParams = ['isData=' + str(options.isData), 'changeJECs=True', 'channel=wzjets']
-    config.JobType.pyCfgParams = ['isData=' + str(options.isData), 'changeJECs=True','mode=crab']
+    cfgparams = []
+    if options.pyCfgParams != None:
+        cfgparams=options.pyCfgParams
+    cfgparams.append('isData=' + str(options.isData))
+    cfgparams.append('changeJECs=True')
+    cfgparams.append('mode=crab')
 
+    
     #config.JobType.inputFiles = ['Fall15_25nsV2_DATA.db', 'Fall15_25nsV2_MC.db']
     #config.JobType.inputFiles = ["Fall15_25nsV2_MC_L1FastJet_AK4PFchs.txt", "Fall15_25nsV2_MC_L1RC_AK4PFchs.txt","Fall15_25nsV2_MC_L2Relative_AK4PFchs.txt", "Fall15_25nsV2_MC_L3Absolute_AK4PFchs.txt","Fall15_25nsV2_MC_L2L3Residual_AK4PFchs.txt", "Fall15_25nsV2_DATA_L1FastJet_AK4PFchs.txt","Fall15_25nsV2_DATA_L1RC_AK4PFchs.txt","Fall15_25nsV2_DATA_L2Relative_AK4PFchs.txt","Fall15_25nsV2_DATA_L3Absolute_AK4PFchs.txt",  "Fall15_25nsV2_DATA_L2L3Residual_AK4PFchs.txt"]
     
@@ -177,7 +194,7 @@ def main():
 #    config.Data.outLFNDirBase = '/store/user/cgiuglia/trees/May12/'
 #    config.Data.outLFNDirBase = '/store/user/oiorio/ttDM/trees/2018/May28/'
 #    config.Data.outLFNDirBase = '/store/user/oiorio/Wprime/2018/June/June13/'
-    config.Data.outLFNDirBase = '/store/user/oiorio/Tprime/trees/2018/Oct3/'
+    config.Data.outLFNDirBase = '/store/user/oiorio/Tprime/trees/2019/Jan30/'
 
     config.section_("Site")
 #    config.Site.storageSite = 'T2_IT_Pisa'
@@ -245,7 +262,10 @@ def main():
             eraLabel = 'BCD'
         #        print "-------> ERA: ", eraLabel
 
-        if(options.isData):config.JobType.pyCfgParams = ['isData=' + str(options.isData), 'changeJECs=True', "EraLabel="+eraLabel]
+
+        if(options.isData):cfgparams.append('EraLabel='+eraLabel)
+        config.JobType.pyCfgParams = cfgparams
+
         print "====> Config: ", config.JobType.pyCfgParams
 
         ptbin = job.split('/')[1]
@@ -262,7 +282,7 @@ def main():
         print "1st Request name: ", config.General.requestName        
         if(options.isData): 
             print "I am in the wrong hole -> isData is: ", options.isData
-            config.General.requestName = ptbin + run + "_" + opt.dir  
+            config.General.requestName = ptbin + run + "_" + options.dir  
         print "2nd Request name: ", config.General.requestName        
         config.Data.inputDataset = job
         config.Data.outputDatasetTag = ptbin+"_"+options.dir

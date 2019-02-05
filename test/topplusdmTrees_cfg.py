@@ -368,6 +368,8 @@ if(version=='94X_2016'):
     process.DMTreesDumper.postfixLabelMC = cms.untracked.string("_MC")
     process.DMTreesDumper.jetType = cms.untracked.string("AK4PFchs")
     process.DMTreesDumper.jetType8 = cms.untracked.string("AK8PFPuppi")
+    process.DMTreesDumper.boostedTopsLabel = jetak8puplabel
+    process.DMTreesDumper.boostedTopsSubjetsLabel = subjetak8puplabel    
 
 
 if(addAK8CHS):
