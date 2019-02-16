@@ -182,6 +182,11 @@ private:
 
   edm::EDGetTokenT< bool > t_BadPFMuonFilter_;
   edm::EDGetTokenT< bool > t_BadChargedCandidateFilter_;
+
+  edm::EDGetTokenT< double > t_prefiringWeight_;
+  edm::EDGetTokenT< double > t_prefiringWeightUp_;
+  edm::EDGetTokenT< double > t_prefiringWeightDown_;
+
   
   edm::EDGetTokenT< std::vector<string> > t_metNames_;
   edm::EDGetTokenT< std::vector<float> > t_metBits_;
@@ -297,6 +302,8 @@ private:
   edm::Handle<bool> BadPFMuonFilter;
   edm::Handle<bool> BadChargedCandidateFilter;
   
+  edm::Handle< double > prefiringWeight,  prefiringWeightUp, prefiringWeightDown;
+
   edm::Handle<unsigned int> lumiBlock;
   edm::Handle<unsigned int> runNumber;
   edm::Handle<ULong64_t> eventNumber;
@@ -630,6 +637,16 @@ DMAnalysisTreeMaker::DMAnalysisTreeMaker(const edm::ParameterSet& iConfig){
     t_metBits_ = consumes< std::vector<float> >( metBits_ );
     metNames_ = iConfig.getParameter<edm::InputTag>("metNames");
     t_metNames_ = consumes< std::vector<string>, edm::InRun >( metNames_ );
+  }
+
+  if(version=="2017_94X" || version == "2016_94X") {
+    
+  edm::InputTag prefiringTag = iConfig.getParameter< edm::InputTag > ("prefiringWeight");
+  t_prefiringWeight_ = consumes<double> (prefiringTag);
+  edm::InputTag prefiringTagUp = iConfig.getParameter< edm::InputTag > ("prefiringWeightUp");
+  t_prefiringWeightUp_ = consumes<double> (prefiringTagUp);
+  edm::InputTag prefiringTagDown = iConfig.getParameter< edm::InputTag > ("prefiringWeightDown");
+  t_prefiringWeightDown_ = consumes<double> (prefiringTagDown);
   }
   
   addPV = iConfig.getUntrackedParameter<bool>("addPV",true);
@@ -1578,7 +1595,12 @@ void DMAnalysisTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetu
     }
     getMETFilters();
   }
-  
+  if(version=="2017_94X" || version=="2016_94X"){
+    iEvent.getByToken(t_prefiringWeight_, prefiringWeight);
+    iEvent.getByToken(t_prefiringWeightUp_, prefiringWeightUp);
+    iEvent.getByToken(t_prefiringWeightDown_, prefiringWeightDown);
+  }
+
   if(changeJECs || recalculateEA){
     iEvent.getByToken(t_Rho_ ,rho);
     Rho = *rho; 
@@ -2112,7 +2134,7 @@ void DMAnalysisTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetu
 
       if (systjet.find("JES")!=std::string::npos || 
 	  systjet.find("JER")!=std::string::npos ){
-	//	vfloats_values[makeName(met_label,prefm,"CorrT1Px"+systjet)][0]=metT1Px;
+	//vfloats_values[makeName(met_label,prefm,"CorrT1Px"+systjet)][0]=metT1Px;
 	//vfloats_values[makeName(met_label,prefm,"CorrT1Py"+systjet)][0]=metT1Py;
 	vfloats_values[makeName(met_label,prefm,"CorrT1Px"+systjet)][0]=0;
 	vfloats_values[makeName(met_label,prefm,"CorrT1Py"+systjet)][0]=0;
@@ -2275,11 +2297,18 @@ void DMAnalysisTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetu
 	    vfloats_values[makeName(jets_label,pref,"CorrE"+systjet)][j]=energyCorrJet;
 	    //	    cout <<" value after "<<vfloats_values[makeName(jets_label,pref,"CorrPt"+systjet)][j]<<endl;
 	    //setCatCategoryValue(jets_label,systjet,sizes[jets_label+systjet],"CorrPt",ptCorrJet);
-	
+	    
+	    //vfloats_values[makeName(met_label,prefm,"CorrT1Px"+systjet)][0]=metT1Px;
+	    //vfloats_values[makeName(met_label,prefm,"CorrT1Py"+systjet)][0]=metT1Py;
+
+	    float mcorrMetT1Px = -cos(phi)*(ptCorrJet-ptCorr);
+	    float mcorrMetT1Py = -sin(phi)*(ptCorrJet-ptCorr);
+
+	    vfloats_values[makeName(met_label,prefm,"CorrT1Px"+systjet)][0]+=mcorrMetT1Px;
+	    vfloats_values[makeName(met_label,prefm,"CorrT1Py"+systjet)][0]+=mcorrMetT1Py;
 	  }
 	}
 	
-
 	ptCorrSmearZeroNoMu = ptnomu * (1 + unc);//For full correction, including new JECs and MET
 	ptCorr_mL1 = ptCorr_mL1 * (1 + unc);//For T1 correction
 
@@ -2295,8 +2324,8 @@ void DMAnalysisTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetu
 	if( ptCorrSmearZeroNoMu>15.0 && jetCorrNoMu.Pt()>0.0){ 
 	  corrMetT1Px -= (T1Corr.Px()) + (cos(phi) * (ptCorr -  ptCorrSmearZero));
 	  corrMetT1Py -= (T1Corr.Py()) + (sin(phi) * (ptCorr -  ptCorrSmearZero));
-	}
-	
+	}		      
+
 	if(fabs(eta)<3.0){
 	  corrMetPxNoHF -=(cos(phi)*(ptCorr-ptzero));
 	  corrMetPyNoHF -=(sin(phi)*(ptCorr-ptzero));
@@ -2542,11 +2571,10 @@ void DMAnalysisTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetu
 	  if(passesBaseCut) fillScanCuts(jets_label,"Tight",j);
 	  if(fabs(eta) < 4.7) fillScanSystsCuts(jets_label,"Tight",j);
 	}	    
-      
     }
     //  cout << " mark 8.22 "<<endl; 
-    fillSysts(met_label,"CorrT1",0,"","");
-    
+    //    fillSysts(met_label,"CorrT1",0,"","");
+
     if(isInVector(obj_cats[jets_label],"Tight")){
       sizes[jets_label+"Tight"]=(int)nTightJets;
       setEventBTagSF(jets_label,"Tight","CSV");
@@ -2609,13 +2637,33 @@ void DMAnalysisTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetu
 
     float metT1Py = metptunc*sin(metphiunc);
     float metT1Px = metptunc*cos(metphiunc);
-
+    
     //Correcting the pt
     metT1Px+=corrMetT1Px; metT1Py+=corrMetT1Py; // add JEC/JER contribution
-
+    
     float metptT1Corr = sqrt(metT1Px*metT1Px + metT1Py*metT1Py);
     vfloats_values[met_label+"_CorrT1Pt"][0]=metptT1Corr;
     
+    for (size_t ju = 0; ju < obj_systCats[jets_label].size();++ju){
+      string systjet=obj_systCats[jets_label].at(ju);
+      if (systjet.find("JES")!=std::string::npos || 
+	  systjet.find("JER")!=std::string::npos ){
+	vfloats_values[makeName(met_label,prefm,"CorrT1Px"+systjet)][0]+=metT1Px;
+	vfloats_values[makeName(met_label,prefm,"CorrT1Py"+systjet)][0]+=metT1Py;
+	float mtempx = vfloats_values[makeName(met_label,prefm,"CorrT1Px"+systjet)][0];
+	float mtempy = vfloats_values[makeName(met_label,prefm,"CorrT1Py"+systjet)][0];
+	vfloats_values[makeName(met_label,prefm,"CorrT1Pt"+systjet)][0] = sqrt(mtempx*mtempx + mtempy*mtempy);
+
+	float metphiCorrT1L = metphi;
+	if(mtempx<0){
+	  if(mtempy>0)metphiCorrT1L = atan(mtempy/mtempx)+3.141592;
+	  if(mtempy<0)metphiCorrT1L = atan(mtempy/mtempx)-3.141592;
+	}
+	else metphiCorrT1L = (atan(mtempy/mtempx));
+	vfloats_values[makeName(met_label,prefm,"CorrT1Phi"+systjet)][0] = metphiCorrT1L;
+
+      }
+    }
     float metptCorr = sqrt(metPxCorr*metPxCorr + metPyCorr*metPyCorr);
     vfloats_values[met_label+"_CorrPt"][0]=metptCorr;
 
@@ -2642,7 +2690,7 @@ void DMAnalysisTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetu
       if(metT1Py>0)metphiCorrT1 = atan(metT1Py/metT1Px)+3.141592;
       if(metT1Py<0)metphiCorrT1 = atan(metT1Py/metT1Px)-3.141592;
     }
-    else  metphiCorr = (atan(metPyCorr/metPxCorr));
+    else  metphiCorrT1 = (atan(metT1Py/metT1Px));
     
     vfloats_values[met_label+"_CorrPhi"][0]=metphiCorr;
     vfloats_values[met_label+"_CorrBasePhi"][0]=metphiCorrBase;
@@ -3062,7 +3110,12 @@ void DMAnalysisTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetu
 
     float_values["Event_passesBadChargedCandidateFilter"] = (float)(*BadChargedCandidateFilter);
     float_values["Event_passesBadPFMuonFilter"] = (float)(*BadPFMuonFilter);
-      
+    
+    if(version=="2017_94X" || version=="2016_94X"){
+      float_values["Event_prefiringWeight"]=(float)(*prefiringWeight); 
+      float_values["Event_prefiringWeightUp"]=(float)(*prefiringWeightUp); 
+      float_values["Event_prefiringWeightDown"]=(float)(*prefiringWeightDown); 
+    }
     //technical event informationx
     double_values["Event_EventNumber"]=*eventNumber;
     float_values["Event_LumiBlock"]=*lumiBlock;
@@ -3315,8 +3368,8 @@ vector<string> DMAnalysisTreeMaker::additionalVariables(string object){
     addvar.push_back("CorrT1Phi");
     addvar.push_back("CorrPtNoHF");
     addvar.push_back("CorrPhiNoHF");
-    for(size_t sccut = 0; sccut< obj_systCats[jets_label].size() ;++sccut){
-      string syCat=obj_systCats[jets_label].at(sccut);
+    for(size_t sccut = 0; sccut< obj_systCats[met_label].size() ;++sccut){
+      string syCat=obj_systCats[met_label].at(sccut);
       addvar.push_back("CorrT1Pt"+syCat);
       addvar.push_back("CorrT1Phi"+syCat);
       addvar.push_back("CorrT1Px"+syCat);
@@ -3509,6 +3562,10 @@ vector<string> DMAnalysisTreeMaker::additionalVariables(string object){
     addvar.push_back("nPV");
     addvar.push_back("nTruePV");
     addvar.push_back("Rho");
+
+    addvar.push_back("prefiringWeight");
+    addvar.push_back("prefiringWeightUp");
+    addvar.push_back("prefiringWeightDown");
 
     addvar.push_back("nHadTop");
     addvar.push_back("nLepTop");
