@@ -373,6 +373,9 @@ if(version=='94X_2016'):
     process.DMTreesDumper.jetType8 = cms.untracked.string("AK8PFPuppi")
     process.DMTreesDumper.boostedTopsLabel = jetak8puplabel
     process.DMTreesDumper.boostedTopsSubjetsLabel = subjetak8puplabel    
+    process.DMTreesDumper.prefiringWeight = cms.InputTag("prefiringweight","NonPrefiringProb")
+    process.DMTreesDumper.prefiringWeightUp = cms.InputTag("prefiringweight","NonPrefiringProbUp")
+    process.DMTreesDumper.prefiringWeightDown = cms.InputTag("prefiringweight","NonPrefiringProbDown")
 
     
 if(addAK8CHS):
