@@ -639,15 +639,7 @@ DMAnalysisTreeMaker::DMAnalysisTreeMaker(const edm::ParameterSet& iConfig){
     t_metNames_ = consumes< std::vector<string>, edm::InRun >( metNames_ );
   }
 
-  if(version=="2017_94X" || version == "2016_94X") {
-    
-  edm::InputTag prefiringTag = iConfig.getParameter< edm::InputTag > ("prefiringWeight");
-  t_prefiringWeight_ = consumes<double> (prefiringTag);
-  edm::InputTag prefiringTagUp = iConfig.getParameter< edm::InputTag > ("prefiringWeightUp");
-  t_prefiringWeightUp_ = consumes<double> (prefiringTagUp);
-  edm::InputTag prefiringTagDown = iConfig.getParameter< edm::InputTag > ("prefiringWeightDown");
-  t_prefiringWeightDown_ = consumes<double> (prefiringTagDown);
-  }
+
   
   addPV = iConfig.getUntrackedParameter<bool>("addPV",true);
   changeJECs = iConfig.getUntrackedParameter<bool>("changeJECs",false);
@@ -657,6 +649,17 @@ DMAnalysisTreeMaker::DMAnalysisTreeMaker(const edm::ParameterSet& iConfig){
 
   isData = iConfig.getUntrackedParameter<bool>("isData",false);
   applyRes = iConfig.getUntrackedParameter<bool>("applyRes",false);
+
+
+  if((version=="2017_94X" || version == "2016_94X" ) && !isData) {
+    
+    edm::InputTag prefiringTag = iConfig.getParameter< edm::InputTag > ("prefiringWeight");
+    t_prefiringWeight_ = consumes<double> (prefiringTag);
+    edm::InputTag prefiringTagUp = iConfig.getParameter< edm::InputTag > ("prefiringWeightUp");
+    t_prefiringWeightUp_ = consumes<double> (prefiringTagUp);
+    edm::InputTag prefiringTagDown = iConfig.getParameter< edm::InputTag > ("prefiringWeightDown");
+    t_prefiringWeightDown_ = consumes<double> (prefiringTagDown);
+  }
   
   t_Rho_ = consumes<double>( edm::InputTag( "fixedGridRhoFastjetAll" ) ) ;
   t_genParticleCollection_ = consumes<reco::GenParticleCollection>(edm::InputTag("filteredPrunedGenParticles"));
@@ -993,10 +996,13 @@ DMAnalysisTreeMaker::DMAnalysisTreeMaker(const edm::ParameterSet& iConfig){
   
   if(isData){
     L1Name = (prefixLabelData+EraLabel+postfixLabelData+"_L1FastJet_"+jetType+".txt").c_str();
+    cout << " L1Name data  " << L1Name<<endl;
     L1RCName = (prefixLabelData+EraLabel+postfixLabelData+"_L1RC_"+jetType+".txt").c_str();
     L2Name = (prefixLabelData+EraLabel+postfixLabelData+"_L2Relative_"+jetType+".txt").c_str();
     L3Name = (prefixLabelData+EraLabel+postfixLabelData+"_L3Absolute_"+jetType+".txt").c_str();
     L2L3ResName = (prefixLabelData+EraLabel+postfixLabelData+"_L2L3Residual_"+jetType+".txt").c_str();
+    cout << " L1RCName after " << L1RCName<<" resname "<< L2L3ResName<< endl;
+
   }
 
 
@@ -1595,7 +1601,7 @@ void DMAnalysisTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetu
     }
     getMETFilters();
   }
-  if(version=="2017_94X" || version=="2016_94X"){
+  if((version=="2017_94X" || version=="2016_94X" ) &&!isData){
     iEvent.getByToken(t_prefiringWeight_, prefiringWeight);
     iEvent.getByToken(t_prefiringWeightUp_, prefiringWeightUp);
     iEvent.getByToken(t_prefiringWeightDown_, prefiringWeightDown);
@@ -3009,7 +3015,7 @@ void DMAnalysisTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetu
       vfloats_values[makeName(boosted_tops_label,pref,"nDeepCSVsubj_l")][t]=(float)nDeepCSVsubj_l;
       
       
-      bool doGenMatching= true;
+      bool doGenMatching= useLHE;
       int nMatched = 0,nQuarks=0,nBquarks=0,nQuarksTop=0,nBquarksTop=0,nBquarksH=0,nBquarksZ=0;
       if( doGenMatching){
 	for(int g = 0; g< sizes["genParticles"];++g){ 
@@ -3111,7 +3117,7 @@ void DMAnalysisTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetu
     float_values["Event_passesBadChargedCandidateFilter"] = (float)(*BadChargedCandidateFilter);
     float_values["Event_passesBadPFMuonFilter"] = (float)(*BadPFMuonFilter);
     
-    if(version=="2017_94X" || version=="2016_94X"){
+    if((version=="2017_94X" || version=="2016_94X") && !isData){
       float_values["Event_prefiringWeight"]=(float)(*prefiringWeight); 
       float_values["Event_prefiringWeightUp"]=(float)(*prefiringWeightUp); 
       float_values["Event_prefiringWeightDown"]=(float)(*prefiringWeightDown); 

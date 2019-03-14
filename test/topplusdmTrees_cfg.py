@@ -35,7 +35,8 @@ options.register('sample',
                  #'/store/user/decosa/EPS17/B2GAnaFW_80X_V3p1/TT_TuneCUETP8M2T4_13TeV-powheg-pythia8/RunIISummer16MiniAODv2/TT_TuneCUETP8M2T4_13TeV-powheg-pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1_B2GAnaFW_80X_V3p1/170510_103545/0000/B2GEDMNtuple_1.root',
                  #2017 ntuples
                  #"/store/user/oiorio/ttDM/samples/2018/Sep/14Sep/B2GAnaFW_94X_V0_Sep_14/TprimeBToTZ_M-1400_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2/TprimeBToTZ_M-1400_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1_B2GAnaFW_94X_V0_Sep_14/181003_184239/0000/B2GEDMNtuple_9.root",
-                 "/store/user/lvigilan/Tprime/samples/94X_18Jan19/TprimeBToTZ_M-1400_Width-30p_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2/TprimeBToTZ_M-1400_Width-30p_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1_94X_18Jan19/190118_170039/0000/B2GEDMNtuple_1.root",
+#                 "/store/user/lvigilan/Tprime/samples/94X_18Jan19/TprimeBToTZ_M-1400_Width-30p_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2/TprimeBToTZ_M-1400_Width-30p_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1_94X_18Jan19/190118_170039/0000/B2GEDMNtuple_1.root",
+                 "store/user/fabozzi/Tprime/samples/94X_06Mar19/MET/Run2016C/MET/Run2016C-17Jul2018-v1_94X_06Mar19/190306_213553/0000/B2GEDMNtuple_1.root",
                  #'file:B2GEDMNtuple_1.root',#l'ho preso dal mio TT
                  #'file:/eos/user/o/oiorio/samples/synch/mc_jecv4/B2GSynchMC.root',
                  opts.VarParsing.multiplicity.singleton,
@@ -366,9 +367,9 @@ if(version=='94X'):
 if(version=='94X_2016'):
     process.DMTreesDumper.era = cms.untracked.string("2016_94X")
     process.DMTreesDumper.prefixLabelData = cms.untracked.string(jecFolder+"/Summer16_07Aug2017")
-    process.DMTreesDumper.prefixLabelMC = cms.untracked.string(jecFolder+"/Summer16_23Sep2016V4")
-    process.DMTreesDumper.postfixLabelData = cms.untracked.string("V4_DATA")
-    process.DMTreesDumper.postfixLabelMC = cms.untracked.string("_MC")
+    process.DMTreesDumper.prefixLabelMC = cms.untracked.string(jecFolder+"/Summer16_07Aug2017")
+    process.DMTreesDumper.postfixLabelData = cms.untracked.string("_V11_DATA")
+    process.DMTreesDumper.postfixLabelMC = cms.untracked.string("_V11_MC")
     process.DMTreesDumper.jetType = cms.untracked.string("AK4PFchs")
     process.DMTreesDumper.jetType8 = cms.untracked.string("AK8PFPuppi")
     process.DMTreesDumper.boostedTopsLabel = jetak8puplabel
@@ -418,6 +419,15 @@ if options.channel == "wprime":
     process.DMTreesDumper.channelInfo.getPartonTop=cms.untracked.bool(True)
     process.DMTreesDumper.channelInfo.doWReweighting=cms.untracked.bool(True)
     process.DMTreesDumper.channelInfo.doTopReweighting=cms.untracked.bool(True)
+
+if options.channel == "diboson":
+    process.DMTreesDumper.lhes =cms.InputTag("source")
+    process.DMTreesDumper.channelInfo.useLHE = cms.untracked.bool(False)
+    process.DMTreesDumper.channelInfo.useLHEWeights = cms.untracked.bool(False)
+    process.DMTreesDumper.channelInfo.getPartonW=cms.untracked.bool(False)
+    process.DMTreesDumper.channelInfo.getPartonTop=cms.untracked.bool(False)
+    process.DMTreesDumper.channelInfo.doWReweighting=cms.untracked.bool(False)
+    process.DMTreesDumper.channelInfo.doTopReweighting=cms.untracked.bool(False)
 
 
 process.analysisPath = cms.Path(

@@ -81,7 +81,8 @@ def main():
     cfgparams.append('isData=' + str(options.isData))
     cfgparams.append('changeJECs=True')
     cfgparams.append('mode=crab')
-
+    print "======> Config bef loop: ", cfgparams
+        
     
     #config.JobType.inputFiles = ['Fall15_25nsV2_DATA.db', 'Fall15_25nsV2_MC.db']
     #config.JobType.inputFiles = ["Fall15_25nsV2_MC_L1FastJet_AK4PFchs.txt", "Fall15_25nsV2_MC_L1RC_AK4PFchs.txt","Fall15_25nsV2_MC_L2Relative_AK4PFchs.txt", "Fall15_25nsV2_MC_L3Absolute_AK4PFchs.txt","Fall15_25nsV2_MC_L2L3Residual_AK4PFchs.txt", "Fall15_25nsV2_DATA_L1FastJet_AK4PFchs.txt","Fall15_25nsV2_DATA_L1RC_AK4PFchs.txt","Fall15_25nsV2_DATA_L2Relative_AK4PFchs.txt","Fall15_25nsV2_DATA_L3Absolute_AK4PFchs.txt",  "Fall15_25nsV2_DATA_L2L3Residual_AK4PFchs.txt"]
@@ -92,7 +93,7 @@ def main():
     wildcard= options.jecVersion+"*txt"
     lscmd = "ls JECs/"+wildcard 
     outs=commands.getstatusoutput(lscmd)
-    print "status: ", outs[0]," result: ",outs[1]
+    #print "status: ", outs[0]," result: ",outs[1]
     inputs=[]
     for l in outs[1].split("\n"):
         inputs.append(l)
@@ -104,10 +105,10 @@ def main():
     inputs.append('cMVAv2_Moriond17_B_H.csv')
     inputs.append('cMVAv2_ichep.csv')
     inputs.append('btagging_cmva.root')
-
+    
     
     config.JobType.inputFiles = inputs
-    print "inputs are", config.JobType.inputFiles
+#    print "inputs are", config.JobType.inputFiles
     oldinputs = [
         'Spring16_25nsV10_MC_PtResolution_AK8PFchs.txt',
         'Summer16_23Sep2016BCDV4_DATA_L1FastJet_AK4PFchs.txt',
@@ -189,12 +190,12 @@ def main():
     config.Data.inputDBS = 'phys03'
     config.Data.splitting = 'FileBased' 
 #    config.Data.splitting = 'Automatic' 
-    config.Data.unitsPerJob = 5
+    config.Data.unitsPerJob = 2
     config.Data.publication = False    
 #    config.Data.outLFNDirBase = '/store/user/cgiuglia/trees/May12/'
 #    config.Data.outLFNDirBase = '/store/user/oiorio/ttDM/trees/2018/May28/'
 #    config.Data.outLFNDirBase = '/store/user/oiorio/Wprime/2018/June/June13/'
-    config.Data.outLFNDirBase = '/store/user/oiorio/Tprime/trees/2019/Jan30/'
+    config.Data.outLFNDirBase = '/store/user/oiorio/Tprime/trees/2019/94X2016Mar14/'
 
     config.section_("Site")
 #    config.Site.storageSite = 'T2_IT_Pisa'
@@ -243,6 +244,7 @@ def main():
     for ijob, job in enumerate(jobs) :
 
         eraLabel=''
+        
         print "**** Check job rstrip: ", job.rstrip()        
         if ('2016B' in job.rstrip()) :
             eraLabel = 'BCD'
@@ -273,12 +275,24 @@ def main():
 
 
         #        print "-------> ERA: ", eraLabel
+        
+        print "====> Config bef: ", cfgparams
+        print cfgparams[-1]
 
+        if "EraLabel" in cfgparams[-1]:
+            cfgparams = cfgparams[:-1]
+            print "cfgparams now ", cfgparams 
+        cfgparamslocal=cfgparams
+        
 
-        if(options.isData):cfgparams.append('EraLabel='+eraLabel)
-        config.JobType.pyCfgParams = cfgparams
-
-        print "====> Config: ", config.JobType.pyCfgParams
+        if(options.isData):
+            cfgparamslocal.append('EraLabel='+eraLabel)
+        
+        config.JobType.pyCfgParams = cfgparamslocal
+        
+        
+#        print "====> Config after: ", cfgparams
+        print "====> Config after: ", config.JobType.pyCfgParams
 
         ptbin = job.split('/')[1]
         cond = job.split('/')[2]
@@ -302,7 +316,7 @@ def main():
         print 'Submitting ' + config.General.requestName + ', dataset = ' + job
         print 'Configuration :'
         print "Request name: ", config.General.requestName        
-#print config
+#        print config
         try :
             from multiprocessing import Process
             print options.dryrun
@@ -313,7 +327,6 @@ def main():
             #submit(config)
         except :
             print 'Not submitted.'
-        
 
 if __name__ == '__main__':
     main()            

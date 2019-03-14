@@ -47,6 +47,7 @@ sysMu = []
 sysEl = []
 #sysJet = [""]
 sysJet = ["JESUp","JESDown","JERUp","JERDown"]
+sysMet = ["JESUp","JESDown","JERUp","JERDown"]
 #sysJet = ["JESUp","JESDown"]
 
 #SingleTop
@@ -70,7 +71,8 @@ if SingleTopSetup:
     catMu = ["Tight","TightAntiIso","Loose"]
     catEl = ["Tight","TightAntiIso","Veto","Antiveto"]
     catJet = ["Tight"]
-    catMet = ["CorrT1"]
+#    catMet = ["CorrT1"]
+    catMet = []
     
     scanMu = ["Iso04_0p06_LE","Iso04_0p15_LE","Iso04_0p06_GE","Iso04_0p15_GE"]
     scanEl = []
@@ -79,6 +81,7 @@ if SingleTopSetup:
     sysMu = [""]
     sysEl = [""]
     sysJet = ["JESUp","JESDown","JERUp","JERDown"]
+    sysMet = ["JESUp","JESDown","JERUp","JERDown"]
 
 
 cutOnTriggers = False
@@ -125,7 +128,7 @@ DMTreesDumper = cms.EDAnalyzer(
             saveBaseVariables = cms.untracked.bool(True),
             categories = cms.vstring(catMet),
             scanCuts = cms.vstring(),
-            systCats = cms.vstring(),
+            systCats = cms.vstring(sysMet),
             variablesD = cms.VInputTag(),
             variablesF = cms.VInputTag(
                 cms.InputTag("metFull","metFulluncorPt"),
