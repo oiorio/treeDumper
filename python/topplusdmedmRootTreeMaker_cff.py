@@ -174,6 +174,9 @@ DMTreesDumper = cms.EDAnalyzer(
     jetKeysAK4CHS = cms.InputTag("jetKeysAK4CHS", ""),
     muonKeys = cms.InputTag("muonKeys", ""),
 
+    #doPrefiring
+    doPrefiring = cms.untracked.bool(True),#Whether one uses the weights from the LHE in order to get scale uncertainties
+
     #vertex
     vertexZ =  cms.InputTag("vertexInfo","z"),
     vertexChi2 =  cms.InputTag("vertexInfo","chi"),
@@ -193,7 +196,7 @@ DMTreesDumper = cms.EDAnalyzer(
     postfixLabelMC = cms.untracked.string("_MV"),
     jetType = cms.untracked.string("AK4PFchs"),
     jetType8 = cms.untracked.string("AK8PFchs"),
-
+    
     #Systematics trees to produce. Include:  
     systematics = cms.vstring(systsToSave), 
 

@@ -36,9 +36,12 @@ options.register('sample',
                  #2017 ntuples
                  #"/store/user/oiorio/ttDM/samples/2018/Sep/14Sep/B2GAnaFW_94X_V0_Sep_14/TprimeBToTZ_M-1400_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2/TprimeBToTZ_M-1400_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1_B2GAnaFW_94X_V0_Sep_14/181003_184239/0000/B2GEDMNtuple_9.root",
 #                 "/store/user/lvigilan/Tprime/samples/94X_18Jan19/TprimeBToTZ_M-1400_Width-30p_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2/TprimeBToTZ_M-1400_Width-30p_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1_94X_18Jan19/190118_170039/0000/B2GEDMNtuple_1.root",
-                 "store/user/fabozzi/Tprime/samples/94X_06Mar19/MET/Run2016C/MET/Run2016C-17Jul2018-v1_94X_06Mar19/190306_213553/0000/B2GEDMNtuple_1.root",
+                 #"store/user/fabozzi/Tprime/samples/94X_06Mar19/MET/Run2016C/MET/Run2016C-17Jul2018-v1_94X_06Mar19/190306_213553/0000/B2GEDMNtuple_1.root",
+                 "/store/user/oiorio/Tprime/samples/2019/94X_10Apr19/94X_10Apr19/WprimeToTB_plusSM_TToLep_M-2200_LH_13TeV-comphep/RunIISummer16MiniAODv3/WprimeToTB_plusSM_TToLep_M-2200_LH_13TeV-comphep/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3_ext1-v1_94X_10Apr19/190409_110232/0000/B2GEDMNtuple_2.root",
+                 #                 "/store/user/oiorio/Tprime/samples/2019/94X_10Apr19/94X_10Apr19/WprimeToTB_plusSM_TToLep_M-2200_LH_13TeV-comphep/RunIISummer16MiniAODv3/WprimeToTB_plusSM_TToLep_M-2200_LH_13TeV-comphep/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3_ext1-v1_94X_10Apr19/190409_110232/0000/B2GEDMNtuple_1.root"
                  #'file:B2GEDMNtuple_1.root',#l'ho preso dal mio TT
                  #'file:/eos/user/o/oiorio/samples/synch/mc_jecv4/B2GSynchMC.root',
+                 #
                  opts.VarParsing.multiplicity.singleton,
                  opts.VarParsing.varType.string,
                  'Sample to analyze')
@@ -106,6 +109,7 @@ options.register('lhesource',
 
 
 options.register('channel',
+
                  "",
                  opts.VarParsing.multiplicity.singleton,
                  opts.VarParsing.varType.string,
@@ -363,6 +367,7 @@ if(version=='94X'):
     process.DMTreesDumper.prefiringWeight = cms.InputTag("prefiringweight","NonPrefiringProb")
     process.DMTreesDumper.prefiringWeightUp = cms.InputTag("prefiringweight","NonPrefiringProbUp")
     process.DMTreesDumper.prefiringWeightDown = cms.InputTag("prefiringweight","NonPrefiringProbDown")
+#    process.DMTreesDumper.doPrefiring = cms.untracked.bool(False)
 
 if(version=='94X_2016'):
     process.DMTreesDumper.era = cms.untracked.string("2016_94X")
@@ -377,6 +382,8 @@ if(version=='94X_2016'):
     process.DMTreesDumper.prefiringWeight = cms.InputTag("prefiringweight","NonPrefiringProb")
     process.DMTreesDumper.prefiringWeightUp = cms.InputTag("prefiringweight","NonPrefiringProbUp")
     process.DMTreesDumper.prefiringWeightDown = cms.InputTag("prefiringweight","NonPrefiringProbDown")
+    process.DMTreesDumper.prefiringWeightDown = cms.InputTag("prefiringweight","NonPrefiringProbDown")
+#    process.DMTreesDumper.doPrefiring = cms.untracked.bool(False)
 
     
 if(addAK8CHS):
@@ -414,7 +421,7 @@ if not options.isData:
 if options.channel == "wprime":
     process.DMTreesDumper.lhes =cms.InputTag("source")
     process.DMTreesDumper.channelInfo.useLHE = cms.untracked.bool(True)
-    #    process.DMTreesDumper.channelInfo.useLHEWeights = cms.untracked.bool(False)
+    process.DMTreesDumper.channelInfo.useLHEWeights = cms.untracked.bool(False)
     process.DMTreesDumper.channelInfo.getPartonW=cms.untracked.bool(True)
     process.DMTreesDumper.channelInfo.getPartonTop=cms.untracked.bool(True)
     process.DMTreesDumper.channelInfo.doWReweighting=cms.untracked.bool(True)

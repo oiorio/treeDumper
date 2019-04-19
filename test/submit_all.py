@@ -81,6 +81,7 @@ def main():
     cfgparams.append('isData=' + str(options.isData))
     cfgparams.append('changeJECs=True')
     cfgparams.append('mode=crab')
+    cfgparams.append('channel=wprime')
     print "======> Config bef loop: ", cfgparams
         
     
@@ -192,11 +193,11 @@ def main():
 #    config.Data.splitting = 'Automatic' 
     config.Data.unitsPerJob = 2
     config.Data.publication = False    
-#    config.Data.outLFNDirBase = '/store/user/cgiuglia/trees/May12/'
-#    config.Data.outLFNDirBase = '/store/user/oiorio/ttDM/trees/2018/May28/'
-#    config.Data.outLFNDirBase = '/store/user/oiorio/Wprime/2018/June/June13/'
-    config.Data.outLFNDirBase = '/store/user/oiorio/Tprime/trees/2019/94X2016Mar14/'
-
+    #    config.Data.outLFNDirBase = '/store/user/cgiuglia/trees/May12/'
+    #    config.Data.outLFNDirBase = '/store/user/oiorio/ttDM/trees/2018/May28/'
+    config.Data.outLFNDirBase = '/store/user/oiorio/Wprime/2019/Apr/Apr11/'
+#    config.Data.outLFNDirBase = '/store/user/oiorio/Tprime/trees/2019/94X2016Mar14/'
+    
     config.section_("Site")
 #    config.Site.storageSite = 'T2_IT_Pisa'
     config.Site.storageSite = 'T2_CH_CSCS'

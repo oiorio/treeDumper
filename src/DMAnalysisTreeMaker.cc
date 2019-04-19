@@ -114,7 +114,7 @@ private:
 
   double getWPtWeight(double ptW);
   double getZPtWeight(double ptZ);
-
+  
   double getWEWKPtWeight(double ptW);
   double getZEWKPtWeight(double ptZ);
   double getAPtWeight(double ptA);
@@ -167,6 +167,7 @@ private:
   edm::EDGetTokenT< GenEventInfoProduct > t_genprod_;
 
   bool doTopDecayReshaping,addBTagReshaping;   bool doTopBToLightQuarkReweight;
+  bool doPrefiring;
   bool isProd;
   string resBFile;
 
@@ -650,8 +651,8 @@ DMAnalysisTreeMaker::DMAnalysisTreeMaker(const edm::ParameterSet& iConfig){
   isData = iConfig.getUntrackedParameter<bool>("isData",false);
   applyRes = iConfig.getUntrackedParameter<bool>("applyRes",false);
 
-
-  if((version=="2017_94X" || version == "2016_94X" ) && !isData) {
+  doPrefiring=iConfig.getUntrackedParameter<bool>("doPrefiring",true);
+  if((version=="2017_94X" || version == "2016_94X" ) && !isData && doPrefiring) {
     
     edm::InputTag prefiringTag = iConfig.getParameter< edm::InputTag > ("prefiringWeight");
     t_prefiringWeight_ = consumes<double> (prefiringTag);
@@ -1272,7 +1273,7 @@ void DMAnalysisTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetu
     float_values["Event_T_Ext_Weight"]= 1.0;
     size_t nup=lhes->hepeup().NUP;
     //    cout << " entering lhe information "<<endl;
-    bool isSignal=true;
+    //  bool isSignal=true;
   
     string namelabel = "genParticles";
     sizes[namelabel]=nup;
@@ -1601,7 +1602,9 @@ void DMAnalysisTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetu
     }
     getMETFilters();
   }
-  if((version=="2017_94X" || version=="2016_94X" ) &&!isData){
+  //  cout << " doprefiring "<< doPrefiring <<endl;
+  if((version=="2017_94X" || version=="2016_94X" ) &&!isData && doPrefiring){
+    // cout << "in rpef loop "<<endl;
     iEvent.getByToken(t_prefiringWeight_, prefiringWeight);
     iEvent.getByToken(t_prefiringWeightUp_, prefiringWeightUp);
     iEvent.getByToken(t_prefiringWeightDown_, prefiringWeightDown);
@@ -2063,7 +2066,7 @@ void DMAnalysisTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetu
     int firstidx=-1, secondidx=-1;
     double maxpt=0.0;
     
-    int nTightLeptons = float_values["Event_nTightMuons"]+float_values["Event_nTightElectrons"];
+    //  int nTightLeptons = float_values["Event_nTightMuons"]+float_values["Event_nTightElectrons"];
     int nTightAntiIsoLeptons = 0;
     for(size_t mc =0; mc < obj_cats[mu_label].size();++mc){
       string cat= obj_cats[mu_label].at(mc);
@@ -2784,7 +2787,7 @@ void DMAnalysisTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetu
       float e   = vfloats_values[makeName(boosted_tops_subjets_label,pref,"E")][s];
 
       float partonFlavourSubjet = vfloats_values[makeName(boosted_tops_subjets_label,pref,"PartonFlavour")][s];
-      int flavorSubjet = int(partonFlavourSubjet);
+      //    int flavorSubjet = int(partonFlavourSubjet);
 
       float bsfsubj = getScaleFactor(pt,eta,partonFlavourSubjet,"noSyst");
       float bsfupsubj = getScaleFactor(pt,eta,partonFlavourSubjet,"up");
@@ -3117,7 +3120,7 @@ void DMAnalysisTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetu
     float_values["Event_passesBadChargedCandidateFilter"] = (float)(*BadChargedCandidateFilter);
     float_values["Event_passesBadPFMuonFilter"] = (float)(*BadPFMuonFilter);
     
-    if((version=="2017_94X" || version=="2016_94X") && !isData){
+    if((version=="2017_94X" || version=="2016_94X") && !isData && doPrefiring){
       float_values["Event_prefiringWeight"]=(float)(*prefiringWeight); 
       float_values["Event_prefiringWeightUp"]=(float)(*prefiringWeightUp); 
       float_values["Event_prefiringWeightDown"]=(float)(*prefiringWeightDown); 
@@ -5658,7 +5661,7 @@ float DMAnalysisTreeMaker::getEffRatioFunc(float flavor,float btag,float pt,floa
       float numBMT= getMCTagEfficiencyFuncParam(1, pt, eta, algo,syst, "b",  "MT");
 
       float numAT1= getMCTagEfficiencyFuncParam(1, pt, eta, algo,syst, "a",  "T1");
-      float numBT1= getMCTagEfficiencyFuncParam(1, pt, eta, algo,syst, "b",  "T1");
+      //    float numBT1= getMCTagEfficiencyFuncParam(1, pt, eta, algo,syst, "b",  "T1");
 
       float denA0L= getMCTagEfficiencyFuncParam(flavor, pt, eta, algo,syst, "a",  "0L");
       float denB0L= getMCTagEfficiencyFuncParam(flavor, pt, eta, algo,syst, "b",  "0L");
@@ -5670,7 +5673,7 @@ float DMAnalysisTreeMaker::getEffRatioFunc(float flavor,float btag,float pt,floa
       float denBMT= getMCTagEfficiencyFuncParam(flavor, pt, eta, algo,syst, "b",  "MT");
 
       float denAT1= getMCTagEfficiencyFuncParam(flavor, pt, eta, algo,syst, "a",  "T1");
-      float denBT1= getMCTagEfficiencyFuncParam(flavor, pt, eta, algo,syst, "b",  "T1");
+      //    float denBT1= getMCTagEfficiencyFuncParam(flavor, pt, eta, algo,syst, "b",  "T1");
      
       float averagetot =average;
       //      cout << " localvalue before "<< localvalue << endl;
