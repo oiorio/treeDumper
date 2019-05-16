@@ -2938,15 +2938,40 @@ void DMAnalysisTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetu
 	//-------------------
 	
 	smearfact8 = smear(topPt, genpt8, topEta, syst); 
+	float smearfact8down = smear(topPt, genpt8, topEta, "JERDown" ); 
+	float smearfact8up = smear(topPt, genpt8, topEta, "JERUp"); 
 	
 	ptCorr8 = topPt * smearfact8;
 	energyCorr8 = topE * smearfact8;
-	float unc8 = jetUncertainty8(ptCorr8,topEta,syst);
 
-	ptCorr8 = ptCorr8 * (1 + unc8);
-	energyCorr8 = energyCorr8 * (1 + unc8);
+	float ptCorr8jerup = topPt * smearfact8up;
+	float energyCorr8jerup = topE * smearfact8up;
+
+	float ptCorr8jerdown = topPt * smearfact8down;
+	float energyCorr8jerdown = topE * smearfact8down;
+
+	float unc8 = jetUncertainty8(ptCorr8,topEta,"JESUp");
+
+	float ptCorr8up = ptCorr8 * (1 + unc8);
+	float energyCorr8up = energyCorr8 * (1 + unc8);
+
+	float ptCorr8down = ptCorr8 * (1 - unc8);
+	float energyCorr8down = energyCorr8 * (1 - unc8);
+
+	vfloats_values[makeName(boosted_tops_label,pref,"CorrPtJESUp")][t]=ptCorr8up;
+	vfloats_values[makeName(boosted_tops_label,pref,"CorrEJESUp")][t]=energyCorr8up;
+
+	vfloats_values[makeName(boosted_tops_label,pref,"CorrPtJESDown")][t]=ptCorr8down;
+	vfloats_values[makeName(boosted_tops_label,pref,"CorrEJESDown")][t]=energyCorr8down;
+
+	vfloats_values[makeName(boosted_tops_label,pref,"CorrPtJERUp")][t]=ptCorr8jerup;
+	vfloats_values[makeName(boosted_tops_label,pref,"CorrEJERUp")][t]=energyCorr8jerup;
+
+	vfloats_values[makeName(boosted_tops_label,pref,"CorrPtJERDown")][t]=ptCorr8jerdown;
+	vfloats_values[makeName(boosted_tops_label,pref,"CorrEJERDown")][t]=energyCorr8jerdown;
 
       }//close pt>0
+
 
       vfloats_values[boosted_tops_label+"_NoCorrPt"][t]=juncpt8;
       vfloats_values[boosted_tops_label+"_NoCorrE"][t]=junce8;
