@@ -93,6 +93,7 @@ private:
   bool flavourFilter(string ch, int nb, int nc,int nudsg); 
 
   void initCategoriesSize(string label);
+  void normCategoriesSize(string label);
   void setCategorySize(string label, string category, size_t size);
   void fillCategory(string label, string category, int pos_nocat, int pos_cat);
   void fillSystCategory(string label, string category, string syst, int pos_nocat,int pos_cat, string scancut="");
@@ -183,6 +184,7 @@ private:
 
   edm::EDGetTokenT< bool > t_BadPFMuonFilter_;
   edm::EDGetTokenT< bool > t_BadChargedCandidateFilter_;
+  edm::EDGetTokenT< bool > t_ecalBadCalibReducedMINIAODFilter_;
 
   edm::EDGetTokenT< double > t_prefiringWeight_;
   edm::EDGetTokenT< double > t_prefiringWeightUp_;
@@ -302,6 +304,7 @@ private:
 
   edm::Handle<bool> BadPFMuonFilter;
   edm::Handle<bool> BadChargedCandidateFilter;
+  edm::Handle<bool> ecalBadCalibReducedMINIAODFilter;
   
   edm::Handle< double > prefiringWeight,  prefiringWeightUp, prefiringWeightDown;
 
@@ -634,6 +637,9 @@ DMAnalysisTreeMaker::DMAnalysisTreeMaker(const edm::ParameterSet& iConfig){
     t_BadChargedCandidateFilter_ = consumes< bool >( BadChargedCandidateFilter_ );
     edm::InputTag BadPFMuonFilter_ = iConfig.getParameter<edm::InputTag>("BadPFMuonFilter");
     t_BadPFMuonFilter_ = consumes< bool >( BadPFMuonFilter_ );
+    //ecalBadCalibReducedMINIAODFilter
+    edm::InputTag ecalBadCalibReducedMINIAODFilter_ = iConfig.getParameter<edm::InputTag>("ecalBadCalibReducedMINIAODFilter");
+    t_ecalBadCalibReducedMINIAODFilter_ = consumes< bool >( ecalBadCalibReducedMINIAODFilter_ );
     edm::InputTag metBits_ = iConfig.getParameter<edm::InputTag>("metBits");
     t_metBits_ = consumes< std::vector<float> >( metBits_ );
     metNames_ = iConfig.getParameter<edm::InputTag>("metNames");
@@ -1595,6 +1601,7 @@ void DMAnalysisTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetu
    iEvent.getByToken(t_metBits_,metBits );
    iEvent.getByToken(t_BadChargedCandidateFilter_, BadChargedCandidateFilter);
    iEvent.getByToken(t_BadPFMuonFilter_, BadPFMuonFilter);
+   iEvent.getByToken(t_ecalBadCalibReducedMINIAODFilter_, ecalBadCalibReducedMINIAODFilter);
    if(isFirstEvent){
       for(size_t bt = 0; bt < metNames->size();++bt){
 	std::string tname = metNames->at(bt);
@@ -1814,6 +1821,7 @@ void DMAnalysisTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetu
     initCategoriesSize(jets_label);
     initCategoriesSize(mu_label);
     initCategoriesSize(ele_label);
+    normCategoriesSize(met_label);
 
     //Photons
     //cout << " mark 6 "<<endl; 
@@ -2711,7 +2719,7 @@ void DMAnalysisTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetu
 
     if(doPreselection){
       bool passes = true;
-      bool metCondition = (metptCorr > 100.0 || Ht > 400.);
+      bool metCondition = (metptCorr > 200.0);
 
       float lep1phi = float_values["Event_Lepton1_Phi"];
       float lep1pt = float_values["Event_Lepton1_Pt"];
@@ -2746,7 +2754,7 @@ void DMAnalysisTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetu
       
       metPxLep+=lep1px;
 
-      metCondition = metCondition || (metLep>100.0);
+      metCondition = metCondition;// || (metLep>100.0);
 	
       passes = passes && metCondition;
 
@@ -3144,6 +3152,7 @@ void DMAnalysisTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetu
 
     float_values["Event_passesBadChargedCandidateFilter"] = (float)(*BadChargedCandidateFilter);
     float_values["Event_passesBadPFMuonFilter"] = (float)(*BadPFMuonFilter);
+    float_values["Event_passesecalBadCalibReducedMINIAODFilter"] = (float)(*ecalBadCalibReducedMINIAODFilter);
     
     if((version=="2017_94X" || version=="2016_94X") && !isData && doPrefiring){
       float_values["Event_prefiringWeight"]=(float)(*prefiringWeight); 
@@ -3198,6 +3207,13 @@ void DMAnalysisTreeMaker::initCategoriesSize(string label){
   for(size_t sc = 0; sc< obj_cats[label].size() ;++sc){
     string category = obj_cats[label].at(sc);
     sizes[label+category]=0;
+  }
+}
+
+void DMAnalysisTreeMaker::normCategoriesSize(string label){
+  for(size_t sc = 0; sc< obj_cats[label].size() ;++sc){
+    string category = obj_cats[label].at(sc);
+    sizes[label+category]=sizes[label];
   }
 }
 
@@ -3623,6 +3639,7 @@ vector<string> DMAnalysisTreeMaker::additionalVariables(string object){
 	addvar.push_back("nJets"+algo+"M"+category);
 	addvar.push_back("nJets"+algo+"L"+category);
 	
+	/*
 	addvar.push_back("bWeight0"+algo+"T"+category);
 	addvar.push_back("bWeight1"+algo+"T"+category);
 	addvar.push_back("bWeight2"+algo+"T"+category);
@@ -3721,6 +3738,7 @@ vector<string> DMAnalysisTreeMaker::additionalVariables(string object){
 	  addvar.push_back("reweightBToQMisTagUp"+category);
 	  addvar.push_back("reweightBToQMisTagDown"+category);
 	}
+	*/
       }
     }
 
@@ -3832,6 +3850,7 @@ vector<string> DMAnalysisTreeMaker::additionalVariables(string object){
       addvar.push_back("passesMETFilters");
       addvar.push_back("passesBadChargedCandidateFilter");
       addvar.push_back("passesBadPFMuonFilter");
+      addvar.push_back("passesecalBadCalibReducedMINIAODFilter");
     }
     addSingleTriggers=false;
     if(useTriggers){
@@ -4553,23 +4572,46 @@ double DMAnalysisTreeMaker::smear(double pt, double genpt, double eta, string sy
 
 double DMAnalysisTreeMaker::resolSF(double eta, string syst)
 {//from https://twiki.cern.ch/twiki/bin/viewauth/CMS/JetResolution#Smearing_procedures
+  
+
   double fac = 0.;
   if (syst == "jer__up" || syst == "jmr__up")fac = 1.;
   if (syst == "jer__down" || syst == "jmr_down")fac = -1.;
-  if (eta <= 0.5)                       return 0.109 + (0.008 * fac);
-  else if ( eta > 0.5 && eta <= 0.8 )   return 0.138 + (0.013 * fac);
-  else if ( eta > 0.8 && eta <= 1.1 )   return 0.114 + (0.013 * fac);
-  else if ( eta > 1.1 && eta <= 1.3 )   return 0.123 + (0.024 * fac);
-  else if ( eta > 1.3 && eta <= 1.7 )   return 0.084 + (0.011 * fac);
-  else if ( eta > 1.7 && eta <= 1.9 )   return 0.082 + (0.035 * fac);
-  else if ( eta > 1.9 && eta <= 2.1 )   return 0.140 + (0.047 * fac);
-  else if ( eta > 2.1 && eta <= 2.3 )   return 0.067 + (0.053 *fac);
-  else if ( eta > 2.3 && eta <= 2.5 )   return 0.177 + (0.041 *fac);
-  else if ( eta > 2.5 && eta <= 2.8 )   return 0.364 + (0.039 *fac);
-  else if ( eta > 2.8 && eta <= 3.0 )   return 0.857 + (0.071 *fac);
-  else if ( eta > 3.0 && eta <= 3.2 )   return 0.328 + (0.022 *fac);
-  else if ( eta > 3.2 && eta <= 4.7 )   return 0.160 + (0.029 *fac);
+  if (syst == "JERUp" || syst == "JMRUp")fac = 1.;
+  if (syst == "JERDown" || syst == "JMRDown")fac = -1.;
+  if (  version=="2017_94X"){
+    if (eta <= 0.522)                       return 0.1432 + (0.0222 * fac);
+    else if ( eta > 0.522 && eta <= 0.783 ) return 0.1815 + (0.0484 * fac);
+    else if ( eta > 0.783 && eta <= 1.131 )     return 0.0989 + (0.0456 * fac);
+    else if ( eta > 1.131 && eta <= 1.305 )     return 0.1137 + (0.1397 * fac);
+    else if ( eta > 1.305 && eta <= 1.740 )     return 0.1307 + (0.1470 * fac);
+    else if ( eta > 1.740 && eta <= 1.930 )     return 0.1600 + (0.0976 * fac);
+    else if ( eta > 1.930 && eta <= 2.043 )     return 0.2393 + (0.1909 * fac);
+    else if ( eta > 2.043 && eta <= 2.322 )     return 0.2604 + (0.1501 *fac);
+    else if ( eta > 2.322 && eta <= 2.500 )     return 0.4085 + (0.2020 *fac);
+    else if ( eta > 2.500 && eta <= 2.853 )     return 0.9909 + (0.5684 *fac);
+    else if ( eta > 2.853 && eta <= 2.964 )     return 1.2923 + (0.3734 *fac);
+    else if ( eta > 2.964 && eta <= 3.139 )     return 0.2696 + (0.1089 *fac);
+    else if ( eta > 3.139 && eta <= 5.191 )     return 0.1542 + (0.1524 *fac);
+  }
+  if (version=="2016_94X" ){
+    if (eta <= 0.522)                       return 0.1595 + (0.0645 * fac);
+    else if ( eta > 0.522 && eta <= 0.783 ) return 0.1948 + (0.0652 * fac);
+    else if ( eta > 0.783 && eta <= 1.131 )     return 0.1464 + (0.0632 * fac);
+    else if ( eta > 1.131 && eta <= 1.305 )     return 0.1609 + (0.1025 * fac);
+    else if ( eta > 1.305 && eta <= 1.740 )     return 0.1278 + (0.0986 * fac);
+    else if ( eta > 1.740 && eta <= 1.930 )     return 0.1000 + (0.1079 * fac);
+    else if ( eta > 1.930 && eta <= 2.043 )     return 0.1426 + (0.1214 * fac);
+    else if ( eta > 2.043 && eta <= 2.322 )     return 0.1512 + (0.1140 *fac);
+    else if ( eta > 2.322 && eta <= 2.500 )     return 0.2963 + (0.2371 *fac);
+    else if ( eta > 2.500 && eta <= 2.853 )     return 0.3418 + (0.2091 *fac);
+    else if ( eta > 2.853 && eta <= 2.964 )     return 0.7788 + (0.2008 *fac);
+    else if ( eta > 2.964 && eta <= 3.139 )     return 0.1869 + (0.1243 *fac);
+    else if ( eta > 3.139 && eta <= 5.191 )     return 0.1922 + (0.1488 *fac);
+  }
+  
   return 0.1;
+
  }
 
 double DMAnalysisTreeMaker::getEffectiveArea(string particle, double eta){ 

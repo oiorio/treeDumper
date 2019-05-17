@@ -71,6 +71,12 @@ options.register('isData',
                  opts.VarParsing.varType.bool,
                  'Is data?')
 
+options.register('doPreselection',
+                 True,
+                 opts.VarParsing.multiplicity.singleton,
+                 opts.VarParsing.varType.bool,
+                 'doPreselection?')
+
 options.register('applyRes',
                  False,
                  opts.VarParsing.multiplicity.singleton,
@@ -343,6 +349,9 @@ jecFolder="JECs/"
 if(options.mode=="crab"):
     jecFolder="./"
 
+if(options.doPreselection):
+    process.DMTreesDumper.doPreselection = cms.untracked.bool(True)
+
 if(version=='80X'):
     process.DMTreesDumper.era = cms.untracked.string("2016_80X")
     process.DMTreesDumper.prefixLabelData = cms.untracked.string("Summer16_23Sep2016V4")
@@ -367,7 +376,6 @@ if(version=='94X'):
     process.DMTreesDumper.prefiringWeight = cms.InputTag("prefiringweight","NonPrefiringProb")
     process.DMTreesDumper.prefiringWeightUp = cms.InputTag("prefiringweight","NonPrefiringProbUp")
     process.DMTreesDumper.prefiringWeightDown = cms.InputTag("prefiringweight","NonPrefiringProbDown")
-#    process.DMTreesDumper.doPrefiring = cms.untracked.bool(False)
 
 if(version=='94X_2016'):
     process.DMTreesDumper.era = cms.untracked.string("2016_94X")

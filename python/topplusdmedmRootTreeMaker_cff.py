@@ -170,6 +170,7 @@ DMTreesDumper = cms.EDAnalyzer(
     #Filters
     BadChargedCandidateFilter = cms.InputTag("BadChargedCandidateFilter", ""),
     BadPFMuonFilter =cms.InputTag("BadPFMuonFilter", ""),
+    ecalBadCalibReducedMINIAODFilter =cms.InputTag("ecalBadCalibReducedMINIAODFilter", ""),
     
     jetKeysAK4CHS = cms.InputTag("jetKeysAK4CHS", ""),
     muonKeys = cms.InputTag("muonKeys", ""),
