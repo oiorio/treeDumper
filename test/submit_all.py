@@ -81,7 +81,7 @@ def main():
     cfgparams.append('isData=' + str(options.isData))
     cfgparams.append('changeJECs=True')
     cfgparams.append('mode=crab')
-    cfgparams.append('channel=wprime')
+    #    cfgparams.append('channel=wprime')
     print "======> Config bef loop: ", cfgparams
         
     
