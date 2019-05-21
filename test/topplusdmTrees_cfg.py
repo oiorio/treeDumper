@@ -178,12 +178,16 @@ if(version=="80X" or version=="94X" or version == "94X_2016"):
     HadronPFHT800Triggers = ["HLT_PFHT800"]
     HadronPFHT800Triggers =HadronPFHT800Triggers + ["HLT_PFHT800_v"+str(s) for s in xrange(15)]
 
+    metTriggers = ["HLT_PFMETNoMu120_PFMHTNoMu120_IDTight", "HLT_PFMET120_PFMHT120_IDTight"] #metTriggers = metTriggers + ["HLT_PFMET90_PFMHT190_IDTight_v"+str(s) for s in xrange(15)] 
+    metTriggers = metTriggers + ["HLT_PFMETNoMu120_PFMHTNoMu120_IDTight_v"+str(s) for s in xrange(15)]
+    metTriggers = metTriggers + ["HLT_PFMET120_PFMHT120_IDTight_v"+str(s) for s in xrange(15)]       
+        
     HadronPFJet450Triggers = ["HLT_PFJet450"]
     HadronPFJet450Triggers =HadronPFJet450Triggers + ["HLT_PFJet450_v"+str(s) for s in xrange(15)]
-    metTriggers = ["HLT_PFMETNoMu120_PFMHTNoMu120_IDTight", "HLT_PFMETNoMu110_PFMHTNoMu110_IDTight"] #metTriggers = metTriggers + ["HLT_PFMET90_PFMHT190_IDTight_v"+str(s) for s in xrange(15)] 
-    #metTriggers = metTriggers + ["HLT_PFMET100_PFMHT100_IDTight_v"+str(s) for s in xrange(15)]
-    metTriggers = metTriggers + ["HLT_PFMETNoMu110_PFMHTNoMu110_IDTight_v"+str(s) for s in xrange(15)]
-    metTriggers = metTriggers + ["HLT_PFMETNoMu120_PFMHTNoMu120_IDTight_v"+str(s) for s in xrange(15)]       
+
+    metControlTriggers = ["HLT_PFMETNoMu120_PFMHTNoMu120_IDTight", "HLT_PFMETNoMu110_PFMHTNoMu110_IDTight"]
+    metControlTriggers = metTriggers + ["HLT_PFMETNoMu110_PFMHTNoMu110_IDTight_v"+str(s) for s in xrange(15)]
+    metControlTriggers = metTriggers + ["HLT_PFMETNoMu120_PFMHTNoMu120_IDTight_v"+str(s) for s in xrange(15)]
 
     if(options.isData):
 
@@ -220,13 +224,17 @@ if(version=="80X" or version=="94X" or version == "94X_2016"):
         HadronPFHT800Triggers = ["HLT_PFHT800"]
         HadronPFHT800Triggers =HadronPFHT800Triggers + ["HLT_PFHT800_v"+str(s) for s in xrange(15)]
     
+
+        metTriggers = ["HLT_PFMETNoMu120_PFMHTNoMu120_IDTight", "HLT_PFMET120_PFMHT120_IDTight"] #metTriggers = metTriggers + ["HLT_PFMET90_PFMHT190_IDTight_v"+str(s) for s in xrange(15)] 
+        metTriggers = metTriggers + ["HLT_PFMETNoMu120_PFMHTNoMu120_IDTight_v"+str(s) for s in xrange(15)]
+        metTriggers = metTriggers + ["HLT_PFMET120_PFMHT120_IDTight_v"+str(s) for s in xrange(15)]       
+        
         HadronPFJet450Triggers = ["HLT_PFJet450"]
         HadronPFJet450Triggers =HadronPFJet450Triggers + ["HLT_PFJet450_v"+str(s) for s in xrange(15)]
 
-        metTriggers = ["HLT_PFMETNoMu120_PFMHTNoMu120_IDTight", "HLT_PFMETNoMu110_PFMHTNoMu110_IDTight"]
-
-        metTriggers = metTriggers + ["HLT_PFMETNoMu110_PFMHTNoMu110_IDTight_v"+str(s) for s in xrange(15)]
-        metTriggers = metTriggers + ["HLT_PFMETNoMu120_PFMHTNoMu120_IDTight_v"+str(s) for s in xrange(15)]
+        metControlTriggers = ["HLT_PFMETNoMu120_PFMHTNoMu120_IDTight", "HLT_PFMETNoMu110_PFMHTNoMu110_IDTight"]
+        metControlTriggers = metTriggers + ["HLT_PFMETNoMu110_PFMHTNoMu110_IDTight_v"+str(s) for s in xrange(15)]
+        metControlTriggers = metTriggers + ["HLT_PFMETNoMu120_PFMHTNoMu120_IDTight_v"+str(s) for s in xrange(15)]
 
 process = cms.Process("ttDManalysisTrees")
 
