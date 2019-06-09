@@ -135,7 +135,7 @@ if(not options.isData): options.applyRes = False
 
 #Trigger and filters setup:
 
-if(version=="80X" or version=="94X" or version == "94X_2016"):
+if(version=="80X" or version=="94X" or version == "94X_2016" or version=="102X"):
     l = ["singleTrigger"+str(s) for s in xrange(15)]
     l = l + ["trigger2"+str(s) for s in xrange(15)]
 
@@ -350,6 +350,7 @@ jetak8puplabel = cms.string("jetsAK8Puppi")
 subjetak8puplabel = cms.string("subjetsAK8Puppi")
 
 
+
 addAK8CHS=True
 addAK8Puppi=True
 
@@ -401,6 +402,18 @@ if(version=='94X_2016'):
     process.DMTreesDumper.prefiringWeightDown = cms.InputTag("prefiringweight","NonPrefiringProbDown")
 #    process.DMTreesDumper.doPrefiring = cms.untracked.bool(False)
 
+if(version=='102X'):
+    process.DMTreesDumper.era = cms.untracked.string("2018_102X")
+    process.DMTreesDumper.prefixLabelData = cms.untracked.string(jecFolder+"/Fall17_17Nov2017")
+    process.DMTreesDumper.prefixLabelMC = cms.untracked.string(jecFolder+"/Fall17_17Nov2017")
+    process.DMTreesDumper.postfixLabelData = cms.untracked.string("_V32_DATA")
+    process.DMTreesDumper.postfixLabelMC = cms.untracked.string("_V32_MC")
+    process.DMTreesDumper.jetType = cms.untracked.string("AK4PFchs")
+    process.DMTreesDumper.jetType8 = cms.untracked.string("AK8PFPuppi")
+    process.DMTreesDumper.boostedTopsLabel = jetak8puplabel
+    process.DMTreesDumper.boostedTopsSubjetsLabel = subjetak8puplabel    
+    process.DMTreesDumper.doPrefiring = cms.untracked.bool(False)
+    addAK8CHS=False
     
 if(addAK8CHS):
    process.DMTreesDumper.physicsObjects.append(process.jet8CHS)

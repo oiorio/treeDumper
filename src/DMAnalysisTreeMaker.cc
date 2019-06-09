@@ -658,7 +658,7 @@ DMAnalysisTreeMaker::DMAnalysisTreeMaker(const edm::ParameterSet& iConfig){
   applyRes = iConfig.getUntrackedParameter<bool>("applyRes",false);
 
   doPrefiring=iConfig.getUntrackedParameter<bool>("doPrefiring",true);
-  if((version=="2017_94X" || version == "2016_94X" ) && !isData && doPrefiring) {
+  if((version=="2017_94X" || version == "2016_94X" || version == "2018_102X") && !isData && doPrefiring) {
     
     edm::InputTag prefiringTag = iConfig.getParameter< edm::InputTag > ("prefiringWeight");
     t_prefiringWeight_ = consumes<double> (prefiringTag);
@@ -1161,6 +1161,7 @@ filename_cmva="btagging_cmva.root";
   
   calib_deepcsv = new BTagCalibration("DeepCSV", "DeepCSV_94XSF_V3_B_F.csv");
   if(version=="2017_94X")new BTagCalibration("DeepCSV", "DeepCSV_94XSF_V3_B_F.csv");
+  if(version=="2018_102X")new BTagCalibration("DeepCSV", "DeepCSV_94XSF_V3_B_F.csv");
   
   readerDeepCSVLoose = new BTagCalibrationReader(BTagEntry::OP_LOOSE, "central", {"up", "down"});      
   readerDeepCSVLoose->load(*calib_deepcsv, BTagEntry::FLAV_B,   "comb");
@@ -1825,53 +1826,29 @@ void DMAnalysisTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetu
 
     //Photons
     //cout << " mark 6 "<<endl; 
-    for(int ph = 0;ph < max_instances[photon_label] ;++ph){
+    /*    for(int ph = 0;ph < max_instances[photon_label] ;++ph){
       string pref = obj_to_pref[photon_label];
       
       
       float pt = vfloats_values[makeName(photon_label,pref,"Pt")][ph];
       float eta = vfloats_values[makeName(photon_label,pref,"Eta")][ph];      
       
-      float sieie = vfloats_values[makeName(photon_label,pref,"SigmaIEtaIEta")][ph];      
-      float hoe = vfloats_values[makeName(photon_label,pref,"HoverE")][ph];      
+      //      float sieie = vfloats_values[makeName(photon_label,pref,"SigmaIEtaIEta")][ph];      
+      //float hoe = vfloats_values[makeName(photon_label,pref,"HoverE")][ph];      
       
       float abseta = fabs(eta);
 
-      float pho_isoC  = vfloats_values[makeName(photon_label,pref,"ChargedHadronIso")][ph];      
-      float pho_isoP  = vfloats_values[makeName(photon_label,pref,"NeutralHadronIso")][ph];      
-      float pho_isoN     =  vfloats_values[makeName(photon_label,pref,"PhotonIso")][ph];      
+      //      float pho_isoC  = vfloats_values[makeName(photon_label,pref,"ChargedHadronIso")][ph];      
+      //float pho_isoP  = vfloats_values[makeName(photon_label,pref,"NeutralHadronIso")][ph];      
+      //float pho_isoN     =  vfloats_values[makeName(photon_label,pref,"PhotonIso")][ph];      
 
-      float pho_isoCea  = vfloats_values[makeName(photon_label,pref,"ChargedHadronIsoEAcorrected")][ph];      
-      float pho_isoPea  = vfloats_values[makeName(photon_label,pref,"PhotonIsoEAcorrected")][ph];      
-      float pho_isoNea     =  vfloats_values[makeName(photon_label,pref,"NeutralHadronIsoEAcorrected")][ph];      
-
-      if(recalculateEA){
-	pho_isoCea     = std::max( double(0.0) ,(pho_isoC - Rho*getEffectiveArea("ch_hadrons",abseta)));
-	pho_isoPea     = std::max( double(0.0) ,(pho_isoP - Rho*getEffectiveArea("photons",abseta)));
-	pho_isoNea     = std::max( double(0.0) ,(pho_isoN - Rho*getEffectiveArea("neu_hadrons",abseta)));
-      }
+      //      float pho_isoCea  = vfloats_values[makeName(photon_label,pref,"ChargedHadronIsoEAcorrected")][ph];      
+      //float pho_isoPea  = vfloats_values[makeName(photon_label,pref,"PhotonIsoEAcorrected")][ph];      
+      //float pho_isoNea     =  vfloats_values[makeName(photon_label,pref,"NeutralHadronIsoEAcorrected")][ph];      
       
-      bool isBarrel = (abseta<1.479);
-      bool isEndcap = (abseta>1.479 && abseta < 2.5);
-
-      vfloats_values[photon_label+"_isLooseSpring15"][ph]=0.0;
-      vfloats_values[photon_label+"_isMediumSpring15"][ph]=0.0;
-      vfloats_values[photon_label+"_isTightSpring15"][ph]=0.0;
  
-      if(isBarrel){
-
-	if( sieie < 0.0103 &&   hoe < 0.05 &&   pho_isoCea < 2.44 &&   pho_isoNea < (2.57+exp(0.0044*pt +0.5809) ) &&   pho_isoPea < (1.92+0.0043*pt ) )vfloats_values[photon_label+"_isLooseSpring15"][ph]=1.0;
-	if( sieie < 0.01 &&   hoe < 0.05 &&   pho_isoCea < 1.31 &&   pho_isoNea < (0.60+exp(0.0044*pt +0.5809) ) &&   pho_isoPea < (1.33+0.0043*pt ) )vfloats_values[photon_label+"_isMediumSpring15"][ph]=1.0;
-	if( sieie < 0.01 &&   hoe < 0.05 &&   pho_isoCea < 0.91 &&   pho_isoNea < (0.33+exp(0.0044*pt +0.5809) ) &&   pho_isoPea < (0.61+0.0043*pt ) )vfloats_values[photon_label+"_isTightSpring15"][ph]=1.0;
-      }
-      if(isEndcap){
-	if( sieie < 0.0277 &&   hoe < 0.05 &&   pho_isoCea < 1.84 &&   pho_isoNea < (4.00+exp(0.0040*pt +0.9402) ) &&   pho_isoPea < (1.92+0.0043*pt ) )vfloats_values[photon_label+"_isLooseSpring15"][ph]=1.0;
-	if( sieie < 0.0267 &&   hoe < 0.05 &&   pho_isoCea < 1.25 &&   pho_isoNea < (1.65+exp(0.0040*pt +0.9402) ) &&   pho_isoPea < (1.33+0.0043*pt ) )vfloats_values[photon_label+"_isMediumSpring15"][ph]=1.0;
-	if( sieie < 0.0267 &&   hoe < 0.05 &&   pho_isoCea < 0.65 &&   pho_isoNea < (0.93+exp(0.0040*pt +0.9402) ) &&   pho_isoPea < (0.61+0.0043*pt ) )vfloats_values[photon_label+"_isTightSpring15"][ph]=1.0;
-      }
-    
     }
-
+    */
     //Muons
     for(int mu = 0;mu < max_instances[mu_label] ;++mu){
       string pref = obj_to_pref[mu_label];
@@ -2241,7 +2218,7 @@ void DMAnalysisTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetu
 		  float muphi = vfloats_values[makeName(mu_label,prefmu,"Phi")][mk];
 		  float mue = vfloats_values[makeName(mu_label,prefmu,"E")][mk];
 		  float muIsGlobal = vfloats_values[makeName(mu_label,prefmu,"IsGlobalMuon")][mk];
-		  float muIsTK = vfloats_values[makeName(mu_label,prefmu,"IsTrackerMuon")][mk];
+		  float muIsTK =  vfloats_values[makeName(mu_label,prefmu,"IsTrackerMuon")][mk];
 		  float muISSAOnly = ((!muIsGlobal && !muIsTK));
 		  
 		  if(muIsGlobal || muISSAOnly){
@@ -2500,14 +2477,42 @@ void DMAnalysisTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetu
         float neuHadEnFrac = vfloats_values[makeName(jets_label,pref,"neutralHadronEnergyFrac")][j];
 	float numConst = chMulti + neuMulti;
 
-        if(fabs(eta)<=2.7){
-          passesID =  (neuHadEnFrac<0.90 && neuEmEnFrac<0.90 && numConst>1) && ( (abs(eta)<=2.4 && chHadEnFrac>0 && chMulti>0 && chEmEnFrac<0.99) || abs(eta)>2.4);
+
+	// |eta|<=2.7
+        if(fabs(eta)<=2.7 && ((version == "2016_94X") || (version == "2017_94X") ) ){
+	  if(version == "2016_94X"){
+	    passesID =  (neuHadEnFrac<0.90 && neuEmEnFrac<0.90 && numConst>1) && ( (abs(eta)<=2.4 && chHadEnFrac>0 && chMulti>0 && chEmEnFrac<0.99) || abs(eta)>2.4);
+	  }
+	  if(version == "2017_94X"){
+	    passesID =  (neuHadEnFrac<0.90 && neuEmEnFrac<0.90 && numConst>1) && ( (abs(eta)<=2.4 && chHadEnFrac>0 && chMulti>0) || abs(eta)>2.4);
+	  }
         }
-	else if(fabs(eta)>2.7 && fabs(eta)<=3.0){
+	// 2.6<|eta|<=2.7
+	if(fabs(eta)<=2.6 && ( version == "2018_102X") ){
+	  passesID =  (neuHadEnFrac<0.90 && neuEmEnFrac<0.90 && numConst>1 && chHadEnFrac>0 && chMulti>0);
+	}
+	if(fabs(eta)>2.6 && fabs(eta)<=2.7 && ( version == "2018_102X") ){
+	  passesID =  (neuHadEnFrac<0.90 && neuEmEnFrac<0.99 && chMulti>0);
+	}
+	// 2.7<|eta|<=3.0
+	if(fabs(eta)>2.7 && fabs(eta)<=3.0 && ((version == "2016_94X") ) ){
 	  passesID = neuMulti > 2 && neuHadEnFrac < 0.98 && neuEmEnFrac > 0.01;
 	}
-        else if(fabs(eta)>3){
-          passesID = neuEmEnFrac<0.90 && neuMulti>10 ;
+	if(fabs(eta)>2.7 && fabs(eta)<=3.0 && ( (version == "2018_102X") || (version == "2017_94X") ) ){
+	  passesID = neuMulti > 2 && neuEmEnFrac < 0.99 && neuEmEnFrac > 0.02;
+	}
+       
+	if(fabs(eta)>3){
+	  if(version == "2016_94X"){
+	    passesID = neuEmEnFrac<0.90 && neuMulti>10 ;
+	  }
+	  if(version == "2017_94X"){
+	    passesID = neuEmEnFrac<0.90 && neuMulti>10 && neuHadEnFrac > 0.02 ;
+	  }
+	  if(version == "2018_102X"){
+	    passesID = neuEmEnFrac<0.90 && neuMulti>10  && neuHadEnFrac > 0.2;
+	  }
+
         }
       }
       
@@ -2598,7 +2603,7 @@ void DMAnalysisTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetu
       if(version=="2016_80X"){
 	setEventBTagSF(jets_label,"Tight","CMVA");
       }
-      if(version=="2017_94X" || version=="2016_94X"){
+      if(version=="2017_94X" || version=="2016_94X" || version == "2018_102X"){
 	setEventBTagSF(jets_label,"Tight","DeepCSV");
       }
       for(size_t jc = 0; jc < obj_scanCuts[jets_label].size();++jc){
@@ -2609,7 +2614,7 @@ void DMAnalysisTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetu
 	if(version=="2016_80X"){
 	  setEventBTagSF(jets_label,"Tight_"+scanCut,"CMVA");
 	}
-	if(version=="2017_94X" || version=="2016_94X"){
+	if(version=="2017_94X" || version=="2016_94X" || version == "2018_102X"){
 	  setEventBTagSF(jets_label,"Tight","DeepCSV");
 	}
       }
@@ -4579,6 +4584,22 @@ double DMAnalysisTreeMaker::resolSF(double eta, string syst)
   if (syst == "jer__down" || syst == "jmr_down")fac = -1.;
   if (syst == "JERUp" || syst == "JMRUp")fac = 1.;
   if (syst == "JERDown" || syst == "JMRDown")fac = -1.;
+  if (  version=="2018_102X"){
+    if (eta <= 0.522)                       return 0.150 + (0.043 * fac);
+    else if ( eta > 0.522 && eta <= 0.783 ) return 0.134 + (0.08 * fac);
+    else if ( eta > 0.783 && eta <= 1.131 )     return 0.102 + (0.052 * fac);
+    else if ( eta > 1.131 && eta <= 1.305 )     return 0.134 + (0.112 * fac);
+    else if ( eta > 1.305 && eta <= 1.740 )     return 0.104 + (0.211 * fac);
+    else if ( eta > 1.740 && eta <= 1.930 )     return 0.149 + (0.159 * fac);
+    else if ( eta > 1.930 && eta <= 2.043 )     return 0.148 + (0.209 * fac);
+    else if ( eta > 2.043 && eta <= 2.322 )     return 0.114 + (0.191 *fac);
+    else if ( eta > 2.322 && eta <= 2.500 )     return 0.347 + (0.274 *fac);
+    else if ( eta > 2.500 && eta <= 2.853 )     return 1.137 + (0.524 *fac);
+    else if ( eta > 2.853 && eta <= 2.964 )     return 0.65 + (0.941 *fac);
+    else if ( eta > 2.964 && eta <= 3.139 )     return 0.225 + (0.194 *fac);
+    else if ( eta > 3.139 && eta <= 5.191 )     return 0.082 + (0.198 *fac);
+  }
+ 
   if (  version=="2017_94X"){
     if (eta <= 0.522)                       return 0.1432 + (0.0222 * fac);
     else if ( eta > 0.522 && eta <= 0.783 ) return 0.1815 + (0.0484 * fac);
