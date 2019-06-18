@@ -258,9 +258,9 @@ def main():
         elif ('2016F' in job.rstrip()) :
             eraLabel = 'EF'
         elif ('2016G' in job.rstrip()) :                                                                                                    
-            eraLabel = 'G'
+            eraLabel = 'GH'
         elif ('2016H' in job.rstrip()) :                                                                                                    
-            eraLabel = 'H'
+            eraLabel = 'GH'
         elif ('2017B' in job.rstrip()) :   
             eraLabel = 'B'
         elif ('2017C' in job.rstrip()) :                                                                                                       
