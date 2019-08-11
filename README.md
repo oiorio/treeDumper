@@ -1,7 +1,10 @@
 #Welcome to the tree dumper main page! 
 
-
 The main code takes entuples and produces custom made trees with weights, event-based systematics, and potentially a baseline selection.
+
+0) To download, from the CMSSW_X_Y_Z/src do:
+
+git clone https://github.com/oiorio/treeDumper.git TreeFWK/treesDumper
 
 Please look below to see what is currently missing!
 

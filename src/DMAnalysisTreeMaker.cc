@@ -1211,7 +1211,7 @@ void DMAnalysisTreeMaker::beginRun(const edm::Run& iRun, const edm::EventSetup& 
     iRun.getByLabel(metNames_, metNames);
     for(size_t bt = 0; bt < triggerNamesR->size();++bt){
       std::string tname = triggerNamesR->at(bt);
-      cout << "trigger test tname "<< tname <<endl; 
+      //      cout << "trigger test tname "<< tname <<endl; 
     }
 }
 
@@ -1604,8 +1604,10 @@ void DMAnalysisTreeMaker::analyze(const edm::Event& iEvent, const edm::EventSetu
    iEvent.getByToken(t_BadPFMuonFilter_, BadPFMuonFilter);
    iEvent.getByToken(t_ecalBadCalibReducedMINIAODFilter_, ecalBadCalibReducedMINIAODFilter);
    if(isFirstEvent){
-      for(size_t bt = 0; bt < metNames->size();++bt){
-	std::string tname = metNames->at(bt);
+     cout << " using met filters " <<endl;
+     for(size_t bt = 0; bt < metNames->size();++bt){
+       std::string tname = metNames->at(bt);
+       cout << " TName "<< metNames->at(bt)<< " PASSES " <<metBits->at(bt)<<endl;
       }
     }
     getMETFilters();
@@ -3830,6 +3832,7 @@ vector<string> DMAnalysisTreeMaker::additionalVariables(string object){
     //addvar.push_back("LHEWeightAVG");
     addvar.push_back("LHEWeight");
     addvar.push_back("EventNumber");
+    addvar.push_back("RunNumber");
     addvar.push_back("LumiBlock");
 
     if(useLHEWeights){
@@ -4281,11 +4284,11 @@ bool DMAnalysisTreeMaker::getMETFilters(){
     string fname = metFilters.at(mf);
     for(size_t bt = 0; bt < metNames->size();++bt){
       std::string tname = metNames->at(bt);
-      //      cout << "test tname "<<endl;
-      if(tname.find(fname)!=std::string::npos){
+      //if(tname.find(fname)!=std::string::npos){
+      //	cout << "test tname "<< tname << " passes "<< metBits->at(bt)<<endl;
 	METFilterAND = METFilterAND && (metBits->at(bt)>0);
 	float_values["Event_passes"+fname]=metBits->at(bt);
-      }
+	//}
     }
   }
   float_values["Event_passesMETFilters"]=(float)METFilterAND;

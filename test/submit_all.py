@@ -81,7 +81,7 @@ def main():
     cfgparams.append('isData=' + str(options.isData))
     cfgparams.append('changeJECs=True')
     cfgparams.append('mode=crab')
-    #    cfgparams.append('channel=wprime')
+#    cfgparams.append('channel=wprime')
     print "======> Config bef loop: ", cfgparams
         
     
@@ -191,11 +191,11 @@ def main():
     config.Data.inputDBS = 'phys03'
     config.Data.splitting = 'FileBased' 
 #    config.Data.splitting = 'Automatic' 
-    config.Data.unitsPerJob = 2
+    config.Data.unitsPerJob = 10
     config.Data.publication = False    
     #    config.Data.outLFNDirBase = '/store/user/cgiuglia/trees/May12/'
     #    config.Data.outLFNDirBase = '/store/user/oiorio/ttDM/trees/2018/May28/'
-    config.Data.outLFNDirBase = '/store/user/oiorio/Wprime/2019/Apr/Apr11/'
+    config.Data.outLFNDirBase = '/store/user/oiorio/Wprime/2019/July/July18/'
 #    config.Data.outLFNDirBase = '/store/user/oiorio/Tprime/trees/2019/94X2016Mar14/'
     
     config.section_("Site")
@@ -258,9 +258,9 @@ def main():
         elif ('2016F' in job.rstrip()) :
             eraLabel = 'EF'
         elif ('2016G' in job.rstrip()) :                                                                                                    
-            eraLabel = 'GH'
+            eraLabel = 'G'
         elif ('2016H' in job.rstrip()) :                                                                                                    
-            eraLabel = 'GH'
+            eraLabel = 'H'
         elif ('2017B' in job.rstrip()) :   
             eraLabel = 'B'
         elif ('2017C' in job.rstrip()) :                                                                                                       
@@ -271,6 +271,14 @@ def main():
             eraLabel = 'DE'
         elif ('2017F' in job.rstrip()) :                                                                                                    
             eraLabel = 'F'
+        elif ('2018A' in job.rstrip()) :
+            eraLabel = 'A'
+        elif ('2018B' in job.rstrip()) :
+            eraLabel = 'B'
+        elif ('2018C' in job.rstrip()) :
+            eraLabel = 'C'
+        elif ('2018D' in job.rstrip()) :
+            eraLabel = 'D'
         else:
             eraLabel = 'BCD'
 
