@@ -36,7 +36,8 @@ options.register('sample',
                  #2017 ntuples
                  #"/store/user/oiorio/ttDM/samples/2018/Sep/14Sep/B2GAnaFW_94X_V0_Sep_14/TprimeBToTZ_M-1400_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2/TprimeBToTZ_M-1400_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1_B2GAnaFW_94X_V0_Sep_14/181003_184239/0000/B2GEDMNtuple_9.root",
 #                 "/store/user/lvigilan/Tprime/samples/94X_18Jan19/TprimeBToTZ_M-1400_Width-30p_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2/TprimeBToTZ_M-1400_Width-30p_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1_94X_18Jan19/190118_170039/0000/B2GEDMNtuple_1.root",
-                 #"store/user/fabozzi/Tprime/samples/94X_06Mar19/MET/Run2016C/MET/Run2016C-17Jul2018-v1_94X_06Mar19/190306_213553/0000/B2GEDMNtuple_1.root",
+#                 "/store/user/fabozzi/Tprime/samples/94X_06Mar19/MET/Run2016C/MET/Run2016C-17Jul2018-v1_94X_06Mar19/190306_213553/0000/B2GEDMNtuple_1.root",
+
                  "/store/user/oiorio/Tprime/samples/2019/94X_10Apr19/94X_10Apr19/WprimeToTB_plusSM_TToLep_M-2200_LH_13TeV-comphep/RunIISummer16MiniAODv3/WprimeToTB_plusSM_TToLep_M-2200_LH_13TeV-comphep/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3_ext1-v1_94X_10Apr19/190409_110232/0000/B2GEDMNtuple_2.root",
                  #                 "/store/user/oiorio/Tprime/samples/2019/94X_10Apr19/94X_10Apr19/WprimeToTB_plusSM_TToLep_M-2200_LH_13TeV-comphep/RunIISummer16MiniAODv3/WprimeToTB_plusSM_TToLep_M-2200_LH_13TeV-comphep/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3_ext1-v1_94X_10Apr19/190409_110232/0000/B2GEDMNtuple_1.root"
                  #'file:B2GEDMNtuple_1.root',#l'ho preso dal mio TT
@@ -72,7 +73,7 @@ options.register('isData',
                  'Is data?')
 
 options.register('doPreselection',
-                 True,
+                 False,
                  opts.VarParsing.multiplicity.singleton,
                  opts.VarParsing.varType.bool,
                  'doPreselection?')
@@ -135,7 +136,7 @@ if(not options.isData): options.applyRes = False
 
 #Trigger and filters setup:
 
-if(version=="80X" or version=="94X" or version == "94X_2016" or version=="102X"):
+if(version=="80X" or version=="94X" or version == "94X_2016" or version == "10X"):
     l = ["singleTrigger"+str(s) for s in xrange(15)]
     l = l + ["trigger2"+str(s) for s in xrange(15)]
 
@@ -350,7 +351,6 @@ jetak8puplabel = cms.string("jetsAK8Puppi")
 subjetak8puplabel = cms.string("subjetsAK8Puppi")
 
 
-
 addAK8CHS=True
 addAK8Puppi=True
 
@@ -402,16 +402,20 @@ if(version=='94X_2016'):
     process.DMTreesDumper.prefiringWeightDown = cms.InputTag("prefiringweight","NonPrefiringProbDown")
 #    process.DMTreesDumper.doPrefiring = cms.untracked.bool(False)
 
-if(version=='102X'):
+if(version=='10X'):
     process.DMTreesDumper.era = cms.untracked.string("2018_102X")
-    process.DMTreesDumper.prefixLabelData = cms.untracked.string(jecFolder+"/Fall17_17Nov2017")
-    process.DMTreesDumper.prefixLabelMC = cms.untracked.string(jecFolder+"/Fall17_17Nov2017")
-    process.DMTreesDumper.postfixLabelData = cms.untracked.string("_V32_DATA")
-    process.DMTreesDumper.postfixLabelMC = cms.untracked.string("_V32_MC")
+    process.DMTreesDumper.prefixLabelData = cms.untracked.string(jecFolder+"/Autumn18_Run")
+    process.DMTreesDumper.prefixLabelMC = cms.untracked.string(jecFolder+"/Autumn18")
+    process.DMTreesDumper.postfixLabelData = cms.untracked.string("_V8_DATA")
+    process.DMTreesDumper.postfixLabelMC = cms.untracked.string("_V8_MC")
     process.DMTreesDumper.jetType = cms.untracked.string("AK4PFchs")
     process.DMTreesDumper.jetType8 = cms.untracked.string("AK8PFPuppi")
     process.DMTreesDumper.boostedTopsLabel = jetak8puplabel
     process.DMTreesDumper.boostedTopsSubjetsLabel = subjetak8puplabel    
+    process.DMTreesDumper.prefiringWeight = cms.InputTag("prefiringweight","NonPrefiringProb")
+    process.DMTreesDumper.prefiringWeightUp = cms.InputTag("prefiringweight","NonPrefiringProbUp")
+    process.DMTreesDumper.prefiringWeightDown = cms.InputTag("prefiringweight","NonPrefiringProbDown")
+    process.DMTreesDumper.prefiringWeightDown = cms.InputTag("prefiringweight","NonPrefiringProbDown")
     process.DMTreesDumper.doPrefiring = cms.untracked.bool(False)
     addAK8CHS=False
     
